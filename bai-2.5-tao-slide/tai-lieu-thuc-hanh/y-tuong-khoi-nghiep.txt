@@ -1,0 +1,48 @@
+# Ý TƯỞNG DỰ ÁN KHỞI NGHIỆP: VIBE COFFEE
+(Ghi chú nhanh lúc ngồi cà phê nghĩ ra - chưa chau chuốt, lưu nháp)
+
+1. Tên dự án dự kiến:
+- Vibe Coffee (hoặc VibeSpace)
+- Slogan tạm thời: "Code better, sip smarter" hoặc "Cà phê công nghệ cho dân sáng tạo"
+
+2. Nỗi đau thực tế khi đi làm việc ở quán cà phê hiện nay:
+- Đang ngồi code hoặc làm slide thì quán bật nhạc remix ầm ĩ, người bên cạnh nói chuyện điện thoại oang oang -> mất tập trung kinh khủng
+- Mạng Wifi quán bình thường rất chậm, lúc họp Google Meet giật tung chảo, push code lên GitHub toàn timeout
+- Đi tìm ổ cắm điện như đi đánh trận, nhiều quán chỉ có 2-3 ổ cắm ở góc khuất, ngồi đau cả lưng vì bàn ghế không chuẩn công thái học
+- Menu đồ uống nghèo nàn, lặp đi lặp lại, toàn siro ngọt gắt uống vào mệt người, không giúp tỉnh táo thực sự
+- Không có không gian riêng tư khi cần họp team ngắn 15-30 phút mà không muốn thuê văn phòng tốn kém
+
+3. Ý tưởng giải pháp - Quán cà phê kết hợp AI & Công nghệ:
+- Không gian chia làm 3 phân khu rõ rệt:
+  + Focus Pod (Khu làm việc sâu): Yên tĩnh tuyệt đối như thư viện, booth cá nhân vách ngăn cách âm, đèn bàn warm light chống lóa, ghế Ergonomic chuẩn văn phòng xịn
+  + Chill & Collab (Khu giao lưu): Nhạc Lo-fi êm dịu, sofa êm ái, thích hợp trò chuyện trao đổi nhẹ nhàng hoặc gặp gỡ đối tác
+  + Brainstorm Lab: Phòng họp mini 4-6 người có bảng kính thông minh, màn hình 4K kết nối không dây, micro hội nghị
+- Điểm nhấn công nghệ (Wow factor):
+  + AI Mood Barista: Khách check-in hoặc quét QR tại bàn, chọn tâm trạng hiện tại (ví dụ: đang buồn ngủ, đang căng thẳng, chuẩn bị thuyết trình, cần tập trung cao độ) -> AI phân tích và gợi ý công thức đồ uống tối ưu (hàm lượng caffeine vừa phải kết hợp thảo mộc adaptogen giảm stress)
+  + Latte Art tạo từ Prompt: Khách nhập 1 câu prompt ngắn trên app -> máy vẽ bọt sữa tự động in hình nghệ thuật độc bản lên ly cà phê trong 15 giây (rất thích hợp check-in sống ảo trên mạng xã hội)
+  + Cơ sở hạ tầng chuẩn Tech: Đường truyền Wifi 6 tốc độ 1Gbps không giật lag; mỗi bàn tích hợp 4 ổ cắm điện + 2 cổng sạc nhanh Type-C PD 65W; cho mượn miễn phí tai nghe chống ồn chủ động (ANC) và màn hình phụ di động
+
+4. Khách hàng tiềm năng:
+- Lập trình viên (Developer), kỹ sư phần mềm làm việc remote / hybrid
+- Dân sáng tạo nội dung, UI/UX Designer, copywriter, freelancer
+- Sinh viên các trường công nghệ thông tin, ngoại thương cần không gian học tập chất lượng cao
+- Nhóm khởi nghiệp trẻ cần nơi họp bàn dự án linh hoạt
+
+5. Mô hình tạo doanh thu:
+- Nguồn 1: Bán đồ uống đặc sản (Specialty Coffee Arabica Cầu Đất, Cold Brew ủ thảo mộc, Kombucha hoa quả tươi) -> Giá 55.000đ - 85.000đ
+- Nguồn 2: Gói Day-Pass & Combo hội viên:
+  + Combo "Deep Work 4H": 99.000đ (bao gồm 1 đồ uống + 4 tiếng ngồi booth Focus Pod + mượn màn hình phụ)
+  + Gói Member tháng không giới hạn cho remote worker: 1.500.000đ/tháng
+- Nguồn 3: Cho thuê phòng họp Brainstorm Lab theo giờ (150.000đ/giờ)
+- Nguồn 4: Đồ ăn nhẹ dinh dưỡng (bánh mì nguyên cám, hạt dinh dưỡng, salad đóng hộp)
+
+6. Dự toán vốn khởi điểm & Kế hoạch thử nghiệm:
+- Cần số vốn ban đầu: khoảng 350 - 450 triệu VNĐ
+- Địa điểm mong muốn: Diện tích khoảng 90 - 120m2, gần khu vực tập trung nhiều công ty IT hoặc trường đại học lớn (khu Duy Tân, Cầu Giấy hoặc Bách Khoa)
+- Giai đoạn thử nghiệm: Chạy thử Pop-up store trong 3 tháng đầu, phục vụ 100 khách hàng đầu tiên để thu thập đánh giá NPS và đo lường tỷ lệ khách quay lại (kỳ vọng retention rate > 45%)
+
+7. Những việc cần làm ngay (Action items):
+- Tìm 1 Co-founder am hiểu sâu về pha chế Specialty Coffee và quản lý vận hành F&B
+- Thiết kế thử nghiệm bản mẫu ứng dụng AI gợi ý đồ uống (chạy thử nghiệm bot Telegram/Web trước)
+- Lên khảo sát nhanh nhu cầu của 200 bạn dev/freelancer trong các cộng đồng công nghệ
+- Hoàn thiện bản pitch deck ngắn 7-8 slide để đi gặp các nhà đầu tư thiên thần (Angel Investors)
