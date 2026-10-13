@@ -748,10 +748,10 @@
       btnFullscreen.addEventListener('click', toggleFullscreen);
 
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'Enter' || e.key === 'PageDown') {
           e.preventDefault();
           nextSlide();
-        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'Backspace') {
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp' || e.key === 'Backspace') {
           e.preventDefault();
           prevSlide();
         } else if (e.key === 's' || e.key === 'S') {
