@@ -1,0 +1,2922 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>PHẦN 04: Bộ Đồ Nghề "Nuôi Dạy" & Nhân Bản Trợ Lý AI Toàn Năng • GOOGLE ANTIGRAVITY MASTERCLASS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-void: #0a0e17;
+      --bg-surface: #111827;
+      --bg-surface-elevated: #1e293b;
+      --border-subtle: rgba(255, 255, 255, 0.1);
+      --border-focus: rgba(99, 102, 241, 0.5);
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-dim: #94a3b8;
+      
+      --accent-indigo: #6366f1;
+      --accent-cyan: #0ea5e9;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-void);
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 90% 90%, rgba(6, 182, 212, 0.1) 0%, transparent 45%);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Progress Bar */
+    #progress-bar-container {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+    #progress-bar {
+      height: 100%;
+      width: 7.69%;
+      background: linear-gradient(90deg, var(--accent-indigo), var(--accent-cyan));
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.6);
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Header Bar */
+    header {
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(7, 9, 14, 0.85);
+      backdrop-filter: blur(16px);
+      z-index: 50;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #a5b4fc;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-nav {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-nav:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--border-focus);
+      transform: translateY(-1px);
+    }
+    .btn-nav.active {
+      background: var(--accent-indigo);
+      border-color: #818cf8;
+      box-shadow: 0 0 16px rgba(99, 102, 241, 0.4);
+      color: #fff;
+    }
+
+    .slide-index {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--accent-cyan);
+      font-weight: 700;
+      padding: 3px 9px;
+      background: rgba(6, 182, 212, 0.08);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      border-radius: 6px;
+    }
+
+    /* Main Deck Stage */
+    #deck-stage {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 24px;
+      overflow: hidden;
+      touch-action: pan-y;
+    }
+
+    .slide-canvas {
+      position: absolute;
+      width: 100%;
+      max-width: 1320px;
+      height: 100%;
+      max-height: 740px;
+      background: linear-gradient(180deg, #131c2e 0%, #0d1524 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 32px 44px;
+      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.97) translateY(16px);
+      transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+      overflow: hidden; /* Desktop No-Scroll */
+    }
+
+    .slide-canvas.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+      z-index: 10;
+    }
+
+    /* Staggered Animations */
+    @keyframes fadeInSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    .slide-canvas:not(.active) * {
+      opacity: 0;
+    }
+
+    .slide-canvas.active .anim-1 { animation: fadeInSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both; }
+    .slide-canvas.active .anim-2 { animation: fadeInSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both; }
+    .slide-canvas.active .anim-3 { animation: fadeInSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both; }
+    .slide-canvas.active .anim-4 { animation: fadeInSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 1.35s both; }
+    .slide-canvas.active .anim-5 { animation: fadeInSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 1.95s both; }
+
+    /* SVG Icons */
+    .svg-icon {
+      width: 20px;
+      height: 20px;
+      stroke-width: 2;
+      stroke: currentColor;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .svg-icon-lg {
+      width: 32px;
+      height: 32px;
+    }
+
+    /* Typography */
+    .tag-hero {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-cyan);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .title-display {
+      font-size: 2.45rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    .title-display span {
+      background: linear-gradient(90deg, #818cf8, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .lead-desc {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      max-width: 840px;
+      font-weight: 400;
+    }
+
+    /* HUD Top Right */
+    .slide-hud {
+      position: absolute;
+      top: 32px;
+      right: 44px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hud-chip {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hud-chip strong {
+      color: var(--accent-cyan);
+    }
+
+    /* Posters */
+    .poster-hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      flex: 1;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .manifesto-quote {
+      border-left: 2px solid var(--accent-indigo);
+      padding-left: 20px;
+      font-size: 1.12rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+      font-style: italic;
+    }
+    .manifesto-quote strong {
+      color: #fff;
+      font-style: normal;
+    }
+
+    .spec-sheet-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .spec-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .spec-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .spec-label {
+      font-size: 0.84rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .spec-value {
+      font-family: var(--font-mono);
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* Split Reality */
+    .split-reality-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      flex: 1;
+      margin-top: 14px;
+    }
+
+    .reality-pane {
+      background: rgba(255, 255, 255, 0.015);
+      border-radius: 16px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+    .reality-pane-past {
+      border-color: rgba(244, 63, 94, 0.25);
+    }
+    .reality-pane-past:hover {
+      background: rgba(244, 63, 94, 0.03);
+      border-color: rgba(244, 63, 94, 0.4);
+    }
+    .reality-pane-future {
+      background: linear-gradient(145deg, rgba(99, 102, 241, 0.08), rgba(6, 182, 212, 0.04));
+      border-color: rgba(99, 102, 241, 0.35);
+      box-shadow: 0 0 40px rgba(99, 102, 241, 0.1);
+    }
+    .reality-pane-future:hover {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 50px rgba(6, 182, 212, 0.2);
+    }
+
+    .pane-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .pane-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pane-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .reality-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .reality-item {
+      display: flex;
+      gap: 12px;
+      font-size: 0.86rem;
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
+    .reality-item strong {
+      color: #fff;
+    }
+
+    /* Pipeline Nodes */
+    .flow-pipeline-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .pipeline-nodes-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      position: relative;
+    }
+
+    .pipeline-node {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .pipeline-node:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--accent-indigo);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .node-step-num {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .node-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .node-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .feedback-loop-bar {
+      background: rgba(16, 185, 129, 0.06);
+      border: 1px dashed rgba(16, 185, 129, 0.35);
+      border-radius: 10px;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: #a7f3d0;
+    }
+    .feedback-loop-bar strong {
+      color: var(--accent-emerald);
+      font-family: var(--font-mono);
+    }
+
+    /* =========================================================================
+       MODERN BENTO GRID & CARD SYSTEM (DESIGN TASTE FRONTEND V2)
+       ========================================================================= */
+
+    .card-grid {
+      display: grid;
+      gap: 20px;
+      align-items: stretch;
+      margin-top: 1.2rem;
+      width: 100%;
+    }
+
+    .card-grid.col-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card-grid.col-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-grid.col-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Modern Bento Tile Card */
+    .stat-card, .feature-card {
+      background: rgba(18, 25, 42, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 16px;
+      padding: 24px 22px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .stat-card:hover, .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(99, 102, 241, 0.35);
+      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.65), 0 0 1px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Stat Card Specifics */
+    .stat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .stat-title {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 3px 8px;
+      border-radius: 5px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .stat-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .stat-desc {
+      font-size: 0.88rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      font-weight: 400;
+      flex: 1;
+    }
+
+    .stat-desc strong {
+      color: #f1f5f9;
+      font-weight: 600;
+    }
+
+    .stat-desc code {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: #38bdf8;
+    }
+
+    /* Feature Card Specifics */
+    .feature-card .card-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      margin-bottom: 12px;
+    }
+
+    .feature-card .card-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .feature-card .card-desc {
+      font-size: 0.88rem;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    .feature-card .card-desc strong {
+      color: #f1f5f9;
+      font-weight: 600;
+    }
+
+    /* VS Matrix Grid (Chatbot vs Agentic, Desktop vs IDE) */
+    .vs-matrix-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 1.2rem;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    .vs-card {
+      border-radius: 18px;
+      padding: 26px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(12px);
+      transition: all 0.25s ease;
+    }
+
+    .vs-card.active {
+      background: linear-gradient(170deg, rgba(16, 28, 48, 0.95), rgba(12, 20, 36, 0.92));
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      box-shadow: 0 16px 45px -10px rgba(6, 182, 212, 0.15), inset 0 1px 0 rgba(6, 182, 212, 0.2);
+    }
+
+    .vs-card.passive {
+      background: linear-gradient(170deg, rgba(32, 20, 26, 0.8), rgba(18, 14, 22, 0.88));
+      border: 1px solid rgba(244, 63, 94, 0.25);
+      box-shadow: 0 16px 45px -10px rgba(244, 63, 94, 0.08);
+    }
+
+    .vs-header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      padding-bottom: 12px;
+    }
+
+    .vs-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .vs-badge.active {
+      background: rgba(6, 182, 212, 0.16);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+    }
+
+    .vs-badge.passive {
+      background: rgba(244, 63, 94, 0.14);
+      color: var(--accent-rose);
+      border: 1px solid rgba(244, 63, 94, 0.25);
+    }
+
+    .vs-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+
+    .vs-subtitle {
+      font-size: 0.84rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    .vs-body {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .vs-point {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
+
+    .vs-point svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .vs-point strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(7, 9, 14, 0.85);
+      font-size: 0.76rem;
+      color: var(--text-dim);
+    }
+    .kbd {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-main);
+    }
+
+    /* Speaker Notes Drawer */
+    #notes-drawer {
+      position: fixed;
+      right: 0;
+      top: 54px;
+      width: 500px;
+      height: calc(100vh - 102px);
+      background: #090e1c;
+      border-left: 1px solid rgba(99, 102, 241, 0.35);
+      box-shadow: -12px 0 35px rgba(0, 0, 0, 0.8);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 80;
+      overflow-y: auto;
+    }
+    #notes-drawer.open {
+      transform: translateX(0);
+    }
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 14px;
+    }
+    .notes-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #818cf8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .notes-content {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: #cbd5e1;
+    }
+    .notes-content blockquote {
+      background: rgba(99, 102, 241, 0.12);
+      border-left: 3px solid var(--accent-indigo);
+      padding: 14px 16px;
+      border-radius: 0 10px 10px 0;
+      margin: 12px 0;
+      color: #e0e7ff;
+    }
+    .notes-content p {
+      margin-bottom: 12px;
+    }
+    .notes-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      background: rgba(6, 182, 212, 0.14);
+      padding: 3px 9px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      header { height: 48px; padding: 0 14px; }
+      .brand { font-size: 0.76rem; gap: 6px; }
+      .brand-title-text { display: none !important; }
+      .brand-badge { font-size: 0.65rem; padding: 2px 7px; }
+      .controls { gap: 4px; }
+      #btn-prev, #btn-next, #btn-fullscreen { display: none !important; }
+      .slide-index { font-size: 0.74rem; padding: 2px 6px; }
+
+      #deck-stage { padding: 8px 10px 60px; }
+
+      .slide-canvas {
+        max-width: 100%;
+        height: 100%;
+        max-height: calc(100vh - 116px);
+        padding: 20px 14px;
+        border-radius: 14px;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+        display: flex;
+        flex-direction: column;
+      }
+      .slide-canvas::-webkit-scrollbar { width: 3px; }
+      .slide-canvas::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.18); border-radius: 3px; }
+
+      .title-display { font-size: 1.45rem !important; line-height: 1.25 !important; margin-bottom: 6px !important; }
+      .lead-desc { font-size: 0.84rem !important; line-height: 1.5 !important; margin-bottom: 12px !important; }
+      .tag-hero { font-size: 0.66rem !important; margin-bottom: 4px !important; }
+
+      .slide-hud { position: static !important; margin-bottom: 8px !important; flex-wrap: wrap !important; gap: 6px !important; }
+      .hud-chip { font-size: 0.65rem !important; padding: 3px 8px !important; }
+
+      .poster-hero-grid, .split-reality-grid, .pipeline-nodes-row, .card-grid, .vs-matrix-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+        margin-top: 8px !important;
+      }
+
+      .stat-card, .feature-card, .vs-card {
+        padding: 16px 14px !important;
+        border-radius: 12px !important;
+      }
+      .stat-value, .feature-card .card-title, .vs-title {
+        font-size: 1.1rem !important;
+      }
+      .stat-desc, .feature-card .card-desc, .vs-point {
+        font-size: 0.82rem !important;
+      }
+
+      .manifesto-quote { font-size: 0.92rem !important; line-height: 1.55 !important; padding-left: 12px !important; }
+      .spec-sheet-card { padding: 14px 12px !important; gap: 10px !important; }
+      .reality-pane { padding: 16px 12px !important; }
+      .pipeline-node { padding: 14px 12px !important; }
+      .feedback-loop-bar { flex-direction: column !important; align-items: flex-start !important; gap: 6px !important; padding: 10px 12px !important; }
+
+      footer {
+        height: 52px !important;
+        padding: 0 12px !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        z-index: 60 !important;
+        background: rgba(7, 9, 14, 0.95) !important;
+        backdrop-filter: blur(16px) !important;
+        border-top: 1px solid var(--border-subtle) !important;
+      }
+      #footer-desktop-hint, #footer-desktop-tag { display: none !important; }
+      #footer-mobile-controls { display: flex !important; align-items: center; justify-content: space-between; width: 100%; gap: 10px; }
+      .btn-touch {
+        flex: 1;
+        min-height: 38px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--border-subtle);
+        color: #fff;
+        border-radius: 8px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        cursor: pointer;
+      }
+      .btn-touch:active { background: var(--accent-indigo); }
+
+      #notes-drawer {
+        width: 100vw !important;
+        height: 82vh !important;
+        top: auto !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        border-left: none !important;
+        border-top: 2px solid var(--accent-indigo) !important;
+        border-radius: 20px 20px 0 0 !important;
+        transform: translateY(100%) !important;
+        box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.9) !important;
+        padding: 20px 16px 30px !important;
+      }
+      #notes-drawer.open { transform: translateY(0) !important; }
+    }
+
+    @media (max-height: 520px) and (orientation: landscape) {
+      header { height: 38px !important; padding: 0 16px !important; }
+      #deck-stage { padding: 6px 12px !important; }
+      .slide-canvas { padding: 12px 18px !important; max-height: calc(100vh - 46px) !important; overflow-y: auto !important; }
+      .title-display { font-size: 1.25rem !important; margin-bottom: 4px !important; }
+      .lead-desc { font-size: 0.76rem !important; margin-bottom: 6px !important; }
+      .pipeline-nodes-row { grid-template-columns: repeat(4, 1fr) !important; gap: 8px !important; }
+      footer { display: none !important; }
+    }
+
+    @media print {
+      body { overflow: visible !important; height: auto !important; background: #fff !important; color: #000 !important; }
+      header, footer, #notes-drawer, #progress-bar-container { display: none !important; }
+      #deck-stage { display: block !important; padding: 0 !important; }
+      .slide-canvas { position: relative !important; opacity: 1 !important; visibility: visible !important; transform: none !important; page-break-after: always !important; width: 100% !important; height: 100vh !important; border: none !important; background: #fff !important; color: #000 !important; }
+    }
+  
+    /* =========================================================================
+       CUSTOM FOLDER TREE & STRUCTURE COMPONENTS (SLIDES CẤU TRÚC PHẦN 4)
+       ========================================================================= */
+    .tree-anatomy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 10px;
+      width: 100%;
+      align-items: stretch;
+    }
+
+    .folder-tree-box {
+      background: rgba(13, 19, 33, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 16px 18px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.5);
+    }
+    .folder-tree-header {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--accent-cyan);
+      margin-bottom: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .tree-line {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 0;
+      white-space: nowrap;
+    }
+    .tree-folder {
+      color: #38bdf8;
+      font-weight: 600;
+    }
+    .tree-file {
+      color: #f8fafc;
+    }
+    .tree-comment {
+      color: #94a3b8;
+      font-size: 0.7rem;
+      margin-left: auto;
+      font-style: italic;
+    }
+    .tree-tag-ok {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.65rem;
+      font-weight: 700;
+    }
+    .tree-tag-err {
+      background: rgba(244, 63, 94, 0.15);
+      color: #fb7185;
+      border: 1px solid rgba(244, 63, 94, 0.3);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.65rem;
+      font-weight: 700;
+    }
+    .anatomy-card {
+      background: rgba(18, 24, 38, 0.95);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      border-radius: 14px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.5);
+    }
+    .anatomy-section {
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 9px 12px;
+    }
+    .anatomy-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .anatomy-code {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      line-height: 1.45;
+      color: #cbd5e1;
+      white-space: pre-wrap;
+    }
+    .naming-rules-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .naming-box {
+      border-radius: 10px;
+      padding: 9px 14px;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .naming-box.do {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: #e2e8f0;
+    }
+    .naming-box.dont {
+      background: rgba(244, 63, 94, 0.08);
+      border: 1px solid rgba(244, 63, 94, 0.25);
+      color: #e2e8f0;
+    }
+    .cheatsheet-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin-top: 6px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(11, 15, 25, 0.9);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    .cheatsheet-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.75rem;
+      text-align: left;
+    }
+    .cheatsheet-table th {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 7px 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      white-space: nowrap;
+    }
+    .cheatsheet-table td {
+      padding: 6px 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+    .cheatsheet-table tr:last-child td {
+      border-bottom: none;
+    }
+    .cheatsheet-table tr:hover td {
+      background: rgba(99, 102, 241, 0.06);
+    }
+    .cheatsheet-table code {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: #38bdf8;
+    }
+    .cheatsheet-table strong {
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="progress-bar-container">
+    <div id="progress-bar"></div>
+  </div>
+
+  <header>
+    <div class="brand">
+      <button class="btn-nav" onclick="window.location.href='index.html'" title="Về trang Lobby tổng quan" style="background: rgba(99, 102, 241, 0.15); border-color: rgba(99, 102, 241, 0.4); color: #c7d2fe;">
+        🏠 Lobby
+      </button>
+      <span class="brand-badge">PHẦN 04</span>
+      <span class="brand-title-text">BỘ ĐỒ NGHỀ "NUÔI DẠY" & NHÂN BẢN TRỢ LÝ AI TOÀN NĂNG</span>
+    </div>
+
+    <div class="controls">
+      <span class="slide-index" id="slide-num">01 / 23</span>
+      <button class="btn-nav" id="btn-prev" title="Trang trước (Phím ◀)">◀ Lùi</button>
+      <button class="btn-nav" id="btn-next" title="Trang sau (Phím ▶ hoặc Space)">Tiếp ▶</button>
+      <button class="btn-nav" id="btn-notes" title="Bật/Tắt Lời thoại kịch bản (Phím S)">🎙️ Lời Thoại (S)</button>
+      <button class="btn-nav" id="btn-fullscreen" title="Toàn màn hình (Phím F)">⛶ Toàn Màn Hình</button>
+    </div>
+  </header>
+
+  <main id="deck-stage">
+
+    <div class="slide-canvas" data-slide="1" data-notes="Các bạn có thấy mệt mỏi khi lần nào mở ChatGPT hay Claude lên cũng phải gõ lại một câu dặn dò quen thuộc: 'Nhớ trả lời bằng tiếng Việt nhé', 'Đừng viết dài dòng nhé', 'Dùng phong cách trang trọng nhé'? Đó là vì các chatbot thông thường không có cơ chế nhớ nội quy dài hạn.
+
+Trong Antigravity, chúng ta có một vũ khí quyền lực gọi là Rules Engine. Nó hệt như cuốn Sổ Tay Quy Tắc phát cho nhân viên mới vào ngày đầu đi làm. Bạn chỉ cần viết các quy tắc này một lần duy nhất.
+
+Cần phân biệt rõ:
+- Rules là 'Khuôn khổ & Tiêu chuẩn bắt buộc': Quy định những điều ĐƯỢC LÀM và BỊ CẤM (như luôn dùng tiếng Việt, cấm tự ý xóa file, tuân thủ Nghị định 30).
+- Skills là 'Bằng nghề & Cách làm từng bước': Hướng dẫn AI quy trình tạo slide hay xử lý bảng tính.
+Một nhân viên ngoan (tuân thủ Rules) kết hợp với tay nghề giỏi (thạo Skills) sẽ tạo nên một trợ lý AI hoàn hảo!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          TRỤ CỘT 01: <strong>RULES ENGINE</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-amber);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          TIÊU CHUẨN BẮT BUỘC
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Khái Niệm <span>Rules</span>
+        </h2>
+        <p class="lead-desc">
+          Bộ quy tắc và tiêu chuẩn bắt buộc định hình phong cách, chuẩn mực đầu ra: Viết 1 lần, AI tuân thủ mãi mãi.
+        </p>
+      </div>
+
+      <div class="card-grid col-2 anim-2">
+        <div class="feature-card" style="border-color: rgba(245, 158, 11, 0.3);">
+          <div class="card-title" style="color: var(--accent-amber); display: flex; align-items: center; gap: 8px;">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
+            Bản Chất Của Rules: "Luật Chơi"
+          </div>
+          <div class="card-desc">
+            <p style="margin-bottom: 8px;">• <strong>Định hình giới hạn:</strong> Quy định những điều <strong>ĐƯỢC PHÉP</strong> và <strong>BỊ CẤM</strong> khi AI thao tác trên máy tính.</p>
+            <p style="margin-bottom: 8px;">• <strong>Chuẩn mực đầu ra:</strong> Văn phong tiếng Việt trang trọng, thể thức công văn hành chính, định dạng số tiền có dấu phân cách.</p>
+            <p>• <strong>Không cần nhắc lại:</strong> Khắc phục nhược điểm của chatbot thông thường, mở phiên mới AI vẫn nhớ như in.</p>
+          </div>
+        </div>
+
+        <div class="feature-card" style="border-color: rgba(6, 182, 212, 0.3);">
+          <div class="card-title" style="color: var(--accent-cyan); display: flex; align-items: center; gap: 8px;">
+            <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            Phân Biệt: Rules vs Skills
+          </div>
+          <div class="card-desc">
+            <p style="margin-bottom: 8px;">• <strong>Rules = Tiêu chuẩn & Nội quy:</strong> Dặn AI <em>cái gì được làm và không được làm</em> (ví dụ: cấm xóa file, đúng Nghị định 30).</p>
+            <p style="margin-bottom: 8px;">• <strong>Skills = Bằng nghề & Quy trình:</strong> Hướng dẫn AI <em>cách làm từng bước</em> một nghiệp vụ (ví dụ: cách thiết kế slide, cách xử lý bảng tính).</p>
+            <p>• <em>Một nhân viên ngoan (tuân thủ Rules) vẫn cần có bằng nghề (Skills) để làm việc thành thạo!</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="2" data-notes="Nội quy trong Antigravity được chia làm 2 cấp phân tầng rất thông minh:
+1. Global Rules (Quy tắc toàn máy): Nằm ở thư mục `~/.gemini/config/rules/`. Áp dụng cho mọi dự án, mọi lần mở máy (ví dụ: Luôn trả lời tiếng Việt lịch sự, tuyệt đối không tự xóa file khi chưa hỏi).
+2. Workspace Rules (Quy tắc dự án): Nằm ngay trong thư mục dự án của bạn (file `AGENTS.md` hoặc `.agents/rules/`). Chỉ áp dụng riêng cho dự án đó (ví dụ: Dự án này là công văn nhà nước thì văn phong phải trang trọng, chuẩn thể thức Nghị định 30; dự án báo cáo tài chính thì số tiền phải có dấu chấm phân cách).
+
+Quy tắc cấp thấp hơn sẽ tự động ghi đè hoặc bổ sung cho quy tắc cấp cao hơn, giúp bạn quản trị hàng trăm dự án mà không bao giờ bị lẫn lộn!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          TRỤ CỘT 01: <strong>RULES ENGINE</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-amber);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+          NỘI QUY PHÂN TẦNG
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Sổ Tay Quy Tắc <span>AGENTS.md</span>
+        </h2>
+        <p class="lead-desc">
+          Phân tầng quy tắc thông minh: Phân định rạch ròi giữa quy chuẩn phong cách & chuẩn mực chung toàn máy tính và nội quy nghiệp vụ riêng của từng dự án.
+        </p>
+      </div>
+
+      <div class="split-reality-grid" style="margin-top: 10px;">
+        <div class="reality-pane reality-pane-past anim-2">
+          <div class="pane-header">
+            <div class="pane-title">
+              <span style="color: var(--accent-rose);"><svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></span>
+              Global Rules (Toàn Cục)
+            </div>
+            <span class="pane-badge" style="background: rgba(244, 63, 94, 0.15); color: #fb7185;">ÁP DỤNG TOÀN MÁY</span>
+          </div>
+          <ul class="reality-list">
+            <li class="reality-item">
+              <span style="color: var(--accent-rose); min-width: 20px;"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+              <div><strong>Vị trí lưu trữ:</strong> <code>~/.gemini/config/rules/</code> hoặc <code>AGENTS.md</code> toàn cục.</div>
+            </li>
+            <li class="reality-item">
+              <span style="color: var(--accent-rose); min-width: 20px;"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+              <div><strong>Phạm vi tác động:</strong> Áp dụng xuyên suốt cho mọi dự án và mọi cuộc trò chuyện trên máy.</div>
+            </li>
+            <li class="reality-item">
+              <span style="color: var(--accent-rose); min-width: 20px;"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+              <div><strong>Nội dung điển hình:</strong> Luôn trả lời tiếng Việt, tôn trọng bản quyền, cấm xóa file khi chưa hỏi ý kiến.</div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="reality-pane reality-pane-future anim-3">
+          <div class="pane-header">
+            <div class="pane-title">
+              <span style="color: var(--accent-cyan);"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></span>
+              Workspace Rules (Dự Án)
+            </div>
+            <span class="pane-badge" style="background: rgba(6, 182, 212, 0.15); color: #38bdf8;">RIÊNG BIỆT DỰ ÁN</span>
+          </div>
+          <ul class="reality-list">
+            <li class="reality-item">
+              <span style="color: var(--accent-cyan); min-width: 20px;"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+              <div><strong>Vị trí lưu trữ:</strong> <code>AGENTS.md</code> hoặc <code>.agents/rules/</code> tại thư mục dự án.</div>
+            </li>
+            <li class="reality-item">
+              <span style="color: var(--accent-cyan); min-width: 20px;"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+              <div><strong>Phạm vi tác động:</strong> Chỉ áp dụng khi mở đúng thư mục dự án đó.</div>
+            </li>
+            <li class="reality-item">
+              <span style="color: var(--accent-cyan); min-width: 20px;"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+              <div><strong>Nội dung điển hình:</strong> Thể thức công văn hành chính, mẫu bảng biểu kế toán, chuẩn màu sắc thương hiệu.</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="3" data-notes="Khi viết quy tắc, có một CÁI BẪY mà tài liệu của Google Antigravity đặc biệt cảnh báo: Antigravity chỉ quét các file nằm ngay tại cấp cao nhất của thư mục `rules/`. Nếu bạn tạo thêm các thư mục con lồng nhau bên trong (ví dụ: `rules/phong-ke-toan/file.md`), AI sẽ hoàn toàn 'mù' và không đọc được file đó! Do đó, quy tắc là: Tất cả các file quy tắc phải nằm trải phẳng trực tiếp trong thư mục `rules/`.
+
+Ngoài ra, Antigravity trang bị 4 công tắc kích hoạt thông minh (Trigger):
+1. `always_on`: Luôn luôn nạp vào đầu AI ngay từ đầu (dành cho quy tắc sống còn như luôn nói tiếng Việt, cấm xóa file).
+2. `model_decision`: AI tự cân nhắc, khi nào bạn giao việc văn thư thì nó mới lật cuốn quy tắc văn thư ra xem (giúp AI đỡ nặng đầu, tiết kiệm bộ nhớ).
+3. `glob`: Tự động bật khi đụng đến đuôi file cụ thể (ví dụ: mở file `.xlsx` thì nạp quy tắc kế toán).
+4. `manual`: Chỉ bật khi bạn chủ động gọi tên quy tắc trong câu chat.
+
+Cứ để các file quy tắc nằm phẳng ngoài thư mục `rules/` và đặt tên dạng `chuan-cong-van.md` là AI sẽ chạy mượt mà 100%!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          TRỤ CỘT 01: <strong>RULES ENGINE</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-amber);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+          QUY CHUẨN KỸ THUẬT RULES
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Cấu Trúc Thư Mục Rules <span>& 4 Trigger</span>
+        </h2>
+        <p class="lead-desc">
+          Tổ chức thư mục quy tắc chuẩn xác và làm chủ 4 cơ chế kích hoạt thông minh để AI không bị quá tải bộ nhớ.
+        </p>
+      </div>
+
+      <div class="tree-anatomy-grid anim-2">
+        <div class="folder-tree-box">
+          <div class="folder-tree-header">
+            <span><svg class="svg-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> CẤU TRÚC THƯ MỤC RULES</span>
+            <span class="tree-tag-ok">PHẲNG 1 CẤP</span>
+          </div>
+          <div class="tree-line"><span class="tree-folder">📁 THƯ MỤC DỰ ÁN CỦA BẠN</span></div>
+          <div class="tree-line" style="padding-left: 14px;"><span style="color: #64748b;">├──</span> <span class="tree-file">📄 AGENTS.md</span> <span class="tree-tag-ok">ĐƠN GIẢN NHẤT</span> <span class="tree-comment">// 1 file tại gốc</span></div>
+          <div class="tree-line" style="padding-left: 14px;"><span style="color: #64748b;">└──</span> <span class="tree-folder">📁 .agents/rules/</span> <span class="tree-comment">// Chia nhỏ nhiều quy tắc</span></div>
+          <div class="tree-line" style="padding-left: 28px;"><span style="color: #64748b;">├──</span> <span class="tree-file">📄 van-thu-iso.md</span> <span class="tree-tag-ok">HỢP LỆ ✅</span> <span class="tree-comment">// Nằm trực tiếp</span></div>
+          <div class="tree-line" style="padding-left: 28px;"><span style="color: #64748b;">├──</span> <span class="tree-file">📄 tieu-chuan-excel.md</span> <span class="tree-tag-ok">HỢP LỆ ✅</span> <span class="tree-comment">// Nằm trực tiếp</span></div>
+          <div class="tree-line" style="padding-left: 28px;"><span style="color: #64748b;">└──</span> <span class="tree-folder">📁 thu-muc-con/</span> <span class="tree-tag-err">BẪY NGUY HIỂM ❌</span></div>
+          <div class="tree-line" style="padding-left: 42px;"><span style="color: #64748b;">└──</span> <span class="tree-file" style="color: #f43f5e;">📄 rule-bi-bo-qua.md</span> <span class="tree-comment">// AI KHÔNG ĐỌC ĐƯỢC!</span></div>
+        </div>
+
+        <div class="anatomy-card">
+          <div class="folder-tree-header" style="color: var(--accent-amber); border-color: rgba(245, 158, 11, 0.2);">
+            <span><svg class="svg-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> 4 CÔNG TẮC KÍCH HOẠT QUY TẮC</span>
+            <span class="tree-tag-ok">TRIGGER TYPE</span>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="background: rgba(0,0,0,0.25); padding: 7px 10px; border-radius: 8px; border-left: 3px solid var(--accent-cyan); font-size: 0.78rem;">
+              <strong style="color: var(--accent-cyan);">model_decision:</strong> AI tự nhận biết ngữ cảnh công việc để mở cuốn quy tắc phù hợp (Tiết kiệm bộ nhớ nhất).
+            </div>
+            <div style="background: rgba(0,0,0,0.25); padding: 7px 10px; border-radius: 8px; border-left: 3px solid var(--accent-emerald); font-size: 0.78rem;">
+              <strong style="color: var(--accent-emerald);">always_on:</strong> Luôn luôn nạp vào đầu não AI (Dành cho quy tắc sống còn như tiếng Việt, bảo mật).
+            </div>
+            <div style="background: rgba(0,0,0,0.25); padding: 7px 10px; border-radius: 8px; border-left: 3px solid var(--accent-indigo); font-size: 0.78rem;">
+              <strong style="color: #818cf8;">glob:</strong> Tự động nạp khi làm việc với đuôi file cụ thể (Ví dụ: mở file <code>*.xlsx</code> nạp quy tắc kế toán).
+            </div>
+            <div style="background: rgba(0,0,0,0.25); padding: 7px 10px; border-radius: 8px; border-left: 3px solid var(--accent-amber); font-size: 0.78rem;">
+              <strong style="color: var(--accent-amber);">manual:</strong> Chỉ kích hoạt khi người dùng gõ tên quy tắc trực tiếp vào câu chat.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="naming-rules-bar anim-3">
+        <div class="naming-box do">
+          <span style="color: var(--accent-emerald); font-weight: 800; font-size: 1rem;">✅</span>
+          <div><strong>NÊN LÀM:</strong> Để tất cả file <code>.md</code> nằm TRỰC TIẾP trong thư mục <code>rules/</code> (ví dụ: <code>the-thuc-cong-van.md</code>).</div>
+        </div>
+        <div class="naming-box dont">
+          <span style="color: var(--accent-rose); font-weight: 800; font-size: 1rem;">❌</span>
+          <div><strong>TRÁNH LÀM:</strong> Tuyệt đối không tạo thư mục con lồng nhau bên trong <code>rules/</code> vì Antigravity sẽ bỏ qua hoàn toàn!</div>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="4" data-notes="Nhiều người hỏi tôi: 'Tôi viết một cuốn quy tắc dài 100 trang như sách giáo khoa nhét vào cho AI đọc có được không?'. Câu trả lời là: TUYỆT ĐỐI KHÔNG!
+
+Antigravity đặt ra một hàng rào an ninh kỹ thuật: Giới hạn trần mỗi file Rule riêng lẻ tối đa 24 Kilobytes và ngân sách tổng là 20.000 tokens (tương đương khoảng 4.000 đến 6.000 từ). Nếu bạn viết quá dài, hệ thống sẽ cảnh báo để ngăn chặn việc ngốn sạch Context Window của Agent trước khi bắt đầu công việc. Hãy viết ngắn gọn, súc tích, đi thẳng vào các nguyên tắc cấm và mẫu định dạng mong muốn.
+
+Và ngay tại đây, chúng ta cùng thực hành Mini-Project 1: Bộ Quy Tắc Chuẩn Nghị Định 30.
+Chúng ta tạo một file `AGENTS.md` trong thư mục văn phòng với 3 quy tắc vàng:
+1. Mọi công văn xuất ra phải tuân thủ nghiêm ngặt Nghị định 30/2020/NĐ-CP về thể thức văn bản hành chính Việt Nam (căn lề, cỡ chữ, quốc hiệu, tiêu ngữ).
+2. Không bao giờ được bịa đặt số hiệu văn bản; nếu thiếu phải gắn nhãn `[CẦN BỔ SUNG SỐ HIỆU]`.
+3. Tự động kiểm tra lỗi chính tả và xuất ra file hoàn chỉnh.
+Chỉ với 1 file quy tắc đơn giản, từ nay mọi văn bản bạn giao cho AI làm đều đạt chuẩn mực chỉn chu 100%!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          MINI-PROJECT 01: <strong>QUY TẮC NGHỊ ĐỊNH 30</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-rose);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          QUY TẮC CÔNG NGHỆ CỐT LÕI
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Giới Hạn 24KB & <span>Mini-Project 1</span>
+        </h2>
+        <p class="lead-desc">
+          Nắm vững trần dung lượng 24KB/file và thực hành thiết lập Bộ Quy Tắc thẩm định thể thức văn bản hành chính chuẩn Nghị định 30.
+        </p>
+      </div>
+
+      <div class="poster-hero-grid" style="margin-top: 10px;">
+        <div class="spec-sheet-card anim-2">
+          <div class="pane-title" style="margin-bottom: 12px; color: var(--accent-rose);">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            Quy Chuẩn Giới Hạn 24KB
+          </div>
+          <div class="spec-row">
+            <span class="spec-label"><svg class="svg-icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg> Giới hạn an toàn</span>
+            <span class="spec-value" style="color: var(--accent-rose);">&le; 24 KB / File (&le; 20.000 Tokens)</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label"><svg class="svg-icon" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg> Mục đích tối thượng</span>
+            <span class="spec-value">Chống phình Context Window</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label"><svg class="svg-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> Nguyên tắc vàng</span>
+            <span class="spec-value" style="color: var(--accent-emerald);">Ngắn gọn • Tập trung • Trực diện</span>
+          </div>
+        </div>
+
+        <div class="stat-card anim-3" style="border-color: rgba(99, 102, 241, 0.35);">
+          <div class="stat-header">
+            <span class="stat-title" style="color: #a5b4fc;">MINI-PROJECT 1 • THỰC CHIẾN</span>
+            <span class="pane-badge" style="background: rgba(99, 102, 241, 0.2); color: #c7d2fe;">AGENTS.MD</span>
+          </div>
+          <div class="stat-value" style="font-size: 1.15rem; color: #fff;">
+            Bộ Quy Tắc Thẩm Định Công Văn (Nghị Định 30)
+          </div>
+          <div class="stat-desc" style="font-size: 0.85rem;">
+            Tạo file <code>AGENTS.md</code> thiết lập 3 quy chuẩn vàng:
+            <br>• Căn lề, cỡ chữ, quốc hiệu đúng chuẩn hành chính VN.
+            <br>• Tuyệt đối không bịa số hiệu công văn ➔ Gắn nhãn <code>[CẦN BỔ SUNG]</code>.
+            <br>• Tự động soát lỗi chính tả và định dạng bảng biểu.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="5" data-notes="Nếu như Rules là 'Quy tắc & Tiêu chuẩn bắt buộc', thì Skills chính là 'Bằng Nghề Chuyên Môn'. 
+
+Một nhân viên mới có thể nắm rất chắc quy tắc công ty (tuân thủ Rules), nhưng nếu chưa có chứng chỉ kế toán thì vẫn không biết cách lập báo cáo tài chính!
+
+Trong Antigravity, một Skill chính là một bộ cẩm nang hướng dẫn AI cách làm một nghiệp vụ cụ thể theo quy trình chuẩn SOP. Ví dụ: quy trình 3 bước thiết kế bài giảng, công thức đối soát bảng cân đối kế toán, hay kỹ năng cào dữ liệu giá đối thủ.
+
+Cái hay nhất của Skill là tính di động: Nếu đồng nghiệp vừa tạo ra một kỹ năng làm việc cực kỳ xịn sò, bạn chỉ cần copy thư mục kỹ năng đó thả vào máy mình là ngay lập tức AI của bạn sở hữu trọn vẹn tay nghề đó!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          TRỤ CỘT 02: <strong>AGENT SKILLS</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-cyan);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          DẠY NGHỀ CHUYÊN MÔN
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Khái Niệm <span>Agent Skill</span>
+        </h2>
+        <p class="lead-desc">
+          Gói cẩm nang dạy cho AI cách làm một nghiệp vụ chuyên sâu theo từng bước chuẩn hóa SOP, biến AI thành chuyên viên thạo việc.
+        </p>
+      </div>
+
+      <div class="vs-matrix-grid anim-2">
+        <div class="vs-card passive">
+          <div class="vs-header">
+            <span class="vs-badge passive">VẤN ĐỀ: BIẾT CHUNG CHUNG</span>
+            <div class="vs-title" style="color: var(--accent-rose);">AI Không Biết Quy Trình Của Bạn</div>
+            <div class="vs-subtitle">Chatbot thông thường chỉ trả lời lý thuyết sách vở, không biết làm theo mẫu nội bộ.</div>
+          </div>
+          <div class="vs-body">
+            <div class="vs-point">
+              <span style="color: var(--accent-rose); font-weight: 800;">✕</span>
+              <div><strong>Đầu ra thất thường:</strong> Mỗi lần một kiểu, bạn phải ngồi chỉnh sửa thủ công rất mệt.</div>
+            </div>
+            <div class="vs-point">
+              <span style="color: var(--accent-rose); font-weight: 800;">✕</span>
+              <div><strong>Phải nhắc lại các bước:</strong> Lần nào cũng phải gõ lại hướng dẫn từ đầu.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-card active">
+          <div class="vs-header">
+            <span class="vs-badge active">GIẢI PHÁP: AGENT SKILL</span>
+            <div class="vs-title" style="color: var(--accent-cyan);">Bằng Nghề Đóng Gói Sẵn</div>
+            <div class="vs-subtitle">Đóng gói sẵn quy trình từng bước, tài liệu mẫu và công cụ thực thi vào 1 thư mục.</div>
+          </div>
+          <div class="vs-body">
+            <div class="vs-point">
+              <span style="color: var(--accent-cyan); font-weight: 800;">✓</span>
+              <div><strong>Chuẩn hóa 100%:</strong> AI làm theo đúng công thức quy trình SOP, sản phẩm đồng nhất và chỉn chu.</div>
+            </div>
+            <div class="vs-point">
+              <span style="color: var(--accent-cyan); font-weight: 800;">✓</span>
+              <div><strong>Tự động kích hoạt:</strong> AI tự thấy việc khớp với mô tả là tự giác lấy đồ nghề ra làm.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="6" data-notes="Cấu tạo của một Skill trong Google Antigravity là một bộ đồ nghề đóng gói gồm 3 món:
+1. File `SKILL.md` (Bắt buộc): Trái tim của kỹ năng. Phần đầu chứa thông tin định danh (Tên nghề, mô tả chuyên môn). Phần thân chứa hướng dẫn quy trình từng bước bằng tiếng Việt.
+2. Thư mục `scripts/` (Tùy chọn): Chứa các công cụ tự động hóa chạy ngầm để AI xử lý các tác vụ tính toán, đọc dữ liệu nặng.
+3. Thư mục `references/` (Tùy chọn): Chứa các biểu mẫu báo cáo, checklist kiểm tra, ví dụ chuẩn để AI đối chiếu khi gặp tình huống phức tạp.
+Nhờ cấu trúc module hóa này, bạn có thể tải về các kỹ năng có sẵn hoặc tự đóng gói kỹ năng của mình để chia sẻ cho đồng nghiệp cực kỳ dễ dàng!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          TRỤ CỘT 02: <strong>AGENT SKILLS</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-cyan);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          CẤU TẠO BỘ ĐỒ NGHỀ
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          3 Thành Phần <span>Của Một Skill</span>
+        </h2>
+        <p class="lead-desc">
+          Đóng gói kỹ năng thành các module chuyên biệt: Có hướng dẫn từng bước, công cụ thực thi tự động và mẫu tham khảo chuẩn.
+        </p>
+      </div>
+
+      <div class="flow-pipeline-container" style="margin-top: 10px;">
+        <div class="pipeline-nodes-row" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="pipeline-node anim-2" style="border-color: rgba(6, 182, 212, 0.35);">
+            <span class="node-step-num">THÀNH PHẦN 01</span>
+            <div class="node-title" style="color: var(--accent-cyan);"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> SKILL.md (Core)</div>
+            <p class="node-desc">Chứa YAML frontmatter (name, description) định nghĩa khi nào kích hoạt và quy trình từng bước bằng Markdown.</p>
+          </div>
+
+          <div class="pipeline-node anim-3" style="border-color: rgba(99, 102, 241, 0.35);">
+            <span class="node-step-num">THÀNH PHẦN 02</span>
+            <div class="node-title" style="color: #818cf8;"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg> scripts/ (Thực Thi)</div>
+            <p class="node-desc">Chứa các script Python, Node.js hoặc Bash hỗ trợ để Agent tự động thực thi các tác vụ tính toán, xử lý dữ liệu nặng.</p>
+          </div>
+
+          <div class="pipeline-node anim-4" style="border-color: rgba(16, 185, 129, 0.35);">
+            <span class="node-step-num">THÀNH PHẦN 03</span>
+            <div class="node-title" style="color: var(--accent-emerald);"><svg class="svg-icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg> references/ (Mẫu)</div>
+            <p class="node-desc">Thư viện template, tài liệu mẫu, hướng dẫn kiến trúc để Agent tra cứu mở rộng khi gặp trường hợp phức tạp.</p>
+          </div>
+        </div>
+
+        <div class="feedback-loop-bar anim-5">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+            <span><strong>CƠ CHẾ MODULE HÓA:</strong> Dễ dàng cài đặt, sao chép sang máy tính khác hoặc chia sẻ cho đồng nghiệp chỉ bằng 1 thư mục duy nhất.</span>
+          </div>
+          <span style="font-family: var(--font-mono); font-weight: 700; color: var(--accent-cyan);">PLUG & PLAY</span>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="7" data-notes="Tại sao nhiều bạn sau khi tạo Skill xong, ra chat với AI bảo làm mà AI lại không dùng Skill đó? 90% trường hợp rơi vào 2 lỗi sau đây:
+
+Lỗi thứ nhất: Tên file không đúng chuẩn. Antigravity quy định cứng: Tên file kỹ năng BẮT BUỘC PHẢI VIẾT HOA TOÀN BỘ: `SKILL.md`. Nếu bạn viết thường thành `skill.md` hay `Skill.md`, hệ thống sẽ coi đó là file rác và bỏ qua!
+
+Lỗi thứ hai: Viết mô tả quá sơ sài. Trường `description` ở đầu file chính là tấm biển hiệu mà AI đọc lướt qua khi tìm kiếm công cụ. Nếu bạn chỉ ghi chung chung: `description: Làm slide`, con AI sẽ không biết khi nào nên vào. Nhưng nếu bạn ghi rõ: `description: Tự động thiết kế slide thuyết trình tương tác khi người dùng yêu cầu làm slide, bài giảng hoặc presentation`, thì cứ hễ bạn nhắc đến slide là AI lập tức tự động lấy bộ đồ nghề này ra dùng ngay!
+
+Thư mục chứa skill đặt tên chữ thường gạch nối như `doi-ten-file-tu-dong`, file bên trong bắt buộc là `SKILL.md`. Cứ nhớ đúng 2 điều này là kỹ năng của bạn hoạt động hoàn hảo!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          TRỤ CỘT 02: <strong>AGENT SKILLS</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-cyan);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          CHUẨN MỰC TẠO SKILL
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Cấu Trúc Thư Mục <span>& Tên File SKILL.md</span>
+        </h2>
+        <p class="lead-desc">
+          Đóng gói kỹ năng theo chuẩn Antigravity: Nắm vững quy tắc viết hoa sống còn và cách viết trường description để AI tự giác kích hoạt.
+        </p>
+      </div>
+
+      <div class="tree-anatomy-grid anim-2">
+        <div class="folder-tree-box">
+          <div class="folder-tree-header">
+            <span><svg class="svg-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> CẤU TRÚC THƯ MỤC CỦA MỘT SKILL</span>
+            <span class="tree-tag-ok">MODULAR</span>
+          </div>
+          <div class="tree-line"><span class="tree-folder">📁 KHO SKILLS (Global hoặc Workspace)</span></div>
+          <div class="tree-line" style="padding-left: 14px;"><span style="color: #64748b;">└──</span> <code>.agents/skills/</code> <span class="tree-comment">// (hoặc ~/.gemini/config/skills/)</span></div>
+          <div class="tree-line" style="padding-left: 28px;"><span style="color: #64748b;">└──</span> <span class="tree-folder">📁 doi-ten-file-tu-dong/</span> <span class="tree-comment">// Tên thư mục: kebab-case</span></div>
+          <div class="tree-line" style="padding-left: 42px;"><span style="color: #64748b;">├──</span> <span class="tree-file" style="color: #38bdf8; font-weight: 700;">📄 SKILL.md</span> <span class="tree-tag-ok">BẮT BUỘC IN HOA 100%</span></div>
+          <div class="tree-line" style="padding-left: 42px;"><span style="color: #64748b;">├──</span> <span class="tree-folder">📁 references/</span> <span class="tree-comment">// Quy chuẩn đặt tên snake_case</span></div>
+          <div class="tree-line" style="padding-left: 42px;"><span style="color: #64748b;">└──</span> <span class="tree-folder">📁 scripts/</span> <span class="tree-comment">// Chứa rename_helper.py</span></div>
+        </div>
+
+        <div class="anatomy-card">
+          <div class="anatomy-section">
+            <div class="anatomy-label" style="color: var(--accent-cyan);">
+              <svg class="svg-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+              TẤM BIỂN HIỆU CỬA HÀNG (YAML HEADER)
+            </div>
+            <div class="anatomy-code">---
+name: doi-ten-file-tu-dong
+description: Tự động quét, đọc nội dung tất cả các thể loại file (ảnh, văn bản, PDF, Office) và đặt lại tên file thông minh chuẩn snake_case.
+---</div>
+          </div>
+
+          <div class="anatomy-section">
+            <div class="anatomy-label" style="color: var(--accent-emerald);">
+              <svg class="svg-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line></svg>
+              QUY TRÌNH THỰC HIỆN TỪNG BƯỚC (MARKDOWN)
+            </div>
+            <div class="anatomy-code"># Quy Trình Đổi Tên File Tự Động
+Bước 1: Xác định đường dẫn thư mục mục tiêu.
+Bước 2: Phân tích nội dung thực tế (ảnh, Word, PDF).
+Bước 3: Tạo báo cáo Dry-Run Preview hỏi người dùng.
+Bước 4: Thực thi đổi tên an toàn sau khi xác nhận.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="naming-rules-bar anim-3">
+        <div class="naming-box do">
+          <span style="color: var(--accent-emerald); font-weight: 800; font-size: 1rem;">✅</span>
+          <div><strong>NÊN LÀM:</strong> Tên file cẩm nang BẮT BUỘC PHẢI VIẾT HOA: <code>SKILL.md</code>. Trường <code>description</code> phải nêu rõ khi nào kích hoạt.</div>
+        </div>
+        <div class="naming-box dont">
+          <span style="color: var(--accent-rose); font-weight: 800; font-size: 1rem;">❌</span>
+          <div><strong>TRÁNH LÀM:</strong> Đặt tên chữ thường <code>skill.md</code> hoặc <code>Skill.md</code> sẽ bị Antigravity bỏ qua, kỹ năng hoàn toàn không hoạt động!</div>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="8" data-notes="Bây giờ là bí mật kỹ thuật đắt giá nhất của hệ thống Skills: Cơ chế Progressive Disclosure (Tiết Lộ Lũy Tiến).
+
+Hãy tưởng tượng nếu máy tính của bạn cài sẵn 50 kỹ năng khác nhau, mà ngay từ khi khởi động, toàn bộ 50 cuốn sách hướng dẫn đó đều bị nhồi hết vào bộ nhớ của AI, thì bàn làm việc sẽ bị sập vì quá tải!
+
+Google Antigravity giải quyết bài toán này cực kỳ thông minh qua 3 cấp độ:
+- Cấp độ 1 (Khởi động): Agent chỉ nạp duy nhất 2 dòng mô tả ngắn (`name` và `description`) của mỗi kỹ năng vào bộ nhớ. Chi phí bộ nhớ gần như bằng 0!
+- Cấp độ 2 (Kích hoạt): Chỉ khi bạn giao việc liên quan đến kỹ năng nào, Agent mới mở file `SKILL.md` của kỹ năng đó ra đọc quy trình từng bước.
+- Cấp độ 3 (Đào sâu): Khi gặp trường hợp đặc biệt khó, Agent mới mở tiếp vào thư mục tài liệu mẫu `references/`.
+
+Nhờ cơ chế này, bạn tha hồ cài hàng trăm kỹ năng vào máy mà Antigravity vẫn phản hồi tức thì, tiết kiệm tới 95% chi phí bộ nhớ!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+          TỐI ƯU HÓA TÀI NGUYÊN: <strong>PROGRESSIVE DISCLOSURE</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-emerald);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          BÍ QUYẾT TỐI ƯU HÓA TÀI NGUYÊN
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Cơ Chế Tiết Kiệm Token <span>(Progressive Disclosure)</span>
+        </h2>
+        <p class="lead-desc">
+          Cơ chế tải thông tin 3 cấp độ thông minh giúp cài đặt hàng trăm kỹ năng mà vẫn duy trì tốc độ phản hồi cực nhanh.
+        </p>
+      </div>
+
+      <div class="flow-pipeline-container" style="margin-top: 10px;">
+        <div class="pipeline-nodes-row" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="pipeline-node anim-2" style="border-color: rgba(16, 185, 129, 0.35);">
+            <span class="node-step-num">CẤP ĐỘ 01</span>
+            <div class="node-title" style="color: var(--accent-emerald);">Metadata (Khởi Động)</div>
+            <p class="node-desc">Chỉ tải <code>name</code> và <code>description</code> vào bộ nhớ ngắn hạn. Chi phí Token &asymp; 0.</p>
+          </div>
+
+          <div class="pipeline-node anim-3" style="border-color: rgba(6, 182, 212, 0.35);">
+            <span class="node-step-num">CẤP ĐỘ 02</span>
+            <div class="node-title" style="color: var(--accent-cyan);">SKILL.md (Kích Hoạt)</div>
+            <p class="node-desc">Chỉ tải quy trình chi tiết khi Agent nhận diện thấy yêu cầu của người dùng khớp với mô tả kỹ năng.</p>
+          </div>
+
+          <div class="pipeline-node anim-4" style="border-color: rgba(99, 102, 241, 0.35);">
+            <span class="node-step-num">CẤP ĐỘ 03</span>
+            <div class="node-title" style="color: #818cf8;">Deep Dive (Tra Cứu)</div>
+            <p class="node-desc">Chỉ mở các file trong <code>scripts/</code> và <code>references/</code> khi thực sự cần giải quyết ca khó.</p>
+          </div>
+        </div>
+
+        <div class="feedback-loop-bar anim-5">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+            <span><strong>HIỆU QUẢ VƯỢT TRỘI:</strong> Tiết kiệm tới 95% chi phí bộ nhớ ngắn hạn (Context Window) so với phương pháp nhồi nhét tài liệu truyền thống!</span>
+          </div>
+          <span style="font-family: var(--font-mono); font-weight: 700; color: var(--accent-emerald);">-95% TOKEN</span>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas active" data-slide="9" data-notes="Một lỗi kinh điển của người mới dùng AI là bắt một con AI duy nhất phải ôm đồm tất cả mọi thứ: vừa tìm tài liệu, vừa cào web, vừa tính toán số liệu, vừa viết báo cáo. Hậu quả là bộ nhớ ngắn hạn của AI bị quá tải, và nó bắt đầu lẫn lộn giữa các nhiệm vụ.
+
+Antigravity giải quyết bài toán này bằng hệ thống Subagents (Trợ lý phụ chuyên môn). Bạn hãy hình dung AI chính đóng vai trò như một người Giám đốc điều hành. Khi gặp một khối lượng công việc lớn, Giám đốc sẽ triệu hồi các Trợ lý chuyên môn làm việc song song: một bạn chuyên đi tìm tài liệu trên mạng, một bạn chuyên ngồi tính toán số liệu Excel.
+
+Mỗi trợ lý phụ có phòng làm việc riêng biệt, không làm bẩn bàn làm việc của Giám đốc. Nhờ vậy, nhiều nhân sự AI có thể cùng làm việc một lúc, giúp hoàn thành dự án nhanh gấp 3 đến 5 lần mà AI không bao giờ bị lẫn lộn!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+          TRỤ CỘT 03: <strong>SUBAGENTS ENGINE</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-indigo);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+          ĐỘI NGŨ NHÂN SỰ SONG SONG
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Khái Niệm <span>Subagent</span>
+        </h2>
+        <p class="lead-desc">
+          Ủy quyền tác vụ chuyên sâu cho các nhân sự AI phụ hoạt động độc lập, không làm tắc nghẽn bộ nhớ của AI chính.
+        </p>
+      </div>
+
+      <div class="vs-matrix-grid anim-2">
+        <div class="vs-card passive">
+          <div class="vs-header">
+            <span class="vs-badge passive">VẤN ĐỀ: AI ÔM ĐỒM</span>
+            <div class="vs-title" style="color: var(--accent-rose);">1 AI Làm Hết Mọi Việc</div>
+            <div class="vs-subtitle">Bắt một con AI vừa cào web, vừa tính toán Excel, vừa viết báo cáo.</div>
+          </div>
+          <div class="vs-body">
+            <div class="vs-point">
+              <span style="color: var(--accent-rose); font-weight: 800;">✕</span>
+              <div><strong>Tràn bộ nhớ:</strong> Lịch sử chat quá dài làm AI bị 'lú lẫn', quên mất yêu cầu ban đầu.</div>
+            </div>
+            <div class="vs-point">
+              <span style="color: var(--accent-rose); font-weight: 800;">✕</span>
+              <div><strong>Tốc độ chậm chạp:</strong> Phải làm tuần tự từng việc một, tốn nhiều thời gian chờ đợi.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-card active">
+          <div class="vs-header">
+            <span class="vs-badge active">GIẢI PHÁP: SUBAGENT</span>
+            <div class="vs-title" style="color: var(--accent-cyan);">Phân Thân Nhân Sự AI</div>
+            <div class="vs-subtitle">AI chính đóng vai Giám đốc, triệu hồi các Trợ lý chuyên môn làm việc song song.</div>
+          </div>
+          <div class="vs-body">
+            <div class="vs-point">
+              <span style="color: var(--accent-cyan); font-weight: 800;">✓</span>
+              <div><strong>Bộ nhớ tách biệt:</strong> Mỗi trợ lý phụ có phòng làm việc riêng, không làm bẩn bàn làm việc của sếp.</div>
+            </div>
+            <div class="vs-point">
+              <span style="color: var(--accent-cyan); font-weight: 800;">✓</span>
+              <div><strong>Tăng tốc gấp 3-5 lần:</strong> Nhiều nhân viên cùng cày việc đồng thời, xong việc nộp kết quả về.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="10" data-notes="Khi cho các trợ lý phụ chạy việc, điều chúng ta lo lắng nhất là: 'Lỡ trợ lý phụ sửa lung tung làm hỏng file gốc của tôi thì sao?'.
+
+Antigravity giải quyết trọn vẹn nỗi lo này bằng 3 Chế Độ Không Gian Làm Việc (Workspace Modes):
+1. Chế độ inherit (Kế thừa): Trợ lý phụ dùng chung thư mục làm việc hiện tại với AI chính. Thích hợp cho việc tra cứu, đọc tài liệu nhanh, không chỉnh sửa file.
+2. Chế độ branch (Phân nhánh phòng thí nghiệm): Đây là chế độ an toàn nhất! Hệ thống tự động tạo ra một bản sao phòng thí nghiệm riêng biệt. Trợ lý phụ tha hồ thử nghiệm, sửa đổi code hay văn bản; chỉ khi bạn kiểm tra thấy đẹp và bấm đồng ý, kết quả mới được gộp về file gốc!
+3. Chế độ share (Chia sẻ tài nguyên): Dùng chung kho dữ liệu nền tảng nhưng tách biệt không gian làm việc độc lập. Giúp tiết kiệm dung lượng ổ cứng tối đa.">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+          TRỤ CỘT 03: <strong>SUBAGENTS ENGINE</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-indigo);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+          KHÔNG GIAN LÀM VIỆC AN TOÀN
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          3 Chế Độ Workspace <span>Của Subagent</span>
+        </h2>
+        <p class="lead-desc">
+          Bảo vệ dữ liệu gốc tuyệt đối: Lựa chọn linh hoạt giữa dùng chung, tạo phòng thí nghiệm riêng hoặc chia sẻ tài nguyên.
+        </p>
+      </div>
+
+      <div class="flow-pipeline-container" style="margin-top: 10px;">
+        <div class="pipeline-nodes-row" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="pipeline-node anim-2" style="border-color: rgba(99, 102, 241, 0.35);">
+            <span class="node-step-num">CHẾ ĐỘ 01</span>
+            <div class="node-title" style="color: #818cf8;"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg> inherit (Kế Thừa)</div>
+            <p class="node-desc">Subagent dùng chung trực tiếp thư mục Workspace với Agent chính. Thích hợp cho tác vụ tra cứu, đọc file nhanh.</p>
+          </div>
+
+          <div class="pipeline-node anim-3" style="border-color: rgba(6, 182, 212, 0.35);">
+            <span class="node-step-num">CHẾ ĐỘ 02</span>
+            <div class="node-title" style="color: var(--accent-cyan);"><svg class="svg-icon" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg> branch (Phân Nhánh)</div>
+            <p class="node-desc">Tạo nhánh bản sao cô lập 100%. Subagent tự do thử nghiệm, debug lỗi mà không sợ ảnh hưởng đến file gốc.</p>
+          </div>
+
+          <div class="pipeline-node anim-4" style="border-color: rgba(16, 185, 129, 0.35);">
+            <span class="node-step-num">CHẾ ĐỘ 03</span>
+            <div class="node-title" style="color: var(--accent-emerald);"><svg class="svg-icon" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg> share (Chia Sẻ)</div>
+            <p class="node-desc">Chia sẻ kho lưu trữ chung nhưng tách biệt không gian nhánh. Tiết kiệm dung lượng và tăng tốc xử lý đồng thời.</p>
+          </div>
+        </div>
+
+        <div class="feedback-loop-bar anim-5">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+            <span><strong>HIỆU NĂNG VƯỢT TRỘI:</strong> Chạy đồng thời nhiều Subagents giúp giải quyết dự án nhanh gấp 3 đến 5 lần.</span>
+          </div>
+          <span style="font-family: var(--font-mono); font-weight: 700; color: var(--accent-cyan);">MULTI-AGENT</span>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="11" data-notes="Để tạo ra một nhân viên AI mới, bạn không cần phải biết lập trình một dòng nào cả! Bản chất của một Subagent chỉ là MỘT FILE VĂN BẢN DUY NHẤT có đuôi `.md` (Markdown).
+
+Nơi cất file rất rõ ràng:
+- Nếu muốn nhân viên này luôn luôn có mặt hỗ trợ trên khắp máy tính của mình, bạn lưu vào kho Global: `~/.gemini/config/agents/`.
+- Nếu nhân viên này chỉ phục vụ riêng dự án này, hãy để trong thư mục `.agents/agents/` ngay trong thư mục dự án.
+
+Nhìn vào cấu trúc ruột file: Nó hệt như một bản Hồ sơ tuyển dụng nhân sự (JD). Phần đầu có vài dòng khai báo tên gọi và chuyên môn để Antigravity nhận diện khi nào cần triệu hồi. Phần bên dưới bạn cứ gõ văn bản tiếng Việt dặn dò: 'Em là trợ lý nghiên cứu, khi anh yêu cầu tìm kiếm, em hãy tìm ở các trang báo chính thống và tóm tắt dưới 5 gạch đầu dòng'. Thế là xong một nhân viên AI trung thành 24/7!
+
+Và nhớ quy tắc đặt tên: Luôn dùng chữ thường nối bằng dấu gạch ngang như `tro-ly-nghien-cuu.md`, tuyệt đối không dùng dấu cách hay tiếng Việt có dấu nhé!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+          TRỤ CỘT 03: <strong>SUBAGENTS ENGINE</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-indigo);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          THIẾT LẬP NHÂN SỰ
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Cấu Trúc File <span>Subagent</span>
+        </h2>
+        <p class="lead-desc">
+          Tạo nhân viên AI mới chỉ bằng 1 file văn bản duy nhất: Phân định nơi lưu trữ toàn máy vs dự án và quy cách viết hồ sơ nhân sự chuẩn.
+        </p>
+      </div>
+
+      <div class="tree-anatomy-grid anim-2">
+        <div class="folder-tree-box">
+          <div class="folder-tree-header">
+            <span><svg class="svg-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> VỊ TRÍ LƯU TRỮ TRÊN MÁY TÍNH</span>
+            <span class="tree-tag-ok">GLOBAL & WORKSPACE</span>
+          </div>
+          <div class="tree-line"><span class="tree-folder">📁 KHO TOÀN MÁY (Global - Dùng chung mọi nơi)</span></div>
+          <div class="tree-line" style="padding-left: 14px;"><span style="color: #64748b;">└──</span> <code>~/.gemini/config/</code></div>
+          <div class="tree-line" style="padding-left: 28px;"><span style="color: #64748b;">└──</span> <span class="tree-folder">📁 agents/</span></div>
+          <div class="tree-line" style="padding-left: 42px;"><span style="color: #64748b;">├──</span> <span class="tree-file">📄 tro-ly-nghien-cuu.md</span> <span class="tree-comment">// Trợ lý tra cứu</span></div>
+          <div class="tree-line" style="padding-left: 42px;"><span style="color: #64748b;">└──</span> <span class="tree-file">📄 kiem-toan-excel.md</span> <span class="tree-comment">// Đối soát bảng tính</span></div>
+          <div class="tree-line" style="margin-top: 10px;"><span class="tree-folder">📁 NGĂN KÉO DỰ ÁN (Workspace - Dùng riêng)</span></div>
+          <div class="tree-line" style="padding-left: 14px;"><span style="color: #64748b;">└──</span> <code>D:/Du-An-Hien-Tai/</code></div>
+          <div class="tree-line" style="padding-left: 28px;"><span style="color: #64748b;">└──</span> <span class="tree-folder">📁 .agents/agents/</span></div>
+          <div class="tree-line" style="padding-left: 42px;"><span style="color: #64748b;">└──</span> <span class="tree-file">📄 phan-tich-doi-thu.md</span> <span class="tree-comment">// Chỉ chạy trong dự án này</span></div>
+        </div>
+
+        <div class="anatomy-card">
+          <div class="anatomy-section">
+            <div class="anatomy-label" style="color: #818cf8;">
+              <svg class="svg-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+              PHẦN 1: CĂN CƯỚC NHÂN SỰ (YAML HEADER)
+            </div>
+            <div class="anatomy-code">---
+name: tro-ly-nghien-cuu
+description: Chuyên tìm kiếm, tổng hợp báo cáo thị trường
+model: inherit
+tools: [search_web, read_file]
+---</div>
+          </div>
+
+          <div class="anatomy-section">
+            <div class="anatomy-label" style="color: var(--accent-cyan);">
+              <svg class="svg-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+              PHẦN 2: BẢN MÔ TẢ CÔNG VIỆC (SYSTEM PROMPT)
+            </div>
+            <div class="anatomy-code"># Vai trò & Hướng Dẫn
+Bạn là chuyên viên nghiên cứu thị trường chuyên nghiệp.
+- Ưu tiên tìm kiếm số liệu từ các trang báo chính thống.
+- Luôn tóm tắt kết quả dưới 5 gạch đầu dòng rõ ràng.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="naming-rules-bar anim-3">
+        <div class="naming-box do">
+          <span style="color: var(--accent-emerald); font-weight: 800; font-size: 1rem;">✅</span>
+          <div><strong>NÊN LÀM:</strong> Đặt tên file bằng chữ thường nối gạch ngang (kebab-case): <code>tro-ly-van-thu.md</code>, <code>chuyen-vien-excel.md</code>.</div>
+        </div>
+        <div class="naming-box dont">
+          <span style="color: var(--accent-rose); font-weight: 800; font-size: 1rem;">❌</span>
+          <div><strong>TRÁNH LÀM:</strong> Tuyệt đối không đặt tên có khoảng trắng (<code>tro ly.md</code>) hoặc tiếng Việt có dấu (<code>trợ-lý.md</code>) gây lỗi hệ thống!</div>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="12" data-notes="Nhiều người dùng AI thường lo lắng: 'Lỡ con AI này tự ý xóa nhầm file quan trọng của công ty tôi thì sao?'.
+
+Để dập tắt hoàn toàn nỗi lo này, Antigravity trang bị Trụ cột số 4: Lifecycle Hooks. Bạn hãy hình dung Hook giống như Hệ Thống Trạm Gác & Còi Báo Động Tự Động quanh ngôi nhà của bạn.
+
+Cứ mỗi khi AI chuẩn bị bấm nút chạy một lệnh nào đó hoặc chuẩn bị đọc một file trên máy tính, trạm gác an ninh này sẽ đứng chắn trước mặt kiểm tra: 'Cậu định mở file gì đấy? Có phải file bảng lương hay mật khẩu cấm sờ vào không?'. Nếu phát hiện nguy hiểm, trạm gác sẽ ngắt kết nối ngay lập tức!
+
+Nhờ có Hooks, bạn hoàn toàn có thể yên tâm để AI làm việc tự động mà không sợ rủi ro mất dữ liệu hay rò rỉ bí mật kinh doanh!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          TRỤ CỘT 04: <strong>LIFECYCLE HOOKS</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-emerald);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          LÁ CHẮN AN TOÀN
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Khái Niệm <span>Lifecycle Hook</span>
+        </h2>
+        <p class="lead-desc">
+          Chốt chặn an ninh tự động giám sát và can thiệp trước - sau mỗi hành vi của AI để bảo vệ an toàn cho máy tính.
+        </p>
+      </div>
+
+      <div class="card-grid col-2 anim-2">
+        <div class="feature-card" style="border-color: rgba(244, 63, 94, 0.3);">
+          <div class="card-title" style="color: var(--accent-rose); display: flex; align-items: center; gap: 8px;">
+            <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+            Nỗi Sợ Khi Để AI Tự Động Hóa
+          </div>
+          <div class="card-desc">
+            <p style="margin-bottom: 8px;">• <strong>Lỡ tay xóa nhầm:</strong> Sợ AI xóa mất thư mục tài liệu quan trọng của công ty.</p>
+            <p style="margin-bottom: 8px;">• <strong>Lộ lọt thông tin mật:</strong> Sợ AI vô tình mở đọc file bảng lương, file mật khẩu cá nhân.</p>
+            <p>• <strong>Mất kiểm soát:</strong> Không biết AI đang làm gì phía sau hậu trường khi bạn không để ý.</p>
+          </div>
+        </div>
+
+        <div class="feature-card" style="border-color: rgba(16, 185, 129, 0.3);">
+          <div class="card-title" style="color: var(--accent-emerald); display: flex; align-items: center; gap: 8px;">
+            <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            Giải Pháp: Trạm Gác Tự Động (Hooks)
+          </div>
+          <div class="card-desc">
+            <p style="margin-bottom: 8px;">• <strong>Trạm gác tiền trạm:</strong> Đứng chắn trước mặt AI, kiểm tra lệnh TRƯỚC KHI AI kịp chạm vào file.</p>
+            <p style="margin-bottom: 8px;">• <strong>Còi báo động:</strong> Ngắt quyền truy cập ngay lập tức nếu phát hiện file cấm.</p>
+            <p>• <strong>Bảo vệ 24/7:</strong> Cấu hình 1 lần, máy tính của bạn trở thành pháo đài an toàn tuyệt đối.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="13" data-notes="Đi sâu vào kiến trúc: Antigravity bảo vệ máy tính của bạn thông qua 5 trạm gác tương ứng với 5 thời điểm trong vòng đời làm việc:
+1. Trạm `SessionStart`: Chạy ngay khi mở phiên làm việc để dọn dẹp các file rác cũ.
+2. Trạm `PreToolUse` (Trạm gác tiền trảm - QUAN TRỌNG NHẤT): Đây là trạm gác quan trọng nhất! Cứ mỗi khi AI chuẩn bị chạy một lệnh hoặc đọc/ghi một file, người bảo vệ này sẽ kiểm tra xem có an toàn không. Nếu phát hiện vi phạm, lệnh sẽ bị hủy ngay!
+3. Trạm `PostToolUse` (Hậu kiểm): Tự động kiểm tra chất lượng file ngay sau khi AI làm xong (ví dụ: soát lỗi chính tả hoặc lỗi font).
+4. Trạm `PreInvocation` (Kiểm duyệt đầu vào): Lưu lại dữ liệu quan trọng trước khi hệ thống nén lịch sử chat.
+5. Trạm `Stop` (Cổng đóng phiên): Tổng kết và gửi thông báo khi hoàn thành ca trực.">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          TRỤ CỘT 04: <strong>LIFECYCLE HOOKS</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-emerald);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          HỆ THỐNG TRẠM GÁC AN NINH
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          5 Trạm Gác Vòng Đời <span>Của Hook</span>
+        </h2>
+        <p class="lead-desc">
+          Can thiệp tự động vào 5 thời điểm sống còn trong vòng đời làm việc để bảo đảm AI vận hành đúng quỹ đạo.
+        </p>
+      </div>
+
+      <div class="flow-pipeline-container" style="margin-top: 10px;">
+        <div class="pipeline-nodes-row" style="grid-template-columns: repeat(5, 1fr); gap: 10px;">
+          <div class="pipeline-node anim-2" style="padding: 14px 12px;">
+            <span class="node-step-num">TRẠM 01</span>
+            <div class="node-title" style="font-size: 0.85rem; color: #a5b4fc;">SessionStart</div>
+            <p class="node-desc" style="font-size: 0.75rem;">Chạy ngay khi mở phiên làm việc để chuẩn bị môi trường.</p>
+          </div>
+
+          <div class="pipeline-node anim-3" style="padding: 14px 12px; border-color: rgba(244, 63, 94, 0.4);">
+            <span class="node-step-num" style="color: var(--accent-rose);">TRẠM 02 • QUAN TRỌNG</span>
+            <div class="node-title" style="font-size: 0.85rem; color: var(--accent-rose);">PreToolUse</div>
+            <p class="node-desc" style="font-size: 0.75rem;">Chặn trước khi AI chạm vào file cấm hoặc chạy lệnh nguy hiểm.</p>
+          </div>
+
+          <div class="pipeline-node anim-4" style="padding: 14px 12px;">
+            <span class="node-step-num">TRẠM 03</span>
+            <div class="node-title" style="font-size: 0.85rem; color: var(--accent-cyan);">PostToolUse</div>
+            <p class="node-desc" style="font-size: 0.75rem;">Hậu kiểm chất lượng file ngay sau khi AI làm xong.</p>
+          </div>
+
+          <div class="pipeline-node anim-5" style="padding: 14px 12px;">
+            <span class="node-step-num">TRẠM 04</span>
+            <div class="node-title" style="font-size: 0.85rem; color: #cbd5e1;">PreInvocation</div>
+            <p class="node-desc" style="font-size: 0.75rem;">Kiểm duyệt câu hỏi và dữ liệu trước khi gửi vào bộ não AI.</p>
+          </div>
+
+          <div class="pipeline-node anim-5" style="padding: 14px 12px;">
+            <span class="node-step-num">TRẠM 05</span>
+            <div class="node-title" style="font-size: 0.85rem; color: var(--accent-emerald);">Stop</div>
+            <p class="node-desc" style="font-size: 0.75rem;">Gửi thông báo tổng kết ca trực khi AI hoàn thành việc.</p>
+          </div>
+        </div>
+
+        <div class="feedback-loop-bar anim-5">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+            <span><strong>AN TOÀN TUYỆT ĐỐI:</strong> Bảo vệ máy tính 24/7, loại bỏ hoàn toàn nguy cơ mất dữ liệu hay lộ thông tin nhạy cảm.</span>
+          </div>
+          <span style="font-family: var(--font-mono); font-weight: 700; color: var(--accent-emerald);">SAFETY FIRST</span>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="14" data-notes="Để các bạn không cảm thấy Hooks là một khái niệm trừu tượng xa vời, slide này sẽ hướng dẫn các bạn cấu hình trực tiếp tệp `hooks.json` và thực chiến ngay Mini-Project 6: Lá Chắn Bảo Mật File Nhạy Cảm.
+
+Vị trí cất file cấu hình:
+- Muốn bảo vệ toàn bộ máy tính: Để tại `~/.gemini/config/hooks.json`.
+- Muốn bảo vệ riêng thư mục dự án: Để tại `.agents/hooks.json`.
+
+Trong bài thực hành Mini-Project 6 này, chúng ta cấu hình trạm gác `PreToolUse`: Bất cứ khi nào Agent định mở các file có tên chứa `password`, `bang-luong`, `.env` hay thông tin cá nhân, trạm gác sẽ tự động chặn đứng và thông báo: 'Truy cập bị từ chối bởi chính sách bảo mật!'.
+
+Chỉ với vài dòng cấu hình đơn giản, bạn hoàn toàn có thể yên tâm giao việc cho AI mà không bao giờ lo lộ lọt bí mật kinh doanh!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          MINI-PROJECT 06: <strong>SECURITY SHIELD</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-rose);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          THIẾT LẬP LÁ CHẮN BẢO MẬT
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Cấu Hình hooks.json <span>& Mini-Project 6</span>
+        </h2>
+        <p class="lead-desc">
+          Thiết lập file hooks.json tại .agents/hooks.json hoặc ~/.gemini/config/hooks.json chặn đứng hành vi đọc file nhạy cảm.
+        </p>
+      </div>
+
+      <div class="poster-hero-grid" style="margin-top: 10px;">
+        <div class="anatomy-card anim-2">
+          <div class="anatomy-section">
+            <div class="anatomy-label" style="color: var(--accent-rose);">
+              <svg class="svg-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
+              CẤU HÌNH TRẠM GÁC (.agents/hooks.json)
+            </div>
+            <div class="anatomy-code">{
+  "security-shield": {
+    "PreToolUse": [
+      {
+        "matcher": "read_file",
+        "hooks": [
+          { "command": "./scripts/check_sensitive.bat" }
+        ]
+      }
+    ]
+  }
+}</div>
+          </div>
+        </div>
+
+        <div class="stat-card anim-3" style="border-color: rgba(244, 63, 94, 0.35);">
+          <div class="stat-header">
+            <span class="stat-title" style="color: #fb7185;">MINI-PROJECT 6 • BẢO MẬT DOANH NGHIỆP</span>
+            <span class="pane-badge" style="background: rgba(244, 63, 94, 0.2); color: #fecdd3;">HOOKS.JSON</span>
+          </div>
+          <div class="stat-value" style="font-size: 1.15rem; color: #fff;">
+            Lá Chắn Chống Rò Rỉ Dữ Liệu
+          </div>
+          <div class="stat-desc" style="font-size: 0.85rem;">
+            Bảo vệ tuyệt đối thông tin doanh nghiệp:
+            <br>• Cấm AI đọc các file <code>.env</code>, <code>passwords.txt</code>, <code>bang-luong.xlsx</code>.
+            <br>• Lập tức ngắt quyền và phát còi cảnh báo nếu phát hiện vi phạm.
+            <br>• Vị trí: <code>.agents/hooks.json</code> (dự án) hoặc <code>~/.gemini/config/hooks.json</code> (toàn máy).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="15" data-notes="Chào mừng các bạn đến với Trụ Cột số 5: Model Context Protocol (MCP). Đây có thể xem là một cuộc cách mạng công nghệ quan trọng giúp AI kết nối trực tiếp với thế giới phần mềm bên ngoài.
+
+Các bạn cứ hình dung: Trước đây, AI giống như một người thông minh bị nhốt trong phòng kín: Nó không thể tự mở hòm thư Gmail, không thể tự tải file Google Drive hay gửi tin nhắn Slack cho bạn. Nếu muốn kết nối, lập trình viên phải viết code rất phức tạp.
+
+MCP ra đời để giải quyết bài toán này hệt như phát minh ra CỔNG CẮM USB trên máy tính:
+- Các phần mềm như Google, Trello, Slack tự chế tạo ra các 'chuôi cắm USB' (MCP Server).
+- Antigravity trang bị sẵn 'ổ cắm USB' (MCP Host).
+- Bạn chỉ việc cắm chuôi USB vào là con AI lập tức có thêm đôi tay đôi mắt để điều khiển trực tiếp hòm thư Gmail, đọc file Google Sheets hay bắn tin nhắn Slack! Không cần lập trình, cắm là chạy!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+          TRỤ CỘT 05: <strong>MCP ECOSYSTEM</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-emerald);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+          CHUẨN KẾT NỐI MỞ VẠN NĂNG
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Khái Niệm <span>Model Context Protocol (MCP)</span>
+        </h2>
+        <p class="lead-desc">
+          Chuẩn kết nối mở đóng vai trò như "Cổng cắm USB" giúp AI cắm rút tự do vào hàng ngàn phần mềm văn phòng.
+        </p>
+      </div>
+
+      <div class="vs-matrix-grid anim-2">
+        <div class="vs-card passive">
+          <div class="vs-header">
+            <span class="vs-badge passive">TRƯỚC ĐÂY: AI BỊ NHỐT TRONG PHÒNG</span>
+            <div class="vs-title" style="color: var(--accent-rose);">Ốc Đảo Cô Độc</div>
+            <div class="vs-subtitle">AI không thể tự động mở hòm thư, đọc file Drive hay nhắn tin Slack.</div>
+          </div>
+          <div class="vs-body">
+            <div class="vs-point">
+              <span style="color: var(--accent-rose); font-weight: 800;">✕</span>
+              <div><strong>Phải làm thủ công:</strong> Bạn phải tự tải file xuống, copy nội dung rồi paste vào khung chat.</div>
+            </div>
+            <div class="vs-point">
+              <span style="color: var(--accent-rose); font-weight: 800;">✕</span>
+              <div><strong>Khó kết nối:</strong> Muốn tích hợp phải thuê lập trình viên viết API cực kỳ tốn kém.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-card active">
+          <div class="vs-header">
+            <span class="vs-badge active">NGÀY NAY: CỔNG CẮM USB CHO AI</span>
+            <div class="vs-title" style="color: var(--accent-emerald);">Hệ Sinh Thái Mở Rộng</div>
+            <div class="vs-subtitle">Cắm các chuôi USB MCP Server có sẵn để AI trực tiếp điều khiển phần mềm.</div>
+          </div>
+          <div class="vs-body">
+            <div class="vs-point">
+              <span style="color: var(--accent-emerald); font-weight: 800;">✓</span>
+              <div><strong>Kết nối vạn năng:</strong> Đọc và gửi Gmail, tạo thẻ việc Trello, quản lý file Google Drive.</div>
+            </div>
+            <div class="vs-point">
+              <span style="color: var(--accent-emerald); font-weight: 800;">✓</span>
+              <div><strong>Cắm là chạy:</strong> Không cần viết code cấu hình, tải về là dùng được ngay.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="16" data-notes="Toàn bộ cấu hình MCP nằm gọn trong một file duy nhất mang tên `mcp_config.json` tại kho Global `~/.gemini/config/mcp_config.json`.
+
+Trong đó có 2 giao thức kết nối:
+1. Giao thức stdio: Server chạy trực tiếp ngay trên máy tính của bạn qua các công cụ dòng lệnh (như npx). Rất nhanh và an toàn cho các tác vụ cục bộ.
+2. Giao thức HTTP / SSE: Kết nối tới các server nằm trên đám mây qua đường truyền Internet, hỗ trợ xác thực bảo mật OAuth.
+
+Và ngay tại đây, chúng ta thực chiến Mini-Project 4: Trợ Lý Quét Email Khẩn & Bắn Tin Slack.
+Chúng ta cắm 2 cổng USB `gmail` và `slack` vào file cấu hình. Agent sẽ tự động kết nối hòm thư, lọc các email có chữ 'Khẩn cấp', tóm tắt nội dung và gửi tin nhắn cảnh báo sang kênh Slack kèm phân loại độ ưu tiên. Một quy trình tự động hóa hoàn hảo mà không cần viết một dòng code nào!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+          MINI-PROJECT 04: <strong>GMAIL & SLACK</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-cyan);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          GIAO THỨC TRUYỀN THÔNG MCP
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Cấu Hình mcp_config.json <span>& Mini-Project 4</span>
+        </h2>
+        <p class="lead-desc">
+          Cấu hình cổng cắm tại ~/.gemini/config/mcp_config.json và thực chiến trợ lý tự động lọc email khẩn báo tin Slack.
+        </p>
+      </div>
+
+      <div class="poster-hero-grid" style="margin-top: 10px;">
+        <div class="anatomy-card anim-2">
+          <div class="anatomy-section">
+            <div class="anatomy-label" style="color: var(--accent-cyan);">
+              <svg class="svg-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
+              FILE CẤU HÌNH (~/.gemini/config/mcp_config.json)
+            </div>
+            <div class="anatomy-code">{
+  "mcpServers": {
+    "gmail": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gmail"]
+    },
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"]
+    }
+  }
+}</div>
+          </div>
+        </div>
+
+        <div class="stat-card anim-3" style="border-color: rgba(6, 182, 212, 0.35);">
+          <div class="stat-header">
+            <span class="stat-title" style="color: #7dd3fc;">MINI-PROJECT 4 • TỰ ĐỘNG HÓA</span>
+            <span class="pane-badge" style="background: rgba(6, 182, 212, 0.2); color: #bae6fd;">MCP TOOLS</span>
+          </div>
+          <div class="stat-value" style="font-size: 1.15rem; color: #fff;">
+            Quét Email Khẩn & Bắn Tin Slack
+          </div>
+          <div class="stat-desc" style="font-size: 0.85rem;">
+            Quy trình tự động hóa khép kín:
+            <br>• Tự động mở hòm thư Gmail quét thư trong 24h qua.
+            <br>• Lọc email có chữ "Khẩn cấp" hoặc "Hợp đồng".
+            <br>• Tóm tắt nội dung và gửi tin nhắn cảnh báo sang Slack cho quản lý!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="17" data-notes="Bây giờ hãy cùng nhau ghép các mảnh ghép lại! Bạn đã có Rules (nội quy), bạn có Skills (tay nghề), bạn có Hooks (trạm gác), bạn có cấu hình MCP (cổng USB). Nhưng nếu mỗi lần chuyển sang máy tính mới hoặc chia sẻ cho đồng nghiệp trong công ty, bạn lại phải đi copy từng file lẻ tẻ thì cực kỳ mất thời gian và dễ sai sót.
+
+Đó chính là lý do Antigravity cung cấp Trụ Cột số 6: Plugins Ecosystem — Chiếc vali đồ nghề All-In-One!
+
+Một Plugin cho phép bạn đóng gói toàn bộ Rules, Skills, Subagents và Hooks vào một thư mục duy nhất. Khi muốn chia sẻ, bạn chỉ cần gửi thư mục đó cho đồng nghiệp. Họ bấm đúng 1 nút Cài đặt là ngay lập tức toàn bộ dàn trợ lý của bạn xuất hiện trên máy của họ. 'Một người xây dựng – Toàn công ty hưởng lợi'!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          TRỤ CỘT 06: <strong>PLUGINS ECOSYSTEM</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-rose);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          ĐÓNG GÓI VẠN NĂNG ALL-IN-ONE
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Khái Niệm <span>Plugin</span>
+        </h2>
+        <p class="lead-desc">
+          Chiếc vali đồ nghề All-in-One: Gom toàn bộ Rules, Skills, Subagents và Hooks vào 1 thư mục để chia sẻ và nhân bản năng suất cho toàn team.
+        </p>
+      </div>
+
+      <div class="vs-matrix-grid anim-2">
+        <div class="vs-card passive">
+          <div class="vs-header">
+            <span class="vs-badge passive">CÁCH CŨ: CHIA SẺ FILE LẺ TẺ</span>
+            <div class="vs-title" style="color: var(--accent-rose);">Cài Đặt Rối Rắm & Dễ Lỗi</div>
+            <div class="vs-subtitle">Phải hướng dẫn đồng nghiệp copy từng file Rules, file Skills, file Hooks vào các thư mục khác nhau.</div>
+          </div>
+          <div class="vs-body">
+            <div class="vs-point">
+              <span style="color: var(--accent-rose); font-weight: 800;">✕</span>
+              <div><strong>Dễ nhầm lẫn:</strong> Chỉ cần paste nhầm 1 thư mục là cả hệ thống trợ lý không chạy được.</div>
+            </div>
+            <div class="vs-point">
+              <span style="color: var(--accent-rose); font-weight: 800;">✕</span>
+              <div><strong>Mất thời gian:</strong> Khó cập nhật phiên bản mới khi có cải tiến quy trình.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-card active">
+          <div class="vs-header">
+            <span class="vs-badge active">CÁCH MỚI: ĐÓNG GÓI PLUGIN</span>
+            <div class="vs-title" style="color: var(--accent-rose);">Chiếc Vali Đồ Nghề Trọn Gói</div>
+            <div class="vs-subtitle">Tất cả vũ khí gom chung vào 1 thư mục duy nhất, bật tắt 1-click.</div>
+          </div>
+          <div class="vs-body">
+            <div class="vs-point">
+              <span style="color: var(--accent-emerald); font-weight: 800;">✓</span>
+              <div><strong>Nhân bản siêu tốc:</strong> Đồng nghiệp chỉ cần nhận thư mục plugin và bấm BẬT là có ngay dàn trợ lý.</div>
+            </div>
+            <div class="vs-point">
+              <span style="color: var(--accent-emerald); font-weight: 800;">✓</span>
+              <div><strong>Một người làm – cả team hưởng:</strong> Chuẩn hóa quy trình làm việc toàn phòng ban chỉ trong 1 nốt nhạc.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="18" data-notes="Cấu trúc bên trong của một Plugin trong Antigravity được thiết kế thông minh đến mức kinh ngạc!
+
+Trong thư mục plugin, file bắt buộc duy nhất phải có là file `plugin.json` (bắt buộc viết chữ thường). File này đóng vai trò như một tờ giấy khai sinh ghi rõ: Tên gói là gì, phiên bản mấy, tác giả là ai.
+
+Và đây là điều tuyệt vời nhất:
+Bạn không cần phải viết code để khai báo từng công cụ. Bạn chỉ việc thả thư mục `skills/` vào, thả thư mục `rules/` vào, thả thư mục `agents/` vào... Antigravity sẽ tự động đi vào từng phòng quét và kích hoạt đồng loạt tất cả các kỹ năng đó lên!
+
+Quy tắc đặt tên Plugin ID: Dùng chữ thường gạch nối theo chuẩn `ten-to-chuc-ten-chuc-nang` (ví dụ: `vp-hanh-chinh-tien-ich`). Đóng gói chuyên nghiệp, chia sẻ 1 giây là xong!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          TRỤ CỘT 06: <strong>PLUGINS ECOSYSTEM</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-rose);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          QUY CHUẨN ĐÓNG GÓI PLUGIN
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Cấu Trúc Thư Mục Plugin <span>& plugin.json</span>
+        </h2>
+        <p class="lead-desc">
+          Thư mục plugin tự động nhận diện kỹ năng và quy tắc bên trong; file bắt buộc duy nhất là plugin.json viết thường.
+        </p>
+      </div>
+
+      <div class="tree-anatomy-grid anim-2">
+        <div class="folder-tree-box">
+          <div class="folder-tree-header">
+            <span><svg class="svg-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg> CẤU TRÚC THƯ MỤC CỦA MỘT PLUGIN</span>
+            <span class="tree-tag-ok">ALL-IN-ONE</span>
+          </div>
+          <div class="tree-line"><span class="tree-folder">📁 KHO PLUGINS TOÀN MÁY</span></div>
+          <div class="tree-line" style="padding-left: 14px;"><span style="color: #64748b;">└──</span> <code>~/.gemini/config/plugins/</code> <span class="tree-comment">// (hoặc .agents/plugins/)</span></div>
+          <div class="tree-line" style="padding-left: 28px;"><span style="color: #64748b;">└──</span> <span class="tree-folder">📁 q-file-organizer/</span> <span class="tree-comment">// Tên thư mục: kebab-case</span></div>
+          <div class="tree-line" style="padding-left: 42px;"><span style="color: #64748b;">├──</span> <span class="tree-file" style="color: #f43f5e; font-weight: 700;">📄 plugin.json</span> <span class="tree-tag-ok">BẮT BUỘC CHỮ THƯỜNG</span></div>
+          <div class="tree-line" style="padding-left: 42px;"><span style="color: #64748b;">├──</span> <span class="tree-folder">📁 skills/</span> <span class="tree-comment">// Chứa 2 kỹ năng tự động hóa</span></div>
+          <div class="tree-line" style="padding-left: 56px;"><span style="color: #64748b;">├──</span> <span class="tree-folder">📁 doi-ten-file-tu-dong/</span> <span class="tree-comment">// Đổi tên snake_case</span></div>
+          <div class="tree-line" style="padding-left: 56px;"><span style="color: #64748b;">└──</span> <span class="tree-folder">📁 phan-loai-file-tu-dong/</span> <span class="tree-comment">// Dọn dẹp Downloads</span></div>
+          <div class="tree-line" style="padding-left: 42px;"><span style="color: #64748b;">└──</span> <span class="tree-file">📄 README.md</span> <span class="tree-comment">// Hướng dẫn sử dụng</span></div>
+        </div>
+
+        <div class="anatomy-card">
+          <div class="anatomy-section">
+            <div class="anatomy-label" style="color: var(--accent-rose);">
+              <svg class="svg-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path></svg>
+              GIẤY KHAI SINH PLUGIN (`plugin.json`)
+            </div>
+            <div class="anatomy-code">{
+  "name": "q-file-organizer",
+  "version": "1.1.0",
+  "description": "Plugin tự động phân loại và đổi tên tệp tin thông minh dựa trên phân tích nội dung thực tế.",
+  "author": "QuyetChasqui"
+}</div>
+          </div>
+
+          <div class="anatomy-section">
+            <div class="anatomy-label" style="color: var(--accent-emerald);">
+              <svg class="svg-icon" viewBox="0 0 24 24" style="width: 14px; height: 14px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              CƠ CHẾ TỰ ĐỘNG KẾT NỐI (AUTO-DISCOVERY)
+            </div>
+            <div class="anatomy-code">- Chỉ cần file plugin.json là hợp lệ.
+- Mọi thư mục con (skills, rules, agents) tự động nạp.
+- Đồng nghiệp copy vào máy là dùng được ngay lập tức!</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="naming-rules-bar anim-3">
+        <div class="naming-box do">
+          <span style="color: var(--accent-emerald); font-weight: 800; font-size: 1rem;">✅</span>
+          <div><strong>NÊN LÀM:</strong> Tên file manifest bắt buộc viết chữ thường <code>plugin.json</code>. Thư mục đặt tên dạng <code>kebab-case</code>.</div>
+        </div>
+        <div class="naming-box dont">
+          <span style="color: var(--accent-rose); font-weight: 800; font-size: 1rem;">❌</span>
+          <div><strong>TRÁNH LÀM:</strong> Viết hoa <code>Plugin.json</code> hay thiếu file này sẽ khiến Antigravity không nhận diện được gói công cụ!</div>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="19" data-notes="Việc quản lý các gói Plugin dễ dàng hệt như bạn bật/tắt các tiện ích mở rộng trên trình duyệt web vậy. 
+
+Hôm nay bạn cần dọn dẹp máy tính văn phòng, bạn chỉ cần gạt công tắc BẬT gói 'q-file-organizer'. Ngay lập tức cả 2 kỹ năng 'phan-loai-file-tu-dong' (dọn dẹp Downloads) và 'doi-ten-file-tu-dong' (chuẩn hóa tên file) sẽ lập tức sẵn sàng phục vụ bạn.
+
+Đến tuần sau hết kỳ báo cáo, bạn không muốn các quy tắc kế toán làm phiền các công việc khác nữa, bạn chỉ cần gạt TẮT nó đi. Toàn bộ các công cụ đó sẽ được cất gọn gàng vào kho mà không làm nặng máy. Dữ liệu của bạn vẫn còn nguyên vẹn, bạn có quyền kiểm soát tuyệt đối mọi công cụ trên máy tính của mình!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+          QUẢN TRỊ PLUGIN: <strong>MANIFEST & CLI</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-rose);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+          CƠ CHẾ ĐIỀU HÀNH PLUGIN
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Quản Lý & Bật/Tắt <span>Plugin 1-Click</span>
+        </h2>
+        <p class="lead-desc">
+          Quản lý tập trung vòng đời plugin tương tự như kho tiện ích mở rộng Chrome Extension: Bật khi cần, tắt khi xong.
+        </p>
+      </div>
+
+      <div class="card-grid col-3 anim-2">
+        <div class="stat-card" style="border-color: rgba(16, 185, 129, 0.35);">
+          <div class="stat-header">
+            <span class="stat-title" style="color: var(--accent-emerald);">CÁCH 01 • GIAO DIỆN APP</span>
+            <span class="pane-badge" style="background: rgba(16, 185, 129, 0.2); color: #a7f3d0;">1-CLICK</span>
+          </div>
+          <div class="stat-value" style="font-size: 1.15rem; color: #fff;">Gạt Công Tắc Toggle</div>
+          <div class="stat-desc">
+            Vào menu Cài đặt trên Antigravity Desktop App, gạt công tắc BẬT / TẮT từng gói trợ lý chỉ trong 1 giây mà không cần thao tác file.
+          </div>
+        </div>
+
+        <div class="stat-card" style="border-color: rgba(99, 102, 241, 0.35);">
+          <div class="stat-header">
+            <span class="stat-title" style="color: #a5b4fc;">CÁCH 02 • DÒNG LỆNH CLI</span>
+            <span class="pane-badge" style="background: rgba(99, 102, 241, 0.2); color: #c7d2fe;">COMMAND</span>
+          </div>
+          <div class="stat-value" style="font-size: 1.15rem; color: #fff;">Lệnh agy plugin</div>
+          <div class="stat-desc">
+            Sử dụng các câu lệnh siêu nhanh:
+            <br>• <code>agy plugin enable &lt;tên&gt;</code>
+            <br>• <code>agy plugin disable &lt;tên&gt;</code>
+            <br>• <code>agy plugin list</code>
+          </div>
+        </div>
+
+        <div class="stat-card" style="border-color: rgba(245, 158, 11, 0.35);">
+          <div class="stat-header">
+            <span class="stat-title" style="color: var(--accent-amber);">AN TOÀN TUYỆT ĐỐI</span>
+            <span class="pane-badge" style="background: rgba(245, 158, 11, 0.2); color: #fde68a;">NGỦ ĐÔNG</span>
+          </div>
+          <div class="stat-value" style="font-size: 1.15rem; color: #fff;">Không Mất Dữ Liệu</div>
+          <div class="stat-desc">
+            Tắt một plugin chỉ tạm thời đưa các kỹ năng vào chế độ ngủ đông để giải phóng bộ nhớ, toàn bộ file và cấu hình vẫn được giữ nguyên vẹn.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="20" data-notes="Từ đầu buổi học đến giờ, bạn luôn phải ngồi trước máy tính gõ lệnh thì AI mới làm. Nhưng nếu bạn muốn: 'Ban đêm tôi đi ngủ, AI vẫn phải tự thức dậy lúc 5h00 sáng để cào tin tức thị trường và gửi bản tin tóm tắt vào Zalo cho tôi' thì sao?
+
+Đó chính là lúc Task Schedule xuất hiện!
+
+Task Schedule đóng vai trò như một chiếc Đồng Hồ Báo Thức Thông Minh cho AI. Bạn có thể hẹn giờ chu kỳ bằng lệnh `/schedule` hoặc lịch Cron 5 trường:
+- Đúng 6h30 sáng hàng ngày: Tự động thức dậy cào tin tức thị trường.
+- Đúng 17h00 chiều thứ Sáu: Tự động tổng hợp báo cáo công việc tuần gửi cho sếp.
+
+Bạn không cần phải ngồi canh máy tính để bấm nút thủ công nữa. AI hoàn toàn chủ động làm việc theo đúng lịch trình đã định!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          TRỤ CỘT 07: <strong>SIDECARS & SCHEDULE</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-amber);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          TỰ ĐỘNG HÓA HẸN GIỜ
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Khái Niệm <span>Task Schedule</span>
+        </h2>
+        <p class="lead-desc">
+          Đồng hồ báo thức thông minh cho AI: Đặt lịch hẹn giờ định kỳ qua lệnh /schedule để AI tự động thức dậy làm việc ngầm.
+        </p>
+      </div>
+
+      <div class="vs-matrix-grid anim-2">
+        <div class="vs-card passive">
+          <div class="vs-header">
+            <span class="vs-badge passive">CÁCH CŨ: CANH GIỜ THỦ CÔNG</span>
+            <div class="vs-title" style="color: var(--accent-rose);">Phải Ngồi Canh Bấm Nút</div>
+            <div class="vs-subtitle">Sáng nào cũng phải mở máy tính gõ lệnh bảo AI đi cào tin tức, tổng hợp email.</div>
+          </div>
+          <div class="vs-body">
+            <div class="vs-point">
+              <span style="color: var(--accent-rose); font-weight: 800;">✕</span>
+              <div><strong>Mất thời gian:</strong> Quên bấm nút là cả ngày không có báo cáo theo dõi đối thủ.</div>
+            </div>
+            <div class="vs-point">
+              <span style="color: var(--accent-rose); font-weight: 800;">✕</span>
+              <div><strong>Không làm được ngoài giờ:</strong> Khi bạn đi du lịch hay đi ngủ, công việc bị gián đoạn.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-card active">
+          <div class="vs-header">
+            <span class="vs-badge active">CÁCH MỚI: TASK SCHEDULE</span>
+            <div class="vs-title" style="color: var(--accent-cyan);">Đồng Hồ Báo Thức AI</div>
+            <div class="vs-subtitle">Hẹn giờ chu kỳ bằng lệnh /schedule hoặc lịch Cron 5 trường đơn giản.</div>
+          </div>
+          <div class="vs-body">
+            <div class="vs-point">
+              <span style="color: var(--accent-cyan); font-weight: 800;">✓</span>
+              <div><strong>Tự động đúng giờ:</strong> Đúng 6h30 sáng AI tự thức dậy cào tin tức thị trường và gửi vào email của bạn.</div>
+            </div>
+            <div class="vs-point">
+              <span style="color: var(--accent-cyan); font-weight: 800;">✓</span>
+              <div><strong>Tự động hóa hoàn toàn:</strong> Kể cả khi bạn không mở khung chat, AI vẫn âm thầm hoàn thành nhiệm vụ.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="21" data-notes="Và bây giờ, chúng ta chạm tay vào Mảnh ghép đỉnh cao hoàn thiện toàn bộ bức tranh kiến trúc Antigravity: Sidecars!
+
+Từ 'Sidecar' trong tiếng Anh nghĩa là chiếc xe mô tô có gắn thêm một chiếc thùng phụ bên hông xe:
+- Chiếc xe máy chính là cửa sổ Antigravity bạn đang ngồi làm việc.
+- Thùng xe phụ (Sidecar) là một tiến trình chạy ngầm độc lập bên cạnh. Kể cả khi bạn đóng cửa sổ chat lại, chiếc thùng xe phụ này vẫn âm thầm chạy ngầm phía sau 24/7 để hoàn thành công việc đúng lịch trình!
+
+Ví dụ thực tế: Bạn cài một Sidecar giám sát website bán hàng của công ty hoặc theo dõi giá khuyến mãi của đối thủ. Cứ 10 phút nó tự kiểm tra một lần. Nếu phát hiện biến động bất thường, nó lập tức gửi tin nhắn khẩn cấp về điện thoại của bạn!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          TRỤ CỘT 07: <strong>SIDECARS DAEMON</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-amber);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          CỖ MÁY VẬN HÀNH 24/7
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Khái Niệm <span>Sidecar Daemon</span>
+        </h2>
+        <p class="lead-desc">
+          Cỗ máy vận hành nền độc lập như chiếc thùng xe phụ gắn bên hông xe máy: Âm thầm chạy 24/7 kể cả khi tắt khung chat.
+        </p>
+      </div>
+
+      <div class="vs-matrix-grid anim-2">
+        <div class="vs-card passive">
+          <div class="vs-header">
+            <span class="vs-badge passive">XE MÁY CHÍNH: KHUNG CHAT</span>
+            <div class="vs-title" style="color: var(--accent-rose);">Tương Tác Trực Tiếp</div>
+            <div class="vs-subtitle">Cửa sổ làm việc chính bạn đang ngồi gõ lệnh hàng ngày.</div>
+          </div>
+          <div class="vs-body">
+            <div class="vs-point">
+              <span style="color: var(--accent-rose); font-weight: 800;">•</span>
+              <div>Cần người dùng ngồi trước máy tính ra lệnh trực tiếp.</div>
+            </div>
+            <div class="vs-point">
+              <span style="color: var(--accent-rose); font-weight: 800;">•</span>
+              <div>Phù hợp cho việc trao đổi, hỏi đáp, sửa đổi tài liệu tức thì.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-card active">
+          <div class="vs-header">
+            <span class="vs-badge active">THÙNG PHỤ: SIDECAR DAEMON</span>
+            <div class="vs-title" style="color: var(--accent-amber);">Tiến Trình Chạy Ngầm</div>
+            <div class="vs-subtitle">Chạy âm thầm phía sau hậu trường 24/7 không cần mở chat.</div>
+          </div>
+          <div class="vs-body">
+            <div class="vs-point">
+              <span style="color: var(--accent-emerald); font-weight: 800;">✓</span>
+              <div>Âm thầm quét hóa đơn, theo dõi biến động giá đối thủ 24/7.</div>
+            </div>
+            <div class="vs-point">
+              <span style="color: var(--accent-emerald); font-weight: 800;">✓</span>
+              <div>Kể cả khi bạn tắt cửa sổ chat đi ngủ, Sidecar vẫn cày việc bền bỉ.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="22" data-notes="Một tiến trình chạy ngầm thì điều gì quan trọng nhất? Đó là Tính Bền Bỉ (Resilience) — nó không được phép chết giữa chừng do sự cố mạng hay lỗi đột xuất.
+
+Để thiết lập một cỗ máy chạy ngầm Sidecar, chúng ta chỉ cần một file cấu hình mang tên `sidecar.json` nằm tại `~/.gemini/config/sidecars/<tên-sidecar>/sidecar.json`.
+Trong đó, vũ khí đắt giá nhất là cơ chế Tự Hồi Sinh (`restart_policy`):
+- `never`: Chạy đúng 1 lần rồi tự kết thúc (thích hợp cho việc xuất báo cáo tổng kết cuối tháng).
+- `on_failure`: Tự động khởi động lại ngay lập tức nếu bị ngắt kết nối do rớt mạng (hỗ trợ tối đa 5 lần hồi sinh).
+- `always`: Luôn luôn duy trì hoạt động 24/7 cho các trạm giám sát an ninh.
+
+Ứng dụng thực tế: Bạn thiết lập một Sidecar giám sát website bán hàng của công ty hoặc theo dõi giá đối thủ. Cứ 10 phút nó kiểm tra một lần. Nếu có biến động bất thường, nó lập tức gửi tin nhắn khẩn cấp về điện thoại của bạn!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+          TÍNH BỀN BỈ: <strong>RESTART POLICY</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-amber);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+          CƠ CHẾ TỰ HỒI SINH
+        </span>
+        <h2 class="title-display" style="font-size: 2.3rem;">
+          Cấu Trúc File sidecar.json <span>& Tự Hồi Sinh</span>
+        </h2>
+        <p class="lead-desc">
+          Bảo đảm tính bền bỉ tuyệt đối của hệ thống tự động hóa: Tự động hồi sinh khi gặp sự cố mạng hoặc lỗi đột xuất.
+        </p>
+      </div>
+
+      <div class="flow-pipeline-container" style="margin-top: 10px;">
+        <div class="pipeline-nodes-row" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="pipeline-node anim-2" style="border-color: rgba(148, 163, 184, 0.35);">
+            <span class="node-step-num">CHÍNH SÁCH 01</span>
+            <div class="node-title"><code>never</code> (Một Lần)</div>
+            <p class="node-desc">Chạy đúng một lần khi được gọi rồi tự kết thúc. Thích hợp cho việc xuất báo cáo tổng kết cuối tháng.</p>
+          </div>
+
+          <div class="pipeline-node anim-3" style="border-color: rgba(245, 158, 11, 0.35);">
+            <span class="node-step-num">CHÍNH SÁCH 02</span>
+            <div class="node-title" style="color: var(--accent-amber);"><code>on-failure</code> (Tự Sửa)</div>
+            <p class="node-desc">Tự động khởi động lại ngay lập tức nếu tiến trình bị sập do mất mạng Internet hoặc lỗi tài nguyên hệ thống.</p>
+          </div>
+
+          <div class="pipeline-node anim-4" style="border-color: rgba(16, 185, 129, 0.35);">
+            <span class="node-step-num">CHÍNH SÁCH 03</span>
+            <div class="node-title" style="color: var(--accent-emerald);"><code>always</code> (Bất Tử)</div>
+            <p class="node-desc">Luôn luôn duy trì trạng thái hoạt động 24/7. Thích hợp cho các trạm giám sát an ninh và bot trực tổng đài.</p>
+          </div>
+        </div>
+
+        <div class="feedback-loop-bar anim-5">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+            <span><strong>VỊ TRÍ FILE CẤU HÌNH:</strong> <code>~/.gemini/config/sidecars/&lt;tên&gt;/sidecar.json</code> — kích hoạt an toàn trong <code>config.json</code>.</span>
+          </div>
+          <span style="font-family: var(--font-mono); font-weight: 700; color: var(--accent-amber);">ZERO DOWNTIME</span>
+        </div>
+      </div>
+    </div>
+
+    
+<div class="slide-canvas" data-slide="23" data-notes="Kính thưa các bạn, đây chính là Slide đắt giá nhất trong toàn bộ Phần 4 — Tấm Bản Đồ Chỉ Đường quý giá mà tôi muốn các bạn chụp ảnh màn hình lại để lưu vào máy tính tra cứu hàng ngày!
+
+Khi làm việc với Antigravity, bạn chỉ cần nhớ 3 câu thần chú sau:
+1. Thần chú về chữ hoa chữ thường: Chỉ có 2 'ông tướng' lớn nhất bắt buộc viết IN HOA là `AGENTS.md` và `SKILL.md`. Còn lại tất cả các file cấu hình khác đều phải viết chữ THƯỜNG (`plugin.json`, `hooks.json`, `mcp_config.json`, `sidecar.json`).
+2. Thần chú về thư mục: Tuyệt đối không bao giờ đặt tên có dấu cách hay tiếng Việt có dấu. Luôn dùng chữ thường nối dấu gạch ngang: `tro-ly-van-thu`.
+3. Thần chú về vị trí: Cái gì muốn mở máy ở đâu cũng dùng được thì ném vào kho Global `~/.gemini/config/`; cái gì chỉ muốn dùng riêng cho một công việc cụ thể thì ném vào ngăn kéo Workspace `.agents/` của dự án đó.
+
+Nắm vững tấm bản đồ này, các bạn đã chính thức làm chủ toàn bộ kho vũ khí của Google Antigravity một cách bài bản, an toàn và chuyên nghiệp nhất!">
+      <div class="slide-hud">
+        <div class="hud-chip">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          TỔNG KẾT VŨ KHÍ: <strong>CHEATSHEET TOÀN NĂNG</strong>
+        </div>
+      </div>
+
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-cyan);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+          BẢN ĐỒ TRA CỨU NHANH
+        </span>
+        <h2 class="title-display" style="font-size: 2.15rem;">
+          Bản Đồ Tra Cứu Toàn Năng <span>(Cheatsheet)</span>
+        </h2>
+        <p class="lead-desc">
+          Bảng một trang tổng hợp toàn bộ vị trí cất file, đường dẫn lưu trữ và quy tắc vàng đặt tên để học viên lưu lại tra cứu hàng ngày.
+        </p>
+      </div>
+
+      <div class="cheatsheet-table-wrapper anim-2">
+        <table class="cheatsheet-table">
+          <thead>
+            <tr>
+              <th>Vũ Khí</th>
+              <th>Vị Trí Kho Toàn Máy (Global)</th>
+              <th>Vị Trí Dự Án (Workspace)</th>
+              <th>Tên File Bắt Buộc</th>
+              <th>Quy Tắc Đặt Tên & Lưu Ý Sống Còn</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color: #818cf8;">1. Subagents</strong></td>
+              <td><code>~/.gemini/config/agents/</code></td>
+              <td><code>.agents/agents/</code></td>
+              <td><code>&lt;ten&gt;.md</code></td>
+              <td>Chữ thường <code>kebab-case</code>. Gồm YAML Header + System Prompt tiếng Việt.</td>
+            </tr>
+            <tr>
+              <td><strong style="color: var(--accent-amber);">2. Rules</strong></td>
+              <td><code>~/.gemini/config/rules/</code></td>
+              <td><code>.agents/rules/</code> hoặc <code>AGENTS.md</code></td>
+              <td><code>AGENTS.md</code> / <code>&lt;ten&gt;.md</code></td>
+              <td>Tổng dung lượng &le; 24KB. <strong>Không</strong> tạo thư mục con lồng nhau.</td>
+            </tr>
+            <tr>
+              <td><strong style="color: var(--accent-cyan);">3. Skills</strong></td>
+              <td><code>~/.gemini/config/skills/&lt;ten&gt;/</code></td>
+              <td><code>.agents/skills/&lt;ten&gt;/</code></td>
+              <td><strong style="color: #38bdf8;"><code>SKILL.md</code></strong></td>
+              <td><strong>BẮT BUỘC IN HOA</strong> <code>SKILL.md</code>. Trường <code>description</code> phải thật chi tiết.</td>
+            </tr>
+            <tr>
+              <td><strong style="color: var(--accent-rose);">4. Hooks</strong></td>
+              <td><code>~/.gemini/config/hooks.json</code></td>
+              <td><code>.agents/hooks.json</code></td>
+              <td><code>hooks.json</code></td>
+              <td>File hooks.json viết thường. Trạm gác: <code>PreToolUse</code> bảo vệ dữ liệu mật.</td>
+            </tr>
+            <tr>
+              <td><strong style="color: var(--accent-emerald);">5. MCP</strong></td>
+              <td><code>~/.gemini/config/mcp_config.json</code></td>
+              <td><code>.agents/mcp_config.json</code></td>
+              <td><code>mcp_config.json</code></td>
+              <td>Khai báo các cổng USB phần mềm (<code>gmail</code>, <code>slack</code>, <code>trello</code>).</td>
+            </tr>
+            <tr>
+              <td><strong style="color: #f43f5e;">6. Plugins</strong></td>
+              <td><code>~/.gemini/config/plugins/&lt;ten&gt;/</code></td>
+              <td><code>.agents/plugins/&lt;ten&gt;/</code></td>
+              <td><code>plugin.json</code></td>
+              <td>Bắt buộc chữ thường <code>plugin.json</code>. Tự động nạp skills, agents, rules.</td>
+            </tr>
+            <tr>
+              <td><strong style="color: #fbbf24;">7. Sidecars</strong></td>
+              <td><code>~/.gemini/config/sidecars/&lt;ten&gt;/</code></td>
+              <td><em>(Tiến trình chạy ngầm)</em></td>
+              <td><code>sidecar.json</code></td>
+              <td>Bắt buộc chữ thường <code>sidecar.json</code>. Cấu hình tự hồi sinh khi rớt mạng.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="naming-rules-bar anim-3">
+        <div class="naming-box do" style="background: rgba(99, 102, 241, 0.08); border-color: rgba(99, 102, 241, 0.3);">
+          <span style="color: #818cf8; font-weight: 800; font-size: 1rem;">🌟</span>
+          <div><strong>2 FILE BẮT BUỘC IN HOA:</strong> Chỉ có <code>AGENTS.md</code> (Nội quy) và <code>SKILL.md</code> (Kỹ năng). Tất cả file cấu hình còn lại viết chữ thường (<code>.json</code>).</div>
+        </div>
+        <div class="naming-box do" style="background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.3);">
+          <span style="color: var(--accent-emerald); font-weight: 800; font-size: 1rem;">🌟</span>
+          <div><strong>NGUYÊN TẮC ĐẶT TÊN & VỊ TRÍ:</strong> Thư mục luôn dùng <code>kebab-case</code> không dấu. Dùng chung toàn máy = Global; Dùng riêng dự án = Workspace.</div>
+        </div>
+      </div>
+    </div>
+
+  
+  </main>
+
+  <aside id="notes-drawer">
+    <div class="notes-header">
+      <div class="notes-title">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+        KỊCH BẢN GIẢNG VIÊN TOÀN VĂN
+      </div>
+      <button class="btn-nav" id="btn-close-notes" style="padding: 2px 8px;">✕</button>
+    </div>
+    <span class="notes-tag" id="notes-slide-tag">SLIDE 01 / 23</span>
+    <div class="notes-content" id="notes-body"></div>
+  </aside>
+
+  <footer>
+    <div id="footer-desktop-hint">
+      <span>Điều khiển:</span>
+      <span style="margin-left: 8px;"><span class="kbd">◀</span> <span class="kbd">▶</span> hoặc <span class="kbd">Space</span> chuyển slide</span>
+      <span style="margin-left: 8px;"><span class="kbd">S</span> Kịch bản</span>
+      <span style="margin-left: 8px;"><span class="kbd">F</span> Toàn màn hình</span>
+      <span style="margin-left: 8px;"><span class="kbd">Ctrl+P</span> In PDF</span>
+    </div>
+    <div id="footer-desktop-tag" style="font-family: var(--font-mono); color: var(--text-dim);">
+      <span>PHẦN 04 • 23 SLIDES</span>
+    </div>
+
+    <div id="footer-mobile-controls" style="display: none;">
+      <button class="btn-touch" id="btn-touch-prev">◀ Lùi</button>
+      <button class="btn-touch" id="btn-touch-notes" style="background: rgba(99, 102, 241, 0.2); border-color: rgba(99, 102, 241, 0.4); color: #a5b4fc;">🎙️ Lời thoại (S)</button>
+      <button class="btn-touch" id="btn-touch-next" style="background: var(--accent-indigo); color: #fff;">Tiếp ▶</button>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const slides = document.querySelectorAll('.slide-canvas');
+      const progressBar = document.getElementById('progress-bar');
+      const slideNumDisplay = document.getElementById('slide-num');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const btnNotes = document.getElementById('btn-notes');
+      const btnCloseNotes = document.getElementById('btn-close-notes');
+      const btnFullscreen = document.getElementById('btn-fullscreen');
+      const notesDrawer = document.getElementById('notes-drawer');
+      const notesBody = document.getElementById('notes-body');
+      const notesSlideTag = document.getElementById('notes-slide-tag');
+
+      const btnTouchPrev = document.getElementById('btn-touch-prev');
+      const btnTouchNext = document.getElementById('btn-touch-next');
+      const btnTouchNotes = document.getElementById('btn-touch-notes');
+      const deckStage = document.getElementById('deck-stage');
+
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+
+      function updateSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= totalSlides) index = totalSlides - 1;
+        currentSlide = index;
+
+        slides.forEach((slide, i) => {
+          if (i === currentSlide) {
+            slide.classList.remove('active');
+            void slide.offsetWidth; // Force reflow
+            slide.classList.add('active');
+            slide.scrollTop = 0;
+            // Check if slide has custom interactive motion trigger
+            if (typeof window.triggerSlideMotion === 'function') {
+              window.triggerSlideMotion(currentSlide);
+            }
+          } else {
+            slide.classList.remove('active');
+          }
+        });
+
+        const progress = ((currentSlide + 1) / totalSlides) * 100;
+        progressBar.style.width = progress + '%';
+
+        const currentStr = String(currentSlide + 1).padStart(2, '0');
+        const totalStr = String(totalSlides).padStart(2, '0');
+        slideNumDisplay.textContent = `${currentStr} / ${totalStr}`;
+
+        const activeSlideElem = slides[currentSlide];
+        const notesText = activeSlideElem.getAttribute('data-notes') || 'Chưa có ghi chú kịch bản cho slide này.';
+        notesSlideTag.textContent = `SLIDE ${currentStr} / ${totalStr}`;
+        
+        const formattedNotes = notesText.split('\n\n').map(p => `<p>${p}</p>`).join('');
+        notesBody.innerHTML = `<blockquote>${formattedNotes}</blockquote>`;
+        notesDrawer.scrollTop = 0;
+      }
+
+      function nextSlide() {
+        if (currentSlide < totalSlides - 1) updateSlide(currentSlide + 1);
+      }
+      function prevSlide() {
+        if (currentSlide > 0) updateSlide(currentSlide - 1);
+      }
+      function toggleNotes() {
+        notesDrawer.classList.toggle('open');
+        btnNotes.classList.toggle('active', notesDrawer.classList.contains('open'));
+      }
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => console.error(err));
+        } else {
+          if (document.exitFullscreen) document.exitFullscreen();
+        }
+      }
+
+      btnNext.addEventListener('click', nextSlide);
+      btnPrev.addEventListener('click', prevSlide);
+      btnNotes.addEventListener('click', toggleNotes);
+      btnCloseNotes.addEventListener('click', toggleNotes);
+      if (btnFullscreen) btnFullscreen.addEventListener('click', toggleFullscreen);
+
+      if (btnTouchPrev) btnTouchPrev.addEventListener('click', prevSlide);
+      if (btnTouchNext) btnTouchNext.addEventListener('click', nextSlide);
+      if (btnTouchNotes) btnTouchNotes.addEventListener('click', toggleNotes);
+
+      // Touch Swipe Gestures
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let touchEndX = 0;
+      let touchEndY = 0;
+
+      deckStage.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+      }, { passive: true });
+
+      deckStage.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        const diffX = touchEndX - touchStartX;
+        const diffY = touchEndY - touchStartY;
+        if (Math.abs(diffX) > Math.abs(diffY) * 1.5 && Math.abs(diffX) > 45) {
+          if (diffX < 0) nextSlide();
+          else prevSlide();
+        }
+      }, { passive: true });
+
+      // Keyboard Controls
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+          e.preventDefault();
+          nextSlide();
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'Backspace') {
+          e.preventDefault();
+          prevSlide();
+        } else if (e.key === 's' || e.key === 'S') {
+          e.preventDefault();
+          toggleNotes();
+        } else if (e.key === 'f' || e.key === 'F') {
+          e.preventDefault();
+          toggleFullscreen();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          updateSlide(0);
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          updateSlide(totalSlides - 1);
+        }
+      });
+
+      updateSlide(0);
+    })();
+  </script>
+</body>
+</html>

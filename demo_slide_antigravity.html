@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEMO BÀI GIẢNG: KHÁM PHÁ BẢN DOANH GOOGLE ANTIGRAVITY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Theme: Cyber Gaming Dark */
+      --bg-main: #060913;
+      --bg-card: rgba(13, 20, 36, 0.85);
+      --bg-card-hover: rgba(22, 33, 60, 0.95);
+      --border-card: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(99, 102, 241, 0.4);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent-primary: #6366f1;
+      --accent-secondary: #06b6d4;
+      --accent-success: #10b981;
+      --accent-warning: #f59e0b;
+      --accent-danger: #f43f5e;
+      --accent-purple: #a855f7;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --card-glow: 0 0 30px rgba(99, 102, 241, 0.35);
+      --game-gold: #facc15;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(6, 182, 212, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(168, 85, 247, 0.08) 0%, transparent 60%);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top XP Progress Bar */
+    #progress-bar-container {
+      width: 100%;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.06);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+    #progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #6366f1, #06b6d4, #10b981, #facc15);
+      box-shadow: 0 0 12px rgba(6, 182, 212, 0.8);
+      transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    header {
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(6, 9, 19, 0.85);
+      backdrop-filter: blur(14px);
+      z-index: 50;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: -0.01em;
+    }
+    .brand-tag {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(6, 182, 212, 0.3));
+      border: 1px solid var(--border-accent);
+      color: #a5b4fc;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 0 15px rgba(99, 102, 241, 0.25);
+    }
+    .level-badge {
+      background: rgba(250, 204, 21, 0.15);
+      border: 1px solid rgba(250, 204, 21, 0.4);
+      color: var(--game-gold);
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-action {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--text-main);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-action:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(99, 102, 241, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    .btn-action.active {
+      background: linear-gradient(135deg, var(--accent-primary), #4f46e5);
+      border-color: #818cf8;
+      box-shadow: 0 0 18px rgba(99, 102, 241, 0.5);
+      color: #ffffff;
+    }
+
+    .slide-counter {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: #38bdf8;
+      font-weight: 700;
+      padding: 0 8px;
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      border-radius: 6px;
+    }
+
+    /* Main Deck Stage */
+    #deck-stage {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 40px 40px;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      width: 94%;
+      max-width: 1280px;
+      height: calc(100vh - 128px);
+      max-height: 720px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 22px;
+      padding: 36px 48px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(24px);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.95) translateY(24px);
+      transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+      overflow-y: auto;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+      z-index: 10;
+    }
+
+    /* Micro-animations: Smooth Cinematic Staggered Fade-up (Nhịp độ đằm thắm) */
+    @keyframes cinematicSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px) scale(0.97);
+        filter: blur(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0px);
+      }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 15px rgba(99, 102, 241, 0.2); }
+      50% { box-shadow: 0 0 32px rgba(99, 102, 241, 0.6); }
+    }
+
+    /* Mặc định ẩn hoàn toàn khi slide chưa active */
+    .slide:not(.active) .slide-eyebrow,
+    .slide:not(.active) .slide-title,
+    .slide:not(.active) .slide-subtitle,
+    .slide:not(.active) .box-card,
+    .slide:not(.active) .terminal-box,
+    .slide:not(.active) .quest-box {
+      opacity: 0;
+    }
+
+    /* Tầng 1: Dẫn nhập & Tiêu đề (0.1s - 0.45s) */
+    .slide.active .slide-eyebrow { 
+      animation: cinematicSlideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both; 
+    }
+    .slide.active .slide-title { 
+      animation: cinematicSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both; 
+    }
+    .slide.active .slide-subtitle { 
+      animation: cinematicSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both; 
+    }
+
+    /* Tầng 2 & 3: Các khối nội dung xuất hiện thong thả (cách nhau ~0.8s) */
+    .slide.active .grid-2 > *:nth-child(1),
+    .slide.active .grid-3 > *:nth-child(1),
+    .slide.active .grid-4 > *:nth-child(1),
+    .slide.active .grid-2 > div > .box-card:nth-child(1) {
+      animation: cinematicSlideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+    }
+
+    .slide.active .grid-2 > *:nth-child(2),
+    .slide.active .grid-3 > *:nth-child(2),
+    .slide.active .grid-4 > *:nth-child(2),
+    .slide.active .grid-2 > div > .box-card:nth-child(2) {
+      animation: cinematicSlideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 1.7s both;
+    }
+
+    .slide.active .grid-3 > *:nth-child(3),
+    .slide.active .grid-4 > *:nth-child(3),
+    .slide.active .grid-2 > div > .box-card:nth-child(3) {
+      animation: cinematicSlideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 2.5s both;
+    }
+
+    .slide.active .grid-4 > *:nth-child(4) {
+      animation: cinematicSlideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) 3.3s both;
+    }
+
+    /* Terminal Mockup ở slide 5 xuất hiện cùng nhịp với card 2 */
+    .slide.active .grid-2 > .terminal-box {
+      animation: cinematicSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 1.8s both;
+    }
+
+    /* Hộp Quest / Phần thưởng chốt hạ sau cùng của slide */
+    .slide.active .quest-box {
+      animation: cinematicSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 2.6s both, pulseGlow 2.5s infinite ease-in-out 3.4s;
+    }
+
+    /* Riêng với slide 3 & 4 có 3-4 card thì quest-box đợi card cuối hiện xong */
+    .slide[data-slide="3"].active .quest-box,
+    .slide[data-slide="4"].active .quest-box {
+      animation: cinematicSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 3.8s both, pulseGlow 2.5s infinite ease-in-out 4.6s;
+    }
+
+    /* Typography */
+    .slide-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    .eyebrow-indigo { color: #818cf8; }
+    .eyebrow-cyan { color: #22d3ee; }
+    .eyebrow-emerald { color: #34d399; }
+    .eyebrow-amber { color: #fbbf24; }
+    .eyebrow-rose { color: #fb7185; }
+
+    .slide-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.22;
+      letter-spacing: -0.025em;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .slide-subtitle {
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 22px;
+    }
+
+    /* Grids & Cards */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      flex: 1;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      flex: 1;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      flex: 1;
+    }
+
+    .box-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .box-card:hover {
+      background: rgba(255, 255, 255, 0.07);
+      border-color: rgba(99, 102, 241, 0.45);
+      box-shadow: var(--card-glow);
+      transform: translateY(-4px);
+    }
+
+    .box-card-highlight {
+      background: linear-gradient(145deg, rgba(99, 102, 241, 0.15), rgba(6, 182, 212, 0.08));
+      border-color: rgba(99, 102, 241, 0.35);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .card-header-icon {
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+    .card-heading {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    /* Game HUD Quest Box */
+    .quest-box {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(6, 182, 212, 0.08));
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .quest-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .quest-tag {
+      background: #10b981;
+      color: #064e3b;
+      font-weight: 800;
+      font-size: 0.74rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+    }
+    .quest-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+    .reward-pill {
+      background: rgba(250, 204, 21, 0.15);
+      border: 1px solid rgba(250, 204, 21, 0.35);
+      color: var(--game-gold);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Badges & Pills */
+    .badge-pill {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+    }
+    .pill-red { background: rgba(239, 68, 68, 0.18); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .pill-green { background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .pill-blue { background: rgba(99, 102, 241, 0.18); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); }
+    .pill-gold { background: rgba(250, 204, 21, 0.18); color: #facc15; border: 1px solid rgba(250, 204, 21, 0.35); }
+    .pill-purple { background: rgba(168, 85, 247, 0.18); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+
+    /* Terminal Mockup */
+    .terminal-box {
+      background: #090e1a;
+      border: 1px solid #1e293b;
+      border-radius: 14px;
+      overflow: hidden;
+      font-family: var(--font-mono);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    }
+    .terminal-topbar {
+      background: #111827;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid #1e293b;
+    }
+    .term-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .term-dot-r { background: #ef4444; }
+    .term-dot-y { background: #f59e0b; }
+    .term-dot-g { background: #10b981; }
+    .term-title {
+      font-size: 0.74rem;
+      color: #64748b;
+      margin-left: 10px;
+    }
+    .terminal-body {
+      padding: 18px 20px;
+      font-size: 0.86rem;
+      line-height: 1.7;
+      color: #e2e8f0;
+    }
+    .term-cmd { color: #38bdf8; font-weight: 600; }
+    .term-flag { color: #f43f5e; }
+    .term-comment { color: #64748b; font-style: italic; }
+    .term-success { color: #34d399; font-weight: 600; }
+    .term-gold { color: #facc15; font-weight: 600; }
+
+    /* Footer */
+    footer {
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(6, 9, 19, 0.85);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+    .nav-hints {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .kbd {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 4px;
+      padding: 1px 7px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-main);
+    }
+
+    /* Speaker Notes Drawer */
+    #notes-drawer {
+      position: fixed;
+      right: 0;
+      top: 58px;
+      width: 460px;
+      height: calc(100vh - 110px);
+      background: #090e1c;
+      border-left: 1px solid rgba(99, 102, 241, 0.35);
+      box-shadow: -12px 0 35px rgba(0, 0, 0, 0.7);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 80;
+      overflow-y: auto;
+    }
+    #notes-drawer.open {
+      transform: translateX(0);
+    }
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 16px;
+    }
+    .notes-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #818cf8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .notes-content {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+    }
+    .notes-content blockquote {
+      background: rgba(99, 102, 241, 0.12);
+      border-left: 3px solid var(--accent-primary);
+      padding: 14px 16px;
+      border-radius: 0 10px 10px 0;
+      margin: 14px 0;
+      font-style: italic;
+      color: #e0e7ff;
+    }
+    .notes-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.14);
+      padding: 3px 9px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+
+    /* Print mode */
+    @media print {
+      body { overflow: visible !important; height: auto !important; background: #ffffff !important; color: #000 !important; }
+      header, footer, #notes-drawer, #progress-bar-container { display: none !important; }
+      #deck-stage { display: block !important; padding: 0 !important; }
+      .slide { position: relative !important; opacity: 1 !important; visibility: visible !important; transform: none !important; page-break-after: always !important; width: 100% !important; max-width: 100% !important; height: 100vh !important; border: none !important; background: #fff !important; color: #000 !important; }
+      .slide-title { color: #0f172a !important; }
+      .box-card { background: #f8fafc !important; border-color: #e2e8f0 !important; color: #000 !important; }
+      .card-heading { color: #0f172a !important; }
+    }
+  </style>
+</head>
+<body class="theme-cyber-dark">
+
+  <!-- Top XP Progress Bar -->
+  <div id="progress-bar-container">
+    <div id="progress-bar"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <span class="brand-tag">🎮 AGENT QUEST</span>
+      <span class="level-badge">LVL 1 TÂN THỦ</span>
+      <span>LÀM CHỦ GOOGLE ANTIGRAVITY CHO NON-CODER</span>
+    </div>
+
+    <div class="controls">
+      <span class="slide-counter" id="slide-num">01 / 05</span>
+      <button class="btn-action" id="btn-prev" title="Trang trước (Phím Mũi tên Trái)">◀ Lùi</button>
+      <button class="btn-action" id="btn-next" title="Trang sau (Phím Mũi tên Phải hoặc Phím Cách)">Tiếp ▶</button>
+      <button class="btn-action" id="btn-notes" title="Bật/Tắt Lời thoại kịch bản giảng bài (Phím S)">🎙️ Lời Thoại (S)</button>
+      <button class="btn-action" id="btn-fullscreen" title="Toàn màn hình (Phím F)">⛶ Toàn Màn Hình</button>
+    </div>
+  </header>
+
+  <!-- Main Slide Deck Stage -->
+  <main id="deck-stage">
+
+    <!-- ========================================== -->
+    <!-- SLIDE 1: COVER HERO (LOBBY TÂN THỦ GIA NHẬP) -->
+    <!-- ========================================== -->
+    <div class="slide active" data-slide="1" data-notes="Chào mừng các bạn đã bước vào thế giới của Google Antigravity! Nếu từ trước đến nay các bạn vẫn nghĩ muốn làm chủ máy tính, muốn tự động hóa công việc hay muốn tạo phần mềm thì bắt buộc phải là dân IT biết gõ code phức tạp — thì hôm nay, tôi sẽ chứng minh điều ngược lại. Khóa học này không dạy các bạn học thuộc cú pháp lập trình. Chúng ta sẽ chơi một trò chơi nhập vai, nơi bạn là Tổng chỉ huy, và Antigravity chính là những đồng đội AI siêu đẳng nhất sẵn sàng cày cuốc thay bạn 24/7. Nhấn Space để mở khóa cửa ải đầu tiên!">
+      <span class="slide-eyebrow eyebrow-indigo">⚡ MỞ MÀN NHẬP VAI • CỬA ẢI 01</span>
+      <h1 class="slide-title">
+        Khởi Động "Bản Doanh AI"<br>
+        <span style="background: linear-gradient(90deg, #818cf8, #38bdf8, #34d399); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Biến Bạn Thành "Tổng Chỉ Huy" Đội Ngũ Agentic AI</span>
+      </h1>
+      <p class="slide-subtitle">Không cần biết viết code! Bạn chỉ cần ý tưởng và kỹ năng giao việc, Antigravity sẽ tự động hóa từ việc văn phòng lặt vặt đến tự build ứng dụng nội bộ.</p>
+
+      <div class="grid-2">
+        <div class="box-card" style="border-left: 4px solid var(--accent-danger);">
+          <span class="card-badge pill-red">KIỂU CŨ • MỆT MỎI</span>
+          <span class="card-header-icon">😫</span>
+          <h3 class="card-heading">Nỗi Ám Ảnh Thủ Công Thường Nhật</h3>
+          <ul class="card-desc" style="list-style-type: none; display: flex; flex-direction: column; gap: 12px; padding-left: 0;">
+            <li>❌ <strong>Mắc kẹt trong việc vặt:</strong> Dọn dẹp thư mục, sửa tên file, copy paste hóa đơn Excel thủ công hàng giờ.</li>
+            <li>❌ <strong>Chatbot thụ động:</strong> Dùng ChatGPT/Claude chỉ biết trả lời lý thuyết, không thể tự mở file hay thao tác trên máy.</li>
+            <li>❌ <strong>Bất lực khi muốn làm app:</strong> Muốn có một web nội bộ nhỏ tra cứu quy định nhưng không biết lập trình.</li>
+          </ul>
+        </div>
+
+        <div class="box-card box-card-highlight" style="border-left: 4px solid var(--accent-success);">
+          <span class="card-badge pill-green">LEVEL UP • SIÊU NHÂN LỰC</span>
+          <span class="card-header-icon">👑</span>
+          <h3 class="card-heading">Hành Trang Sau Khi Phá Đảo Khóa Học</h3>
+          <ul class="card-desc" style="list-style-type: none; display: flex; flex-direction: column; gap: 12px; padding-left: 0;">
+            <li>✅ <strong>Tự động hóa 1-chạm:</strong> Ném hóa đơn, hợp đồng vào thư mục ➔ Agent tự đọc, bóc tách và đối soát số liệu.</li>
+            <li>✅ <strong>Kho vũ khí thông minh:</strong> Tự cào giá đối thủ, tự quét email khẩn và tự động bắn tin báo cáo Trello/Slack.</li>
+            <li>✅ <strong>Vibe Coding 0-mã nguồn:</strong> Tự tạo Web App / Dashboard lung linh và đưa lên mạng Internet miễn phí trong 3 phút!</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="quest-box">
+        <div class="quest-info">
+          <span class="quest-tag">NHIỆM VỤ TÂN THỦ</span>
+          <span class="quest-title">Vượt qua 5 ải thử thách để nhận chứng chỉ "Super-Individual 10x Năng Suất"</span>
+        </div>
+        <div class="reward-pill">
+          <span>🏆 PHẦN THƯỞNG: +1000 EXP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 2: SO SÁNH CHATBOT THỤ ĐỘNG VS AGENTIC AI -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="2" data-notes="Hãy nhìn vào sự khác biệt kinh điển này! Nhiều bạn hỏi tôi: 'Ủa anh ơi, em dùng ChatGPT Plus hay Gemini web hàng ngày rồi, cần gì học Antigravity nữa?'. Câu trả lời nằm ở chữ Thụ Động vs Chủ Động. Chatbot thông thường giống như một NPC vô tri trong game: bạn hỏi một câu, nó đọc thuộc lòng trả lời một câu, xong rồi đứng yên, không hề biết máy tính của bạn có file gì. Trong khi đó, Antigravity là một AI Agent thực thụ. Nó biết lập kế hoạch (Plan), biết tự mở thư mục đọc hóa đơn, tự chạy công cụ kiểm tra (Action), và nếu thấy sai số liệu, nó tự suy ngẫm sửa lại cho đúng (Reflection). Đó chính là bước nhảy vọt tư duy lớn nhất của thời đại AI!">
+      <span class="slide-eyebrow eyebrow-cyan">⚖️ SO SÁNH VŨ KHÍ • NPC VS ĐỒNG ĐỘI CHIẾN ĐẤU</span>
+      <h2 class="slide-title">Chatbot Thụ Động (Cũ) vs Agentic AI (Antigravity)</h2>
+      <p class="slide-subtitle">Sự khác biệt mang tính cách mạng giữa một "Cỗ máy trả lời lý thuyết" và một "Trợ lý biết tư duy, lập kế hoạch & hành động".</p>
+
+      <div class="grid-2">
+        <div class="box-card" style="border-left: 4px solid #f43f5e;">
+          <span class="card-badge pill-red">CHATBOT CŨ (CHATGPT / WEB AI)</span>
+          <span class="card-header-icon">💬</span>
+          <h3 class="card-heading">NPC "Chỉ Nói — Không Biết Làm"</h3>
+          <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 10px;">
+            <div>
+              <span class="badge-pill pill-red">Phản hồi 1 chiều</span>
+              <p class="card-desc" style="margin-top: 5px;">Hỏi gì đáp nấy bằng văn bản. Muốn làm việc với file thì bạn phải tự copy paste thủ công qua lại.</p>
+            </div>
+            <div>
+              <span class="badge-pill pill-red">Mù tịt về máy tính</span>
+              <p class="card-desc" style="margin-top: 5px;">Không chạm được vào file Excel, không thể mở thư mục Downloads, không tự lướt web cào giá.</p>
+            </div>
+            <div>
+              <span class="badge-pill pill-red">Sai thì chịu trận</span>
+              <p class="card-desc" style="margin-top: 5px;">Nếu viết code hoặc tính toán sai, nó vẫn trả lời tự tin mà không hề có cơ chế tự kiểm tra sửa lỗi.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="box-card box-card-highlight" style="border-left: 4px solid #10b981;">
+          <span class="card-badge pill-green">ANTIGRAVITY (AGENTIC AI THẾ HỆ MỚI)</span>
+          <span class="card-header-icon">🤖</span>
+          <h3 class="card-heading">Đồng Đội "Tư Duy ➔ Lập Kế Hoạch ➔ Thực Thi"</h3>
+          <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 10px;">
+            <div>
+              <span class="badge-pill pill-green">Vòng lặp Agentic 4 bước</span>
+              <p class="card-desc" style="margin-top: 5px;"><strong>Nhận thức ➔ Lập Plan ➔ Chạy công cụ ➔ Tự soi lỗi (Reflection)</strong> cho đến khi ra kết quả hoàn hảo.</p>
+            </div>
+            <div>
+              <span class="badge-pill pill-green">Làm chủ công cụ thực tế</span>
+              <p class="card-desc" style="margin-top: 5px;">Tự đọc file PDF/ảnh scan, tự ghi file Excel, tự gửi Gmail, tự duyệt web lấy dữ liệu thị trường.</p>
+            </div>
+            <div>
+              <span class="badge-pill pill-green">Chế độ Planning an toàn</span>
+              <p class="card-desc" style="margin-top: 5px;">Luôn lập bảng kế hoạch từng bước bằng tiếng Việt trình bạn phê duyệt trước khi bấm nút hành động.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quest-box" style="background: rgba(99, 102, 241, 0.1); border-color: rgba(99, 102, 241, 0.3);">
+        <div class="quest-info">
+          <span class="quest-tag" style="background: #6366f1; color: #fff;">BÀI HỌC CỐT LÕI</span>
+          <span class="quest-title">Bạn không còn là "người gõ phím thuê". Bạn đã chính thức trở thành "Người quản lý nhân sự AI"!</span>
+        </div>
+        <div class="reward-pill" style="color: #a5b4fc; border-color: rgba(99, 102, 241, 0.4); background: rgba(99, 102, 241, 0.15);">
+          <span>🧠 +50 TRÍ TUỆ AGENT</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 3: BẢN ĐỒ CHIẾN DỊCH 4 CHẶNG (QUEST MAP) -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="3" data-notes="Đây chính là bản đồ kho báu của chúng ta! Khóa học được thiết kế như một trò chơi RPG gồm 4 cửa ải chính. Ải 1: Xây căn cứ và nắm chắc phao an toàn. Ải 2: Thu thập 6 bảo bối thần kỳ gồm Rules, Custom Skills, Trình duyệt tự động và Cổng cắm MCP. Ải 3: Xuất kích càn quét 8 bài toán thực tế nơi công sở và chinh phục 1 đồ án Capstone theo đúng chuyên môn của bạn. Và cuối cùng, Ải 4: Bạn sẽ chạm tay vào ma thuật Vibe Coding, tự tay tạo ra trang web nội bộ lung linh và đưa lên Internet mà không cần biết viết một dòng mã nào. Đi từng bước một, ai cũng sẽ về đích dễ dàng!">
+      <span class="slide-eyebrow eyebrow-emerald">🗺️ BẢN ĐỒ HÀNH TRÌNH • 4 CỬA ẢI TỐI THƯỢNG</span>
+      <h2 class="slide-title">Lộ Trình Phá Đảo Antigravity Từng Bước Một</h2>
+      <p class="slide-subtitle">Thiết kế theo mô hình bậc thang vi mô (Micro-learning): Học đến đâu, nhận kết quả nhìn thấy được ngay đến đó.</p>
+
+      <div class="grid-4">
+        <div class="box-card" style="border-top: 4px solid #818cf8;">
+          <div style="font-family: var(--font-mono); color: #818cf8; font-weight: 800; font-size: 0.76rem; margin-bottom: 6px;">ẢI 1 • CĂN CỨ</div>
+          <span class="card-header-icon">🏰</span>
+          <h4 class="card-heading">Bản Doanh AI</h4>
+          <p class="card-desc">Cài đặt 1-click Antigravity Desktop & IDE, tạo Workspace có rào chắn an toàn Sandbox, kiểm soát Token.</p>
+          <div style="margin-top: 14px;">
+            <span class="badge-pill pill-blue">Cài đặt 15 phút</span>
+          </div>
+        </div>
+
+        <div class="box-card" style="border-top: 4px solid #06b6d4;">
+          <div style="font-family: var(--font-mono); color: #06b6d4; font-weight: 800; font-size: 0.76rem; margin-bottom: 6px;">ẢI 2 • KHO VŨ KHÍ</div>
+          <span class="card-header-icon">⚔️</span>
+          <h4 class="card-heading">6 Mini-Projects</h4>
+          <p class="card-desc">Nắm vững Rules chuẩn ISO, Custom Skills, Trình duyệt cào giá, MCP kết nối Gmail/Slack và Subagents song song.</p>
+          <div style="margin-top: 14px;">
+            <span class="badge-pill pill-green">6 Sản phẩm mini</span>
+          </div>
+        </div>
+
+        <div class="box-card" style="border-top: 4px solid #f59e0b;">
+          <div style="font-family: var(--font-mono); color: #f59e0b; font-weight: 800; font-size: 0.76rem; margin-bottom: 6px;">ẢI 3 • THỰC CHIẾN</div>
+          <span class="card-header-icon">⚡</span>
+          <h4 class="card-heading">Diệt Việc Vặt</h4>
+          <p class="card-desc">Càn quét 8 bài toán văn phòng hàng ngày (Excel, Hóa đơn, Biên bản họp, Email) + 1 Đồ án Capstone theo ngành.</p>
+          <div style="margin-top: 14px;">
+            <span class="badge-pill pill-gold">8 Quick-Wins</span>
+          </div>
+        </div>
+
+        <div class="box-card box-card-highlight" style="border-top: 4px solid #a855f7;">
+          <div style="font-family: var(--font-mono); color: #c084fc; font-weight: 800; font-size: 0.76rem; margin-bottom: 6px;">ẢI 4 • TRỞ THÀNH BUILDER</div>
+          <span class="card-header-icon">🚀</span>
+          <h4 class="card-heading">Vibe Coding Web App</h4>
+          <p class="card-desc">Mô tả bằng tiếng Việt để AI tự dựng Dashboard, Web tra cứu quy định và Deploy miễn phí lên Internet trong 3 phút.</p>
+          <div style="margin-top: 14px;">
+            <span class="badge-pill pill-purple">Làm chủ Web App</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="quest-box" style="background: rgba(6, 182, 212, 0.1); border-color: rgba(6, 182, 212, 0.3);">
+        <div class="quest-info">
+          <span class="quest-tag" style="background: #06b6d4; color: #042f2e;">QUY TẮC BẢO ĐẢM</span>
+          <span class="quest-title">Không lý thuyết suông! Mỗi bài học đều có file dữ liệu mẫu + câu lệnh Prompt có sẵn để bạn gõ là chạy!</span>
+        </div>
+        <div class="reward-pill" style="color: #67e8f9; border-color: rgba(6, 182, 212, 0.4); background: rgba(6, 182, 212, 0.15);">
+          <span>📦 +50 PROMPT TEMPLATES</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 4: PHAO CỨU SINH & AN TOÀN TUYỆT ĐỐI -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="4" data-notes="Nỗi sợ lớn nhất của người không chuyên là gì? 'Thưa thầy, lỡ con AI nó chạy bậy, xóa mất file quan trọng hay làm hỏng máy tính của em thì sao?'. Đây là lý do tôi dành riêng slide này để trao cho bạn 3 chiếc bùa hộ mệnh an toàn tuyệt đối. Thứ nhất: Sân chơi Workspace Sandbox — AI chỉ được chơi trong chiếc hộp bạn chỉ định, cấm tiệt đụng vào ổ C hệ thống. Thứ hai: Cơ chế hỏi trước khi làm — bất kỳ lệnh xóa hay sửa file quan trọng nào, AI bắt buộc phải hỏi bạn cho phép thì mới được chạy. Và thứ ba: Bùa cứu mạng khẩn cấp Ctrl+C hoặc nút Kill Task — chỉ cần bạn bấm, AI sẽ lập tức dừng hình ngay lập tức! Yên tâm 100% chưa nào?">
+      <span class="slide-eyebrow eyebrow-rose">🛡️ BẢO VỆ TÂN THỦ • AN TOÀN TUYỆT ĐỐI</span>
+      <h2 class="slide-title">Bộ "Bùa Hộ Mệnh": Bảo Vệ Máy Tính 100%</h2>
+      <p class="slide-subtitle">Giải tỏa hoàn toàn nỗi sợ AI làm hỏng máy tính. Bạn luôn nắm quyền kiểm soát tối cao!</p>
+
+      <div class="grid-3">
+        <div class="box-card" style="border-left: 4px solid #38bdf8;">
+          <span class="card-badge pill-blue">LÁ CHẮN 1</span>
+          <span class="card-header-icon">📦</span>
+          <h3 class="card-heading">Hàng Rào Sandbox</h3>
+          <p class="card-desc">
+            AI được cấp một "sân chơi có rào chắn" gọi là <strong>Workspace</strong>. 
+            Mọi thao tác đọc, ghi file chỉ diễn ra trong thư mục bạn cho phép, tuyệt đối không xâm phạm file hệ thống.
+          </p>
+          <div style="margin-top: 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #38bdf8;">
+            ✔ Không lo mất file cá nhân
+          </div>
+        </div>
+
+        <div class="box-card box-card-highlight" style="border-left: 4px solid #10b981;">
+          <span class="card-badge pill-green">LÁ CHẮN 2</span>
+          <span class="card-header-icon">✋</span>
+          <h3 class="card-heading">Quyền "Hỏi Trước Khi Làm"</h3>
+          <p class="card-desc">
+            Chế độ <code>Request-Review</code>: Khi Agent chuẩn bị chạy một lệnh hoặc sửa file, giao diện sẽ hiện nút bấm yêu cầu bạn duyệt.
+            Chỉ khi bạn bấm <strong>Proceed</strong> thì AI mới hành động!
+          </p>
+          <div style="margin-top: 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #34d399;">
+            ✔ Bạn luôn là người quyết định
+          </div>
+        </div>
+
+        <div class="box-card" style="border-left: 4px solid #f43f5e;">
+          <span class="card-badge pill-red">LÁ CHẮN 3</span>
+          <span class="card-header-icon">🚨</span>
+          <h3 class="card-heading">Nút Dừng Khẩn Cấp</h3>
+          <p class="card-desc">
+            Nếu Agent bị lặp vòng lặp hoặc bạn đổi ý: Chỉ cần nhấn phím tắt <span class="badge-pill pill-red">Ctrl + C</span> hoặc bấm nút <strong>Kill Task</strong> đỏ rực trên màn hình, Agent sẽ dừng lại tức thì!
+          </p>
+          <div style="margin-top: 12px; font-family: var(--font-mono); font-size: 0.78rem; color: #f87171;">
+            ✔ Lệnh /reset làm mới 100%
+          </div>
+        </div>
+      </div>
+
+      <div class="quest-box" style="background: rgba(244, 63, 94, 0.1); border-color: rgba(244, 63, 94, 0.3);">
+        <div class="quest-info">
+          <span class="quest-tag" style="background: #f43f5e; color: #fff;">CAM KẾT AN TOÀN</span>
+          <span class="quest-title">Bạn tự do nghịch ngợm, thử nghiệm và khám phá mà không có bất kỳ rủi ro nào cho máy tính cá nhân!</span>
+        </div>
+        <div class="reward-pill" style="color: #fda4af; border-color: rgba(244, 63, 94, 0.4); background: rgba(244, 63, 94, 0.15);">
+          <span>🛡️ +100 ĐIỂM AN TOÀN</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 5: NHIỆM VỤ ĐẦU TIÊN (BOSS BATTLE QUÂN ĐOÀN) -->
+    <!-- ========================================== -->
+    <div class="slide" data-slide="5" data-notes="Tuyệt vời! Bây giờ trang bị đã đủ, tinh thần đã sẵn sàng, chúng ta chính thức bước vào Trận Đánh Boss đầu tiên: Tải ngay phần mềm và gửi câu lệnh khởi quân! Ở slide này, các bạn chỉ cần làm theo 3 bước cực kỳ đơn giản trên màn hình: Một là tải bản Antigravity Desktop cài đặt trong 1 phút. Hai là tạo thư mục tên 'AI_Workspace'. Và ba là gõ câu lệnh thần chú xin chào để xem Agent tự giới thiệu bản thân. Ai làm xong 3 bước này xem như đã vượt qua Ải Tân Thủ và nhận trọn vẹn 1000 EXP đầu tiên! Hãy mở máy lên và cùng tôi thực chiến ngay bây giờ!">
+      <span class="slide-eyebrow eyebrow-amber">⚔️ THỰC HÀNH CỬA ẢI 1 • NHIỆM VỤ ĐẦU TIÊN</span>
+      <h2 class="slide-title">Chiêu Mộ Agent Đầu Tiên Của Bạn (3 Bước Trong 5 Phút)</h2>
+      <p class="slide-subtitle">Không chần chừ! Hãy mở Antigravity lên và cùng thực hiện câu lệnh chào sân đầu tiên ngay tại lớp.</p>
+
+      <div class="grid-2">
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div class="box-card" style="border-left: 4px solid #818cf8;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+              <span class="badge-pill pill-blue">BƯỚC 1</span>
+              <strong style="color: #ffffff;">Mở Antigravity Desktop (Bản 2.0)</strong>
+            </div>
+            <p class="card-desc">Cài đặt từ bộ cài chính thức, đăng nhập tài khoản Google và chọn mô hình <code>Gemini Flash</code> để phản hồi siêu tốc.</p>
+          </div>
+
+          <div class="box-card" style="border-left: 4px solid #06b6d4;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+              <span class="badge-pill pill-green">BƯỚC 2</span>
+              <strong style="color: #ffffff;">Tạo Thư Mục Workspace</strong>
+            </div>
+            <p class="card-desc">Bấm <strong>Open Folder</strong>, chọn một thư mục mới tinh (ví dụ: <code>D:/Thuc_Hanh_AI</code>) làm căn cứ an toàn.</p>
+          </div>
+
+          <div class="box-card box-card-highlight" style="border-left: 4px solid #facc15;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+              <span class="badge-pill pill-gold">BƯỚC 3</span>
+              <strong style="color: #ffffff;">Gửi Câu Lệnh "Khởi Quân"</strong>
+            </div>
+            <p class="card-desc">Gõ câu lệnh mẫu bên phải vào khung chat để chiêm ngưỡng Agent tự giới thiệu và kiểm tra thư mục.</p>
+          </div>
+        </div>
+
+        <div class="terminal-box">
+          <div class="terminal-topbar">
+            <span class="term-dot term-dot-r"></span>
+            <span class="term-dot term-dot-y"></span>
+            <span class="term-dot term-dot-g"></span>
+            <span class="term-title">Antigravity Chat Canvas — Agent Online</span>
+          </div>
+          <div class="terminal-body">
+            <p><span class="term-comment"># Lệnh khởi quân của Tổng Chỉ Huy (Bạn):</span></p>
+            <p style="color: #38bdf8; font-weight: 600;">"Chào bạn! Bạn là trợ lý Agentic AI của tôi trong thư mục này. Hãy quét thư mục hiện tại và báo cáo xem có file nào chưa?"</p>
+            <br>
+            <p><span class="term-comment"># Phản hồi từ Agent (Antigravity):</span></p>
+            <p><span class="term-gold">🤖 Agent Antigravity:</span> "Chào Tổng chỉ huy! Tôi đã nhận lệnh. Tôi vừa kiểm tra thư mục [Thuc_Hanh_AI]. Hiện tại căn cứ đang hoàn toàn trống và sẵn sàng cho các nhiệm vụ tiếp theo!"</p>
+            <br>
+            <p class="term-success">✔ TÂN THỦ GIA NHẬP SERVER THÀNH CÔNG! (+1000 EXP)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="quest-box" style="background: rgba(250, 204, 21, 0.12); border-color: rgba(250, 204, 21, 0.35);">
+        <div class="quest-info">
+          <span class="quest-tag" style="background: #facc15; color: #713f12;">HOÀN THÀNH ẢI 1</span>
+          <span class="quest-title">Chúc mừng bạn đã xuất sắc vượt qua bài học đầu tiên! Nhấn phím S để nghe lại lời thoại hoặc phím F để chiếu toàn màn hình.</span>
+        </div>
+        <div class="reward-pill" style="color: #fde047; border-color: rgba(250, 204, 21, 0.5); background: rgba(250, 204, 21, 0.2);">
+          <span>🎉 LEVEL UP ➔ LEVEL 2!</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Speaker Notes Drawer -->
+  <aside id="notes-drawer">
+    <div class="notes-header">
+      <div class="notes-title">
+        <span>🎙️</span>
+        <span>KỊCH BẢN GIẢNG VIÊN (SPEAKER SCRIPT)</span>
+      </div>
+      <button class="btn-action" id="btn-close-notes" style="padding: 4px 8px;">✕</button>
+    </div>
+    <span class="notes-tag" id="notes-slide-tag">SLIDE 01 / 05</span>
+    <div class="notes-content" id="notes-body">
+      <!-- Script injected via JS -->
+    </div>
+  </aside>
+
+  <!-- Footer Navigation -->
+  <footer>
+    <div class="nav-hints">
+      <span>🎮 Điều khiển:</span>
+      <span><span class="kbd">◀</span> <span class="kbd">▶</span> hoặc <span class="kbd">Phím Cách</span> để chuyển slide</span>
+      <span><span class="kbd">S</span> Bật kịch bản lời thoại giảng bài</span>
+      <span><span class="kbd">F</span> Toàn màn hình</span>
+      <span><span class="kbd">Ctrl+P</span> Xuất Handout PDF</span>
+    </div>
+    <div>
+      <span>Bản quyền Khóa Học AI Thực Chiến • Google Antigravity 2026</span>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const slides = document.querySelectorAll('.slide');
+      const progressBar = document.getElementById('progress-bar');
+      const slideNumDisplay = document.getElementById('slide-num');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const btnNotes = document.getElementById('btn-notes');
+      const btnCloseNotes = document.getElementById('btn-close-notes');
+      const btnFullscreen = document.getElementById('btn-fullscreen');
+      const notesDrawer = document.getElementById('notes-drawer');
+      const notesBody = document.getElementById('notes-body');
+      const notesSlideTag = document.getElementById('notes-slide-tag');
+
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+
+      function updateSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= totalSlides) index = totalSlides - 1;
+        currentSlide = index;
+
+        slides.forEach((slide, i) => {
+          if (i === currentSlide) {
+            slide.classList.remove('active');
+            void slide.offsetWidth; // Kích hoạt DOM reflow để animation luôn chạy lại mượt mà từ đầu
+            slide.classList.add('active');
+          } else {
+            slide.classList.remove('active');
+          }
+        });
+
+        // Update progress bar
+        const progress = ((currentSlide + 1) / totalSlides) * 100;
+        progressBar.style.width = progress + '%';
+
+        // Update counter
+        const currentStr = String(currentSlide + 1).padStart(2, '0');
+        const totalStr = String(totalSlides).padStart(2, '0');
+        slideNumDisplay.textContent = `${currentStr} / ${totalStr}`;
+
+        // Update speaker notes
+        const activeSlideElem = slides[currentSlide];
+        const notesText = activeSlideElem.getAttribute('data-notes') || 'Chưa có ghi chú kịch bản cho slide này.';
+        notesSlideTag.textContent = `SLIDE ${currentStr} / ${totalStr}`;
+        notesBody.innerHTML = `<blockquote>"${notesText}"</blockquote>`;
+        notesDrawer.scrollTop = 0;
+      }
+
+      function nextSlide() {
+        if (currentSlide < totalSlides - 1) {
+          updateSlide(currentSlide + 1);
+        }
+      }
+
+      function prevSlide() {
+        if (currentSlide > 0) {
+          updateSlide(currentSlide - 1);
+        }
+      }
+
+      function toggleNotes() {
+        notesDrawer.classList.toggle('open');
+        btnNotes.classList.toggle('active', notesDrawer.classList.contains('open'));
+      }
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => {
+            console.error('Error attempting to enable fullscreen:', err);
+          });
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+        }
+      }
+
+      // Event listeners
+      btnNext.addEventListener('click', nextSlide);
+      btnPrev.addEventListener('click', prevSlide);
+      btnNotes.addEventListener('click', toggleNotes);
+      btnCloseNotes.addEventListener('click', toggleNotes);
+      btnFullscreen.addEventListener('click', toggleFullscreen);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+          e.preventDefault();
+          nextSlide();
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'Backspace') {
+          e.preventDefault();
+          prevSlide();
+        } else if (e.key === 's' || e.key === 'S') {
+          e.preventDefault();
+          toggleNotes();
+        } else if (e.key === 'f' || e.key === 'F') {
+          e.preventDefault();
+          toggleFullscreen();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          updateSlide(0);
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          updateSlide(totalSlides - 1);
+        }
+      });
+
+      // Initialize
+      updateSlide(0);
+    })();
+  </script>
+</body>
+</html>

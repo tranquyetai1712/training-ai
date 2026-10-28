@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thực Chiến 1: Trợ Lý Hộp Thư Tự Động • GOOGLE ANTIGRAVITY MASTERCLASS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-void: #0a0e17;
+      --bg-surface: #111827;
+      --bg-surface-elevated: #1e293b;
+      --border-subtle: rgba(255, 255, 255, 0.1);
+      --border-focus: rgba(99, 102, 241, 0.5);
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-dim: #94a3b8;
+      
+      --accent-indigo: #6366f1;
+      --accent-cyan: #0ea5e9;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-void);
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 90% 90%, rgba(6, 182, 212, 0.1) 0%, transparent 45%);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #progress-bar-container {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+    #progress-bar {
+      height: 100%;
+      width: 25%;
+      background: linear-gradient(90deg, var(--accent-indigo), var(--accent-cyan));
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.6);
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    header {
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(7, 9, 14, 0.85);
+      backdrop-filter: blur(16px);
+      z-index: 50;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+    .brand a {
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .brand a:hover { color: var(--accent-cyan); }
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #a5b4fc;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .slide-counter {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+    .slide-counter strong { color: var(--accent-cyan); }
+
+    .btn-nav {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-nav:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    #deck-stage {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 24px;
+      overflow: hidden;
+    }
+
+    .slide-canvas {
+      position: absolute;
+      width: 100%;
+      max-width: 1320px;
+      height: 100%;
+      max-height: 740px;
+      background: linear-gradient(180deg, #131c2e 0%, #0d1524 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 28px 40px;
+      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.97) translateY(16px);
+      transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+      overflow: hidden;
+    }
+
+    .slide-canvas.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+      z-index: 10;
+    }
+
+    @keyframes fadeInSlideUp {
+      from { opacity: 0; transform: translateY(16px); filter: blur(4px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+
+    .slide-canvas:not(.active) * { opacity: 0; }
+    .slide-canvas.active .anim-1 { animation: fadeInSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both; }
+    .slide-canvas.active .anim-2 { animation: fadeInSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both; }
+    .slide-canvas.active .anim-3 { animation: fadeInSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both; }
+    .slide-canvas.active .anim-4 { animation: fadeInSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both; }
+
+    .svg-icon {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
+      stroke: currentColor;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .tag-hero {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-cyan);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .title-display {
+      font-size: 2.15rem;
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .title-display span {
+      background: linear-gradient(90deg, #818cf8, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .lead-desc {
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      max-width: 900px;
+      font-weight: 400;
+    }
+
+    .slide-hud {
+      position: absolute;
+      top: 26px;
+      right: 36px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hud-chip {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hud-chip strong { color: var(--accent-cyan); }
+
+    /* Layout Cards & Grids */
+    .card-grid {
+      display: grid;
+      gap: 16px;
+      flex: 1;
+      align-items: stretch;
+      margin-top: 14px;
+    }
+    .col-2 { grid-template-columns: repeat(2, 1fr); }
+    .col-3 { grid-template-columns: repeat(3, 1fr); }
+    .col-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .stat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .card-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .stat-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .stat-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      flex: 1;
+    }
+    .stat-desc ul {
+      margin-left: 18px;
+      margin-top: 6px;
+    }
+    .stat-desc li {
+      margin-bottom: 4px;
+    }
+
+    .key-points-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .key-point-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.86rem;
+      line-height: 1.45;
+      color: var(--text-main);
+    }
+    .key-point-item strong {
+      color: #38bdf8;
+    }
+
+    .code-box {
+      background: #080d1a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: #93c5fd;
+      line-height: 1.45;
+      overflow-x: auto;
+      margin-top: 8px;
+    }
+
+    .footer-bar-summary {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    /* Speaker Notes Drawer */
+    #notes-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 199;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    #notes-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #notes-drawer {
+      position: fixed;
+      top: 0;
+      right: -520px;
+      width: 500px;
+      height: 100vh;
+      background: #0d131f;
+      border-left: 1px solid var(--border-subtle);
+      box-shadow: -15px 0 40px rgba(0, 0, 0, 0.8);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #notes-drawer.open { right: 0; }
+
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .notes-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .notes-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-cyan);
+      margin-top: 12px;
+    }
+    .notes-content {
+      flex: 1;
+      overflow-y: auto;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-top: 14px;
+      white-space: pre-wrap;
+    }
+
+    footer {
+      height: 38px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      background: rgba(7, 9, 14, 0.9);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+    }
+    .kbd {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-family: var(--font-mono);
+      color: #fff;
+    }
+</style>
+</head>
+<body>
+
+  <div id="progress-bar-container"><div id="progress-bar"></div></div>
+
+  <header>
+    <div class="brand">
+      <a href="index.html" title="Trở về Trang chủ Portal Lobby">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>LOBBY</span>
+      </a>
+      <span style="color: var(--border-subtle);">/</span>
+      <span class="brand-badge">PHẦN 09</span>
+      <span style="color: #fff; font-weight: 600;">Thực Chiến 1: Trợ Lý Hộp Thư Tự Động</span>
+    </div>
+    <div class="header-actions">
+      <div class="slide-counter">SLIDE <strong id="slide-num">1 / 3</strong></div>
+      <button class="btn-nav" id="btn-prev">◀ Lùi</button>
+      <button class="btn-nav" id="btn-next">Tiếp ▶</button>
+      <button class="btn-nav" id="btn-notes" title="Bật/Tắt Lời thoại kịch bản (Phím S)">🎙️ Lời Thoại (S)</button>
+      <button class="btn-nav" id="btn-fullscreen" title="Toàn màn hình (Phím F)">⛶</button>
+    </div>
+  </header>
+
+  <main id="deck-stage">
+
+    <div class="slide-canvas active" data-slide="1" data-notes="Thực chiến 01 - Trợ lý Hộp thư tự động: Bài toán và Kết nối Gmail MCP.
+Nỗi đau thực tế: Hộp thư công sở mỗi ngày nhận 50-100 email. Email quảng cáo, thông báo hệ thống trộn lẫn với email chỉ đạo khẩn cấp từ Tổng Giám Đốc hoặc khiếu nại của khách hàng VIP.
+Giải pháp: Cổng kết nối Gmail MCP.
+1. Kết nối chính chủ an toàn qua OAuth2 xác thực cục bộ.
+2. AI chỉ đọc tiêu đề và nội dung thư để phân loại, hoàn toàn tôn trọng quyền riêng tư.
+3. Không cần cài đặt phần mềm bên thứ 3 phức tạp.
+Bắt đầu biến AI thành người thư ký gác cổng hộp thư!">
+      <div class="slide-hud">
+        <div class="hud-chip">THỰC CHIẾN 01: <strong>TRỢ LÝ HỘP THƯ SỐ</strong></div>
+      </div>
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-rose);"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> BÀI TOÁN HỘP THƯ CÔNG SỞ</span>
+        <h1 class="title-display">Thực Chiến 1 — Email: <span>Chấm Dứt Nỗi Sợ Hộp Thư Rác</span></h1>
+        <p class="lead-desc">Kết nối Gmail MCP chuẩn hóa — Biến AI thành người gác cổng hộp thư thông minh cho nhân viên văn phòng.</p>
+      </div>
+      <div class="card-grid col-2 anim-2">
+        <div class="stat-card" style="border-top: 3px solid var(--accent-rose);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(244,63,94,0.18); color: #fda4af;">THỰC TRẠNG ĐAU ĐẦU</span></div>
+          <div class="stat-title">Quá Tải Thông Tin</div>
+          <div class="stat-desc">
+            <ul class="key-points-list">
+              <li class="key-point-item"><span style="color: #fb7185;">•</span> Mất 45-60 phút mỗi sáng chỉ để lọc và xóa email rác.</li>
+              <li class="key-point-item"><span style="color: #fb7185;">•</span> Nguy cơ bỏ sót email duyệt chi khẩn cấp của Sếp hoặc báo giá khách hàng.</li>
+              <li class="key-point-item"><span style="color: #fb7185;">•</span> Áp lực tinh thần vì con số email chưa đọc nhảy lên hàng nghìn.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">GIẢI PHÁP GMAIL MCP</span></div>
+          <div class="stat-title">Gác Cổng Tự Động</div>
+          <div class="stat-desc">
+            <ul class="key-points-list">
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Kết nối trực tiếp:</strong> Cắm Gmail MCP đọc hộp thư theo thời gian thực.</li>
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Xác thực an toàn:</strong> Đăng nhập OAuth2 chính chủ Google, bảo mật token nội bộ.</li>
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Không lọt dữ liệu:</strong> Dữ liệu xử lý an toàn, tuân thủ chính sách doanh nghiệp.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bar-summary anim-3">
+        <span>📧 <strong>Mục tiêu:</strong> Hộp thư luôn đạt trạng thái Inbox Zero — Việc quan trọng nổi lên ngay đầu!</span>
+        <span style="font-family: var(--font-mono); color: var(--accent-rose); font-weight: 700;">INBOX ZERO</span>
+      </div>
+    </div>
+
+    <div class="slide-canvas" data-slide="2" data-notes="Thực hành: Phân loại thông minh 4 nhãn màu chuẩn công sở.
+Hệ thống nhãn màu tối ưu:
+1. ĐỎ - 01_KHAN_CAP_SEP: Email từ ban giám đốc, chỉ đạo gấp, hợp đồng cần ký duyệt trong ngày.
+2. VÀNG - 02_KHACH_HANG_VIP: Yêu cầu báo giá, phản hồi khiếu nại của đối tác chiến lược.
+3. XANH LÁ - 03_TAI_CHINH_HOA_DON: Thông báo biến động số dư, hóa đơn điện tử VAT nộp phòng kế toán.
+4. XÁM - 04_BAN_TIN_SPAM: Newsletter quảng cáo, thông báo khuyến mãi, tự động lưu trữ không làm phiền.
+AI đọc hiểu ngữ cảnh và gắn thẻ nhãn ngay trên giao diện Gmail của bạn!">
+      <div class="slide-hud">
+        <div class="hud-chip">THỰC CHIẾN 01: <strong>GẮN NHÃN 4 MỨC ĐỘ</strong></div>
+      </div>
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-cyan);"><svg class="svg-icon" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg> QUY TRÌNH PHÂN LOẠI</span>
+        <h2 class="title-display">Thực Hành: <span>Hệ Thống 4 Nhãn Màu Tự Động</span></h2>
+        <p class="lead-desc">AI đọc hiểu ngữ cảnh từng bức thư và tự động gắn thẻ màu ưu tiên trực tiếp trên Gmail của bạn.</p>
+      </div>
+      <div class="card-grid col-2 anim-2">
+        <div class="stat-card" style="border-top: 3px solid var(--accent-rose);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(244,63,94,0.18); color: #fda4af;">NHÃN ƯU TIÊN CAO</span></div>
+          <div class="stat-title">Khẩn Cấp & Đối Tác VIP</div>
+          <div class="stat-desc">
+            <ul class="key-points-list">
+              <li class="key-point-item"><span style="color: #fb7185;">🔴</span> <strong>01_KHAN_CAP_SEP:</strong> Email chỉ đạo từ Ban Giám Đốc, lịch họp gấp.</li>
+              <li class="key-point-item"><span style="color: #f59e0b;">🟡</span> <strong>02_KHACH_HANG_VIP:</strong> Khiếu nại dịch vụ, yêu cầu báo giá đối tác lớn.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">NHÃN VẬN HÀNH</span></div>
+          <div class="stat-title">Tài Chính & Bản Tin</div>
+          <div class="stat-desc">
+            <ul class="key-points-list">
+              <li class="key-point-item"><span style="color: #10b981;">🟢</span> <strong>03_TAI_CHINH_HOA_DON:</strong> Hóa đơn điện tử VAT, xác nhận thanh toán ngân hàng.</li>
+              <li class="key-point-item"><span style="color: #94a3b8;">⚪</span> <strong>04_BAN_TIN_SPAM:</strong> Newsletter, tin khuyến mãi ➔ Tự động lưu trữ dọn sạch Inbox.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bar-summary anim-3">
+        <span>⚡ <strong>Tốc độ xử lý:</strong> Quét 50 email chỉ trong 15 giây — Không bao giờ lo sót việc của Sếp!</span>
+        <span style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 700;">ACCURACY 99%</span>
+      </div>
+    </div>
+
+    <div class="slide-canvas" data-slide="3" data-notes="Tự động hóa với lệnh /schedule: Hẹn giờ 8h00 sáng mỗi ngày.
+Tính năng đỉnh cao: Bạn không cần phải mở máy lên gõ lệnh!
+1. Sử dụng lệnh /schedule cron: '0 8 * * 1-5' (Từ thứ 2 đến thứ 6 lúc 8h sáng).
+2. Lệnh yêu cầu: 'AI tự động quét hòm thư đêm qua, gắn 4 nhãn màu và gửi báo cáo 3 thư quan trọng nhất'.
+3. Sáng thức dậy mở máy tính: Mọi email đã được dán nhãn ngăn nắp, kèm 1 tin nhắn tóm tắt ngắn gọn.
+Bạn bước vào ngày làm việc với tâm thế thảnh thơi, kiểm soát 100%!">
+      <div class="slide-hud">
+        <div class="hud-chip">THỰC CHIẾN 01: <strong>TỰ ĐỘNG HÓA VỚI /SCHEDULE</strong></div>
+      </div>
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-amber);"><svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> TỰ ĐỘNG HÓA KHÔNG CHẠM</span>
+        <h2 class="title-display">Lên Lịch Hẹn Giờ: <span>Cứ 8h00 Sáng AI Tự Điểm Tin</span></h2>
+        <p class="lead-desc">Dùng lệnh /schedule để thiết lập kịch bản chạy ngầm định kỳ — Bạn thức dậy là công việc đã xong xuôi.</p>
+      </div>
+      <div class="card-grid col-2 anim-2">
+        <div class="stat-card" style="border-top: 3px solid var(--accent-amber);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(245,158,11,0.18); color: #fde68a;">CÚ PHÁP ĐẶT LỊCH</span></div>
+          <div class="stat-title">Lệnh /schedule Trực Quan</div>
+          <div class="code-box" style="color: #fde68a;">/schedule
+Cron: "0 8 * * 1-5" (8:00 AM T2-T6)
+Prompt: "Dùng Gmail MCP quét các thư mới nhận từ đêm qua. Gán 4 nhãn tương ứng và xuất báo cáo tóm tắt 3 email quan trọng nhất cần xử lý ngay!"</div>
+        </div>
+        <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">BẢN ĐIỂM TIN BUỔI SÁNG</span></div>
+          <div class="stat-title">Thông Báo Tóm Tắt Tinh Gọn</div>
+          <div class="stat-desc">
+            <ul class="key-points-list">
+              <li class="key-point-item"><span style="color: #fb7185;">🔴</span> <strong>Email 1:</strong> Sếp gửi yêu cầu nộp báo cáo doanh thu trước 10h.</li>
+              <li class="key-point-item"><span style="color: #f59e0b;">🟡</span> <strong>Email 2:</strong> Khách hàng VIP VinFast đề nghị gia hạn hợp đồng.</li>
+              <li class="key-point-item"><span style="color: #10b981;">🟢</span> <strong>Email 3:</strong> Hóa đơn tiền điện tháng 10 đã được lưu trữ an toàn.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bar-summary anim-3">
+        <span>⏰ <strong>Tự động hóa triệt để:</strong> Máy tự chạy, bạn chỉ việc uống cafe và giải quyết việc trọng tâm!</span>
+        <span style="font-family: var(--font-mono); color: var(--accent-amber); font-weight: 700;">HANDS-FREE ROUTINE</span>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="notes-backdrop"></div>
+  <aside id="notes-drawer">
+    <div class="notes-header">
+      <div class="notes-title">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+        <span>KỊCH BẢN GIẢNG VIÊN</span>
+      </div>
+      <button class="btn-nav" id="btn-close-notes">✕</button>
+    </div>
+    <span class="notes-tag" id="notes-slide-tag">SLIDE 01 / 3</span>
+    <div class="notes-content" id="notes-body"></div>
+  </aside>
+
+  <footer>
+    <div>
+      <span>Điều khiển:</span>
+      <span style="margin-left: 8px;"><span class="kbd">◀</span> <span class="kbd">▶</span> hoặc <span class="kbd">Space</span> chuyển slide</span>
+      <span style="margin-left: 8px;"><span class="kbd">S</span> Kịch bản</span>
+      <span style="margin-left: 8px;"><span class="kbd">F</span> Toàn màn hình</span>
+    </div>
+    <div style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 700;">
+      GOOGLE ANTIGRAVITY MASTERCLASS • 2026
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const slides = document.querySelectorAll('.slide-canvas');
+      const progressBar = document.getElementById('progress-bar');
+      const slideNumDisplay = document.getElementById('slide-num');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const btnNotes = document.getElementById('btn-notes');
+      const btnCloseNotes = document.getElementById('btn-close-notes');
+      const btnFullscreen = document.getElementById('btn-fullscreen');
+      const notesDrawer = document.getElementById('notes-drawer');
+      const notesBody = document.getElementById('notes-body');
+      const notesSlideTag = document.getElementById('notes-slide-tag');
+      const notesBackdrop = document.getElementById('notes-backdrop');
+
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+
+      function updateSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= totalSlides) index = totalSlides - 1;
+        currentSlide = index;
+
+        slides.forEach((s, idx) => {
+          if (idx === currentSlide) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+
+        const pct = ((currentSlide + 1) / totalSlides) * 100;
+        if (progressBar) progressBar.style.width = pct + '%';
+        if (slideNumDisplay) slideNumDisplay.textContent = (currentSlide + 1) + ' / ' + totalSlides;
+
+        const activeSlide = slides[currentSlide];
+        if (activeSlide && notesBody) {
+          notesBody.textContent = activeSlide.getAttribute('data-notes') || 'Chưa có ghi chú cho slide này.';
+        }
+        if (notesSlideTag) {
+          notesSlideTag.textContent = 'SLIDE ' + (currentSlide + 1) + ' / ' + totalSlides;
+        }
+      }
+
+      function toggleNotes() {
+        const isOpen = notesDrawer.classList.contains('open');
+        if (isOpen) {
+          notesDrawer.classList.remove('open');
+          notesBackdrop.classList.remove('open');
+        } else {
+          notesDrawer.classList.add('open');
+          notesBackdrop.classList.add('open');
+        }
+      }
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => {});
+        } else {
+          if (document.exitFullscreen) document.exitFullscreen();
+        }
+      }
+
+      if (btnPrev) btnPrev.addEventListener('click', () => updateSlide(currentSlide - 1));
+      if (btnNext) btnNext.addEventListener('click', () => updateSlide(currentSlide + 1));
+      if (btnNotes) btnNotes.addEventListener('click', toggleNotes);
+      if (btnCloseNotes) btnCloseNotes.addEventListener('click', toggleNotes);
+      if (notesBackdrop) notesBackdrop.addEventListener('click', toggleNotes);
+      if (btnFullscreen) btnFullscreen.addEventListener('click', toggleFullscreen);
+
+      window.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.key === 'ArrowRight' || e.key === 'Space') {
+          e.preventDefault();
+          updateSlide(currentSlide + 1);
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          updateSlide(currentSlide - 1);
+        } else if (e.key === 's' || e.key === 'S') {
+          toggleNotes();
+        } else if (e.key === 'f' || e.key === 'F') {
+          toggleFullscreen();
+        }
+      });
+
+      updateSlide(0);
+    })();
+</script>
+</body>
+</html>

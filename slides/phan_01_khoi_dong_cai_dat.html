@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khởi Động & Cài Đặt Antigravity • GOOGLE ANTIGRAVITY MASTERCLASS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-void: #0a0e17;
+      --bg-surface: #111827;
+      --bg-surface-elevated: #1e293b;
+      --border-subtle: rgba(255, 255, 255, 0.1);
+      --border-focus: rgba(99, 102, 241, 0.5);
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-dim: #94a3b8;
+      
+      --accent-indigo: #6366f1;
+      --accent-cyan: #0ea5e9;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-void);
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 90% 90%, rgba(6, 182, 212, 0.1) 0%, transparent 45%);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #progress-bar-container {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+    #progress-bar {
+      height: 100%;
+      width: 25%;
+      background: linear-gradient(90deg, var(--accent-indigo), var(--accent-cyan));
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.6);
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    header {
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(7, 9, 14, 0.85);
+      backdrop-filter: blur(16px);
+      z-index: 50;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+    .brand a {
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .brand a:hover { color: var(--accent-cyan); }
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #a5b4fc;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .slide-counter {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+    .slide-counter strong { color: var(--accent-cyan); }
+
+    .btn-nav {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-nav:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    #deck-stage {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 24px;
+      overflow: hidden;
+    }
+
+    .slide-canvas {
+      position: absolute;
+      width: 100%;
+      max-width: 1320px;
+      height: 100%;
+      max-height: 740px;
+      background: linear-gradient(180deg, #131c2e 0%, #0d1524 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 28px 40px;
+      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.97) translateY(16px);
+      transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+      overflow: hidden;
+    }
+
+    .slide-canvas.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+      z-index: 10;
+    }
+
+    @keyframes fadeInSlideUp {
+      from { opacity: 0; transform: translateY(16px); filter: blur(4px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+
+    .slide-canvas:not(.active) * { opacity: 0; }
+    .slide-canvas.active .anim-1 { animation: fadeInSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both; }
+    .slide-canvas.active .anim-2 { animation: fadeInSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both; }
+    .slide-canvas.active .anim-3 { animation: fadeInSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both; }
+    .slide-canvas.active .anim-4 { animation: fadeInSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both; }
+
+    .svg-icon {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
+      stroke: currentColor;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .tag-hero {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-cyan);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .title-display {
+      font-size: 2.15rem;
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .title-display span {
+      background: linear-gradient(90deg, #818cf8, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .lead-desc {
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      max-width: 900px;
+      font-weight: 400;
+    }
+
+    .slide-hud {
+      position: absolute;
+      top: 26px;
+      right: 36px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hud-chip {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hud-chip strong { color: var(--accent-cyan); }
+
+    /* Layout Cards & Grids */
+    .card-grid {
+      display: grid;
+      gap: 16px;
+      flex: 1;
+      align-items: stretch;
+      margin-top: 14px;
+    }
+    .col-2 { grid-template-columns: repeat(2, 1fr); }
+    .col-3 { grid-template-columns: repeat(3, 1fr); }
+    .col-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .stat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .card-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .stat-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .stat-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      flex: 1;
+    }
+    .stat-desc ul {
+      margin-left: 18px;
+      margin-top: 6px;
+    }
+    .stat-desc li {
+      margin-bottom: 4px;
+    }
+
+    .key-points-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .key-point-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.86rem;
+      line-height: 1.45;
+      color: var(--text-main);
+    }
+    .key-point-item strong {
+      color: #38bdf8;
+    }
+
+    .code-box {
+      background: #080d1a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: #93c5fd;
+      line-height: 1.45;
+      overflow-x: auto;
+      margin-top: 8px;
+    }
+
+    .footer-bar-summary {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    /* Speaker Notes Drawer */
+    #notes-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 199;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    #notes-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #notes-drawer {
+      position: fixed;
+      top: 0;
+      right: -520px;
+      width: 500px;
+      height: 100vh;
+      background: #0d131f;
+      border-left: 1px solid var(--border-subtle);
+      box-shadow: -15px 0 40px rgba(0, 0, 0, 0.8);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #notes-drawer.open { right: 0; }
+
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .notes-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .notes-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-cyan);
+      margin-top: 12px;
+    }
+    .notes-content {
+      flex: 1;
+      overflow-y: auto;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-top: 14px;
+      white-space: pre-wrap;
+    }
+
+    footer {
+      height: 38px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      background: rgba(7, 9, 14, 0.9);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+    }
+    .kbd {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-family: var(--font-mono);
+      color: #fff;
+    }
+</style>
+</head>
+<body>
+
+  <div id="progress-bar-container"><div id="progress-bar"></div></div>
+
+  <header>
+    <div class="brand">
+      <a href="index.html" title="Trở về Trang chủ Portal Lobby">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>LOBBY</span>
+      </a>
+      <span style="color: var(--border-subtle);">/</span>
+      <span class="brand-badge">PHẦN 01</span>
+      <span style="color: #fff; font-weight: 600;">Khởi Động & Cài Đặt Antigravity</span>
+    </div>
+    <div class="header-actions">
+      <div class="slide-counter">SLIDE <strong id="slide-num">1 / 4</strong></div>
+      <button class="btn-nav" id="btn-prev">◀ Lùi</button>
+      <button class="btn-nav" id="btn-next">Tiếp ▶</button>
+      <button class="btn-nav" id="btn-notes" title="Bật/Tắt Lời thoại kịch bản (Phím S)">🎙️ Lời Thoại (S)</button>
+      <button class="btn-nav" id="btn-fullscreen" title="Toàn màn hình (Phím F)">⛶</button>
+    </div>
+  </header>
+
+  <main id="deck-stage">
+
+        <div class="slide-canvas active" data-slide="1" data-notes="Chào mừng toàn thể các bạn học viên đã có mặt tại khóa học: Làm Chủ Google Antigravity Cho Người Không Chuyên!
+
+Google Antigravity là gì? Đây là nền tảng trợ lý AI thế hệ mới từ Google. Nếu như trước đây các công cụ AI như ChatGPT chỉ biết trò chuyện bằng chữ và bạn vẫn phải tự tay copy-paste số liệu, thì Antigravity mang đến một bước đột phá: Nó có 'đôi mắt và bàn tay số' để trực tiếp mở file, đọc hóa đơn scan, tự sửa bảng tính Excel, và tự dán nhãn email cho bạn.
+
+Khóa học này sinh ra với một mục tiêu duy nhất: Giúp bạn biến mình thành một 'Tổng Chỉ Huy' thực thụ — ủy quyền mục tiêu công việc bằng tiếng Việt tự nhiên và để đội ngũ AI tự động hoàn thành từ A đến Z, giải phóng 80% sức lao động nhàm chán hàng ngày mà không cần biết một dòng code lập trình nào!">
+      <div class="slide-hud">
+        <div class="hud-chip">PHẦN 01: <strong>KHỞI ĐỘNG</strong></div>
+        <div class="hud-chip">RÀO CẢN = <strong>0 CODE</strong></div>
+      </div>
+      <div class="anim-1">
+        <span class="tag-hero"><svg class="svg-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> KHỞI ĐỘNG HÀNH TRÌNH ĐỘT PHÁ</span>
+        <h1 class="title-display">Google Antigravity Là Gì? <span>Biến Bạn Thành "Tổng Chỉ Huy"</span><br>Đội Ngũ Trợ Lý AI Toàn Năng</h1>
+        <p class="lead-desc">Nền tảng trợ lý AI thế hệ mới từ Google — Trực tiếp thao tác file, tự động hóa quy trình văn phòng, giải phóng 80% sức lao động thủ công.</p>
+      </div>
+      <div class="card-grid col-3 anim-2">
+        <div class="stat-card" style="border-top: 3px solid var(--accent-cyan);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(14,165,233,0.18); color: #7dd3fc;">ĐỊNH NGHĨA</span></div>
+          <div class="stat-title">Google Antigravity Là Gì?</div>
+          <div class="stat-desc">Nền tảng AI có "đôi mắt & bàn tay số", trực tiếp đọc file, sửa Excel, lọc Gmail và chạy việc ngay trên máy tính của bạn.</div>
+        </div>
+        <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">BƯỚC TIẾN HÓA</span></div>
+          <div class="stat-title">Khác Biệt Với Chatbot Cũ</div>
+          <div class="stat-desc">Chatbot chỉ trả lời bằng chữ suông ➔ Antigravity biết tự lên kế hoạch, tự mở file thực thi từ A đến Z không cần bạn can thiệp thủ công.</div>
+        </div>
+        <div class="stat-card" style="border-top: 3px solid var(--accent-indigo);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(99,102,241,0.18); color: #c7d2fe;">VAI TRÒ CỦA BẠN</span></div>
+          <div class="stat-title">Làm Sếp Chỉ Huy AI (0 Code)</div>
+          <div class="stat-desc">Bạn không cần học lập trình. Chỉ cần giao việc bằng tiếng Việt, bạn đóng vai trò người chỉ huy duyệt sản phẩm đầu ra!</div>
+        </div>
+      </div>
+      <div class="footer-bar-summary anim-3">
+        <span>💡 <strong>Thông điệp cốt lõi:</strong> Hãy làm chủ Google Antigravity để biến AI thành người thư ký mẫn cán giải phóng sức lao động!</span>
+        <span style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 700;">GOOGLE ANTIGRAVITY</span>
+      </div>
+    </div>
+
+    <div class="slide-canvas" data-slide="2" data-notes="Khóa học này giải quyết đúng những nỗi đau nhức nhối nhất trong học tập và công việc hàng ngày của từng bạn:
+1. Học sinh - Sinh viên: Ngập đầu trong đồ án, tiểu luận, cần tổng hợp hàng trăm trang tài liệu nghiên cứu nhanh gọn.
+2. Dân văn phòng, Kế toán, HR: Mệt mỏi vì đối soát hóa đơn chi phí, bảng tính Excel lệch cột, lọc hàng trăm email.
+3. Người kinh doanh, Quản lý: Cần trợ lý AI vận hành 24/7 theo dõi đơn hàng, quản lý thẻ việc Trello mà không tốn chi phí thuê người.
+4. Bất kỳ ai muốn bứt phá: Nâng cấp bản thân thành người sếp điều phối trợ lý số, tăng năng suất gấp nhiều lần!">
+      <div class="slide-hud">
+        <div class="hud-chip">PHẦN 01: <strong>ĐỐI TƯỢNG HỌC VIÊN</strong></div>
+      </div>
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-emerald);"><svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg> RÀO CẢN BẰNG 0</span>
+        <h2 class="title-display">Khóa Học Này <span>Dành Cho Ai?</span></h2>
+        <p class="lead-desc">Thiết kế thực chiến cho tất cả mọi người — chỉ cần biết gõ tiếng Việt tự nhiên là có thể áp dụng được ngay.</p>
+      </div>
+      <div class="card-grid col-4 anim-2">
+        <div class="stat-card" style="border-color: rgba(99,102,241,0.35);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(99,102,241,0.18); color: #c7d2fe;">NHÓM 01</span></div>
+          <div class="stat-title">Học Sinh • Sinh Viên</div>
+          <div class="stat-desc">Tổng hợp tài liệu nghiên cứu, tóm tắt sách, hỗ trợ làm đồ án và phân tích dữ liệu học tập nhanh gọn.</div>
+        </div>
+        <div class="stat-card" style="border-color: rgba(14,165,233,0.35);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(14,165,233,0.18); color: #7dd3fc;">NHÓM 02</span></div>
+          <div class="stat-title">Văn Phòng • Kế Toán</div>
+          <div class="stat-desc">Rà soát hóa đơn scan, đối chiếu bảng tính Excel, dọn dẹp hòm thư và xuất báo cáo tự động chuẩn mẫu.</div>
+        </div>
+        <div class="stat-card" style="border-color: rgba(16,185,129,0.35);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">NHÓM 03</span></div>
+          <div class="stat-title">Kinh Doanh • Quản Lý</div>
+          <div class="stat-desc">Trợ lý chạy ngầm 24/7 theo dõi công việc, phân loại đơn hàng, quản lý thẻ việc Trello mà không tốn chi phí thuê thêm người.</div>
+        </div>
+        <div class="stat-card" style="border-color: rgba(245,158,11,0.35);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(245,158,11,0.18); color: #fde68a;">NHÓM 04</span></div>
+          <div class="stat-title">Bứt Phá Năng Suất</div>
+          <div class="stat-desc">Chuyển từ người hỏi đáp AI thụ động thành người chỉ huy điều phối cả đội ngũ trợ lý ảo tinh nhuệ.</div>
+        </div>
+      </div>
+      <div class="footer-bar-summary anim-3">
+        <span>✅ <strong>Yêu cầu duy nhất:</strong> Máy tính kết nối internet và một tài khoản Google miễn phí!</span>
+        <span style="font-family: var(--font-mono); color: var(--accent-emerald); font-weight: 700;">100% THỰC TẾ</span>
+      </div>
+    </div>
+
+    <div class="slide-canvas" data-slide="3" data-notes="Cài đặt Antigravity Desktop cực kỳ dễ dàng chỉ trong 3 bước:
+Bước 1: Tải bộ cài chính thức cho Windows (.exe) hoặc MacBook (.dmg).
+Bước 2: Mở file cài đặt, nhấn Next và đăng nhập 1-click bằng tài khoản Google.
+Bước 3: Chọn một thư mục làm việc (Workspace Folder) trên ổ cứng máy tính làm 'văn phòng chung' an toàn giữa bạn và AI. Không cần cài Python hay dòng lệnh phức tạp!">
+      <div class="slide-hud">
+        <div class="hud-chip">PHẦN 01: <strong>CÀI ĐẶT DESKTOP</strong></div>
+      </div>
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-cyan);"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> CÀI ĐẶT SIÊU TỐC</span>
+        <h2 class="title-display">Cài Đặt <span>Antigravity Desktop</span> Trong 5 Phút</h2>
+        <p class="lead-desc">Ứng dụng chính thức của Google với giao diện đồ họa đẹp mắt, cài đặt đơn giản như một phần mềm văn phòng quen thuộc.</p>
+      </div>
+      <div class="card-grid col-3 anim-2">
+        <div class="stat-card" style="border-top: 3px solid var(--accent-indigo);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(99,102,241,0.18); color: #c7d2fe;">BƯỚC 01</span></div>
+          <div class="stat-title">Tải Bộ Cài Đặt</div>
+          <div class="stat-desc">
+            Chọn đúng phiên bản máy tính:
+            <br>• Windows: File cài đặt <code>.exe</code>
+            <br>• macOS: File kéo thả <code>.dmg</code>
+            <br>Không cần cài đặt môi trường lập trình.
+          </div>
+        </div>
+        <div class="stat-card" style="border-top: 3px solid var(--accent-cyan);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(14,165,233,0.18); color: #7dd3fc;">BƯỚC 02</span></div>
+          <div class="stat-title">Đăng Nhập Google</div>
+          <div class="stat-desc">
+            Liên kết 1-click với tài khoản Google cá nhân hoặc công việc. Hoàn toàn không cần nhập mã API Key hay thẻ tín dụng.
+          </div>
+        </div>
+        <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">BƯỚC 03</span></div>
+          <div class="stat-title">Chọn Workspace</div>
+          <div class="stat-desc">
+            Chọn một thư mục làm việc riêng (ví dụ <code>CongViec_AI</code>). Đây là không gian an toàn cách ly để AI tương tác và xử lý tệp tin.
+          </div>
+        </div>
+      </div>
+      <div class="footer-bar-summary anim-3">
+        <span>🛡️ <strong>An toàn tuyệt đối:</strong> Ứng dụng Desktop chạy độc lập trong không gian làm việc bạn chỉ định.</span>
+        <span style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 700;">1-CLICK SETUP</span>
+      </div>
+    </div>
+
+    <div class="slide-canvas" data-slide="4" data-notes="Bản đồ giao diện chuẩn của Antigravity Desktop 2.0 gồm đúng 3 phân vùng cốt lõi theo tài liệu Google:
+1. Cột trái (Left-hand Sidebar): Quản lý phiên làm việc (+ New Conversation), gom nhóm thư mục dự án thật (Projects), kho kỹ năng (Customizations) và phân quyền an toàn (Settings).
+2. Khung giữa (Chat Canvas): Sân khấu đối thoại trực tiếp. Hiển thị minh bạch từng bước tư duy (Thinking Traces), gọi công cụ thời gian thực, hỗ trợ phím tắt '/' gọi lệnh và '@' bơm context tệp tin.
+3. Khung phải (Auxiliary Pane): Trạm tiện ích 4 trong 1 (theo dõi Subagents song song, xem trước tài liệu Artifacts, giám sát Terminal ngầm, và tấm khiên Review Diff Checkpoint: Màu xanh là nội dung mới thêm, màu đỏ là nội dung xóa. Có 2 nút bấm quyền lực Approve và Reject giúp bạn nắm quyền kiểm soát dữ liệu 100%!).">
+      <div class="slide-hud">
+        <div class="hud-chip">PHẦN 01: <strong>BẢN ĐỒ GIAO DIỆN CHÍNH THỐNG</strong></div>
+      </div>
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-rose);"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> KIẾN TRÚC GOOGLE ANTIGRAVITY</span>
+        <h2 class="title-display">Giao Diện 3 Phân Vùng <span>& Khung Tiện Ích Đa Năng</span></h2>
+        <p class="lead-desc">Nắm vững 3 phân vùng cốt lõi: Left Sidebar, Chat Canvas và Auxiliary Pane giúp bạn điều hành AI chuyên nghiệp và an toàn tuyệt đối.</p>
+      </div>
+      <div class="card-grid col-3 anim-2">
+        <div class="stat-card" style="border-color: rgba(99,102,241,0.35);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(99,102,241,0.18); color: #c7d2fe;">LEFT SIDEBAR</span></div>
+          <div class="stat-title">Điều Hướng & Projects</div>
+          <div class="stat-desc">Quản lý phiên mới (+ New Conversation), gom nhóm hội thoại theo thư mục ổ cứng (Projects), tác vụ hẹn giờ (Automations) và thiết lập bảo mật (Settings).</div>
+        </div>
+        <div class="stat-card" style="border-color: rgba(14,165,233,0.35);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(14,165,233,0.18); color: #7dd3fc;">CHAT CANVAS</span></div>
+          <div class="stat-title">Chỉ Huy & Thinking Traces</div>
+          <div class="stat-desc">Sân khấu đối thoại trực tiếp. Hiển thị minh bạch 100% luồng suy nghĩ của AI, hỗ trợ phím tắt <code>/</code> gọi skill và <code>@</code> đính kèm tệp tin tức thì.</div>
+        </div>
+        <div class="stat-card" style="border-color: rgba(16,185,129,0.35);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">AUXILIARY PANE</span></div>
+          <div class="stat-title">Tiện Ích & Review Diff</div>
+          <div class="stat-desc">
+            Trạm quan sát 4 trong 1:
+            <br>• Giám sát <strong>Subagents</strong> & xem <strong>Artifacts</strong>
+            <br>• Soi <strong>Diff</strong>: <span style="color: #4ade80;">+ Xanh (Thêm)</span> | <span style="color: #f87171;">- Đỏ (Xóa)</span>
+            <br>• Bấm <strong>Approve</strong> mới lưu, <strong>Reject</strong> giữ nguyên gốc!
+          </div>
+        </div>
+      </div>
+      <div class="footer-bar-summary anim-3">
+        <span>🔒 <strong>Nguyên tắc vàng:</strong> AI đề xuất giải pháp — Bạn là người giữ chìa khóa duyệt thay đổi cuối cùng!</span>
+        <span style="font-family: var(--font-mono); color: var(--accent-rose); font-weight: 700;">CHECKPOINT GATE</span>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="notes-backdrop"></div>
+  <aside id="notes-drawer">
+    <div class="notes-header">
+      <div class="notes-title">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+        <span>KỊCH BẢN GIẢNG VIÊN</span>
+      </div>
+      <button class="btn-nav" id="btn-close-notes">✕</button>
+    </div>
+    <span class="notes-tag" id="notes-slide-tag">SLIDE 01 / 4</span>
+    <div class="notes-content" id="notes-body"></div>
+  </aside>
+
+  <footer>
+    <div>
+      <span>Điều khiển:</span>
+      <span style="margin-left: 8px;"><span class="kbd">◀</span> <span class="kbd">▶</span> hoặc <span class="kbd">Space</span> chuyển slide</span>
+      <span style="margin-left: 8px;"><span class="kbd">S</span> Kịch bản</span>
+      <span style="margin-left: 8px;"><span class="kbd">F</span> Toàn màn hình</span>
+    </div>
+    <div style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 700;">
+      GOOGLE ANTIGRAVITY MASTERCLASS • 2026
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const slides = document.querySelectorAll('.slide-canvas');
+      const progressBar = document.getElementById('progress-bar');
+      const slideNumDisplay = document.getElementById('slide-num');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const btnNotes = document.getElementById('btn-notes');
+      const btnCloseNotes = document.getElementById('btn-close-notes');
+      const btnFullscreen = document.getElementById('btn-fullscreen');
+      const notesDrawer = document.getElementById('notes-drawer');
+      const notesBody = document.getElementById('notes-body');
+      const notesSlideTag = document.getElementById('notes-slide-tag');
+      const notesBackdrop = document.getElementById('notes-backdrop');
+
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+
+      function updateSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= totalSlides) index = totalSlides - 1;
+        currentSlide = index;
+
+        slides.forEach((s, idx) => {
+          if (idx === currentSlide) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+
+        const pct = ((currentSlide + 1) / totalSlides) * 100;
+        if (progressBar) progressBar.style.width = pct + '%';
+        if (slideNumDisplay) slideNumDisplay.textContent = (currentSlide + 1) + ' / ' + totalSlides;
+
+        const activeSlide = slides[currentSlide];
+        if (activeSlide && notesBody) {
+          notesBody.textContent = activeSlide.getAttribute('data-notes') || 'Chưa có ghi chú cho slide này.';
+        }
+        if (notesSlideTag) {
+          notesSlideTag.textContent = 'SLIDE ' + (currentSlide + 1) + ' / ' + totalSlides;
+        }
+      }
+
+      function toggleNotes() {
+        const isOpen = notesDrawer.classList.contains('open');
+        if (isOpen) {
+          notesDrawer.classList.remove('open');
+          notesBackdrop.classList.remove('open');
+        } else {
+          notesDrawer.classList.add('open');
+          notesBackdrop.classList.add('open');
+        }
+      }
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => {});
+        } else {
+          if (document.exitFullscreen) document.exitFullscreen();
+        }
+      }
+
+      if (btnPrev) btnPrev.addEventListener('click', () => updateSlide(currentSlide - 1));
+      if (btnNext) btnNext.addEventListener('click', () => updateSlide(currentSlide + 1));
+      if (btnNotes) btnNotes.addEventListener('click', toggleNotes);
+      if (btnCloseNotes) btnCloseNotes.addEventListener('click', toggleNotes);
+      if (notesBackdrop) notesBackdrop.addEventListener('click', toggleNotes);
+      if (btnFullscreen) btnFullscreen.addEventListener('click', toggleFullscreen);
+
+      window.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.key === 'ArrowRight' || e.key === 'Space') {
+          e.preventDefault();
+          updateSlide(currentSlide + 1);
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          updateSlide(currentSlide - 1);
+        } else if (e.key === 's' || e.key === 'S') {
+          toggleNotes();
+        } else if (e.key === 'f' || e.key === 'F') {
+          toggleFullscreen();
+        }
+      });
+
+      updateSlide(0);
+    })();
+</script>
+</body>
+</html>
