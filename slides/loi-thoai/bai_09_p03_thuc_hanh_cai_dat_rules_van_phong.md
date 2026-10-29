@@ -2,113 +2,99 @@
 **Khóa học:** Làm Chủ Google Antigravity Cho Người Không Chuyên  
 **Khối 2:** Kho Vũ Khí 7 Trụ Cột Cho Dân Văn Phòng  
 **Phần 3:** Trụ Cột 1 — Rules: Huấn Luyện AI Tuân Thủ Quy Chuẩn Văn Phòng  
-**Tên bài:** Bài 3.3: Thực hành: Cài luật bắt buộc AI hiển thị số tiền VNĐ và chuẩn thể thức công văn  
-**Thời lượng dự kiến:** 12:00  
-**Slide tương ứng:** `phan_03_tru_cot_rules.html` (Slide 3)
+**Tên bài:** Bài 3.3: Thực Hành: Cài Đặt AGENTS.md Văn Phòng Chuẩn Chỉ  
+**Thời lượng dự kiến:** 04:30 • **Slide:** `phan_03_tru_cot_rules.html` (Slide 3)
 
 ---
 
-## 🎬 1. CHUẨN BỊ TRƯỚC KHI QUAY
-* **Cửa sổ trình chiếu:** Mở tệp slide `slides/phan_03_tru_cot_rules.html` (Slide 6 & Slide 7).
-* **Ứng dụng thực tế:** Mở ứng dụng Antigravity Desktop trong thư mục làm việc `CongViec_AI`.
-* **Tệp mẫu cần tạo:** Chuẩn bị sẵn file `AGENTS.md` để hướng dẫn học viên gõ từng dòng.
-* **Tông giọng:** Nhiệt tình, thực chiến, hướng dẫn từng thao tác rõ ràng để học viên vừa xem vừa làm theo được ngay.
+## 🎬 1. CHUẨN BỊ
+* Trình chiếu: Slide 3 (`slides/phan_03_tru_cot_rules.html`).
+* Môi trường: Mở ứng dụng Antigravity Desktop trong thư mục làm việc văn phòng.
+* Tông giọng: Thực chiến, dứt khoát, hướng dẫn trực quan từng thao tác.
 
 ---
 
-## 🎙️ 2. KỊCH BẢN LỜI THOẠI CHI TIẾT (WORD-FOR-WORD SCRIPT)
+## 🎙️ 2. LỜI THOẠI CHI TIẾT (WORD-FOR-WORD SCRIPT)
 
-### [00:00 - 01:20] MỞ ĐẦU: BẮT TAY VÀO VIẾT NỘI QUY ĐẦU TIÊN
-`[Hiển thị Slide 3: Thực Hành: Chuẩn Hóa Tiền Tệ & Thể Thức Công Văn]`  
-`[Tông giọng hào hứng, thực chiến]`
+### [00:00 - 00:30] MỤC TIÊU THỰC HÀNH: TỰ TAY TẠO FILE AGENTS.MD VÀ NGHIỆM THU KẾT QUẢ CHUẨN 100%
+`[Slide 3: Thực Hành: Cài Đặt AGENTS.md Văn Phòng Chuẩn Chỉ]`
 
-"Chào mừng các bạn đã quay trở lại với Bài 3.3!
+"Chào mừng bạn đến với Bài 3.3 — bài thực hành trực tiếp của Trụ Cột Rules!
 
-Ở bài trước, chúng ta đã hiểu lý thuyết về Rules. Còn bây giờ, chúng ta sẽ bắt tay vào thực hành ngay lập tức!  
-Mục tiêu của bài học này: Chúng ta sẽ cùng nhau tạo ra một file Rule mang tên `AGENTS.md`.  
-Nội quy này sẽ ép trợ lý AI phải tuân thủ 3 điều bắt buộc:
-1. **Định dạng tiền tệ:** Mọi con số tài chính phải có dấu chấm phân cách hàng nghìn và kèm chữ 'VNĐ' phía sau (ví dụ: `15.000.000 VNĐ`).
-2. **Thể thức danh xưng:** Các từ chức danh như 'Ban Giám Đốc', 'Trưởng Phòng' và họ tên nhân viên phải viết hoa trang trọng.
-3. **An toàn:** Không bao giờ tự ý xóa dữ liệu khi chưa hỏi ý kiến bạn.
+Mục tiêu của bài học hôm nay rất rõ ràng: Bạn sẽ tự tay tạo một tệp `AGENTS.md` ngay tại thư mục dự án và kiểm chứng kết quả chuẩn xác 100%.
 
-Bây giờ, xin mời các bạn mở cửa sổ Antigravity Desktop lên và làm theo từng bước cùng tôi nhé!"
+Tệp nội quy này sẽ ép trợ lý AI tự giác tuân thủ 3 nguyên tắc văn phòng cốt lõi: định dạng tiền tệ VNĐ có dấu chấm phân cách, viết hoa danh xưng trang trọng, và giữ an toàn dữ liệu gốc.
+
+Bạn hãy mở ngay Antigravity Desktop lên và thao tác từng bước cùng tôi nhé!"
 
 ---
 
-### [01:20 - 04:30] BƯỚC 1: TẠO FILE QUY CHUẨN TRONG THƯ MỤC DỰ ÁN
-`[Chuyển màn hình sang Antigravity Desktop]`  
-`[Thao tác chuột tại cột bên trái]`
+### [00:30 - 02:00] THAO TÁC THỰC TẾ: TẠO FILE AGENTS.MD TẠI THƯ MỤC DỰ ÁN VÀ SOẠN 3 ĐIỀU NỘI QUY (TIỀN TỆ VNĐ, VIẾT HOA DANH XƯNG, AN TOÀN FILE GỐC)
+`[Chuyển màn hình sang Antigravity Desktop, thao tác tại thanh quản lý file bên trái]`
 
-"Đầu tiên, các bạn hãy nhìn vào cột bên trái — khu vực quản lý file:
-1. Bạn hãy nhấn vào biểu tượng **Tạo file mới (New File)**.
-2. Đặt tên cho file là: `AGENTS.md` (nhớ có đuôi chấm `m-d` nhé).
-3. `[Nhấp chuột mở file vừa tạo ra giữa màn hình]`  
-   Bây giờ, chúng ta sẽ gõ nội dung nội quy bằng tiếng Việt tự nhiên 100%. Các bạn có thể gõ hoặc copy mẫu tôi để sẵn dưới video bài học:
+"Đầu tiên, bạn nhìn vào cột quản lý tệp bên trái giao diện:
+1. Bạn bấm vào biểu tượng **New File** (Tạo tệp mới).
+2. Đặt tên tệp chính xác là `AGENTS.md`. Nhớ viết hoa toàn bộ và có đuôi chấm `m-d`.
+3. Nhấp đúp chuột mở tệp vừa tạo ra giữa màn hình.
+
+Bây giờ, bạn soạn thảo 3 điều nội quy bằng tiếng Việt tự nhiên:
 
 ```markdown
-# QUY CHUẨN BÁO CÁO VĂN PHÒNG
-
-Bạn là Trợ lý Hành chính - Kế toán chuyên nghiệp. Khi tạo bất kỳ văn bản, bảng tính hoặc phản hồi nào, bạn BẮT BUỘC phải tuân thủ nghiêm ngặt các nguyên tắc sau:
-
+# BẢN QUY CHUẨN DỰ ÁN VĂN PHÒNG
 1. ĐỊNH DẠNG TIỀN TỆ:
-   - Mọi số tiền phải được định dạng theo chuẩn tiền tệ Việt Nam có dấu chấm phân cách hàng nghìn và đuôi "VNĐ".
-   - Ví dụ đúng: 15.000.000 VNĐ, 250.000 VNĐ.
-   - Tuyệt đối không viết số trần (như: 15000000) hoặc dùng ký hiệu ngoại tệ (như: $15M).
-
-2. THỂ THỨC DANH XƯNG & TÊN RIÊNG:
-   - Luôn viết hoa chữ cái đầu của các chức danh: Ban Giám Đốc, Trưởng Phòng, Kế Toán Trưởng.
-   - Họ và tên người phải được viết hoa đầy đủ từng từ (Ví dụ: Nguyễn Văn An, Trần Thị Mai).
-
-3. NGUYÊN TẮC AN TOÀN DỮ LIỆU:
-   - Khi xử lý bảng tính, nếu phát hiện dòng trống, hãy giữ nguyên và thông báo cho người dùng, tuyệt đối không tự ý xóa bỏ dữ liệu gốc.
+   - Mọi số tiền bắt buộc có dấu chấm phân cách hàng nghìn và đuôi "VNĐ".
+   - Ví dụ đúng: 15.000.000 VNĐ, 250.000 VNĐ. Tuyệt đối không viết số trần.
+2. THỂ THỨC DANH XƯNG:
+   - Luôn viết hoa các chức danh: Ban Giám Đốc, Trưởng Phòng.
+   - Họ và tên đầy đủ viết hoa trang trọng: Nguyễn Văn A, Trần Thị B.
+3. AN TOÀN DỮ LIỆU:
+   - Tuyệt đối không tự ý xóa file gốc hoặc sửa đè dữ liệu khi chưa hỏi ý kiến bạn.
 ```
 
-`[Nhấn phím Ctrl + S để lưu file lại]`  
-Các bạn thấy đấy! Rất đơn giản, rành mạch và dễ hiểu y hệt như một bản thông báo nội bộ của công ty!"
+Sau khi gõ xong, bạn nhấn tổ hợp phím **Ctrl + S** để lưu lại. Từ thời điểm này, cuốn sổ tay nội quy đã được nạp sẵn vào bộ nhớ AI của dự án!"
 
 ---
 
-### [04:30 - 06:30] LƯU Ý KỸ THUẬT QUAN TRỌNG: TRÁNH CÁI BẪY THƯ MỤC CON
-`[Chuyển sang Slide 4: Cảnh Báo An Ninh — Tránh Bẫy Thư Mục Con & Giới Hạn Token]`  
-`[Tông giọng lưu ý, cảnh báo chuyên gia]`
+### [02:00 - 02:45] CẢNH BÁO KỸ THUẬT QUAN TRỌNG: QUY TẮC TRẢI PHẲNG (FLAT RULES), TRÁNH BẪY TẠO THƯ MỤC CON LỒNG NHAU
+`[Chỉ sơ đồ tổ chức file trên Antigravity hoặc Slide 3]`
 
-"Trước khi kiểm chứng, tôi muốn các bạn ghi nhớ một **Cảnh báo kỹ thuật đắt giá** mà rất nhiều người tự học hay mắc phải:
-* **Quy tắc trải phẳng:** Toàn bộ các file Rule phải nằm trực tiếp ở cấp cao nhất của thư mục dự án hoặc thư mục `rules/`. Nếu bạn tạo thêm các thư mục con lồng nhau — ví dụ: `rules/phong-ke-toan/quy_chuan.md` — Antigravity sẽ không quét sâu vào bên trong và AI sẽ không 'nhìn' thấy nội quy của bạn! Do đó, hãy luôn để các file `.md` nằm trải phẳng nhé.
-* **Độ dài vừa đủ:** Đừng biến file Rule thành cuốn bách khoa toàn thư dài 100 trang. Hãy viết ngắn gọn, súc tích (dưới 24 Kilobytes). Điều này giúp tiết kiệm tối đa bộ nhớ ngữ cảnh để AI tập trung toàn lực vào xử lý công việc của bạn."
+"Trước khi kiểm chứng kết quả, tôi muốn gửi đến bạn một cảnh báo kỹ thuật sống còn: **Quy tắc trải phẳng (Flat Rules)**.
 
----
+Tất cả các tệp quy chuẩn phải nằm trực tiếp ở cấp cao nhất của thư mục dự án hoặc thư mục `rules/` cấp một.
 
-### [06:30 - 10:30] BƯỚC 2: KIỂM CHỨNG KẾT QUẢ THỰC TẾ TRÊN ANTIGRAVITY
-`[Mở lại Antigravity Desktop, bấm nút New Task]`  
-`[Tông giọng hào hứng, chuẩn bị đón chờ kết quả]`
+Bạn hãy tuyệt đối tránh cái bẫy tạo thêm các thư mục con lồng nhau — chẳng hạn như `rules/ke-toan/noi_quy.md`. Khi tệp bị giấu quá sâu, Antigravity sẽ bỏ qua và AI hoàn toàn không đọc được quy tắc của bạn.
 
-"Bây giờ là lúc chúng ta kiểm chứng xem trợ lý AI đã thực sự 'khắc cốt ghi tâm' cuốn sổ tay nội quy này chưa nhé!
-
-1. `[Bấm nút New Task]` Tôi tạo một phiên làm việc mới hoàn toàn.
-2. `[Gõ một câu lệnh ngắn ngủn, cố tình KHÔNG nhắc gì đến tiền tệ hay viết hoa]`  
-   Tôi gõ:  
-   > *'Tạo cho tôi một bảng tính thưởng nóng cho 3 nhân viên sau: nguyen van a thưởng 15 triệu, tran thi b thưởng 25 triệu rưỡi, le van c thưởng 8 triệu.'*
-3. `[Nhấn phím Enter]`  
-   Các bạn hãy quan sát màn hình!
-
-`[Chỉ chuột vào kết quả trả về của AI]`  
-Ồ các bạn nhìn xem! Đây chính là phép màu của Trụ cột Rules:
-* Tên nhân viên: Mặc dù tôi gõ chữ thường không dấu `nguyen van a`, nhưng AI tự động chuẩn hóa viết hoa trang trọng thành: **Nguyễn Văn A**, **Trần Thị B**, **Lê Văn C**!
-* Cột tiền thưởng: Tôi gõ '15 triệu', '25 triệu rưỡi', nhưng trong bảng tính, AI tự động quy đổi và định dạng chuẩn xác từng dấu chấm: **15.000.000 VNĐ**, **25.500.000 VNĐ**, và **8.000.000 VNĐ**!
-* Hoàn toàn không cần tôi phải tốn công nhắc nhở lại một câu nào!"
+Đồng thời, bạn hãy giữ tệp Rules ngắn gọn dưới 24KB để tiết kiệm token và đảm bảo tốc độ phản hồi nhanh nhất."
 
 ---
 
-### [10:30 - 12:00] TỔNG KẾT BÀI & CÂU DẪN SANG TRỤ CỘT 2: SKILLS
-`[Quay lại màn hình camera, nụ cười hài lòng]`
+### [02:45 - 03:50] KIỂM CHỨNG THỰC TẾ: MỞ NEW TASK, GÕ LỆNH TÍNH THƯỞNG NHÂN VIÊN VIẾT THƯỜNG KHÔNG DẤU ➔ AI TỰ ĐỘNG FORMAT CHUẨN TIỀN TỆ VÀ HỌ TÊN
+`[Bấm nút New Task trên Antigravity Desktop, gõ câu lệnh thử nghiệm]`
 
-"Thật tuyệt vời đúng không các bạn? Từ nay trở đi, dù bạn giao việc 10 lần hay 1.000 lần, bảng báo cáo trả về sẽ luôn chuẩn chỉ từng dấu chấm, từng chữ cái hoa đúng theo phong cách chuyên nghiệp của riêng bạn!
+"Bây giờ, mời bạn cùng tôi kiểm chứng xem AI đã thực sự ghi nhớ cuốn sổ tay này chưa:
 
-Nhưng các bạn hãy thử nghĩ xem:  
-Rules mới chỉ là **'Nội quy bắt buộc'**. Nó giống như việc dạy nhân viên biết đi đứng, chào hỏi và chấp hành kỷ luật.  
-Còn nếu bạn muốn nhân viên đó có thêm **'Năng lực chuyên môn đặc thù'** — ví dụ: biết đọc ảnh chụp văn bản mờ, biết tự động đổi tên hàng trăm file tài liệu lộn xộn trong máy tính thì phải làm sao?
+1. Bạn bấm nút **New Task** để mở một phiên làm việc mới toanh.
+2. Bạn cố tình gõ một câu lệnh ngắn, viết thường không dấu và không hề nhắc lại bất kỳ quy tắc nào:
+   *'Tinh thuong nong cho nguyen van a 15 trieu, tran thi b 25 trieu ruoi, le van c 8 trieu.'*
+3. Nhấn **Enter** và cùng tôi quan sát kết quả trả về.
 
-Đó chính là lúc chúng ta cần đến **Trụ Cột 2: Skills — Bí Kíp Chuyên Môn Đóng Gói Sẵn**!  
-Và ngay ở Phần 4, chúng ta sẽ cùng nhau thực chiến với một Skill siêu lợi hại mang tên `doi-ten-file-tu-dong`.
+Bạn nhìn thấy điều kỳ diệu chưa?
+* **Họ tên nhân viên:** Dù bạn gõ chữ thường không dấu, AI tự động chuẩn hóa trang trọng thành **Nguyễn Văn A**, **Trần Thị B**, và **Lê Văn C**!
+* **Cột tiền thưởng:** Các từ '15 triệu', '25 triệu rưỡi' lập tức được quy đổi thành **15.000.000 VNĐ**, **25.500.000 VNĐ**, và **8.000.000 VNĐ** với dấu chấm phân cách chuẩn chỉ.
 
-Mời các bạn cùng bấm sang Bài 4.1 để khám phá nhé!"
+Bạn không cần tốn một giây nhắc lại, AI vẫn xuất dữ liệu hoàn hảo 100%!"
+
+---
+
+### [03:50 - 04:30] TỔNG KẾT PHẦN 3 VÀ CẦU NỐI TIẾN VÀO PHẦN 4: TRỤ CỘT 2 — SKILLS
+`[Chỉ thanh Footer Bar trên Slide 3 và chuyển cảnh sang Phần 4]`
+
+"Chúc mừng bạn đã hoàn thành bài thực hành và làm chủ trọn vẹn **Trụ Cột 1: Rules**! Từ nay, bạn đã có một trợ lý AI luôn gương mẫu tuân thủ kỷ luật văn phòng.
+
+Tuy nhiên, Rules mới chỉ dừng lại ở vai trò 'Sổ tay nội quy' — dạy AI biết cách đi đứng, xưng hô và bảo vệ an toàn.
+
+Nếu bạn muốn trợ lý của mình sở hữu thêm những năng lực chuyên môn sắc bén — như tự động quét và đổi tên hàng loạt tệp tài liệu, hay đọc hiểu hóa đơn VAT phức tạp — bạn sẽ cần đến vũ khí gì?
+
+Đó chính là **Trụ Cột 2: Skills — Bí Kíp Chuyên Môn Đóng Gói Sẵn**!
+
+Hẹn gặp lại bạn ở Phần 4 để cùng tôi kích hoạt kho vũ khí Skills siêu lợi hại!"
