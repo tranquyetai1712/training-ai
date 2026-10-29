@@ -435,6 +435,40 @@
       font-family: var(--font-mono);
       color: #fff;
     }
+
+    /* Hidden UI controls & Watermark */
+    .header-actions, .header-controls {
+      display: none !important;
+    }
+    footer > div:first-child {
+      display: none !important;
+    }
+    footer {
+      height: 44px;
+      justify-content: flex-end;
+      position: relative;
+      z-index: 60;
+      overflow: visible;
+    }
+    .footer-watermark-brand {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-mono);
+      color: var(--accent-cyan);
+      font-weight: 700;
+    }
+    .watermark-ai-code {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(56, 189, 248, 0.75);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.75), 0 0 14px rgba(99, 102, 241, 0.55), 0 0 6px rgba(14, 165, 233, 0.6);
+      transform: translateY(-14px);
+      flex-shrink: 0;
+    }
 </style>
 </head>
 <body>
@@ -620,8 +654,9 @@ Toàn bộ quy trình diễn ra tự động 100% chỉ sau 30 giây kể từ k
       <span style="margin-left: 8px;"><span class="kbd">S</span> Kịch bản</span>
       <span style="margin-left: 8px;"><span class="kbd">F</span> Toàn màn hình</span>
     </div>
-    <div style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 700;">
-      GOOGLE ANTIGRAVITY MASTERCLASS • 2026
+    <div class="footer-watermark-brand" style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 700;">
+      <span>GOOGLE ANTIGRAVITY MASTERCLASS • 2026</span>
+      <img src="ai-code-watermark.png" alt="AI CODE" class="watermark-ai-code">
     </div>
   </footer>
 
