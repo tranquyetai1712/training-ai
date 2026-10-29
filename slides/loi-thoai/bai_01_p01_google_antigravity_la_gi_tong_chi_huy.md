@@ -21,7 +21,7 @@
 `[Hiển thị Slide 1: Google Antigravity Là Gì? Biến Bạn Thành "Tổng Chỉ Huy" Đội Ngũ Trợ Lý AI Toàn Năng]`  
 `[Tông giọng rõ ràng, tự tin, vào thẳng vấn đề]`
 
-"Chào bạn, tôi rất vui được gặp bạn trong khóa học **Làm Chủ Google Antigravity**. 
+"Chào các bạn, tôi rất vui được đồng hành cùng các bạn trong khóa học **Làm Chủ Google Antigravity**. 
 
 Trong video mở đầu này, bạn sẽ nắm được bản chất của Google Antigravity và lý do vì sao công cụ này giúp bạn giải quyết công việc văn phòng nhanh gấp nhiều lần so với cách dùng ChatGPT thông thường."
 
@@ -31,7 +31,7 @@ Trong video mở đầu này, bạn sẽ nắm được bản chất của Googl
 `[Chỉ vào Cột 1 trên Slide 1: Khác Biệt Với Chatbot Cũ]`  
 `[Tông giọng trầm, chỉ ra vấn đề thực tế]`
 
-"Nếu bạn từng nhờ ChatGPT hay Claude hỗ trợ xử lý số liệu, chắc hẳn bạn đã gặp tình trạng này: Bạn phải copy từng đoạn văn bản dán vào web, hoặc tải file Excel lên rồi chờ nó phản hồi. Sau đó, bạn lại phải tự tay tải file về, copy ngược lại vào báo cáo. 
+"Nếu bạn từng nhờ ChatGPT hay Gemini hỗ trợ xử lý số liệu, chắc hẳn bạn đã gặp tình trạng này: Bạn phải copy từng đoạn văn bản dán vào web, hoặc tải file Excel lên rồi chờ nó phản hồi. Sau đó, bạn lại phải tự tay tải file về, copy ngược lại vào báo cáo. 
 
 Chatbot truyền thống chỉ trả lời bằng chữ trong ô chat. Mọi công việc chân tay như mở file, sửa bảng tính, hay di chuyển dữ liệu... rốt cuộc **vẫn do chính bạn phải làm thủ công**!"
 
@@ -57,4 +57,4 @@ Thay vì bị nhốt trong trình duyệt web, Antigravity là một trợ lý A
 
 "Dù bạn là học sinh sinh viên cần tóm tắt tài liệu, dân văn phòng kế toán phải xử lý hàng trăm hóa đơn, hay người làm kinh doanh quản lý công việc — chỉ cần bạn có một chiếc máy tính và biết gõ tiếng Việt là có thể làm chủ công cụ này.
 
-Trong bài tiếp theo, chúng ta sẽ bắt tay vào tải và cài đặt Antigravity Desktop chỉ trong 3 bước đơn giản. Mời bạn bấm sang **Bài 1.2** để bắt đầu ngay!"
+Trong bài tiếp theo, chúng ta sẽ bắt tay vào tải và cài đặt Antigravity Desktop chỉ trong 3 bước đơn giản.
