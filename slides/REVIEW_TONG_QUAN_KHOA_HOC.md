@@ -2,74 +2,71 @@
 
 ## 1. THÔNG TIN 30 BÀI HỌC TRONG LOI-THOAI
 
-### bai_01_p01_tro_ly_ai_tu_hanh_la_gi.md
-- **Tên bài:** Bài 1.1: Trợ lý AI tự hành là gì? Vì sao Antigravity giúp bứt phá năng suất?
+### bai_01_p01_google_antigravity_la_gi_tong_chi_huy.md
+- **Tên bài:** Bài 1.1: Google Antigravity là gì? Biến bạn thành "Tổng Chỉ Huy" đội ngũ trợ lý AI
 - **Khối/Phần:** Khởi Động & Tư Duy Giao Việc Cho AI | Khởi Động Siêu Tốc & Cài Đặt Antigravity Desktop
-- **Thời lượng:** 08:00 (Video Preview - Mở xem thử miễn phí) | **Slide ref:** ``phan_1_tong_quan.html` (Slide 1 & Slide 2)`
+- **Thời lượng:** 03:00 (Chuẩn Udemy Micro-Learning • Video Preview) | **Slide ref:** `phan_01_khoi_dong_cai_dat.html` (Slide 1 & Slide 2)
 - **Các mốc thời gian:**
-  * `[00:00 - 01:15]` MỞ ĐẦU: ĐẶT VẤN ĐỀ VÀ PHÁ VỠ NỖI ÁM ẢNH CỦA DÂN VĂN PHÒNG
-  * `[01:15 - 03:30]` BẢN CHẤT CỐT LÕI: TỪ CHATBOT SANG TRỢ LÝ AI TỰ HÀNH
-  * `[03:30 - 05:30]` KHÓA HỌC NÀY DÀNH CHO AI & NGUYÊN TẮC "0 CẦN BIẾT CODE"
-  * `[05:30 - 07:15]` BỨT PHÁ NĂNG SUẤT THỰC TẾ: LỢI ÍCH TRONG 5 GIỜ TỚI
-  * `[07:15 - 08:00]` TỔNG KẾT BÀI & CÂU DẪN SANG BÀI TIẾP THEO
-- **Lời kết / Câu nối:** *"Hãy sẵn sàng máy tính của bạn, và tôi sẽ gặp lại bạn ở Bài 1.2 ngay bây giờ!"..."*
+  * `[00:00 - 00:30]` MỤC TIÊU BÀI HỌC: VÀO THẲNG VẤN ĐỀ
+  * `[00:30 - 01:15]` ĐIỂM NGHẼN CỦA CHATBOT THÔNG THƯỜNG (COPY-PASTE THỦ CÔNG)
+  * `[01:15 - 02:15]` BẢN CHẤT ANTIGRAVITY & CƠ CHẾ HOẠT ĐỘNG (ĐÔI MẮT & BÀN TAY SỐ)
+  * `[02:15 - 03:00]` ĐỐI TƯỢNG HỌC VIÊN & BƯỚC TIẾP THEO (CHUYỂN SANG BÀI 1.2)
+- **Lời kết / Câu nối:** *"Mời bạn bấm sang Bài 1.2 để bắt đầu ngay!"*
 
 ### bai_02_p01_cai_dat_antigravity_desktop.md
 - **Tên bài:** Bài 1.2: Hướng dẫn tải và cài đặt Antigravity Desktop (Windows / macOS)
 - **Khối/Phần:** Khởi Động & Tư Duy Giao Việc Cho AI | Khởi Động Siêu Tốc & Cài Đặt Antigravity Desktop
-- **Thời lượng:** 07:00 | **Slide ref:** ``phan_2_onboarding_desktop.html` (Slide 1 & Slide 2)`
+- **Thời lượng:** 03:45 (Chuẩn Udemy Micro-Learning • Screencast Walkthrough) | **Slide ref:** `phan_01_khoi_dong_cai_dat.html` (Slide 3)
 - **Các mốc thời gian:**
-  * `[00:00 - 01:10]` MỞ ĐẦU: XÓA TAN NỖI SỢ CÀI ĐẶT PHỨC TẠP
-  * `[01:10 - 03:00]` BƯỚC 1: TẢI BỘ CÀI ĐẶT CHÍNH THỨC
-  * `[03:00 - 04:45]` BƯỚC 2: TIẾN HÀNH CÀI ĐẶT TRÊN MÁY TÍNH
-  * `[04:45 - 06:15]` BƯỚC 3: ĐĂNG NHẬP TÀI KHOẢN GOOGLE & CHỌN THƯ MỤC LÀM VIỆC ĐẦU TIÊN
-  * `[06:15 - 07:00]` TỔNG KẾT BÀI & CÂU DẪN SANG BÀI TIẾP THEO
-- **Lời kết / Câu nối:** *"Hãy giữ nguyên cửa sổ Antigravity vừa mở, và hẹn gặp lại bạn ở Bài 1.3!"..."*
+  * `[00:00 - 00:30]` MỤC TIÊU BÀI HỌC: CÀI ĐẶT GRAPHICAL UI TRONG 3 BƯỚC
+  * `[00:30 - 01:45]` BƯỚC 1 & 2: TÌM KIẾM GOOGLE VÀ TẢI BỘ CÀI CHÍNH THỨC (X64 / MAC)
+  * `[01:45 - 03:15]` BƯỚC 3: THIẾT LẬP 3 MÀN HÌNH ONBOARDING (NEXT ➔ CHỌN BẢO MẬT ➔ CREATE A PROJECT)
+  * `[03:15 - 03:45]` TỔNG KẾT VÀ BƯỚC TIẾP THEO (CHUYỂN SANG BÀI 1.3)
+- **Lời kết / Câu nối:** *"Mời bạn bấm sang Bài 1.3 để tiếp tục!"*
 
 ### bai_03_p01_lam_quen_giao_dien_desktop.md
 - **Tên bài:** Bài 1.3: Làm quen giao diện trực quan: Left Sidebar, Chat Canvas & Auxiliary Pane
 - **Khối/Phần:** Khởi Động & Tư Duy Giao Việc Cho AI | Khởi Động Siêu Tốc & Cài Đặt Antigravity Desktop
-- **Thời lượng:** 10:00 | **Slide ref:** ``phan_2_onboarding_desktop.html` (Slide 5, Slide 6)`
+- **Thời lượng:** 05:00 (Chuẩn Udemy Micro-Learning • Walkthrough & Settings) | **Slide ref:** `phan_01_khoi_dong_cai_dat.html` (Slide 4 & Slide 5)
 - **Các mốc thời gian:**
-  * `[00:00 - 01:25]` MỞ ĐẦU: ĐỪNG SỢ GIAO DIỆN MỚI — BẢN ĐỒ 3 PHÂN VÙNG CHÍNH THỐNG
-  * `[01:25 - 03:40]` KHU VỰC 1: CỘT BÊN TRÁI — THANH ĐIỀU HƯỚNG & DỰ ÁN (LEFT-HAND SIDEBAR)
-  * `[03:40 - 06:15]` KHU VỰC 2: KHUNG Ở GIỮA — SÂN KHẤU CHỈ HUY & ĐỐI THOẠI (CHAT CANVAS)
-  * `[06:15 - 08:50]` KHU VỰC 3: CỬA SỔ BÊN PHẢI — KHUNG TIỆN ÍCH ĐA NĂNG (AUXILIARY PANE)
-  * `[08:50 - 10:00]` TỔNG KẾT BÀI & CÂU DẪN SANG PHẦN 2
-- **Lời kết / Câu nối:** *"Hẹn gặp lại các bạn ở Bài 2.1!"..."*
+  * `[00:00 - 00:30]` MỤC TIÊU BÀI HỌC: LÀM CHỦ 3 PHÂN VÙNG & 4 MỤC SETTINGS CỐT LÕI
+  * `[00:30 - 02:15]` KHÁM PHÁ 3 PHÂN VÙNG GIAO DIỆN (SIDEBAR, CANVAS & AUXILIARY PANE)
+  * `[02:15 - 04:30]` TRUNG TÂM CÀI ĐẶT SETTINGS THỰC CHIẾN (GENERAL, APPLICATION, MODELS, APPEARANCE)
+  * `[04:30 - 05:00]` TỔNG KẾT VÀ BƯỚC TIẾP THEO (CHUYỂN SANG BÀI 2.1)
+- **Lời kết / Câu nối:** *"Mời bạn bấm sang Bài 2.1 để tiếp tục!"*
 
-### bai_04_p02_khac_biet_chatbot_vs_tro_ly_ai.md
-- **Tên bài:** Bài 2.1: Khác biệt cốt lõi: Chatbot thông thường vs Trợ lý AI tự hành
+### bai_04_p02_khac_biet_chatbot_vs_ai_biet_lam_viec.md
+- **Tên bài:** Bài 2.1: Khác biệt cốt lõi: Chatbot thụ động vs Trợ lý AI biết tự làm việc
 - **Khối/Phần:** Khởi Động & Tư Duy Giao Việc Cho AI | Tư Duy Giao Việc Cho AI: Giao Chuẩn – Làm Đúng
-- **Thời lượng:** 08:00 | **Slide ref:** ``phan_3_tu_duy_agentic.html` (Slide 1)`
+- **Thời lượng:** 03:30 (Chuẩn Udemy Micro-Learning • Agentic Mindset) | **Slide ref:** `phan_02_tu_duy_giao_viec.html` (Slide 1)
 - **Các mốc thời gian:**
-  * `[00:00 - 01:25]` MỞ ĐẦU: VÌ SAO NHIỀU NGƯỜI THẤT VỌNG KHI DÙNG AI?
-  * `[01:25 - 04:00]` PHÂN TÍCH SO SÁNH: CHATBOT THỤ ĐỘNG VS TRỢ LÝ TỰ HÀNH
-  * `[04:00 - 06:15]` GIẢI MÃ VÒNG LẶP HÀNH ĐỘNG CỦA TRỢ LÝ AI (AGENTIC LOOP)
-  * `[06:15 - 08:00]` TÂM THẾ MỚI CỦA BẠN: HÃY LÀ MỘT NGƯỜI SẾP TÀI BA
-- **Lời kết / Câu nối:** *"Mời các bạn cùng bấm sang Bài 2.2 ngay bây giờ!"..."*
+  * `[00:00 - 00:30]` MỤC TIÊU BÀI HỌC: CHUYỂN TỪ HỎI ĐÁP SANG ỦY THÁC
+  * `[00:30 - 01:30]` SO SÁNH THỰC TẾ: CHATBOT CŨ VS GOOGLE ANTIGRAVITY (VÍ DỤ EXCEL)
+  * `[01:30 - 02:45]` GIẢI MÃ VÒNG LẶP TỰ HÀNH 4 BƯỚC (QUAN SÁT ➔ SUY NGHĨ ➔ HÀNH ĐỘNG ➔ TỰ SOÁT LỖI)
+  * `[02:45 - 03:30]` TÂM THẾ NGƯỜI QUẢN LÝ & BƯỚC TIẾP THEO (CHUYỂN SANG BÀI 2.2)
+- **Lời kết / Câu nối:** *"Mời bạn bấm sang Bài 2.2 để cùng học cách ra lệnh chuẩn sếp!"*
 
 ### bai_05_p02_cong_thuc_4_buoc_vang_ra_lenh.md
 - **Tên bài:** Bài 2.2: Công thức 4 bước vàng ra lệnh: Mục tiêu – Bối cảnh – Tiêu chuẩn – Giới hạn
 - **Khối/Phần:** Khởi Động & Tư Duy Giao Việc Cho AI | Tư Duy Giao Việc Cho AI: Giao Chuẩn – Làm Đúng
-- **Thời lượng:** 12:00 | **Slide ref:** ``phan_3_tu_duy_agentic.html` (Slide 2)`
+- **Thời lượng:** 04:00 (Chuẩn Udemy Micro-Learning • Prompt Matrix) | **Slide ref:** `phan_02_tu_duy_giao_viec.html` (Slide 2)
 - **Các mốc thời gian:**
-  * `[00:00 - 01:30]` MỞ ĐẦU: VÌ SAO LỆNH CỦA BẠN AI LẠI LÀM SAI?
-  * `[01:30 - 05:00]` BÓC TÁCH CHI TIẾT 4 BƯỚC VÀNG
-  * `[05:00 - 09:30]` THỰC HÀNH SO SÁNH TRỰC DIỆN: LỆNH TỆ VS LỆNH ĐỈNH CAO
-  * `[09:30 - 12:00]` TỔNG KẾT BÀI & CÂU DẪN SANG BÀI TIẾP THEO
-- **Lời kết / Câu nối:** *"Hẹn gặp lại các bạn ở Bài 2.3!"..."*
+  * `[00:00 - 00:30]` MỤC TIÊU BÀI HỌC: VÌ SAO AI LÀM SAI Ý BẠN?
+  * `[00:30 - 02:00]` BÓC TÁCH 4 THÀNH TỐ (MỤC TIÊU ➔ BỐI CẢNH ➔ TIÊU CHUẨN ➔ GIỚI HẠN)
+  * `[02:00 - 03:25]` SO SÁNH THỰC CHIẾN (LỆNH TỆ VS LỆNH CHUẨN 4 BƯỚC)
+  * `[03:25 - 04:00]` TỔNG KẾT VÀ BƯỚC TIẾP THEO (CHUYỂN SANG BÀI 2.3)
+- **Lời kết / Câu nối:** *"Mời bạn bấm sang Bài 2.3 ngay bây giờ!"*
 
 ### bai_06_p02_dieu_huong_thong_minh_plan_compact.md
-- **Tên bài:** Bài 2.3: Điều hướng thông minh & Quản lý bộ nhớ: Lệnh /plan và /compact
+- **Tên bài:** Bài 2.3: Điều hướng thông minh: Bộ đôi lệnh quyền lực /plan và /grill-me
 - **Khối/Phần:** Khởi Động & Tư Duy Giao Việc Cho AI | Tư Duy Giao Việc Cho AI: Giao Chuẩn – Làm Đúng
-- **Thời lượng:** 10:00 | **Slide ref:** ``phan_3_tu_duy_agentic.html` (Slide 3)`
+- **Thời lượng:** 04:00 (Chuẩn Udemy Micro-Learning • Slash Commands) | **Slide ref:** `phan_02_tu_duy_giao_viec.html` (Slide 3)
 - **Các mốc thời gian:**
-  * `[00:00 - 01:20]` MỞ ĐẦU: LÀM THẾ NÀO KHI GẶP CÔNG VIỆC QUÁ LỚN HOẶC QUÁ DÀI?
-  * `[01:20 - 04:30]` VŨ KHÍ 1: LỆNH `/plan` — LÊN KẾ HOẠCH TÁC CHIẾN TRƯỚC KHI HÀNH ĐỘNG
-  * `[04:30 - 07:30]` VŨ KHÍ 2: LỆNH `/compact` — DỌN DẸP BÀN LÀM VIỆC, KHƠI THÔNG BỘ NHỚ
-  * `[07:30 - 10:00]` TỔNG KẾT KHỐI 1 & BƯỚC ĐỆM TIẾN VÀO KHO VŨ KHÍ 7 TRỤ CỘT
-- **Lời kết / Câu nối:** *"Hãy đứng dậy uống một ngụm nước, vươn vai thư giãn, và chúng ta sẽ gặp lại nhau ngay tại **Phần 3: Trụ Cột 1 — Rules**!"..."*
+  * `[00:00 - 00:35]` MỤC TIÊU BÀI HỌC: BỘ ĐÔI LỆNH ĐIỀU HÀNH CẤP CAO
+  * `[00:35 - 01:50]` VŨ KHÍ 1: LỆNH `/plan` — LẬP KẾ HOẠCH TÁC CHIẾN & NÚT BẤM "PROCEED"
+  * `[01:50 - 03:00]` VŨ KHÍ 2: LỆNH `/grill-me` — PHẢN BIỆN SẮC BÉN ĐỂ MÀI RŨA Ý TƯỞNG
+  * `[03:00 - 04:00]` TỔNG KẾT KHỐI 1 & BÀN ĐẠP TIẾN VÀO KHO VŨ KHÍ 7 TRỤ CỘT
+- **Lời kết / Câu nối:** *"Mời bạn bấm sang **Bài 3.1** ngay bây giờ!"*
 
 ### bai_07_p03_quy_tac_rules_so_tay_noi_quy.md
 - **Tên bài:** Bài 3.1: Vì sao AI hay quên lời dặn? Sổ tay nội quy Rules cho dự án

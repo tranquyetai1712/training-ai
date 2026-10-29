@@ -3,112 +3,82 @@
 **Khối 1:** Khởi Động & Tư Duy Giao Việc Cho AI  
 **Phần 1:** Khởi Động Siêu Tốc & Cài Đặt Antigravity Desktop  
 **Tên bài:** Bài 1.3: Làm quen giao diện trực quan: Left Sidebar, Chat Canvas & Auxiliary Pane  
-**Thời lượng dự kiến:** 10:00  
-**Slide tương ứng:** `phan_01_khoi_dong_cai_dat.html` (Slide 4)
+**Thời lượng dự kiến:** 05:00 (Chuẩn Udemy Micro-Learning • Walkthrough & Settings)  
+**Slide tương ứng:** `phan_01_khoi_dong_cai_dat.html` (Slide 4 & Slide 5)
 
 ---
 
 ## 🎬 1. CHUẨN BỊ TRƯỚC KHI QUAY
-* **Cửa sổ trình chiếu:** Mở tệp slide `slides/phan_01_khoi_dong_cai_dat.html` (chuyển tới Slide 5: *Bản Đồ Giao Diện Antigravity Desktop*).
-* **Ứng dụng thực tế:** Mở ứng dụng Antigravity Desktop 2.0 song song ở một nửa màn hình (hoặc chuẩn bị phím tắt `Alt+Tab` mượt mà). Mở sẵn workspace `training-ai` có tệp slide và tài liệu mẫu.
-* **Tông giọng:** Thong thả, hào hứng, tự tin, chỉ rõ từng góc trên màn hình để học viên nắm vững kiến trúc chuẩn của Google.
+* **Cửa sổ trình chiếu:** Mở tệp slide `slides/phan_01_khoi_dong_cai_dat.html` (chuyển tới Slide 4: *Giao Diện 3 Phân Vùng & Sân Khấu Chỉ Huy* và Slide 5: *Trung Tâm Cài Đặt Settings*).
+* **Ứng dụng thực tế:** Mở ứng dụng Antigravity Desktop song song. Chuẩn bị sẵn thao tác mở modal Settings để chỉ rõ từng tab (`General`, `Application`, `Appearance`, `Models`, `Projects`).
+* **Tông giọng:** Trực diện, tự tin, rành mạch, chuẩn phong cách giảng viên solo screencast trên Udemy.
 
 ---
 
-## 🎙️ 2. KỊCH BẢN LỜI THOẠI CHI TIẾT (WORD-FOR-WORD SCRIPT)
+## 🎙️ 2. KỊCH BẢN LỜI THOẠI CHI TIẾT (WORD-FOR-WORD LEAN SCRIPT)
 
-### [00:00 - 01:25] MỞ ĐẦU: ĐỪNG SỢ GIAO DIỆN MỚI — BẢN ĐỒ 3 PHÂN VÙNG CHÍNH THỐNG
-`[Hiển thị Slide 4: Giao Diện 3 Phân Vùng & Khung Tiện Ích Đa Năng]`  
-`[Tông giọng vui tươi, trấn an, dẫn dắt tự nhiên]`
+### [00:00 - 00:30] MỤC TIÊU BÀI HỌC
+`[Hiển thị Slide 4: Giao Diện 3 Phân Vùng & Sân Khấu Chỉ Huy]`  
+`[Tông giọng rõ ràng, trực diện]`
 
-"Chào mừng các bạn đã đến với Bài 1.3!
+"Chào mừng bạn đến với Bài 1.3!
 
-Khi lần đầu tiên nhìn vào một trạm chỉ huy trợ lý AI như Antigravity Desktop, tâm lý chung của nhiều bạn là cảm thấy hơi choáng ngợp vì có quá nhiều nút bấm, thanh điều khiển và các khung cửa sổ.  
-
-Nhưng bạn hoàn toàn có thể yên tâm! Theo tài liệu kiến trúc chính thống của Google, toàn bộ giao diện của **Antigravity Desktop 2.0** được quy hoạch cực kỳ khoa học và tinh giản, xoay quanh đúng **3 phân vùng cốt lõi** theo chiều từ Trái sang Phải:
-
-1. **Cột bên trái — Left-hand Sidebar:** Thanh điều hướng & Quản lý dự án.
-2. **Khung ở giữa — Chat Canvas:** Sân khấu chỉ huy & Đối thoại trực tiếp giữa bạn và AI.
-3. **Cửa sổ bên phải — Auxiliary Pane:** Khung tiện ích đa năng, trạm quan sát và kiểm duyệt an toàn tuyệt đối cho dữ liệu.
-
-Bây giờ, chúng ta sẽ cùng nhau bóc tách chi tiết từng phân vùng ngay trên màn hình ứng dụng thực tế nhé!"
+Trong video này, chúng ta sẽ cùng nhau làm chủ toàn bộ bản đồ giao diện của **Antigravity Desktop** xoay quanh **3 phân vùng cốt lõi**, sau đó khám phá **4 mục thiết lập vàng trong Settings** để bạn tối ưu hóa hiệu năng, bảo vệ dữ liệu và quản trị hạn mức sử dụng AI một cách thông minh nhất."
 
 ---
 
-### [01:25 - 03:40] KHU VỰC 1: CỘT BÊN TRÁI — THANH ĐIỀU HƯỚNG & DỰ ÁN (LEFT-HAND SIDEBAR)
-`[Chuyển màn hình sang ứng dụng Antigravity Desktop thực tế]`  
-`[Rê chuột dọc theo cột Sidebar bên trái từ trên xuống dưới]`
+### [00:30 - 02:15] KHÁM PHÁ 3 PHÂN VÙNG GIAO DIỆN
+`[Chiếu Slide 4 kết hợp quay màn hình Antigravity Desktop]`
 
-"Đầu tiên, các bạn hãy nhìn vào cột bên trái màn hình — đây là **Left-hand Sidebar**, nơi bạn quản lý toàn bộ các dự án và phiên làm việc:
+`[1. Cột trái - Left Sidebar]`  
+"Đầu tiên là **Left Sidebar** ở bên trái:
+* Nút **+ New Conversation**: Bấm vào đây để mở phiên làm việc mới độc lập, giúp AI có một không gian nhớ sạch sẽ, không bị lẫn lộn giữa các đầu việc.
+* Mục **Projects**: Quản lý các thư mục làm việc thật trên máy tính của bạn."
 
-* `[Chỉ chuột vào nút '+ New Conversation']`  
-  Ở vị trí nổi bật nhất trên cùng là nút **+ New Conversation (Hội thoại mới)**. Mỗi khi bạn bắt đầu một đầu việc mới — ví dụ buổi sáng lọc email, buổi chiều làm bảng tính chi phí — bạn hãy bấm nút này. Nó giúp mở ra một phiên làm việc độc lập, ngăn nắp, tránh việc trí nhớ của AI bị lẫn lộn giữa các việc khác nhau.
-* Tiếp theo là các mục quản trị tác vụ:
-  * **History:** Lịch sử tra cứu lại toàn bộ các cuộc trao đổi trước đây.
-  * **Automations / Scheduled:** Nơi bạn lên lịch cho AI tự động chạy các tác vụ định kỳ theo giờ (như quét hòm thư mỗi 8h sáng hay tổng hợp báo cáo mỗi chiều thứ Sáu).
-  * **Customizations:** Kho vũ khí kỹ năng, bao gồm Rules (nội quy), Skills (kỹ năng nghiệp vụ) và MCP Servers (cổng kết nối dữ liệu ngoài).
-* `[Chỉ chuột vào nhóm Projects]`  
-  Và phần đặc biệt quan trọng bên dưới là **Projects**: Antigravity không lưu trữ vu vơ trên mây, mà gom nhóm các phiên làm việc gắn chặt vào **đúng thư mục dự án thật trên ổ cứng máy tính của bạn**. Bạn đang làm dự án nào, chỉ cần click vào dự án đó là AI lập tức hiểu toàn bộ ngữ cảnh xung quanh.
-* Dưới cùng là biểu tượng bánh răng **Settings**: Nơi bạn thiết lập phân quyền an toàn, chọn model mặc định và bật Terminal Sandbox để bảo vệ máy tính."
+`[2. Khung giữa - Chat Canvas & Prompt Bar]`  
+"Ở giữa là **Chat Canvas — Sân khấu chỉ huy**:
+* Khối **Thinking Traces** hiển thị minh bạch 100% từng bước lập luận của AI.
+* Dưới đáy là thanh **Prompt Bar** với 4 công cụ tiện lợi:
+  * Phím `/`: Gọi nhanh lệnh lập kế hoạch `/plan` hoặc các kỹ năng tự động.
+  * Phím `@`: Đính kèm ngay file hoặc thư mục từ máy tính vào câu lệnh.
+  * Nút dấu cộng `+`: Nạp thêm ảnh tài liệu (`Media`), gán `@ Mentions`, kích hoạt hành động (`Actions`), hoặc mở trình duyệt (`Browser`).
+  * Dropdown chọn Model: Mặc định là **Gemini 3.8 Flash High** siêu tốc độ, bạn có thể chuyển sang *Gemini 4 Argon* hoặc *Claude Sonnet* khi cần xử lý việc phức tạp, và bấm **View Usage** để kiểm tra hạn mức sử dụng."
 
----
-
-### [03:40 - 06:15] KHU VỰC 2: KHUNG Ở GIỮA — SÂN KHẤU CHỈ HUY & ĐỐI THOẠI (CHAT CANVAS)
-`[Rê chuột vào khung chính giữa màn hình]`  
-`[Chỉ vào Thinking Traces, Tool Execution và Bàn đạp Prompt Bar dưới đáy]`
-
-"Khu vực thứ hai, chiếm diện tích trung tâm lớn nhất, được Google gọi là **Chat Canvas — Sân khấu chỉ huy**:
-
-Đây là không gian tương tác trực tiếp nơi bạn giao việc và theo dõi AI hành động:
-* `[Chỉ vào khối Thinking Traces & Tool Call]`  
-  Điểm ưu việt của Antigravity so với các chatbot thông thường là tính **minh bạch 100%**. Khi nhận lệnh, AI không giấu giếm thao tác sau lưng bạn. Bạn sẽ thấy rõ khối **Thinking Traces**: AI đang lập luận điều gì, dự tính bước đi ra sao, thời gian thực thi là bao nhiêu giây, và nó đang kích hoạt công cụ (tool) nào để đọc file hay tính toán. Mọi thứ đều phơi bày rõ ràng ngay trước mắt bạn.
-
-* `[Chỉ chuột xuống đáy vào Smart Prompt Bar]`  
-  Ở dưới đáy chính là **Bàn đạp ra lệnh thông minh**:
-  * Bạn gõ yêu cầu bằng tiếng Việt tự nhiên như đang giao việc cho một trợ lý đắc lực.
-  * **Phím tắt quyền năng `/` (Slash Commands):** Khi bạn gõ dấu gạch chéo `/`, ứng dụng sẽ hiện ra một danh sách các kịch bản làm việc có sẵn như `/plan` (lên kế hoạch trước), `/compact` (tối ưu hóa bộ nhớ) hay các skill tự động hóa.
-  * **Ký tự `@` (Context Mention):** Khi bạn muốn AI làm việc trên file hay thư mục nào, chỉ cần gõ `@` — một bảng chọn tệp tin, thư mục hoặc terminal sẽ hiện ra để bạn gắn thẳng vào câu lệnh mà không cần copy paste đường dẫn dài dòng.
-  * **Nút + Add Context & Chọn Model:** Bạn có thể kéo thả ảnh hóa đơn, tài liệu, hoặc chuyển đổi linh hoạt giữa não bộ **Gemini 3.8 Flash** siêu tốc độ và **Gemini 3.8 Pro** tư duy chiến lược sâu sắc, cùng tính năng nhập lệnh bằng giọng nói qua micro."
+`[3. Cột phải - Auxiliary Pane]`  
+"Cột bên phải là **Auxiliary Pane — Trạm giám sát đa năng**:
+* Quản lý các trợ lý con chạy song song tại tab **Subagents**, xem tiến trình chạy ngầm tại tab **Terminals**.
+* Đặc biệt nhất là mục **Files Changed (Uncommitted)**: Soi rõ từng dòng chỉnh sửa (màu xanh là thêm mới, màu đỏ là xóa bỏ) giúp bạn an tâm tuyệt đối trước khi quyết định lưu file."
 
 ---
 
-### [06:15 - 08:50] KHU VỰC 3: CỬA SỔ BÊN PHẢI — KHUNG TIỆN ÍCH ĐA NĂNG (AUXILIARY PANE)
-`[Chuyển chuột sang cột bên phải của Antigravity Desktop]`  
-`[Chỉ vào các Tab: Subagents, Artifacts, Files Changed / Diff, Terminals]`
+### [02:15 - 04:30] TRUNG TÂM CÀI ĐẶT SETTINGS THỰC CHIẾN
+`[Chuyển sang Slide 5: Trung Tâm Thiết Lập Settings: An Toàn & Quản Trị Quota]`  
+`[Bấm vào biểu tượng bánh răng Settings ở góc dưới bên trái để mở modal]`
 
-"Và bây giờ là khu vực đắt giá nhất, tạo nên đẳng cấp của Antigravity Desktop: **Auxiliary Pane — Khung tiện ích phụ trợ đa năng** nằm ở bên phải màn hình!
+`[Tab 1: General & Projects - Phân quyền an toàn]`  
+"Bây giờ, bạn bấm vào biểu tượng bánh răng **Settings** ở góc dưới cùng bên trái:
+* Đầu tiên là tab **General & Projects**:
+  * **Permission Preset:** Kiểm soát quyền hạn của AI. Nếu làm quen bạn hãy để chế độ *Default* hoặc *Turbo* nếu đã tin tưởng quy trình.
+  * **Plan Review Policy:** Hãy luôn để là **Always Ask (Luôn hỏi ý kiến)**. Tùy chọn này buộc AI phải lên bản kế hoạch các bước và chờ bạn duyệt thì mới được phép thực thi."
 
-Nhiều người lầm tưởng đây chỉ là một khung xem trước bình thường, nhưng thực tế đây là **trạm quan sát và kiểm soát 4 trong 1**:
+`[Tab 2: Application - Chống ngủ máy & Điều khiển từ xa]`  
+"* Tiếp theo là tab **Application**:
+  * Hãy bật công tắc **Prevent Sleep**: Tùy chọn này ngăn máy tính rơi vào trạng thái ngủ khi AI đang chạy các tác vụ nền dài hạn.
+  * Đặc biệt là tính năng **Remote Control**: Khi bật tính năng này, một mã **QR Code** sẽ hiện ra. Bạn chỉ cần dùng điện thoại quét mã QR là có thể điều khiển và theo dõi trợ lý AI từ xa mà không cần ngồi trước máy tính!"
 
-1. **Tab Subagents:** Khi bạn giao một việc lớn, AI có thể tự phân thân thành nhiều trợ lý con chạy ngầm song song. Tab này giúp bạn theo dõi tiến độ từng trợ lý con đang làm đến đâu theo thời gian thực.
-2. **Tab Artifacts:** Mọi bản kế hoạch, tài liệu tổng hợp, sơ đồ quy trình hay bảng tính do AI tạo ra đều được đóng gói thành các **Artifacts**. Bạn có thể bấm vào xem trước ngay tại chỗ mà không cần phải mở phần mềm Word hay Excel bên ngoài.
-3. **Tab Terminals & Background Tasks:** Nơi bạn giám sát các câu lệnh hệ thống và tiến trình chạy ngầm độc lập.
-4. `[Nhấn mạnh bằng tông giọng dứt khoát, chỉ vào Tab Files Changed / Diff]`  
-   Và đỉnh cao nhất chính là **Tab Files Changed (Diff Viewer) — Tấm khiên bảo vệ an toàn dữ liệu 100%**:
-   * Nỗi sợ lớn nhất của người dùng là: *'Lỡ AI tự ý ghi đè làm hỏng hoặc xóa mất dữ liệu trong file của tôi thì sao?'*
-   * Với Antigravity, AI **KHÔNG BAO GIỜ** được tự ý lưu thẳng vào file gốc. Mọi thay đổi bắt buộc phải đưa lên bảng so sánh Diff này:
-     * Dòng đỏ có dấu `-`: Là nội dung cũ AI đề xuất thay thế hoặc bỏ đi.
-     * Dòng xanh có dấu `+`: Là nội dung mới AI vừa chỉnh sửa hoặc viết thêm.
-   * Cùng với 2 nút bấm quyết định:
-     * Nút xanh **Approve (Đồng ý):** Bạn thấy chuẩn rồi, bấm Approve thì dữ liệu mới chính thức được ghi vào máy tính.
-     * Nút đỏ **Reject (Từ chối):** Bạn thấy chưa ưng ý, bấm Reject là file trở về nguyên trạng tức thì, an toàn tuyệt đối!
+`[Tab 3: Models & Usage - Quản trị Quota]`  
+"* Sang tab **Models & Usage**: Đây là bảng điều khiển hạn mức. Các vòng tròn màu xanh hiển thị chính xác dung lượng còn lại của bạn trong chu kỳ **5 giờ (5-Hour Limit)** và **1 tuần (Weekly Limit)** cho từng dòng mô hình Gemini và Claude, kèm thời gian đếm ngược để bạn chủ động phân bổ công việc."
 
-Bạn thấy đấy: Trợ lý AI có thể tự động thực thi công việc rất nhanh, nhưng **tay lái và chìa khóa quyết định luôn nằm trọn vẹn trong tay bạn**!"
+`[Tab 4: Appearance - Giao diện]`  
+"* Cuối cùng là tab **Appearance**: Cho phép bạn linh hoạt chuyển đổi giữa giao diện Sáng (**Light**), Tối (**Dark**) hoặc tăng độ tương phản (**Contrast Strong**) để làm việc thoải mái nhất theo sở thích."
 
 ---
 
-### [08:50 - 10:00] TỔNG KẾT BÀI & CÂU DẪN SANG PHẦN 2
-`[Chuyển sang Slide 6: Tổng Kết Khối 1 — Sẵn Sàng Ra Lệnh Chuẩn Sếp]`  
-`[Tươi cười, tràn đầy năng lượng]`
+### [04:30 - 05:00] TỔNG KẾT VÀ BƯỚC TIẾP THEO
+`[Tông giọng hào hứng, chuyển bài]`
 
-"Như vậy là chúng ta đã nắm trọn vẹn trong lòng bàn tay bản đồ kiến trúc giao diện của Antigravity Desktop 2.0:
-* **Left-hand Sidebar:** Quản lý dự án thật, lịch sử và kho kỹ năng.
-* **Chat Canvas:** Sân khấu chỉ huy, minh bạch từng bước tư duy và hỗ trợ phím tắt `/`, `@`.
-* **Auxiliary Pane:** Khung tiện ích đa năng giúp quản lý Subagents, xem trước Artifacts và phê duyệt Diff an toàn 100%.
+"Như vậy là bạn đã nắm vững toàn bộ giao diện điều khiển và các cài đặt bảo mật quan trọng nhất trong Antigravity Desktop!
 
-Bây giờ bạn đã có một bàn điều khiển hiện đại và một không gian làm việc an toàn trên máy tính. Nhưng câu hỏi quan trọng nhất là: *Làm thế nào để ra lệnh cho trợ lý AI hiểu đúng 100% ý bạn ngay từ lần đầu tiên, mà không cần bạn phải làm đi làm lại nhiều lần?*
+Sau khi đã chuẩn bị xong 'vũ khí' và một không gian an toàn, câu hỏi tiếp theo là: *Làm thế nào để ra lệnh cho AI hiểu đúng 100% ý bạn mà không cần làm đi làm lại nhiều lần?*
 
-Để trả lời câu hỏi cốt lõi này, chúng ta sẽ cùng bước sang **Phần 2: Tư Duy Giao Việc Cho AI — Giao Chuẩn, Làm Đúng**.  
-Ở Bài 2.1 ngay sau đây, tôi sẽ chỉ cho bạn sự khác biệt mang tính bước ngoặt giữa tư duy của một người chỉ biết 'chat vu vơ' và một người biết 'ủy thác công việc chuẩn sếp'.
-
-Hẹn gặp lại các bạn ở Bài 2.1!"
+Mời bạn bấm sang **Phần 2 — Bài 2.1: Khác biệt cốt lõi giữa Chatbot thông thường và Trợ lý AI biết tự làm việc** để cùng khám phá tư duy giao việc chuẩn sếp ngay bây giờ!"
