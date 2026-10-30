@@ -548,19 +548,21 @@ MCP giải quyết điều này bằng 1 giao thức chuẩn duy nhất (giống
       </div>
     </div>
 
-    <div class="slide-canvas" data-slide="2" data-notes="Thực hành MCP: Kết nối thư mục Hợp đồng nội bộ qua Filesystem MCP.
-Kịch bản kiểm tra hợp đồng:
-1. Cấu hình MCP Server trỏ an toàn vào duy nhất thư mục D:/Hop_Dong_2026/.
-2. AI chỉ nhìn thấy và được phép đọc các file PDF/Word trong thư mục được cấp quyền này.
-3. Yêu cầu AI: 'Tìm các hợp đồng thuê văn phòng sắp hết hạn trong 30 ngày tới và tổng hợp số tiền đặt cọc'.
-4. AI quét toàn bộ hợp đồng trong vài giây và lập bảng đối chiếu chi tiết. Nhanh gấp 100 lần việc lật từng trang giấy!">
+    <div class="slide-canvas" data-slide="2" data-notes="Thực hành MCP thực tế: Kết nối cổng Gmail MCP trong workspace độc lập Demo/ket-noi-mcp-gmail/.
+Nỗi ám ảnh mỗi sáng: Hòm thư Gmail ngập tràn hơn 50 email lộn xộn.
+Kích hoạt cổng Gmail MCP:
+1. Cấu hình server 'gmail' trong mcp_config.json: Cấp quyền truy cập một lần duy nhất qua giao thức an toàn.
+2. AI tự động trang bị các công cụ: search_emails, read_email, draft_email.
+3. Ra lệnh tự nhiên: 'Kiểm tra email 24h qua, lọc thư chứa từ khóa Báo giá hoặc Hợp đồng và lập bảng tóm tắt nội dung chính'.
+4. Kết quả: Quét 50 thư trong 8 giây, xuất bảng Markdown ngăn nắp gồm 3 việc khẩn cấp cần xử lý!">
       <div class="slide-hud">
-        <div class="hud-chip">TRỤ CỘT 05: <strong>THỰC HÀNH KẾT NỐI</strong></div>
+        <div class="hud-chip">WORKSPACE: <strong>DEMO/KET-NOI-MCP-GMAIL</strong></div>
+        <div class="hud-chip">TRỤ CỘT 05: <strong>THỰC HÀNH GMAIL MCP</strong></div>
       </div>
       <div class="anim-1">
         <span class="tag-hero" style="color: var(--accent-emerald);"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> THỰC HÀNH CẮM LÀ CHẠY</span>
-        <h2 class="title-display">Thực Hành MCP: <span>Đọc Thư Mục Hợp Đồng Cục Bộ</span></h2>
-        <p class="lead-desc">Kết nối MCP Filesystem an toàn — Khai thác dữ liệu tài liệu nội bộ mà không cần tải lên máy chủ ngoài.</p>
+        <h2 class="title-display">Thực Hành: <span>Kết Nối Cổng Gmail MCP</span></h2>
+        <p class="lead-desc">Khai thác dữ liệu hòm thư thực tế — Tự động tìm kiếm, đọc hiểu và tóm tắt email công việc chỉ bằng 1 câu lệnh.</p>
       </div>
       <div class="card-grid col-2 anim-2">
         <div class="stat-card" style="border-top: 3px solid var(--accent-cyan);">
@@ -568,30 +570,30 @@ Kịch bản kiểm tra hợp đồng:
           <div class="stat-title">mcp_config.json</div>
           <div class="code-box" style="color: #7dd3fc;">{
   "mcpServers": {
-    "contracts": {
+    "gmail": {
       "command": "npx",
       "args": [
-        "-y", "@modelcontextprotocol/server-filesystem",
-        "D:\\Hop_Dong_2026"
+        "-y",
+        "@gongrzhe/server-gmail-autoauth-mcp"
       ]
     }
   }
 }</div>
         </div>
         <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
-          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">KẾT QUẢ PHÂN TÍCH</span></div>
-          <div class="stat-title">AI Trích Xuất Hợp Đồng Cực Nhanh</div>
+          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">KẾT QUẢ THỰC TẾ</span></div>
+          <div class="stat-title">Thư Ký AI Quét Hòm Thư Tức Thì</div>
           <div class="stat-desc">
             <ul class="key-points-list">
-              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Đọc trực tiếp:</strong> Quét 20 hợp đồng dạng PDF/DOCX trong tích tắc.</li>
-              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Cảnh báo hạn chót:</strong> Phát hiện HĐ Thuê văn phòng Tòa A hết hạn ngày 15/11.</li>
-              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>An toàn tuyệt đối:</strong> Không để lọt dữ liệu ra ngoài thư mục được chỉ định.</li>
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Quét thần tốc:</strong> Lọc hơn 50 email trong vài giây qua lệnh <code>search_emails</code>.</li>
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Bóc tách việc gấp:</strong> Lọc chính xác email chứa Báo giá, Dự thảo HĐ, Hóa đơn VAT.</li>
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Bảng tóm tắt tinh gọn:</strong> Xuất bảng Markdown tóm tắt người gửi, hạn chót và nội dung cần làm.</li>
             </ul>
           </div>
         </div>
       </div>
       <div class="footer-bar-summary anim-3">
-        <span>🎯 <strong>Ứng dụng:</strong> Pháp chế rà soát điều khoản phạt, Kế toán đối chiếu công nợ, Nhân sự quản lý hồ sơ nhân viên!</span>
+        <span>📬 <strong>Hiệu quả vượt bậc:</strong> Tạm biệt nỗi ám ảnh lọc email thủ công mỗi sáng — AI tự động tóm tắt công việc trong 30 giây!</span>
         <span style="font-family: var(--font-mono); color: var(--accent-emerald); font-weight: 700;">SAFE & POWERFUL</span>
       </div>
     </div>

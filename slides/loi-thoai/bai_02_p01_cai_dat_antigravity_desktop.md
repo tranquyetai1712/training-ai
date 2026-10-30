@@ -12,7 +12,7 @@
 * **Trình duyệt web:** Mở sẵn Google trên trình duyệt Chrome/Edge để quay thao tác tìm kiếm và tải phần mềm.
 * **Màn hình phụ / File cài đặt:** Tải sẵn file bộ cài đặt `Antigravity-Setup.exe` (Windows) hoặc `Antigravity.dmg` (Mac).
 * **Ứng dụng Desktop:** Chuẩn bị sẵn tài khoản hoặc chế độ first-run để quay 3 màn hình Onboarding (`Get Anything Done`, `Security Notice`, `Creating a Project`).
-* **Tông giọng:** Hướng dẫn từng bước (step-by-step), rõ ràng, rành mạch, chuẩn phong cách giảng viên solo screencast trên Udemy.
+* **Tông giọng:** Hướng dẫn từng bước (step-by-step), liền mạch, rõ ràng, rành mạch, chuẩn phong cách giảng viên solo screencast trên Udemy.
 
 ---
 
@@ -24,24 +24,26 @@
 
 "Chào mừng bạn quay trở lại với Bài 1.2!
 
-Trong video này, tôi sẽ hướng dẫn bạn cách tải và thiết lập ứng dụng **Antigravity Desktop** trên máy tính từ A đến Z. Quá trình này hoàn toàn dùng giao diện đồ họa quen thuộc chỉ với vài cú click chuột, không cần gõ bất kỳ dòng lệnh kỹ thuật nào."
+Sau khi đã hiểu được sức mạnh của một trợ lý AI biết tự làm việc ở bài trước, thì ngay trong video này, tôi sẽ cùng bạn tải và cài đặt ứng dụng **Antigravity Desktop** lên máy tính từ A đến Z.
+
+**Và bạn hoàn toàn yên tâm:** Toàn bộ quá trình này chỉ diễn ra qua giao diện đồ họa quen thuộc với vài cú nhấp chuột đơn giản, không cần bạn phải gõ bất kỳ một dòng lệnh kỹ thuật nào cả!"
 
 ---
 
 ### [00:30 - 01:45] TẢI VÀ CÀI ĐẶT BỘ CÀI
 `[Mở trình duyệt Google ➔ Quay màn hình tìm kiếm & tải trang chính thức]`
 
-"Để bắt đầu, bạn mở trình duyệt web lên và làm theo các bước cực kỳ đơn giản:
+"Để bắt đầu, mời bạn mở trình duyệt web lên và làm theo 3 bước cực kỳ nhanh chóng:
 
-* **Bước 1:** Vào Google và gõ từ khóa: `download antigravity desktop`.
-* **Bước 2:** Bấm ngay vào kết quả đầu tiên có tên **Google Antigravity - Download** dẫn tới trang chính thức `antigravity.google/download`.
-* **Bước 3:** Tại trang tải về, hệ thống sẽ chia theo các hệ điều hành:
-  * Nếu bạn dùng máy tính **Windows**: Bạn chọn tab **Windows**. Tại mục *Antigravity App*, đa số máy tính hiện nay dùng chip Intel hoặc AMD, bạn bấm vào nút màu đen **Download for x64** (chỉ chọn ARM64 nếu máy bạn dùng chip Snapdragon).
-  * Nếu bạn dùng **MacBook**: Bạn bấm sang tab **macOS** và tải bản tương ứng với máy của mình.
+* **Bước 1:** Bạn vào Google và tìm kiếm từ khóa: `download antigravity desktop`.
+* **Bước 2:** Bấm ngay vào kết quả đầu tiên mang tên **Google Antigravity - Download** dẫn tới trang web chính thức `antigravity.google/download`.
+* **Bước 3:** Tại trang tải về, hệ thống đã phân chia sẵn theo từng hệ điều hành:
+  * Nếu bạn dùng máy tính **Windows**: Bạn chọn tab **Windows**. Tại mục *Antigravity App*, đa số máy tính hiện nay dùng chip Intel hoặc AMD, nên bạn bấm vào nút màu đen **Download for x64** (chỉ chọn ARM64 nếu máy bạn dùng chip Snapdragon).
+  * Còn nếu bạn dùng **MacBook**: Bạn chỉ việc bấm sang tab **macOS** và tải bản tương ứng cho máy của mình.
 
-Sau khi file cài đặt `.exe` tải về hoàn tất, bạn chỉ cần nhấp đúp chuột để mở lên. 
+**Sau khi tệp cài đặt `.exe` tải về hoàn tất,** bạn chỉ cần nhấp đúp chuột để mở lên.
 
-*Một mẹo nhỏ trên Windows:* Nếu gặp thông báo bảo vệ màu xanh SmartScreen báo *Windows protected your PC*, bạn chỉ cần bấm vào dòng chữ **More info** và chọn **Run anyway**. Trình cài đặt sẽ tự động thiết lập trong khoảng 10 giây."
+**Ở đây có một mẹo nhỏ rất đáng lưu ý:** Nếu Windows hiện thông báo bảo vệ SmartScreen màu xanh báo *Windows protected your PC*, bạn đừng lo lắng — bạn chỉ cần bấm vào chữ **More info** rồi chọn **Run anyway**. Chỉ mất khoảng 10 giây là ứng dụng sẽ được cài đặt xong xuôi!"
 
 ---
 
@@ -49,20 +51,22 @@ Sau khi file cài đặt `.exe` tải về hoàn tất, bạn chỉ cần nhấp
 `[Ứng dụng Antigravity Desktop tự động mở lên màn hình đen hiện đại]`
 
 `[Màn hình 1 - Get Anything Done with Antigravity]`  
-"Khi mở ứng dụng lần đầu, bạn sẽ thấy màn hình giới thiệu 4 năng lực chính của Antigravity: Viết mã tính năng, Sửa lỗi, Tra cứu nghiên cứu, và Viết tài liệu/email văn phòng. Bạn bấm nút xanh **Next** ở dưới cùng."
+"**Và ngay khi cài đặt xong,** ứng dụng Antigravity Desktop sẽ tự động mở lên với giao diện màu đen hiện đại. Lúc này, bạn sẽ đi qua **3 màn hình thiết lập (Onboarding) đầu tiên**:
+
+Màn hình thứ nhất là **Get Anything Done with Antigravity**: Đây là màn hình giới thiệu tổng quan 4 năng lực cốt lõi: Viết mã, Sửa lỗi, Nghiên cứu và Soạn thảo văn phòng. Bạn chỉ cần nhấn nút xanh **Next** ở góc dưới."
 
 `[Màn hình 2 - Security Notice & Data Use]`  
-"Tiếp theo là màn hình bảo mật **Security Notice & Data Use**. Tại đây có một ô vuông bạn cần đặc biệt lưu ý:
+"Màn hình thứ hai là **Security Notice & Data Use**: Đây là màn hình bảo mật cực kỳ quan trọng mà bạn cần đặc biệt lưu ý:
 
-* **Nếu bạn chỉ dùng để học tập, thực hành cá nhân:** Bạn có thể để nguyên dấu tích để gửi dữ liệu tương tác giúp Google cải thiện mô hình AI.
-* **Nếu bạn dùng cho công việc thực tế với dữ liệu nhạy cảm của công ty (như hóa đơn, báo cáo tài chính, hợp đồng):** Bạn **hãy bỏ tích ô này**. Khi bỏ tích, Google sẽ không thu thập dữ liệu làm việc của bạn.
+* **Nếu bạn chỉ dùng máy tính cá nhân để học tập và thực hành:** Bạn có thể để nguyên dấu tích để chia sẻ dữ liệu tương tác giúp Google cải thiện mô hình AI.
+* **Thế nhưng, nếu bạn làm việc cho công ty với dữ liệu nhạy cảm (như hợp đồng, báo cáo tài chính, hóa đơn mật):** Thì lời khuyên đắt giá của tôi là **bạn hãy bỏ tích ô vuông này ngay lập tức!** Khi bạn bỏ tích, Google cam kết không thu thập dữ liệu làm việc của bạn.
 
-Một điểm rất hay là dù bạn **bỏ tích**, nút xanh **Get started** vẫn hoạt động bình thường. Sau này, bạn cũng có thể bật hoặc tắt lại tùy chọn này trong mục **Settings**. Sau khi chọn xong, bạn bấm **Get started** để tiếp tục."
+**Và bạn hoàn toàn yên tâm là:** Dù bạn có **bỏ tích**, nút xanh **Get started** vẫn sáng rõ để bạn tiếp tục như bình thường! Sau này, bạn cũng có thể bật hoặc tắt lại tùy chọn này bất cứ lúc nào trong mục **Settings**."
 
 `[Màn hình 3 - Creating a Project]`  
-"Ngay khi vào giao diện, hộp thoại **Creating a Project** sẽ xuất hiện. Trong Antigravity, mỗi 'Project' chính là một thư mục làm việc an toàn trên máy tính, nơi AI chỉ thao tác trong phạm vi bạn cho phép.
+"Màn hình thứ ba là **Creating a Project**: Ngay sau đó, hộp thoại tạo dự án sẽ hiện ra. Bạn hãy nhớ rằng: Trong Antigravity, mỗi 'Project' thực chất chỉ là một thư mục an toàn trên ổ cứng máy tính, nơi trợ lý AI chỉ được phép thao tác trong phạm vi bạn chỉ định.
 
-Bạn bấm nút xanh **Create a Project**, sau đó chọn một thư mục trên máy (ví dụ đặt tên là `CongViec_AI`) để làm không gian làm việc chính."
+**Chính vì thế,** bạn chỉ cần bấm nút xanh **Create a Project**, rồi chọn một thư mục trên máy (chẳng hạn đặt tên là `CongViec_AI`) để làm đại bản doanh làm việc chính."
 
 ---
 
@@ -70,6 +74,8 @@ Bạn bấm nút xanh **Create a Project**, sau đó chọn một thư mục tr�
 `[Màn hình Antigravity Desktop đã mở sẵn sàng]`  
 `[Tông giọng hào hứng, chuyển bài]`
 
-"Như vậy là chúng ta đã hoàn tất cài đặt và tạo không gian làm việc an toàn chỉ trong chưa đầy 4 phút!
+"**Như vậy là,** chỉ trong chưa đầy 4 phút, bạn đã sở hữu ứng dụng Antigravity Desktop cài đặt chuẩn mực cùng một không gian làm việc an toàn 100%!
 
-Ở bài học tiếp theo — **Bài 1.3**, tôi sẽ cùng bạn khám phá chi tiết giao diện 3 phân vùng của Antigravity: từ cột điều hướng dự án, sân khấu chat ra lệnh, cho đến khung phê duyệt an toàn. Mời bạn bấm sang **Bài 1.3** để tiếp tục!"
+**Thế nhưng, khi mở ứng dụng lên,** làm sao để chúng ta làm quen với từng nút bấm và thiết lập các tính năng bảo mật nâng cao?
+
+Mời bạn bấm ngay sang **Bài 1.3** để cùng tôi khám phá **Bản đồ giao diện 3 phân vùng** nhé!"

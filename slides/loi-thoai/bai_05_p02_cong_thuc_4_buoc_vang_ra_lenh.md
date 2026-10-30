@@ -11,7 +11,7 @@
 ## 🎬 1. CHUẨN BỊ TRƯỚC KHI QUAY
 * **Cửa sổ trình chiếu:** Mở tệp slide `slides/phan_02_tu_duy_giao_viec.html` (Slide 2: Khung Ra Lệnh Chuẩn Sếp — Công Thức 4 Bước Vàng).
 * **Ứng dụng thực tế:** Mở ứng dụng Antigravity Desktop, chuẩn bị sẵn tệp `doanh_thu_thang_10.xlsx` trong thư mục làm việc để gõ thử 2 mẫu câu lệnh (Tệ vs Chuẩn) trực tiếp vào khung chat.
-* **Tông giọng:** Hứng khởi, sắc sảo, nhấn mạnh tính ứng dụng cao — giải quyết dứt điểm tình trạng AI hiểu sai ý.
+* **Tông giọng:** Hứng khởi, sắc sảo, tự tin, nhấn mạnh tính ứng dụng cao — giải quyết dứt điểm tình trạng AI hiểu sai ý.
 
 ---
 
@@ -23,38 +23,40 @@
 
 "Chào mừng bạn đến với Bài 2.2!
 
-Trong quản trị thực tế, có một câu nói rất đúng: *'Không có nhân viên dở, chỉ có người sếp giao việc chưa rõ ràng'*. Với AI cũng y hệt như vậy. 
+Trong quản trị thực tế, người ta thường có một câu nói rất thấm thía: *'Không có nhân viên dở, chỉ có người quản lý giao việc chưa rõ ràng'*. **Và trong thế giới AI, điều này lại càng đúng gấp trăm lần!**
 
-Nếu bạn chỉ gõ một câu cụt lủn như: *'Tổng hợp doanh thu tháng 10 cho tôi'*, AI sẽ phải tự suy đoán và rất dễ làm sai ý bạn. Trong video này, tôi sẽ chia sẻ với bạn **Công thức 4 bước vàng** giúp bạn giao bất kỳ nhiệm vụ nào, AI cũng hiểu chuẩn xác 100% ngay từ lần đầu tiên."
+Nếu bạn chỉ gõ một câu cụt lủn như: *'Tổng hợp doanh thu tháng 10 cho tôi'*, **thì kết quả là:** AI sẽ phải tự suy đoán mò mẫm và làm sai lệch hoàn toàn ý bạn. 
+
+**Chính vì thế,** trong video này, tôi sẽ chia sẻ với bạn **Công thức 4 bước vàng** — chiếc la bàn chuẩn mực giúp bạn giao bất kỳ nhiệm vụ nào, AI cũng hiểu chuẩn xác 100% ngay từ lần đầu tiên!"
 
 ---
 
 ### [00:30 - 02:00] BÓC TÁCH 4 THÀNH TỐ CỐT LÕI
 `[Chỉ chuột lần lượt vào 4 cột trên Slide 2: Mục Tiêu ➔ Bối Cảnh ➔ Tiêu Chuẩn ➔ Giới Hạn]`
 
-"Một câu lệnh chuẩn mực cần có đủ 4 thành tố sau:
+"Một mệnh lệnh chuẩn mực bắt buộc phải hội tụ đủ **4 thành tố vàng** sau đây:
 
-1. **Bước 1 — Mục tiêu cụ thể (Goal):** Nêu rõ thành phẩm cuối cùng bạn muốn cầm trên tay là gì. Ví dụ: một bảng tính Excel tổng hợp chi phí, hay một email thông báo lịch họp.
-2. **Bước 2 — Bối cảnh & Dữ liệu nguồn (Context):** Chỉ rõ dữ liệu nằm ở file nào, thư mục nào, và bạn dùng báo cáo này nộp cho ai để AI chọn góc nhìn phù hợp.
-3. **Bước 3 — Tiêu chuẩn đầu ra (Criteria):** Quy định rõ hình hài sản phẩm: Gồm bao nhiêu cột? Tên cột là gì? Định dạng tiền tệ VNĐ có dấu chấm phân cách không? Có dòng tính Tổng cộng ở cuối không?
-4. **Bước 4 — Giới hạn an toàn (Guardrails):** Đây là chiếc phanh bảo vệ dữ liệu mà nhiều người hay quên: Nêu rõ điều AI **tuyệt đối không được làm**, ví dụ: *Không được sửa đè file gốc*, hoặc *Nếu dòng nào bị trống số liệu thì không được tự ý xóa*."
+* **Thành tố 1 — Mục tiêu cụ thể (Goal):** Nêu rõ thành phẩm cuối cùng bạn muốn cầm trên tay là gì. Ví dụ: một bảng tính Excel tổng hợp chi phí, hay một email thông báo lịch họp.
+* **Thành tố 2 — Bối cảnh & Dữ liệu nguồn (Context):** Chỉ rõ dữ liệu nằm ở file nào, thư mục nào, và mục đích của báo cáo này là nộp cho ai để AI chọn góc nhìn phù hợp.
+* **Thành tố 3 — Tiêu chuẩn đầu ra (Criteria):** Quy định rõ hình hài sản phẩm: Gồm bao nhiêu cột? Tên cột là gì? Định dạng tiền tệ VNĐ có dấu chấm phân cách không? Có dòng tính Tổng cộng ở cuối không?
+* **Và đặc biệt nhất là Thành tố 4 — Giới hạn an toàn (Guardrails):** Đây là chiếc phanh bảo vệ dữ liệu mà rất nhiều người hay bỏ quên: Nêu rõ điều AI **tuyệt đối không được làm**, ví dụ: *Không được sửa đè file gốc*, hoặc *Nếu dòng nào bị trống số liệu thì không được tự ý xóa!*"
 
 ---
 
 ### [02:00 - 03:25] SO SÁNH THỰC CHIẾN (LỆNH TỆ VS LỆNH CHUẨN 4 BƯỚC)
 `[Chuyển màn hình sang khung chat Antigravity Desktop thực tế]`
 
-"Hãy xem sự khác biệt một trời một vực giữa 2 cách ra lệnh:
+"**Để thấy rõ sự khác biệt một trời một vực,** mời bạn nhìn vào 2 cách ra lệnh sau:
 
-* **Nếu ra lệnh tệ:** Bạn gõ *'Làm báo cáo doanh thu tháng 10 giúp tôi'* ➔ AI sẽ hỏi lại bạn hàng loạt câu: muốn file gì, tính theo tiêu chí nào, rất mất thời gian!
-* **Còn nếu ra lệnh chuẩn 4 bước vàng:**
+* **Nếu ra lệnh tệ:** Bạn chỉ gõ cộc lốc: *'Làm báo cáo doanh thu tháng 10 giúp tôi'* ➔ **Kết quả là:** AI sẽ hỏi vặn lại bạn hàng loạt câu phiền toái: muốn định dạng file gì, tính theo tiêu chí nào, cực kỳ mất thời gian!
+* **Thế nhưng, nếu bạn áp dụng chuẩn Công thức 4 bước vàng:**
 
 > *'Hãy đọc file `doanh_thu_thang_10.xlsx` trong thư mục làm việc (Bối cảnh).*  
 > *Mục tiêu của bạn là tính tổng doanh thu theo từng nhân viên (Mục tiêu).*  
 > *Xuất kết quả sang file mới `bao_cao_thang_10.xlsx`, bảng gồm 4 cột: STT, Tên Nhân Viên, Doanh Số (định dạng VNĐ có dấu chấm), Tỷ Lệ Đạt (%), và thêm dòng Tổng Cộng ở cuối (Tiêu chuẩn).*  
-> *Lưu ý: Giữ nguyên vẹn file gốc. Dòng nào thiếu dữ liệu hãy ghi chú lại chứ không được tự ý xóa dòng (Giới hạn).'*
+> *Lưu ý: Giữ nguyên vẹn file gốc. Dòng nào thiếu dữ liệu hãy ghi chú lại chứ tuyệt đối không được tự ý xóa dòng (Giới hạn).'*
 
-Khi có đủ 4 thành tố, Antigravity sẽ chạy một mạch từ đọc file, tính toán đến xuất file mới tinh tươm. Bạn chỉ việc bấm **Approve** là xong!"
+**Khi tiếp nhận một câu lệnh tròn trịa như vậy,** Antigravity sẽ chạy một mạch từ đọc file, tính toán đến xuất file mới tinh tươm. Bạn chỉ việc bấm **Approve** là xong việc!"
 
 ---
 
@@ -62,7 +64,8 @@ Khi có đủ 4 thành tố, Antigravity sẽ chạy một mạch từ đọc fi
 `[Quay lại Slide 2, chỉ vào thanh tóm tắt Prompt Matrix]`  
 `[Tông giọng hào hứng, chuyển bài]`
 
-"Chỉ cần ghi nhớ công thức thần chú: **Mục Tiêu ➔ Bối Cảnh ➔ Tiêu Chuẩn ➔ Giới Hạn**, bạn đã nắm trong tay kỹ năng ra lệnh của một người quản lý chuyên nghiệp.
+"**Nói tóm lại,** chỉ cần ghi nhớ câu thần chú: **Mục Tiêu ➔ Bối Cảnh ➔ Tiêu Chuẩn ➔ Giới Hạn**, bạn đã nắm trọn nghệ thuật ra lệnh của một nhà quản lý tài ba.
 
-Tuy nhiên, khi gặp những nhiệm vụ lớn có nhiều bước phức tạp, hoặc khi cuộc trò chuyện quá dài khiến AI bị nghẽn bộ nhớ thì sao?  
-Ở bài học tiếp theo — **Bài 2.3**, tôi sẽ giới thiệu cho bạn 2 lệnh điều hướng quyền lực nhất trong Antigravity: lệnh `/plan` và lệnh `/compact`. Mời bạn bấm sang **Bài 2.3** ngay bây giờ!"
+**Thế nhưng trong thực tế,** khi bạn gặp một bài toán lớn gồm nhiều công đoạn phức tạp, làm thế nào để buộc AI phải lên kế hoạch tác chiến chi tiết trước khi hành động, và phản biện bóc trần mọi rủi ro tiềm ẩn?
+
+**Câu trả lời nằm ở Bài 2.3:** Nơi chúng ta sẽ khám phá bộ đôi lệnh quyền lực nhất trong Antigravity: lệnh `/plan` và lệnh `/grill-me`. Mời bạn bấm sang **Bài 2.3** ngay bây giờ!"

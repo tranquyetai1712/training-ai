@@ -458,17 +458,20 @@
     <!-- SLIDE 1: RULES ENGINE & 2 CẤP ĐỘ -->
     <div class="slide-canvas active" data-slide="1" data-notes="Trụ cột 1 - Rules: Cuốn Sổ Tay Nội Quy Dự Án.
 Khắc phục triệt để tật 'nói trước quên sau' của AI. Bình thường mở phiên chat mới là AI quên sạch lời dặn của bạn. Với Rules, các nguyên tắc được tự động nạp mỗi khi khởi động.
+Bản chất của Rules là Cuốn sổ tay nội quy phát cho nhân viên mới vào ngày đầu đi làm.
+Đặc biệt, theo chuẩn Google: Rule dành cho các 'Ràng buộc & Bất biến' (Constraints & Invariants) - lằn ranh đỏ AI không được vi phạm; khác với Skill là quy trình từng bước.
 2 Cấp độ phân tầng đơn giản:
-1. Global Rules (~/.gemini/config/rules/): Áp dụng cho mọi dự án, mọi lần mở máy (luôn trả lời tiếng Việt, tuyệt đối không tự ý xóa file).
-2. Workspace Rules: Chỉ áp dụng riêng cho thư mục công việc đó (định dạng tiền tệ, phong cách công văn, quy chuẩn báo cáo).
-Lưu ý quan trọng: Dung lượng file ngắn gọn dưới 24KB để tiết kiệm token và giúp AI phản hồi nhanh nhất!">
+1. Global Rules (~/.gemini/config/rules/): Áp dụng cho mọi dự án, mọi lần mở máy (luôn xưng hô lịch sự tiếng Việt, không tự xóa file).
+2. Workspace Rules (AGENTS.md hoặc rules/*.md): Áp dụng riêng cho thư mục công việc đó (tiền tệ VNĐ, thể thức công văn).
+Lưu ý quan trọng: Dung lượng file súc tích dưới 24KB để tiết kiệm token và giúp AI phản hồi nhanh nhất!">
       <div class="slide-hud">
         <div class="hud-chip">TRỤ CỘT 01: <strong>RULES ENGINE</strong></div>
+        <div class="hud-chip" style="color: #a5b4fc; border-color: rgba(99,102,241,0.3);">INVARIANTS vs WORKFLOWS</div>
       </div>
       <div class="anim-1">
         <span class="tag-hero" style="color: var(--accent-indigo);"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg> NỘI QUY BẤT DI BẤT DỊCH</span>
         <h1 class="title-display">Trụ Cột 1 — Rules: <span>Sổ Tay Nội Quy Dự Án</span></h1>
-        <p class="lead-desc">Dặn một lần duy nhất — AI nhớ suốt đời! Giải pháp khắc phục triệt để tình trạng AI quên yêu cầu định dạng văn phòng.</p>
+        <p class="lead-desc">Dặn một lần duy nhất — AI nhớ suốt đời! Giải pháp thiết lập các ràng buộc & bất biến (invariants) khắc phục triệt để tật hay quên của AI.</p>
       </div>
       <div class="card-grid col-2 anim-2">
         <div class="stat-card" style="border-top: 3px solid var(--accent-cyan);">
@@ -486,7 +489,7 @@ Lưu ý quan trọng: Dung lượng file ngắn gọn dưới 24KB để tiết 
           <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">CẤP ĐỘ 02</span></div>
           <div class="stat-title">Workspace Rules (Riêng Dự Án)</div>
           <div class="stat-desc">
-            Vị trí: Đặt ngay trong thư mục làm việc của dự án
+            Vị trí: <code>AGENTS.md</code> hoặc thư mục <code>rules/*.md</code> trong dự án
             <ul class="key-points-list">
               <li class="key-point-item"><span style="color: #4ade80;">•</span> Chỉ áp dụng riêng cho thư mục công việc đó.</li>
               <li class="key-point-item"><span style="color: #4ade80;">•</span> Ví dụ: Dự án Kế toán bắt buộc số tiền có đuôi VNĐ; Dự án Hành chính bắt buộc chuẩn thể thức Nghị định 30.</li>
@@ -495,113 +498,125 @@ Lưu ý quan trọng: Dung lượng file ngắn gọn dưới 24KB để tiết 
         </div>
       </div>
       <div class="footer-bar-summary anim-3">
-        <span>⚠️ <strong>Lưu ý:</strong> Giữ các tệp quy chuẩn ngắn gọn, mạch lạc, dung lượng dưới 24KB để AI nạp nhanh nhất!</span>
+        <span>⚠️ <strong>Chuẩn Google:</strong> <strong>Rule</strong> quản lý các <em>Ràng buộc & Bất biến</em> (lằn ranh đỏ); <strong>Skill</strong> quản lý <em>Quy trình nhiều bước</em>. Dung lượng dưới 24KB!</span>
         <span style="font-family: var(--font-mono); color: var(--accent-indigo); font-weight: 700;">AUTO-INJECT</span>
       </div>
     </div>
 
-    <!-- SLIDE 2: AGENTS.MD & GEMINI.MD (BÀI MỚI) -->
-    <div class="slide-canvas" data-slide="2" data-notes="Bài 3.2: Khám phá AGENTS.md & GEMINI.md - Bản Hiến Pháp Dự Án.
-Tệp AGENTS.md hoặc GEMINI.md là chuẩn cấu hình tài liệu chính thức từ Google Antigravity:
-1. Đặt file AGENTS.md ngay tại thư mục làm việc của dự án.
-2. AI tự động đọc hiểu và tuân thủ tuyệt đối mỗi khi bạn mở Antigravity làm việc trong thư mục đó.
-3. Khung sườn 3 Mục Vàng cho Dân Văn Phòng:
-   - Mục 1: Tông giọng & Ngôn ngữ (Tiếng Việt, lịch sự, đi thẳng vào kết quả).
-   - Mục 2: Chuẩn định dạng văn phòng (Tiền tệ VNĐ, chuẩn công văn Nghị định 30).
-   - Mục 3: Ranh giới an toàn (Không tự xóa file, không sửa đè dữ liệu gốc).
-Đơn giản, trực quan, không cần biết lập trình!">
+    <!-- SLIDE 2: AGENTS.MD & MODULAR RULES -->
+    <div class="slide-canvas" data-slide="2" data-notes="Bài 3.2: AGENTS.md & Modular Rules (.agents/rules/*.md): Hệ Thống Luật Dự Án.
+Tài liệu chính thức Google chia Rules thành 2 hình thức:
+1. AGENTS.md (Hiến Pháp Chung): Đặt ngay thư mục gốc, không dùng YAML frontmatter, luôn chạy always_on. Thiết lập 3 Mục Vàng: Tông giọng tiếng Việt, Chuẩn dữ liệu văn phòng, Ranh giới an toàn file.
+2. Modular Rules (.agents/rules/*.md): Tách nhỏ nội quy theo nghiệp vụ, bắt buộc có YAML frontmatter (trigger, globs, description).
+   - trigger: glob (kích hoạt theo đuôi file như *.txt, *.csv).
+   - trigger: model_decision (Progressive Disclosure - AI chỉ nạp khi việc yêu cầu, tiết kiệm token).
+Lưu ý Flat Scanning: File rule .md phải nằm trực tiếp trong .agents/rules/, không lồng thư mục con!">
       <div class="slide-hud">
-        <div class="hud-chip">TRỤ CỘT 01: <strong>BẢN HIẾN PHÁP DỰ ÁN</strong></div>
+        <div class="hud-chip">TRỤ CỘT 01: <strong>HỆ THỐNG LUẬT DỰ ÁN</strong></div>
+        <div class="hud-chip" style="color: #38bdf8; border-color: rgba(56,189,248,0.3);">STANDALONE & MODULAR</div>
       </div>
       <div class="anim-1">
         <span class="tag-hero" style="color: var(--accent-cyan);"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg> CHUẨN TÀI LIỆU GOOGLE ANTIGRAVITY</span>
-        <h2 class="title-display">AGENTS.md & GEMINI.md: <span>Bản Hiến Pháp Dự Án</span></h2>
-        <p class="lead-desc">Một tệp Markdown đơn giản đặt ngay tại thư mục dự án — AI tự động đọc và tuân thủ tuyệt đối mọi quy định của bạn.</p>
+        <h2 class="title-display">AGENTS.md & Modular Rules: <span>Hệ Thống Luật Dự Án</span></h2>
+        <p class="lead-desc">Phối hợp giữa Bản Hiến Pháp chung (AGENTS.md - always_on) và các bộ luật chuyên ngành (.agents/rules/*.md với YAML Frontmatter kích hoạt thông minh).</p>
       </div>
       <div class="card-grid col-3 anim-2">
         <div class="stat-card" style="border-top: 3px solid var(--accent-indigo);">
-          <div class="stat-header"><span class="card-badge" style="background: rgba(99,102,241,0.18); color: #a5b4fc;">MỤC VÀNG 01</span></div>
-          <div class="stat-title">Tông Giọng & Ngôn Ngữ</div>
+          <div class="stat-header"><span class="card-badge" style="background: rgba(99,102,241,0.18); color: #a5b4fc;">HIẾN PHÁP CHUNG</span></div>
+          <div class="stat-title">AGENTS.md (Always-On)</div>
           <div class="stat-desc">
             <ul class="key-points-list">
-              <li class="key-point-item"><span style="color: #818cf8;">•</span> Trả lời 100% bằng tiếng Việt chuẩn.</li>
-              <li class="key-point-item"><span style="color: #818cf8;">•</span> Xưng hô lịch sự "Tôi - Bạn", phong cách chuyên nghiệp.</li>
-              <li class="key-point-item"><span style="color: #818cf8;">•</span> Đi thẳng vào kết quả, tránh văn phong dài dòng, chào hỏi sáo rỗng.</li>
+              <li class="key-point-item"><span style="color: #818cf8;">•</span> Đặt tại thư mục gốc; không cần YAML frontmatter.</li>
+              <li class="key-point-item"><span style="color: #818cf8;">•</span> <strong>Mục 1:</strong> Tông giọng tiếng Việt chuẩn, xưng hô Tôi - Bạn.</li>
+              <li class="key-point-item"><span style="color: #818cf8;">•</span> <strong>Mục 2:</strong> An toàn dữ liệu, không sửa đè file gốc.</li>
             </ul>
           </div>
         </div>
         <div class="stat-card" style="border-top: 3px solid var(--accent-cyan);">
-          <div class="stat-header"><span class="card-badge" style="background: rgba(14,165,233,0.18); color: #7dd3fc;">MỤC VÀNG 02</span></div>
-          <div class="stat-title">Chuẩn Dữ Liệu Văn Phòng</div>
+          <div class="stat-header"><span class="card-badge" style="background: rgba(14,165,233,0.18); color: #7dd3fc;">LUẬT CHUYÊN NGÀNH</span></div>
+          <div class="stat-title">Modular Rules (.agents/rules/)</div>
           <div class="stat-desc">
             <ul class="key-points-list">
-              <li class="key-point-item"><span style="color: #38bdf8;">•</span> <strong>Tiền tệ:</strong> Bắt buộc có dấu chấm phân cách và đuôi <code>VNĐ</code> (1.500.000 VNĐ).</li>
-              <li class="key-point-item"><span style="color: #38bdf8;">•</span> <strong>Văn bản:</strong> Soạn thảo theo chuẩn thể thức công văn Nghị định 30.</li>
-              <li class="key-point-item"><span style="color: #38bdf8;">•</span> <strong>Bảng biểu:</strong> Cột số liệu căn phải, tiêu đề in đậm.</li>
+              <li class="key-point-item"><span style="color: #38bdf8;">•</span> Tách nhỏ theo nghiệp vụ (kế toán, công văn).</li>
+              <li class="key-point-item"><span style="color: #38bdf8;">•</span> <strong>Bắt buộc có YAML frontmatter:</strong>
+                <div class="code-box" style="font-size: 0.68rem; padding: 6px 8px; margin-top: 3px;">---
+trigger: glob
+globs: "*.txt, *.csv"
+description: "Định dạng VNĐ & ngày tháng"
+---</div>
+              </li>
+              <li class="key-point-item"><span style="color: #38bdf8;">•</span> Kích hoạt thông minh khi đụng đúng loại file.</li>
             </ul>
           </div>
         </div>
         <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
-          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">MỤC VÀNG 03</span></div>
-          <div class="stat-title">Ranh Giới An Toàn Dữ Liệu</div>
+          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">CHUẨN GOOGLE</span></div>
+          <div class="stat-title">Flat Scanning & Limits</div>
           <div class="stat-desc">
             <ul class="key-points-list">
-              <li class="key-point-item"><span style="color: #4ade80;">•</span> Tuyệt đối không tự ý xóa file gốc khi chưa xin phép.</li>
-              <li class="key-point-item"><span style="color: #4ade80;">•</span> Không ghi đè trực tiếp lên tài liệu lưu trữ quan trọng.</li>
-              <li class="key-point-item"><span style="color: #4ade80;">•</span> Xuất bản xem trước (preview) trước khi sửa đổi hàng loạt.</li>
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Flat Scanning:</strong> File rule .md phải nằm ngay trong <code>.agents/rules/</code>, không lồng thư mục con.</li>
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Progressive Disclosure:</strong> Nạp luật theo nhu cầu, tiết kiệm bộ nhớ token tối đa.</li>
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Giới hạn:</strong> Dung lượng dưới 24KB per-file.</li>
             </ul>
           </div>
         </div>
       </div>
       <div class="footer-bar-summary anim-3">
-        <span>💡 <strong>Quy tắc vàng:</strong> Đặt tệp <code>AGENTS.md</code> ngay thư mục dự án — Dù bạn tắt máy mở lại, AI vẫn luôn giữ đúng phong cách!</span>
+        <span>💡 <strong>Quy tắc phối hợp:</strong> <code>AGENTS.md</code> quản lý an toàn chung, còn <code>.agents/rules/*.md</code> chuyên biệt hóa từng loại nghiệp vụ!</span>
         <span style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 700;">PERSISTENT CONTEXT</span>
       </div>
     </div>
 
-    <!-- SLIDE 3: THỰC HÀNH CÀI ĐẶT AGENTS.MD -->
-    <div class="slide-canvas" data-slide="3" data-notes="Bài 3.3: Thực hành cài đặt AGENTS.md chuẩn văn phòng:
-Chỉ với một tệp AGENTS.md đơn giản, ta ép AI tuân thủ 3 nguyên tắc thực chiến:
-1. Định dạng tiền tệ: Luôn có dấu chấm phân cách hàng nghìn và đuôi VNĐ (ví dụ: 15.000.000 VNĐ).
-2. Thể thức danh xưng: Viết hoa Ban Giám Đốc, Trưởng Phòng và họ tên đầy đủ.
-3. An toàn dữ liệu: Tuyệt đối không xóa dòng trống trong bảng tính gốc.
-Kiểm chứng: Ra lệnh ngắn gọn tính tiền thưởng cho nhân viên, AI tự động format chuẩn 100% không cần nhắc lại!">
+    <!-- SLIDE 3: THỰC HÀNH PHỐI HỢP AGENTS.MD & RULES/XX.MD -->
+    <div class="slide-canvas" data-slide="3" data-notes="Bài 3.3: Thực hành phối hợp AGENTS.md và rules/xx.md trong workspace độc lập Demo/chi-phi-cong-tac-tho/:
+Tách riêng từng bài demo vào thư mục con để không bị conflict quy tắc!
+1. Cấu trúc chuẩn Google: Demo/chi-phi-cong-tac-tho/ chứa sẵn file thô chi_phi_cong_tac_tho.txt, AGENTS.md và .agents/rules/dinh_dang_tien_te_ngay_thang.md.
+2. Tầng 1: AGENTS.md giữ an toàn dữ liệu (không sửa file thô, xuất file mới bang_ke_chi_phi_chuan.md).
+3. Tầng 2: .agents/rules/dinh_dang_tien_te_ngay_thang.md có YAML frontmatter (trigger: glob, globs: '*.txt, *.csv') quy định chuẩn tiền tệ VNĐ và ngày tháng DD/MM/YYYY.
+4. Kiểm chứng 1 chạm: Ra lệnh 'Hãy xử lý file chi_phi_cong_tac_tho.txt giúp tôi' ➔ AI tự khớp trigger: glob, xuất bảng kê Markdown hoàn chỉnh và bảo toàn nguyên vẹn file thô!">
       <div class="slide-hud">
-        <div class="hud-chip">TRỤ CỘT 01: <strong>THỰC HÀNH AGENTS.MD</strong></div>
+        <div class="hud-chip">TRỤ CỘT 01: <strong>THỰC HÀNH AGENTS.MD & .AGENTS/RULES/</strong></div>
+        <div class="hud-chip" style="color: #4ade80; border-color: rgba(74,222,128,0.3);">WORKSPACE: DEMO/CHI-PHI-CONG-TAC-THO</div>
       </div>
       <div class="anim-1">
         <span class="tag-hero" style="color: var(--accent-emerald);"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> THỰC CHIẾN 0 CODE</span>
-        <h2 class="title-display">Thực Hành: <span>Cài Đặt AGENTS.md Văn Phòng Chuẩn Chỉ</span></h2>
-        <p class="lead-desc">Tạo tệp AGENTS.md trong thư mục làm việc để AI tự giác định dạng số tiền VNĐ và viết hoa danh xưng chuẩn mực.</p>
+        <h2 class="title-display">Thực Hành: <span>Phối Hợp AGENTS.md & .agents/rules/ Xử Lý File Bảng Kê</span></h2>
+        <p class="lead-desc">Trải nghiệm trong không gian làm việc độc lập <code>Demo/chi-phi-cong-tac-tho/</code> để kiểm chứng sức mạnh kết hợp giữa Hiến pháp an toàn và Luật chuyên ngành.</p>
       </div>
       <div class="card-grid col-2 anim-2">
         <div class="stat-card" style="border-top: 3px solid var(--accent-indigo);">
-          <div class="stat-header"><span class="card-badge" style="background: rgba(99,102,241,0.18); color: #c7d2fe;">NỘI DUNG TỆP AGENTS.md</span></div>
-          <div class="stat-title">Nội Quy Thư Mục Dự Án</div>
-          <div class="code-box"># BẢN QUY CHUẨN DỰ ÁN VĂN PHÒNG
-1. ĐỊNH DẠNG TIỀN TỆ:
-   - Mọi số tiền phải có dấu chấm phân cách và đuôi "VNĐ".
-   - Ví dụ: 15.000.000 VNĐ, 250.000 VNĐ.
-2. THỂ THỨC DANH XƯNG:
-   - Luôn viết hoa: Ban Giám Đốc, Trưởng Phòng.
-   - Họ tên đầy đủ viết hoa: Nguyễn Văn A.
-3. AN TOÀN DỮ LIỆU:
-   - Tuyệt đối không xóa file gốc hoặc sửa đè khi chưa hỏi.</div>
+          <div class="stat-header"><span class="card-badge" style="background: rgba(99,102,241,0.18); color: #c7d2fe;">WORKSPACE: chi-phi-cong-tac-tho/</span></div>
+          <div class="stat-title">AGENTS.md + .agents/rules/dinh_dang_tien_te.md</div>
+          <div class="code-box" style="font-size: 0.7rem; margin-bottom: 6px;"># 1. AGENTS.md (Hiến Pháp Chung):
+- AN TOÀN: Không sửa đè file gốc (chi_phi_cong_tac_tho.txt), luôn xuất ra: bang_ke_chi_phi_chuan.md</div>
+          <div class="code-box" style="font-size: 0.7rem; color: #38bdf8;"># 2. .agents/rules/dinh_dang_tien_te_ngay_thang.md:
+---
+trigger: glob
+globs: "*.txt, *.csv"
+description: "Định dạng VNĐ & ngày tháng"
+---
+1. TIỀN TỆ: Số tiền có dấu chấm và đuôi "VNĐ" (VD: 3.500.000 VNĐ).
+2. NGÀY THÁNG: Chuẩn DD/MM/YYYY (VD: 24/10/2026).
+3. HỌ TÊN: Viết hoa đầy đủ từng từ.</div>
         </div>
         <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
-          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">KẾT QUẢ KIỂM CHỨNG</span></div>
-          <div class="stat-title">AI Tự Động Format Chuẩn 100%</div>
+          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">KẾT QUẢ THỰC TẾ TRÊN FILE</span></div>
+          <div class="stat-title">Từ File Thô ➔ Bảng Kê Chuẩn Chỉ</div>
           <div class="stat-desc">
-            Bạn chỉ cần ra lệnh ngắn gọn:
-            <br><em>"Thưởng nóng cho nguyen van a 15 triệu, tran thi b 25 triệu rưỡi"</em>
-            <div class="code-box" style="color: #4ade80;">• Nguyễn Văn A: 15.000.000 VNĐ
-• Trần Thị B: 25.500.000 VNĐ
-➔ Tự viết hoa tên, tự chuẩn hóa tiền tệ!</div>
+            Ra lệnh 1 dòng: <em>"Hãy xử lý file chi_phi_cong_tac_tho.txt giúp tôi."</em>
+            <div class="code-box" style="color: #94a3b8; font-size: 0.7rem; margin-top: 4px;">📂 File thô có sẵn: chi_phi_cong_tac_tho.txt
+1. ve may bay cho nguyen van an: 3500000 vao ngay 10/24/2026
+2. an trua tiep khach tran thi mai: 1250000 vao ngay 2026-10-25</div>
+            <div class="code-box" style="color: #4ade80; font-size: 0.7rem; margin-top: 4px;">📄 File mới sinh tự động: bang_ke_chi_phi_chuan.md
+| Ngày | Người Chi | Nội Dung | Số Tiền |
+| 24/10/2026 | Nguyễn Văn An | Vé máy bay | 3.500.000 VNĐ |
+| 25/10/2026 | Trần Thị Mai | Ăn trưa tiếp khách | 1.250.000 VNĐ |
+➔ AI tự kích hoạt rule theo đuôi .txt & bảo toàn 100% file gốc!</div>
           </div>
         </div>
       </div>
       <div class="footer-bar-summary anim-3">
-        <span>🎉 <strong>Kết quả:</strong> Dù bạn giao việc 10 lần hay 1.000 lần, văn bản xuất ra luôn đạt chuẩn chỉ chuyên nghiệp!</span>
+        <span>🎉 <strong>Kết quả:</strong> Tách biệt theo thư mục workspace <code>Demo/chi-phi-cong-tac-tho/</code> giúp dự án độc lập, không conflict quy tắc!</span>
         <span style="font-family: var(--font-mono); color: var(--accent-emerald); font-weight: 700;">PRO STANDARD</span>
       </div>
     </div>

@@ -20,8 +20,9 @@
 
 | Bài | Tên Bài Học | File Slide Tương Ứng | Slide Số & Tiêu Đề Trên Màn Hình |
 | :---: | :--- | :--- | :--- |
-| **3.1** | Vì sao AI hay quên? Sổ tay nội quy Rules | [`phan_03_tru_cot_rules.html`](phan_03_tru_cot_rules.html) | **Slide 1:** Trụ Cột 1 — Rules: Sổ Tay Nội Quy Dự Án |
-| **3.2** | Thực hành: Tạo rule VNĐ & thể thức công văn | [`phan_03_tru_cot_rules.html`](phan_03_tru_cot_rules.html) | **Slide 2:** Thực Hành: Chuẩn Hóa Tiền Tệ & Thể Thức Công Văn |
+| **3.1** | Vì sao AI hay quên lời dặn? Sổ tay nội quy Rules | [`phan_03_tru_cot_rules.html`](phan_03_tru_cot_rules.html) | **Slide 1:** Trụ Cột 1 — Rules: Sổ Tay Nội Quy Dự Án |
+| **3.2** | AGENTS.md & Modular Rules (rules/*.md): Hệ Thống Luật Dự Án | [`phan_03_tru_cot_rules.html`](phan_03_tru_cot_rules.html) | **Slide 2:** AGENTS.md & Modular Rules: Hệ Thống Luật Dự Án |
+| **3.3** | Thực hành: Phối hợp AGENTS.md và rules/xx.md chuẩn hóa bảng kê chi phí từ file thô | [`phan_03_tru_cot_rules.html`](phan_03_tru_cot_rules.html) | **Slide 3:** Thực Hành: Phối Hợp AGENTS.md & rules/xx.md Xử Lý File Bảng Kê |
 | **4.1** | Khái niệm Skills - Bí kíp nạp theo nhu cầu | [`phan_04_tru_cot_skills.html`](phan_04_tru_cot_skills.html) | **Slide 1:** Trụ Cột 2 — Skills: Bí Kíp Chuyên Môn Đóng Gói |
 | **4.2** | Thực hành Skill: `doi-ten-file-tu-dong` | [`phan_04_tru_cot_skills.html`](phan_04_tru_cot_skills.html) | **Slide 2:** Thực Hành Skill: `doi-ten-file-tu-dong` |
 | **5.1** | Subagents là gì? Phân vai trợ lý ảo | [`phan_05_tru_cot_subagents.html`](phan_05_tru_cot_subagents.html) | **Slide 1:** Trụ Cột 3 — Subagents: Đội Ngũ Nhân Viên Ảo |
@@ -29,7 +30,7 @@
 | **6.1** | Hooks là gì? Trạm kiểm soát an toàn | [`phan_06_tru_cot_hooks.html`](phan_06_tru_cot_hooks.html) | **Slide 1:** Trụ Cột 4 — Hooks: Vòng Kim Cô Giám Sát AI |
 | **6.2** | Thực hành: Chốt chặn PreToolUse chống xóa | [`phan_06_tru_cot_hooks.html`](phan_06_tru_cot_hooks.html) | **Slide 2:** Thực Hành: Cài Đặt Hook Chặn Xóa Dữ Liệu |
 | **7.1** | MCP là gì? Mở rộng giác quan kết nối | [`phan_07_tru_cot_mcp.html`](phan_07_tru_cot_mcp.html) | **Slide 1:** Trụ Cột 5 — MCP: Cổng Kết Nối Vạn Năng |
-| **7.2** | Thực hành MCP: Đọc thư mục hợp đồng | [`phan_07_tru_cot_mcp.html`](phan_07_tru_cot_mcp.html) | **Slide 2:** Thực Hành MCP: Đọc Thư Mục Hợp Đồng Cục Bộ |
+| **7.2** | Thực hành: Kết nối cổng Gmail MCP quét & tóm tắt email | [`phan_07_tru_cot_mcp.html`](phan_07_tru_cot_mcp.html) | **Slide 2:** Thực Hành: Kết Nối Cổng Gmail MCP |
 | **8.1** | Plugins: Chiếc vali đồ nghề all-in-one | [`phan_08_tru_cot_plugins_sidecars.html`](phan_08_tru_cot_plugins_sidecars.html) | **Slide 1:** Trụ Cột 6 — Plugins: Chiếc Vali Vũ Khí Số |
 | **8.2** | Thực hành Plugin: `q-file-organizer` | [`phan_08_tru_cot_plugins_sidecars.html`](phan_08_tru_cot_plugins_sidecars.html) | **Slide 2:** Thực Hành: Plugin `q-file-organizer` |
 | **8.3** | Sidecars: Trợ lý tàng hình chạy ngầm 24/7 | [`phan_08_tru_cot_plugins_sidecars.html`](phan_08_tru_cot_plugins_sidecars.html) | **Slide 3:** Trụ Cột 7 — Sidecars & Bản Đồ 7 Trụ Cột |

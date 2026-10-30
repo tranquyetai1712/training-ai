@@ -2,104 +2,99 @@
 **Khóa học:** Làm Chủ Google Antigravity Cho Người Không Chuyên  
 **Khối 2:** Kho Vũ Khí 7 Trụ Cột Cho Dân Văn Phòng  
 **Phần 7:** Trụ Cột 5 — MCP: Cổng Kết Nối Đưa Dữ Liệu Công Việc Thực Tế Vào AI  
-**Tên bài:** Bài 7.2: Thực hành: Cho phép AI kết nối thư mục hồ sơ để tự tìm kiếm & đối chiếu dữ liệu  
-**Thời lượng dự kiến:** 12:00  
+**Tên bài:** Bài 7.2: Thực hành: Kết nối cổng Gmail MCP — Biến AI thành thư ký tự động quét & tóm tắt email công việc quan trọng  
+**Thời lượng dự kiến:** 04:30 (Chuẩn Udemy Micro-Learning • Live Cloud Integration)  
 **Slide tương ứng:** `phan_07_tru_cot_mcp.html` (Slide 2)
 
 ---
 
 ## 🎬 1. CHUẨN BỊ TRƯỚC KHI QUAY
-* **Cửa sổ trình chiếu:** Mở tệp slide `slides/phan_07_tru_cot_mcp.html` (Slide 16).
-* **Thư mục mẫu ngoài dự án:** Chuẩn bị sẵn một thư mục riêng biệt tại đường dẫn `D:/Kho_Hop_Dong_2026/` chứa tệp `hop_dong_cong_ty_abc.pdf`.
-* **Cấu hình MCP:** Tệp `mcp_config.json` đã khai báo quyền truy cập tới thư mục lưu trữ ngoài này.
-* **Tông giọng:** Thực tế, cuốn hút, nhấn mạnh sự tiện lợi vượt bậc khi không còn phải làm thao tác thủ công copy file giữa các ổ đĩa.
+* **Cửa sổ trình chiếu:** Mở tệp slide `slides/phan_07_tru_cot_mcp.html` (Slide 2: Thực Hành: Kết Nối Cổng Gmail MCP).
+* **Môi trường thực hành:** Mở Antigravity Desktop tại workspace độc lập `slides/Demo/ket-noi-mcp-gmail/` đã có sẵn file cấu hình `mcp_config.json` và sổ tay `HUONG_DAN_KET_NOI_GMAIL_MCP.md`.
+* **Trạng thái cổng kết nối:** Cổng `gmail` MCP server hiển thị trạng thái đã kết nối (*Connected*).
+* **Tông giọng:** Phấn khích, thực tế, nhấn mạnh sự tiện lợi vượt bậc khi không còn phải tự mình mở hàng chục email để đọc thủ công.
 
 ---
 
-## 🎙️ 2. KỊCH BẢN LỜI THOẠI CHI TIẾT (WORD-FOR-WORD SCRIPT)
+## 🎙️ 2. KỊCH BẢN LỜI THOẠI CHI TIẾT (WORD-FOR-WORD LEAN SCRIPT)
 
-### [00:00 - 01:30] MỞ ĐẦU: BÀI TOÁN "TÀI LIỆU NẰM RẢI RÁC Ở NHIỀU Ổ ĐĨA"
-`[Hiển thị Slide 2: Thực Hành MCP: Đọc Thư Mục Hợp Đồng Cục Bộ]`  
-`[Tông giọng đồng cảm, đưa ra tình huống văn phòng điển hình]`
+### [00:00 - 00:45] NỖI ÁM ẢNH HỘP THƯ GMAIL QUÁ TẢI MỖI SÁNG
+`[Slide 2: Thực Hành: Kết Nối Cổng Gmail MCP]`  
+`[Mở Antigravity Desktop tại workspace slides/Demo/ket-noi-mcp-gmail/]`  
+`[Chỉ vào biểu tượng cổng kết nối Gmail MCP đã sẵn sàng trên màn hình]`
 
-"Chào mừng các bạn đến với Bài 7.2!
+"Chào mừng bạn đến với Bài 7.2!
 
-Hãy tưởng tượng một tình huống rất quen thuộc trong công việc hàng ngày:  
-Bạn đang làm việc trong thư mục dự án `Thang_10` trên màn hình Antigravity. Bạn có một bảng kê công nợ khách hàng cần thanh toán.  
-Thế nhưng, tệp hợp đồng kinh tế gốc của đối tác 'Công ty ABC' lại không nằm ở đây, mà nó đang nằm ở tít trong ổ đĩa `D:/Kho_Hop_Dong_2026/` của công ty.
+Hãy tưởng tượng một buổi sáng thứ Hai điển hình của bạn:  
+Bạn vừa mở máy tính lên, hòm thư Gmail đã báo hơn 50 email chưa đọc: Nào là thư quảng cáo, thông báo hệ thống, thư đối tác gửi báo giá, khách hàng hỏi hợp đồng...  
+Trước đây, bạn sẽ phải làm gì? Ngồi lướt từng email, mở từng thư lên đọc lướt xem có việc gì gấp không. Vừa mất cả tiếng đồng hồ, vừa mỏi mắt và rất dễ bỏ sót những email quan trọng của sếp hay đối tác lớn!
 
-Trước đây, bạn sẽ phải làm gì?  
-Mở cửa sổ File Explorer lên, gõ tìm kiếm, tìm được file PDF rồi copy nó, dán vào thư mục dự án, rồi mới tải lên cho AI đọc. Rất lích kích và làm nhân bản rác file khắp máy tính!  
-Nhưng hôm nay, với **Cổng kết nối MCP**, chúng ta sẽ cho phép AI tự động vươn tay sang ổ đĩa khác để đọc và đối chiếu hợp đồng chỉ trong một nốt nhạc!"
+**Thế nhưng hôm nay, với Cổng kết nối Gmail MCP,** chúng ta sẽ giao phó toàn bộ công việc này cho trợ lý AI: Tự động lướt hòm thư và lọc ra những việc khẩn cấp chỉ trong chưa đầy 30 giây!"
 
 ---
 
-### [01:30 - 04:30] BƯỚC 1: KHAI BÁO CỔNG KẾT NỐI MCP TRONG MCP_CONFIG.JSON
-`[Chuyển màn hình sang Antigravity Desktop]`  
-`[Mở tệp mcp_config.json]`
+### [00:45 - 01:50] KHÁM PHÁ CỔNG GMAIL MCP TRONG MCP_CONFIG.JSON
+`[Chỉ khung CẤU HÌNH MCP trên Slide 2]`  
+`[Mở tệp mcp_config.json trong workspace demo]`
 
-"Các bạn hãy nhìn vào tệp `mcp_config.json` trên màn hình của tôi:  
-Chúng ta chỉ cần khai báo một khối thông tin cực kỳ ngắn gọn thế này:
+"Các bạn hãy nhìn vào tệp `mcp_config.json` trong workspace demo trên màn hình của tôi:  
+Toàn bộ bí quyết chỉ nằm ở một khối cấu hình cực kỳ gọn gàng:
 
 ```json
 {
   "mcpServers": {
-    "kho_tai_lieu": {
+    "gmail": {
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "D:/Kho_Hop_Dong_2026"]
+      "args": ["-y", "@gongrzhe/server-gmail-autoauth-mcp"]
     }
   }
 }
 ```
 
-`[Giải thích bằng ngôn ngữ bình dân]`  
-Đoạn khai báo này có nghĩa là gì?  
-Nó đơn giản là một chiếc giấy phép thông hành:  
-*'Này Antigravity, tôi cấp cho bạn một chiếc cổng USB mang tên `kho_tai_lieu`. Cổng này cho phép bạn được quyền đọc các tệp tin lưu tại thư mục `D:/Kho_Hop_Dong_2026` trên máy tính của tôi!'*
+Đoạn khai báo này có nghĩa là gì? Nó đóng vai trò như một **chiếc thẻ thông hành**:  
+*'Này Antigravity, tôi cho phép bạn kết nối với hòm thư Gmail của tôi để thực thi các tác vụ tìm kiếm, đọc thư và phân loại khi tôi yêu cầu.'*
 
-Ngay khi bạn lưu file này lại, Antigravity Desktop sẽ tự động kích hoạt chiếc cổng cắm này ngầm bên dưới mà bạn không cần phải khởi động lại máy tính!"
+Ngay khi bạn lưu file này và đăng nhập cấp quyền một lần duy nhất, Antigravity Desktop sẽ tự động nhận diện các công cụ chuyên dụng: `search_emails`, `read_email` và `draft_email` mà bạn không cần phải viết bất kỳ một dòng mã lập trình nào!"
 
 ---
 
-### [04:30 - 08:30] BƯỚC 2: RA LỆNH CHO AI TỰ VƯƠN TAY ĐỌC FILE TỪ XA
-`[Bấm nút New Task trong Antigravity Desktop]`  
-`[Gõ câu lệnh đối chiếu vào khung chat]`
+### [01:50 - 03:45] THAO TÁC THỰC CHIẾN: AI TỰ ĐỘNG QUÉT & LẬP BẢNG TÓM TẮT EMAIL
+`[Chuyển màn hình sang khung chat Antigravity Desktop]`  
+`[Thao tác gõ câu lệnh tự nhiên và nhấn Enter]`
 
-"Bây giờ, chúng ta hãy cùng nhau ra lệnh nhé:
+"Bây giờ, chúng ta hãy cùng nhau ra lệnh cho trợ lý AI nhé!  
+Tại khung chat, tôi chỉ cần gõ đúng một câu lệnh tự nhiên:
 
-> *'Chào Antigravity, trong bảng tính thanh toán hiện tại của tôi có khoản chi 50 triệu đồng cho Công ty ABC.*  
-> *Hãy sử dụng kết nối MCP để truy cập vào kho hợp đồng `D:/Kho_Hop_Dong_2026`, tìm tệp hợp đồng của Công ty ABC, đọc kỹ điều khoản thanh toán và đối chiếu xem con số 50 triệu này có đúng theo tiến độ đợt 2 quy định trong hợp đồng hay không?'*
+> *'Hãy sử dụng kết nối Gmail MCP kiểm tra các email gửi đến trong 24 giờ qua. Lọc ra những thư có chứa từ khóa \"Báo giá\" hoặc \"Hợp đồng\", và lập bảng tóm tắt: Người gửi, Tiêu đề, Thời gian và Tóm tắt yêu cầu chính giúp tôi.'*
 
-`[Nhấn phím Enter dứt khoát]`  
-Các bạn hãy quan sát luồng thực thi của AI!
+`[Nhấn Enter và cùng học viên quan sát AI tác chiến]`  
+Ngay tức thì, bạn hãy nhìn vào luồng xử lý trên màn hình:
+* Bước 1: AI kích hoạt công cụ `search_emails`, tự động tìm kiếm trên hòm thư Gmail với bộ lọc thời gian và từ khóa.
+* Bước 2: Nó gọi công cụ `read_email` để đọc nội dung của 3 bức thư quan trọng nhất.
+* Bước 3: `[Chỉ vào bảng kết quả xuất hiện bên phải]`  
+  Một bảng Markdown cực kỳ ngăn nắp hiện ra ngay lập tức:
 
-`[Chỉ chuột vào từng bước AI gọi công cụ MCP]`  
-* Bước 1: AI gọi công cụ `mcp_kho_tai_lieu_search_files`: Nó tự động quét ổ D và tìm thấy file `hop_dong_cong_ty_abc.pdf`.
-* Bước 2: Nó gọi công cụ `mcp_kho_tai_lieu_read_file`: Nó tự động mở file PDF từ xa ra đọc mà **hoàn toàn không cần copy file đó vào thư mục hiện tại**!
-* Bước 3: Nó lật tới Điều 4 — Điều khoản thanh toán: Phát hiện hợp đồng ghi rõ 'Đợt 2 thanh toán 30% giá trị hợp đồng, tương đương 50.000.000 VNĐ sau khi nghiệm thu giai đoạn 1'.
-* Bước 4: `[Bảng đối chiếu xuất hiện ở cửa sổ bên phải]`  
-  AI xuất ra một bảng đối chiếu cực kỳ đẹp mắt:
+| STT | Người Gửi | Tiêu Đề Thư | Thời Gian | Tóm Tắt Yêu Cầu Chính |
+| :---: | :--- | :--- | :---: | :--- |
+| 1 | `nguyen.hoa@abctech.vn` | Báo giá phần mềm kế toán Q4 | 08:15 Sáng | Gửi bảng giá gói Enterprise 45 triệu, xin phản hồi trước 17h. |
+| 2 | `phapche@doitacxyz.com` | Dự thảo Hợp đồng thuê văn phòng | 09:30 Sáng | Điều chỉnh Điều 4 về tiến độ thanh toán đợt 2, chờ sếp ký. |
+| 3 | `ketoan@congty.com` | Yêu cầu đối chiếu hóa đơn VAT | 10:05 Sáng | Nhắc gửi biên bản nghiệm thu trước ngày 31/10 để thanh toán. |
 
-| Hạng Mục | Số Tiền Trên Bảng Kê | Quy Định Trong Hợp Đồng Gốc | Kết Quả Đối Chiếu |
-| :--- | :---: | :---: | :---: |
-| Thanh toán đợt 2 Công ty ABC | 50.000.000 VNĐ | 50.000.000 VNĐ (Điều 4.2) | ✅ **HOÀN TOÀN KHỚP** |
-
-Và nó còn kèm theo trích dẫn chính xác số trang hợp đồng cho bạn kiểm chứng!"
+Toàn bộ 50 email lộn xộn đã được thu gọn thành đúng 3 dòng việc gấp cần xử lý!"
 
 ---
 
-### [08:30 - 12:00] TỔNG KẾT BÀI & CÂU DẪN SANG TRỤ CỘT 6 & 7: PLUGINS & SIDECARS
-`[Quay lại màn hình camera, tươi cười hài lòng]`
+### [03:45 - 04:30] TỔNG KẾT BÀI & CẦU NỐI SANG PHẦN 8 (PLUGINS & SIDECARS)
+`[Chỉ dòng Footer Bar trên Slide 2: Safe & Powerful Integration]`
 
-"Các bạn thấy sức mạnh của MCP khủng khiếp như thế nào chưa?  
-Dữ liệu của bạn có thể nằm ở bất kỳ đâu — trên ổ cứng máy tính, trên Google Drive hay trong hòm thư — chỉ cần một cổng cắm MCP, trợ lý AI sẽ tự động tìm kiếm, đối chiếu và phục vụ bạn chu đáo từ A đến Z!
+"**Bạn thấy đấy, sức mạnh của MCP thực sự mang tính cách mạng:**  
+Từ một trợ lý AI chỉ biết ngồi một chỗ trong máy tính, giờ đây nó đã có thể vươn tay ra thế giới dịch vụ đám mây bên ngoài để giải quyết trọn vẹn công việc hàng ngày cho bạn.
 
-Nhưng bây giờ hãy tưởng tượng:  
-Bạn đã có Rules (nội quy), bạn có Skills (tay nghề), bạn có Hooks (chốt chặn an toàn), bạn có MCP (cổng kết nối).  
-Nếu mỗi lần bạn sang một máy tính mới, hoặc bạn muốn chia sẻ toàn bộ bộ công cụ tuyệt vời này cho đồng nghiệp trong phòng ban, chẳng lẽ bạn lại phải đi copy từng file một gửi cho họ?  
-Làm thế nào để **đóng gói tất cả thành 1 chiếc vali duy nhất**, đồng nghiệp chỉ cần bấm 1 click chuột là có ngay trọn bộ vũ khí?
+**Thế nhưng bây giờ bạn hãy hình dung:**  
+Bạn đã có Rules (nội quy), Skills (tay nghề), Hooks (chốt an toàn), và MCP (cổng kết nối). Nếu mỗi lần sang một máy tính mới hoặc muốn chia sẻ bộ công cụ này cho đồng nghiệp, bạn lại phải đi copy từng file thì rất mất thời gian.
 
-Và làm thế nào để có một **'Trợ lý tàng hình'** chạy ngầm 24/7 để giám sát và nhắc việc cho bạn?
+**Làm thế nào để đóng gói toàn bộ kho vũ khí này thành 1 chiếc vali duy nhất, chỉ cần cài 1 click là có đủ?**  
+Và làm thế nào để có một **'Trợ lý tàng hình'** chạy ngầm 24/7 để giám sát và nhắc việc tự động cho bạn?
 
-Chào mừng các bạn đến với **Phần 8: Trụ Cột 6 & 7 — Plugins & Sidecars — Chiếc Vali Đóng Gói All-in-One & Trợ Lý Tàng Hình**!  
-Hẹn gặp lại các bạn ở Bài 8.1 ngay sau đây!"
+Chào mừng bạn bước sang **Phần 8: Trụ Cột 6 & 7 — Plugins & Sidecars**!  
+Hẹn gặp lại bạn ở Bài 8.1 ngay sau đây!"

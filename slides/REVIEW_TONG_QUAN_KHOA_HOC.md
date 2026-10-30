@@ -71,113 +71,125 @@
 ### bai_07_p03_quy_tac_rules_so_tay_noi_quy.md
 - **Tên bài:** Bài 3.1: Vì sao AI hay quên lời dặn? Sổ tay nội quy Rules cho dự án
 - **Khối/Phần:** Kho Vũ Khí 7 Trụ Cột Cho Dân Văn Phòng | Trụ Cột 1 — Rules: Huấn Luyện AI Tuân Thủ Quy Chuẩn Văn Phòng
-- **Thời lượng:** 08:00 | **Slide ref:** ``phan_4_kho_vu_khi.html` (Slide 4, 5, 6, 7)`
+- **Thời lượng:** 03:30 (Chuẩn Udemy Micro-Learning • Rules Engine) | **Slide ref:** `phan_03_tru_cot_rules.html` (Slide 1)
 - **Các mốc thời gian:**
-  * `[00:00 - 01:30]` MỞ ĐẦU: CƠN ÁC MỘNG "NGÀY NÀO CŨNG PHẢI DẶN LẠI TỪ ĐẦU"
-  * `[01:30 - 04:30]` BẢN CHẤT CỦA RULES: CUỐN SỔ TAY NỘI QUY CÔNG TY
-  * `[04:30 - 06:45]` HAI TẦNG QUY TẮC THÔNG MINH: GLOBAL RULES & WORKSPACE RULES
-  * `[06:45 - 08:00]` TỔNG KẾT BÀI & CÂU DẪN SANG THỰC HÀNH BÀI 3.2
-- **Lời kết / Câu nối:** *"Hãy sẵn sàng mở ứng dụng Antigravity Desktop, và chúng ta cùng thực hành ngay tại Bài 3.2!"..."*
+  * `[00:00 - 00:40]` NỖI ĐAU AI HAY QUÊN & CĂN BỆNH MẤT TRÍ NHỚ NGẮN HẠN CỦA CHATBOT CŨ
+  * `[00:40 - 01:50]` BẢN CHẤT CỦA RULES: CUỐN SỔ TAY NỘI QUY DỰ ÁN
+  * `[01:50 - 02:50]` HAI TẦNG PHÂN CẤP: GLOBAL RULES (~/.gemini/config/rules/) VS WORKSPACE RULES (AGENTS.md)
+  * `[02:50 - 03:30]` QUY TẮC VÀNG DƯỚI 24KB & BƯỚC ĐỆM CHUYỂN TIẾP SANG BÀI 3.2
+- **Lời kết / Câu nối:** *"Mời bạn bấm ngay sang **Bài 3.2** để cùng tôi khám phá **AGENTS.md — Bản Hiến Pháp Dự Án Của Bạn**!"*
 
-### bai_08_p03_thuc_hanh_cai_dat_rules_van_phong.md
-- **Tên bài:** Bài 3.2: Thực hành: Cài luật bắt buộc AI hiển thị số tiền VNĐ và chuẩn thể thức công văn
+### bai_08_p03_agents_md_gemini_md_hien_phap_du_an.md
+- **Tên bài:** Bài 3.2: AGENTS.md & Modular Rules (rules/*.md): Hệ Thống Luật Dự Án
 - **Khối/Phần:** Kho Vũ Khí 7 Trụ Cột Cho Dân Văn Phòng | Trụ Cột 1 — Rules: Huấn Luyện AI Tuân Thủ Quy Chuẩn Văn Phòng
-- **Thời lượng:** 12:00 | **Slide ref:** ``phan_4_kho_vu_khi.html` (Slide 6 & Slide 7)`
+- **Thời lượng:** 05:00 (Chuẩn Udemy Micro-Learning • Workspace Rules & Modular YAML) | **Slide ref:** `phan_03_tru_cot_rules.html` (Slide 2)
 - **Các mốc thời gian:**
-  * `[00:00 - 01:20]` MỞ ĐẦU: BẮT TAY VÀO VIẾT NỘI QUY ĐẦU TIÊN
-  * `[01:20 - 04:30]` BƯỚC 1: TẠO FILE QUY CHUẨN TRONG THƯ MỤC DỰ ÁN
-  * `[04:30 - 06:30]` LƯU Ý KỸ THUẬT QUAN TRỌNG: TRÁNH CÁI BẪY THƯ MỤC CON
-  * `[06:30 - 10:30]` BƯỚC 2: KIỂM CHỨNG KẾT QUẢ THỰC TẾ TRÊN ANTIGRAVITY
-  * `[10:30 - 12:00]` TỔNG KẾT BÀI & CÂU DẪN SANG TRỤ CỘT 2: SKILLS
-- **Lời kết / Câu nối:** *"Mời các bạn cùng bấm sang Bài 4.1 để khám phá nhé!"..."*
+  * `[00:00 - 00:35]` ĐẶT TÊN FILE CHUẨN GOOGLE: AGENTS.MD HOẶC GEMINI.MD — BẢN HIẾN PHÁP DỰ ÁN
+  * `[00:35 - 01:30]` MỤC VÀNG 1: TÔNG GIỌNG & NGÔN NGỮ (TIẾNG VIỆT, LỊCH SỰ, ĐI THẲNG VÀO KẾT QUẢ)
+  * `[01:30 - 02:40]` MỤC VÀNG 2: CHUẨN DỮ LIỆU VĂN PHÒNG (TIỀN TỆ VNĐ CÓ DẤU CHẤM, CHUẨN CÔNG VĂN NĐ 30)
+  * `[02:40 - 03:25]` MỤC VÀNG 3: RANH GIỚI AN TOÀN DỮ LIỆU (KHÔNG TỰ XÓA FILE GỐC, XUẤT PREVIEW)
+  * `[03:25 - 04:30]` BÍ QUYẾT TỪ GOOGLE: TÁCH LUẬT CHUYÊN NGÀNH VỚI THƯ MỤC RULES/*.MD & YAML FRONTMATTER
+  * `[04:30 - 05:00]` TỔNG KẾT & CẦU NỐI SANG THỰC HÀNH BÀI 3.3
+- **Lời kết / Câu nối:** *"Mời bạn bấm sang **Bài 3.3** để cùng tôi thực hành trên tệp chi phí thô có sẵn trong bộ tài nguyên giáo trình!"*
 
-### bai_09_p04_khai_niem_skills_bi_kip_chuyen_mon.md
+### bai_09_p03_thuc_hanh_cai_dat_rules_van_phong.md
+- **Tên bài:** Bài 3.3: Thực hành: Phối hợp AGENTS.md và rules/xx.md chuẩn hóa bảng kê chi phí từ file thô
+- **Khối/Phần:** Kho Vũ Khí 7 Trụ Cột Cho Dân Văn Phòng | Trụ Cột 1 — Rules: Huấn Luyện AI Tuân Thủ Quy Chuẩn Văn Phòng
+- **Thời lượng:** 04:30 (Chuẩn Udemy Micro-Learning • Hands-on Walkthrough) | **Slide ref:** `phan_03_tru_cot_rules.html` (Slide 3)
+- **Các mốc thời gian:**
+  * `[00:00 - 00:35]` MỤC TIÊU THỰC HÀNH: PHỐI HỢP AGENTS.MD VÀ RULES/XX.MD TRÊN TỆP DỮ LIỆU THỰC TẾ
+  * `[00:35 - 01:50]` KHÁM PHÁ WORKSPACE MẪU CHI-PHI-CONG-TAC-THO & CẤU TRÚC CHUẨN GOOGLE
+  * `[01:50 - 02:40]` CẢNH BÁO QUÉT PHẲNG (FLAT SCANNING) CHUẨN GOOGLE
+  * `[02:40 - 03:50]` KIỂM CHỨNG THỰC TẾ: RA LỆNH 1 DÒNG ➔ AI TỰ KÍCH HOẠT RULE & XUẤT FILE MỚI CHUẨN ĐÉT
+  * `[03:50 - 04:30]` TỔNG KẾT PHẦN 3 VÀ CẦU NỐI TIẾN VÀO PHẦN 4: TRỤ CỘT 2 — SKILLS
+- **Lời kết / Câu nối:** *"Chào mừng bạn bước tiếp sang **Phần 4: Trụ Cột 2 — Skills: Trang Bị Thêm Bí Kíp Chuyên Môn Trong Vài Giây**! Mời bạn bấm sang **Bài 4.1** ngay bây giờ!"*
+
+### bai_10_p04_khai_niem_skills_bi_kip_chuyen_mon.md
 - **Tên bài:** Bài 4.1: Khái niệm Skills - Tải thêm kỹ năng chuyên môn không lo đầy bộ nhớ
 - **Khối/Phần:** Kho Vũ Khí 7 Trụ Cột Cho Dân Văn Phòng | Trụ Cột 2 — Skills: Trang Bị Thêm "Bí Kíp Chuyên Môn" Trong Vài Giây
-- **Thời lượng:** 08:00 | **Slide ref:** ``phan_4_kho_vu_khi.html` (Slide 8, 9, 10)`
+- **Thời lượng:** 03:30 | **Slide ref:** `slides/phan_04_tru_cot_skills.html` (Slide 1)
 - **Các mốc thời gian:**
-  * `[00:00 - 01:30]` MỞ ĐẦU: PHÂN BIỆT RÕ RÀNG GIỮA "NỘI QUY" VÀ "BÍ KÍP NGHỀ"
-  * `[01:30 - 04:30]` ẨN DỤ DỄ HIỂU: CUỐN SÁCH KỸ THUẬT TRÊN GIÁ SÁCH
-  * `[04:30 - 06:45]` BÓC TÁCH CẤU TRÚC BÊN TRONG CỦA MỘT SKILL
-  * `[06:45 - 08:00]` TỔNG KẾT BÀI & BƯỚC VÀO TRẢI NGHIỆM THỰC HÀNH BÀI 4.2
-- **Lời kết / Câu nối:** *"Hãy chuẩn bị sẵn sàng, và cùng tôi bước sang Bài 4.2 ngay bây giờ!"..."*
+  * `[00:00 - 00:40]` PHÂN BIỆT RÕ RÀNG GIỮA "NỘI QUY" VÀ "BÍ KÍP NGHỀ"
+  * `[00:40 - 01:50]` ẨN DỤ DỄ HIỂU: CUỐN SÁCH KỸ THUẬT TRÊN GIÁ SÁCH & CƠ CHẾ LAZY LOADING
+  * `[01:50 - 02:50]` BÓC TÁCH CẤU TRÚC BÊN TRONG CỦA MỘT SKILL
+  * `[02:50 - 03:30]` TỔNG KẾT BÀI & CẦU NỐI SANG THỰC HÀNH BÀI 4.2
+- **Lời kết / Câu nối:** *"Mời bạn cùng bấm sang Bài 4.2 ngay bây giờ!"*
 
-### bai_10_p04_thuc_hanh_skill_doi_ten_file_tu_dong.md
+### bai_11_p04_thuc_hanh_skill_doi_ten_file_tu_dong.md
 - **Tên bài:** Bài 4.2: Thực hành Skill thực tế: Dùng skill 'doi-ten-file-tu-dong' đọc nội dung & chuẩn hóa tên file văn phòng
 - **Khối/Phần:** Kho Vũ Khí 7 Trụ Cột Cho Dân Văn Phòng | Trụ Cột 2 — Skills: Trang Bị Thêm "Bí Kíp Chuyên Môn" Trong Vài Giây
-- **Thời lượng:** 12:00 | **Slide ref:** ``phan_4_kho_vu_khi.html` (Slide 10 & Slide 11)`
+- **Thời lượng:** 04:30 | **Slide ref:** `slides/phan_04_tru_cot_skills.html` (Slide 2)
 - **Các mốc thời gian:**
-  * `[00:00 - 01:30]` MỞ ĐẦU: NỖI ÁM ẢNH TÊN FILE LỘN XỘN TRÊN MÁY TÍNH
-  * `[01:30 - 04:30]` KHÁM PHÁ QUY TRÌNH 4 BƯỚC THÔNG MINH CỦA SKILL
-  * `[04:30 - 09:30]` THỰC HÀNH TRỰC DIỆN TRÊN ANTIGRAVITY DESKTOP
-  * `[09:30 - 12:00]` TỔNG KẾT BÀI & CÂU DẪN SANG TRỤ CỘT 3: SUBAGENTS
-- **Lời kết / Câu nối:** *"Hẹn gặp lại các bạn ở Bài 5.1 ngay sau đây!"..."*
+  * `[00:00 - 00:45]` NỖI ÁM ẢNH TÊN FILE LỘN XỘN TRÊN MÁY TÍNH
+  * `[00:45 - 02:00]` KHÁM PHÁ QUY TRÌNH 4 BƯỚC AN TOÀN CỦA SKILL
+  * `[02:00 - 03:45]` THAO TÁC THỰC CHIẾN TRÊN ANTIGRAVITY DESKTOP
+  * `[03:45 - 04:30]` BÀI HỌC VỀ CHỐT CHẶN AN TOÀN & CẦU NỐI SANG PHẦN 5 (SUBAGENTS)
+- **Lời kết / Câu nối:** *"Hẹn gặp lại bạn ở Bài 5.1 ngay sau đây!"*
 
-### bai_11_p05_subagents_nhan_ban_doi_ngu_tro_ly.md
+### bai_12_p05_subagents_nhan_ban_doi_ngu_tro_ly.md
 - **Tên bài:** Bài 5.1: Subagents là gì? Cách phân vai trợ lý lọc số liệu và trợ lý soạn văn bản
 - **Khối/Phần:** Kho Vũ Khí 7 Trụ Cột Cho Dân Văn Phòng | Trụ Cột 3 — Subagents: Nhân Bản Đội Ngũ Trợ Lý Làm Việc Song Song
-- **Thời lượng:** 08:00 | **Slide ref:** ``phan_4_kho_vu_khi.html` (Slide 1, 2, 3)`
+- **Thời lượng:** 03:30 | **Slide ref:** `slides/phan_05_tru_cot_subagents.html` (Slide 1)
 - **Các mốc thời gian:**
-  * `[00:00 - 01:30]` MỞ ĐẦU: SAI LẦM KHI BẮT MỘT NGƯỜI ÔM ĐỒM MỌI VIỆC
-  * `[01:30 - 04:30]` CƠ CHẾ BẢO VỆ BỘ NHỚ: NGỮ CẢNH ĐỘC LẬP (ISOLATED CONTEXT)
-  * `[04:30 - 06:45]` CÁCH THIẾT LẬP VAI TRÒ CHUYÊN BIỆT: 0 CẦN BIẾT CODE
-  * `[06:45 - 08:00]` TỔNG KẾT BÀI & CÂU DẪN SANG THỰC HÀNH BÀI 5.2
-- **Lời kết / Câu nối:** *"Mời các bạn cùng bấm sang Bài 5.2 ngay bây giờ!"..."*
+  * `[00:00 - 00:40]` NỖI ĐAU MỘT NGƯỜI ÔM ĐỒM & CĂN BỆNH "LOÃNG NÃO" CỦA AI CŨ
+  * `[00:40 - 01:50]` ẨN DỤ GIÁM ĐỐC ĐIỀU HÀNH & CĂN PHÒNG RIÊNG (ISOLATED CONTEXT)
+  * `[01:50 - 02:50]` CẤU TẠO 1 SUBAGENT: 0 CẦN BIẾT CODE
+  * `[02:50 - 03:30]` TỔNG KẾT TƯ DUY LÃNH ĐẠO AI & CẦU NỐI SANG THỰC HÀNH BÀI 5.2
+- **Lời kết / Câu nối:** *"Mời bạn cùng bấm sang Bài 5.2 ngay bây giờ!"*
 
-### bai_12_p05_thuc_hanh_dieu_phoi_subagents_song_song.md
+### bai_13_p05_thuc_hanh_dieu_phoi_subagents_song_song.md
 - **Tên bài:** Bài 5.2: Thực hành: Điều phối 2 trợ lý chạy song song tăng gấp đôi tốc độ xử lý việc
 - **Khối/Phần:** Kho Vũ Khí 7 Trụ Cột Cho Dân Văn Phòng | Trụ Cột 3 — Subagents: Nhân Bản Đội Ngũ Trợ Lý Làm Việc Song Song
-- **Thời lượng:** 12:00 | **Slide ref:** ``phan_4_kho_vu_khi.html` (Slide 2 & Slide 3)`
+- **Thời lượng:** 04:30 | **Slide ref:** `slides/phan_05_tru_cot_subagents.html` (Slide 2)
 - **Các mốc thời gian:**
-  * `[00:00 - 01:30]` MỞ ĐẦU: ĐẶT BÀI TOÁN THỰC TẾ CHO ĐỘI NGŨ TRỢ LÝ
-  * `[01:30 - 04:30]` BƯỚC 1: RA LỆNH ĐIỀU PHỐI ĐỘI NGŨ TRÊN KHUNG CHAT
-  * `[04:30 - 08:30]` BƯỚC 2: QUAN SÁT CƠ CHẾ CHẠY SONG SONG THỰC TẾ
-  * `[08:30 - 10:30]` BƯỚC 3: NGHIỆM THU VÀ KIỂM TRA BỘ NHỚ
-  * `[10:30 - 12:00]` TỔNG KẾT BÀI & CÂU DẪN SANG TRỤ CỘT 4: HOOKS
-- **Lời kết / Câu nối:** *"Hẹn gặp lại các bạn ở Bài 6.1 ngay sau đây!"..."*
+  * `[00:00 - 00:45]` BÀI TOÁN DOANH SỐ CUỐI THÁNG & NỖI ĐAU THỦ CÔNG
+  * `[00:45 - 02:00]` THAO TÁC RA LỆNH ĐIỀU PHỐI BẰNG CÔNG THỨC 4 BƯỚC VÀNG
+  * `[02:00 - 03:45]` QUAN SÁT CƠ CHẾ CHẠY SONG SONG THỰC TẾ
+  * `[03:45 - 04:30]` NGHIỆM THU KẾT QUẢ & CẦU NỐI SANG PHẦN 6 (HOOKS)
+- **Lời kết / Câu nối:** *"Hẹn gặp lại bạn ở Bài 6.1 ngay sau đây!"*
 
-### bai_13_p06_hooks_vong_kim_co_kiem_soat_an_toan.md
+### bai_14_p06_hooks_vong_kim_co_kiem_soat_an_toan.md
 - **Tên bài:** Bài 6.1: Hooks là gì? Người gác cổng giám sát hành động của AI
 - **Khối/Phần:** Kho Vũ Khí 7 Trụ Cột Cho Dân Văn Phòng | Trụ Cột 4 — Hooks: Vòng Kim Cô Bảo Vệ An Toàn Dữ Liệu Tuyệt Đối
-- **Thời lượng:** 08:00 | **Slide ref:** ``phan_4_kho_vu_khi.html` (Slide 12, 13, 14)`
+- **Thời lượng:** 03:30 | **Slide ref:** `slides/phan_06_tru_cot_hooks.html` (Slide 1)
 - **Các mốc thời gian:**
-  * `[00:00 - 01:30]` MỞ ĐẦU: VÌ SAO CHÚNG TA CẦN MỘT "NGƯỜI GÁC CỔNG AN NINH"?
-  * `[01:30 - 04:30]` ẨN DỤ DỄ HIỂU: TRẠM KIỂM SOÁT AN NINH SÂN BAY
-  * `[04:30 - 06:45]` FILE CẤU HÌNH HOOKS.JSON: ĐƠN GIẢN VÀ DỄ DÙNG
-  * `[06:45 - 08:00]` TỔNG KẾT BÀI & CÂU DẪN SANG THỰC HÀNH BÀI 6.2
-- **Lời kết / Câu nối:** *"Mời các bạn bấm sang Bài 6.2 ngay bây giờ!"..."*
+  * `[00:00 - 00:40]` NỖI SỢ NHÂN VIÊN AI LÀM ẨU & NGUY CƠ PHÁ HỎNG DỮ LIỆU GỐC
+  * `[00:40 - 01:50]` ẨN DỤ TRẠM AN NINH SÂN BAY & 2 CHỐT CHẶN PRETOOLUSE VS POSTTOOLUSE
+  * `[01:50 - 02:50]` CẤU HÌNH HOOKS.JSON: NGƯỜI GÁC CỔNG 24/7
+  * `[02:50 - 03:30]` PHÂN BIỆT RULES VS HOOKS & CẦU NỐI SANG THỰC HÀNH BÀI 6.2
+- **Lời kết / Câu nối:** *"Mời bạn cùng bấm sang Bài 6.2 ngay bây giờ!"*
 
-### bai_14_p06_thuc_hanh_khoa_chan_bao_ve_file_goc.md
-- **Tên bài:** Bài 6.2: Thực hành: Cài chốt chặn ngăn AI sửa đè file gốc & cảnh báo thiếu dữ liệu
+### bai_15_p06_thuc_hanh_khoa_chan_bao_ve_file_goc.md
+- **Tên bài:** Bài 6.2: Thực hành: Cài chốt chặn PreToolUse ngăn AI sửa đè file gốc
 - **Khối/Phần:** Kho Vũ Khí 7 Trụ Cột Cho Dân Văn Phòng | Trụ Cột 4 — Hooks: Vòng Kim Cô Bảo Vệ An Toàn Dữ Liệu Tuyệt Đối
-- **Thời lượng:** 12:00 | **Slide ref:** ``phan_4_kho_vu_khi.html` (Slide 14)`
+- **Thời lượng:** 04:30 | **Slide ref:** `slides/phan_06_tru_cot_hooks.html` (Slide 2)
 - **Các mốc thời gian:**
-  * `[00:00 - 01:30]` MỞ ĐẦU: THỬ NGHIỆM TÌNH HUỐNG NGUY HIỂM NHẤT TRONG CÔNG TY
-  * `[01:30 - 05:00]` BƯỚC 1: CỐ TÌNH RA LỆNH NGUY HIỂM TRÊN KHUNG CHAT
-  * `[05:00 - 08:30]` BƯỚC 2: AI TỰ ĐỘNG "QUAY ĐẦU LÀ BỜ" ĐỂ BẢO VỆ DỮ LIỆU
-  * `[08:30 - 12:00]` TỔNG KẾT BÀI & CÂU DẪN SANG TRỤ CỘT 5: MCP
-- **Lời kết / Câu nối:** *"Hẹn gặp lại các bạn ở Bài 7.1 ngay sau đây!"..."*
+  * `[00:00 - 00:45]` THỬ NGHIỆM TÌNH HUỐNG MẠO HIỂM NHẤT TRONG DOANH NGHIỆP
+  * `[00:45 - 02:00]` THAO TÁC CỐ TÌNH RA LỆNH NGUY HIỂM TRÊN KHUNG CHAT
+  * `[02:00 - 03:45]` TRẠM GÁC HOOK THỔI CÒI & PHẢN XẠ "QUAY ĐẦU LÀ BỜ" CỦA AI
+  * `[03:45 - 04:30]` BÀI HỌC VỀ SỰ AN TÂM TUYỆT ĐỐI & CẦU NỐI SANG PHẦN 7 (MCP)
+- **Lời kết / Câu nối:** *"Hẹn gặp lại bạn ở Bài 7.1 ngay sau đây!"*
 
-### bai_15_p07_mcp_cong_ket_noi_the_gioi_thuc.md
-- **Tên bài:** Bài 7.1: MCP là gì? Mở rộng giác quan kết nối Drive, Gmail, Bảng tính và Thư mục máy
+### bai_16_p07_mcp_cong_ket_noi_the_gioi_thuc.md
+- **Tên bài:** Bài 7.1: MCP là gì? Mở rộng giác quan kết nối Gmail, Drive, Bảng tính và Phần mềm thực tế
 - **Khối/Phần:** Kho Vũ Khí 7 Trụ Cột Cho Dân Văn Phòng | Trụ Cột 5 — MCP: Cổng Kết Nối Đưa Dữ Liệu Công Việc Thực Tế Vào AI
-- **Thời lượng:** 08:00 | **Slide ref:** ``phan_4_kho_vu_khi.html` (Slide 15 & Slide 16)`
+- **Thời lượng:** 03:30 | **Slide ref:** `phan_07_tru_cot_mcp.html` (Slide 1)
 - **Các mốc thời gian:**
-  * `[00:00 - 01:30]` MỞ ĐẦU: NỖI KHỔ CỦA CON AI "BỊ NHỐT TRONG PHÒNG KÍN"
-  * `[01:30 - 04:30]` ẨN DỤ ĐẮT GIÁ: CỔNG CẮM USB VẠN NĂNG CHO BỘ NÃO AI
-  * `[04:30 - 06:45]` TỆP CẤU HÌNH MCP_CONFIG.JSON: KẾT NỐI CHỈ TRONG 1 PHÚT
-  * `[06:45 - 08:00]` TỔNG KẾT BÀI & CÂU DẪN SANG THỰC HÀNH BÀI 7.2
-- **Lời kết / Câu nối:** *"Mời các bạn cùng bấm sang Bài 7.2 để bắt đầu trải nghiệm nhé!"..."*
+  * `[00:00 - 00:40]` NỖI KHỔ CỦA CON AI "BỊ NHỐT TRONG PHÒNG KÍN"
+  * `[00:40 - 01:50]` ẨN DỤ ĐẮT GIÁ: CỔNG CẮM USB-C VẠN NĂNG CHO BỘ NÃO AI
+  * `[01:50 - 02:50]` TỆP CẤU HÌNH MCP_CONFIG.JSON: KẾT NỐI KHÔNG CẦN BIẾT CODE
+  * `[02:50 - 03:30]` TỔNG KẾT VÀ CẦU NỐI SANG THỰC HÀNH BÀI 7.2 (GMAIL MCP)
+- **Lời kết / Câu nối:** *"Mời bạn cùng bấm sang Bài 7.2 ngay bây giờ!"*
 
 ### bai_16_p07_thuc_hanh_ket_noi_thu_muc_ho_so_mcp.md
-- **Tên bài:** Bài 7.2: Thực hành: Cho phép AI kết nối thư mục hồ sơ để tự tìm kiếm & đối chiếu dữ liệu
+- **Tên bài:** Bài 7.2: Thực hành: Kết nối cổng Gmail MCP — Biến AI thành thư ký tự động quét & tóm tắt email công việc quan trọng
 - **Khối/Phần:** Kho Vũ Khí 7 Trụ Cột Cho Dân Văn Phòng | Trụ Cột 5 — MCP: Cổng Kết Nối Đưa Dữ Liệu Công Việc Thực Tế Vào AI
-- **Thời lượng:** 12:00 | **Slide ref:** ``phan_4_kho_vu_khi.html` (Slide 16)`
+- **Thời lượng:** 04:30 | **Slide ref:** `phan_07_tru_cot_mcp.html` (Slide 2)
 - **Các mốc thời gian:**
-  * `[00:00 - 01:30]` MỞ ĐẦU: BÀI TOÁN "TÀI LIỆU NẰM RẢI RÁC Ở NHIỀU Ổ ĐĨA"
-  * `[01:30 - 04:30]` BƯỚC 1: KHAI BÁO CỔNG KẾT NỐI MCP TRONG MCP_CONFIG.JSON
-  * `[04:30 - 08:30]` BƯỚC 2: RA LỆNH CHO AI TỰ VƯƠN TAY ĐỌC FILE TỪ XA
-  * `[08:30 - 12:00]` TỔNG KẾT BÀI & CÂU DẪN SANG TRỤ CỘT 6 & 7: PLUGINS & SIDECARS
+  * `[00:00 - 00:45]` NỖI ÁM ẢNH HỘP THƯ GMAIL QUÁ TẢI MỖI SÁNG
+  * `[00:45 - 01:50]` KHÁM PHÁ CỔNG GMAIL MCP TRONG MCP_CONFIG.JSON
+  * `[01:50 - 03:45]` THAO TÁC THỰC CHIẾN: AI TỰ ĐỘNG QUÉT & LẬP BẢNG TÓM TẮT EMAIL
+  * `[03:45 - 04:30]` TỔNG KẾT BÀI & CẦU NỐI SANG PHẦN 8 (PLUGINS & SIDECARS)
 - **Lời kết / Câu nối:** *"Hẹn gặp lại các bạn ở Bài 8.1 ngay sau đây!"..."*
 
 ### bai_17_p08_plugins_vali_nghe_dong_goi_all_in_one.md

@@ -11,7 +11,7 @@
 ## 🎬 1. CHUẨN BỊ TRƯỚC KHI QUAY
 * **Cửa sổ trình chiếu:** Mở tệp slide `slides/phan_01_khoi_dong_cai_dat.html` trên trình duyệt ở chế độ toàn màn hình (phím F11).
 * **Màn hình phụ / Cửa sổ ẩn:** Để sẵn ứng dụng Antigravity Desktop với một thư mục làm việc văn phòng mẫu.
-* **Tông giọng:** Trực diện, rõ ràng, gãy gọn, xưng hô Tôi - Bạn theo chuẩn giảng viên Solo Screencast trên Udemy.
+* **Tông giọng:** Trực diện, tự tin, cuốn hút, giàu nhịp điệu, xưng hô Tôi - Bạn theo chuẩn giảng viên Solo Screencast trên Udemy.
 
 ---
 
@@ -21,9 +21,9 @@
 `[Hiển thị Slide 1: Google Antigravity Là Gì? Biến Bạn Thành "Tổng Chỉ Huy" Đội Ngũ Trợ Lý AI Toàn Năng]`  
 `[Tông giọng rõ ràng, tự tin, vào thẳng vấn đề]`
 
-"Chào các bạn, tôi rất vui được đồng hành cùng các bạn trong khóa học **Làm Chủ Google Antigravity**. 
+"Chào bạn, tôi rất vui được chào đón bạn đến với khóa học **Làm Chủ Google Antigravity Cho Người Không Chuyên**! 
 
-Trong video mở đầu này, bạn sẽ nắm được bản chất của Google Antigravity và lý do vì sao công cụ này giúp bạn giải quyết công việc văn phòng nhanh gấp nhiều lần so với cách dùng ChatGPT thông thường."
+Nếu bạn là một người làm việc văn phòng đang muốn nhân đôi, nhân ba hiệu suất xử lý công việc bằng trí tuệ nhân tạo, thì video mở đầu này chính là chiếc chìa khóa đầu tiên dành cho bạn: Chúng ta sẽ cùng nhau giải mã bản chất thực sự của Google Antigravity — và lý do vì sao công cụ này giúp bạn giải quyết công việc nhanh gấp hàng chục lần so với cách dùng ChatGPT thông thường."
 
 ---
 
@@ -31,9 +31,9 @@ Trong video mở đầu này, bạn sẽ nắm được bản chất của Googl
 `[Chỉ vào Cột 1 trên Slide 1: Khác Biệt Với Chatbot Cũ]`  
 `[Tông giọng trầm, chỉ ra vấn đề thực tế]`
 
-"Nếu bạn từng nhờ ChatGPT hay Gemini hỗ trợ xử lý số liệu, chắc hẳn bạn đã gặp tình trạng này: Bạn phải copy từng đoạn văn bản dán vào web, hoặc tải file Excel lên rồi chờ nó phản hồi. Sau đó, bạn lại phải tự tay tải file về, copy ngược lại vào báo cáo. 
+"Trước hết, hãy cùng nhìn lại thói quen làm việc hàng ngày của chúng ta: Nếu bạn từng nhờ ChatGPT hay Gemini hỗ trợ xử lý số liệu, chắc hẳn bạn đã quá quen với tình cảnh trớ trêu này: Bạn phải copy từng đoạn văn dán vào web, hoặc tải file Excel lên rồi ngồi chờ nó phản hồi. Sau đó, bạn lại phải tự tay tải file về, rồi chép ngược số liệu vào báo cáo. 
 
-Chatbot truyền thống chỉ trả lời bằng chữ trong ô chat. Mọi công việc chân tay như mở file, sửa bảng tính, hay di chuyển dữ liệu... rốt cuộc **vẫn do chính bạn phải làm thủ công**!"
+**Nói tóm lại,** chatbot truyền thống rốt cuộc vẫn chỉ biết trả lời bằng chữ trong ô chat! **Còn toàn bộ công việc chân tay** — từ việc mở file, sửa bảng tính, cho đến di chuyển dữ liệu... **thì cuối cùng vẫn trút hết lên đôi tay bạn làm thủ công!**"
 
 ---
 
@@ -41,13 +41,13 @@ Chatbot truyền thống chỉ trả lời bằng chữ trong ô chat. Mọi cô
 `[Chỉ vào Cột 2 & Cột 3 trên Slide 1: Google Antigravity Là Gì? & Vai Trò Tổng Chỉ Huy]`  
 `[Tông giọng dứt khoát, hào hứng]`
 
-"Google Antigravity ra đời để chấm dứt chuỗi thao tác thủ công đó.
+"**Và đó chính là lý do vì sao,** Google Antigravity ra đời để chấm dứt hoàn toàn chuỗi thao tác cực nhọc đó!
 
-Thay vì bị nhốt trong trình duyệt web, Antigravity là một trợ lý AI hoạt động **trực tiếp trên máy tính của bạn**. Bạn có thể hiểu đơn giản:
+**Thay vì bị nhốt trong một tab trình duyệt web chật hẹp,** Antigravity là một trợ lý AI hoạt động **trực tiếp ngay trên hệ điều hành máy tính của bạn**. Bạn có thể hình dung một cách dễ hiểu:
 
-* Nó có **đôi mắt** để đọc trực tiếp các tệp file trên ổ cứng — từ Word, Excel, PDF đến hình ảnh hóa đơn.
-* Nó có **đôi tay** để tự động tạo file mới, mở file ra chỉnh sửa đúng từng dòng số liệu, và dọn dẹp thư mục cho bạn.
-* Và đặc biệt, **bạn không cần biết lập trình**. Bạn chỉ cần giao việc bằng tiếng Việt tự nhiên, giống như giao việc cho một nhân viên cấp dưới, và bạn là người duyệt kết quả cuối cùng."
+* **Thứ nhất,** nó được trang bị một **đôi mắt số** để tự động đọc trực tiếp mọi tệp tin trên ổ cứng — từ Word, Excel, PDF cho đến ảnh chụp hóa đơn mờ.
+* **Thứ hai,** nó sở hữu một **đôi bàn tay tự hành** để tự động tạo file mới, mở bảng tính ra sửa đúng từng dòng số liệu, và sắp xếp lại toàn bộ thư mục cho bạn.
+* **Và điều tuyệt vời nhất ở đây là:** Bạn hoàn toàn không cần biết một dòng code lập trình nào cả! Bạn chỉ cần ra lệnh bằng tiếng Việt tự nhiên giống hệt như đang giao việc cho một người thư ký mẫn cán, và bạn đóng vai trò là một **Tổng Chỉ Huy** quyền lực chỉ việc duyệt kết quả cuối cùng."
 
 ---
 
@@ -55,6 +55,6 @@ Thay vì bị nhốt trong trình duyệt web, Antigravity là một trợ lý A
 `[Chuyển sang Slide 2: Khóa Học Này Dành Cho Ai? - lướt qua 4 nhóm đối tượng]`  
 `[Tông giọng thúc đẩy hành động]`
 
-"Dù bạn là học sinh sinh viên cần tóm tắt tài liệu, dân văn phòng kế toán phải xử lý hàng trăm hóa đơn, hay người làm kinh doanh quản lý công việc — chỉ cần bạn có một chiếc máy tính và biết gõ tiếng Việt là có thể làm chủ công cụ này.
+"**Chính vì vậy,** dù bạn là nhân viên văn phòng, kế toán đang ngập trong hóa đơn chứng từ, người làm kinh doanh cần báo cáo nhanh, hay sinh viên muốn xử lý tài liệu học tập — chỉ cần bạn có một chiếc máy tính và biết gõ tiếng Việt là bạn đã có thể làm chủ công cụ này!
 
-Trong bài tiếp theo, chúng ta sẽ bắt tay vào tải và cài đặt Antigravity Desktop chỉ trong 3 bước đơn giản.
+**Còn bây giờ,** không để bạn phải đợi lâu, mời bạn bấm ngay sang **Bài 1.2** để chúng ta cùng tải và cài đặt Antigravity Desktop chỉ trong 3 phút!"

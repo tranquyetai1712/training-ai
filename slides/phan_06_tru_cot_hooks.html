@@ -496,12 +496,12 @@
 
   <main id="deck-stage">
 
-    <div class="slide-canvas active" data-slide="1" data-notes="Trụ cột 4 - Hooks: Hệ thống camera giám sát và Vòng Kim Cô bảo vệ dữ liệu.
-Tại sao cần Hooks? AI rất thông minh nhưng đôi khi có thể gõ nhầm lệnh xóa file hoặc ghi đè tài liệu nhạy cảm.
-Rules là lời khuyên bằng văn bản, còn Hooks là VÒNG KIM CÔ kỹ thuật chặn cứng:
-1. PreToolUse: Kiểm tra TRƯỚC KHI thực thi. Ví dụ AI chuẩn bị gõ lệnh xóa file, Hook can thiệp chặn đứng ngay tại chỗ!
-2. PostToolUse: Kiểm tra NGAY SAU KHI thực thi. Ví dụ kiểm tra xem file vừa tạo có đúng định dạng yêu cầu hay không.
-Hooks chạy bằng code kịch bản, chạy trước khi lệnh tới hệ điều hành. An toàn tuyệt đối!">
+    <div class="slide-canvas active" data-slide="1" data-notes="Trụ cột 4 - Hooks: Vòng Kim Cô Bảo Vệ An Toàn Dữ Liệu Tuyệt Đối.
+Vì sao cần Hooks? 'Nhân viên càng nhiệt tình, nguy cơ làm ẩu càng cao'. AI có thể hiểu nhầm và định xóa hoặc sửa đè file gốc.
+2 Chốt chặn an ninh:
+1. PreToolUse (Soi trước khi chạy): Giống cửa soi chiếu an ninh sân bay — phát hiện lệnh nguy hiểm là thổi còi chặn đứng ngay tức khắc!
+2. PostToolUse (Soi sau khi chạy): Giống cửa hải quan — kiểm tra kết quả đầu ra xem có đủ cột, đủ dòng không trước khi nộp sếp.
+Quy tắc vàng: Rules là 'Biển báo giao thông', Hooks là 'Gờ giảm tốc và Barie tự động'!">
       <div class="slide-hud">
         <div class="hud-chip">TRỤ CỘT 04: <strong>VÒNG KIM CÔ HOOKS</strong></div>
       </div>
@@ -538,13 +538,14 @@ Hooks chạy bằng code kịch bản, chạy trước khi lệnh tới hệ đi
       </div>
     </div>
 
-    <div class="slide-canvas" data-slide="2" data-notes="Thực hành thiết lập Hook an toàn: Chặn đứng lệnh xóa file.
-Kịch bản phòng thủ văn phòng:
-- Tạo 1 Hook đơn giản kiểm tra nếu lệnh có chứa từ khóa 'del', 'Remove-Item', 'rmdir' trong các thư mục quan trọng.
-- Hook tự động trả về thông báo lỗi: 'LỆNH BỊ CHẶN BỞI CHÍNH SÁCH BẢO VỆ DỮ LIỆU. BẠN CẦN XIN PHÉP NGƯỜI DÙNG!'
-- AI buộc phải dừng lại và mở hộp thoại xin phép bạn trước khi tiến hành.
-Dù bạn giao việc phức tạp hay AI chạy qua đêm, bạn hoàn toàn an tâm không bao giờ mất dữ liệu!">
+    <div class="slide-canvas" data-slide="2" data-notes="Thực hành thiết lập Hook an toàn trong workspace độc lập Demo/chot-chan-bao-ve-file-goc/.
+Thử nghiệm nguy hiểm: Cố tình ra lệnh cho AI mở tệp du_lieu_goc_khach_hang.xlsx ra và xóa bớt khách hàng.
+Phản xạ an toàn của Antigravity:
+1. Hook PreToolUse phát hiện can thiệp file dữ liệu gốc, lập tức trả về decision: 'deny' chặn đứng thao tác và xuất cảnh báo an ninh.
+2. AI không bị crash mà tự động 'quay đầu là bờ': Đề xuất tạo bản sao khach_hang_chua_mua_thang_10.xlsx để giữ nguyên 100% file gốc.
+Kết quả: Quyền quyết định cuối cùng luôn thuộc về con người, an tâm 100% khi giao việc!">
       <div class="slide-hud">
+        <div class="hud-chip">WORKSPACE: <strong>DEMO/CHOT-CHAN-BAO-VE-FILE-GOC</strong></div>
         <div class="hud-chip">TRỤ CỘT 04: <strong>THỰC HÀNH AN NINH</strong></div>
       </div>
       <div class="anim-1">
@@ -555,16 +556,20 @@ Dù bạn giao việc phức tạp hay AI chạy qua đêm, bạn hoàn toàn an
       <div class="card-grid col-2 anim-2">
         <div class="stat-card" style="border-top: 3px solid var(--accent-amber);">
           <div class="stat-header"><span class="card-badge" style="background: rgba(245,158,11,0.18); color: #fde68a;">CẤU HÌNH HOOK</span></div>
-          <div class="stat-title">File Cấu Hình hooks.json</div>
+          <div class="stat-title">File Cấu Hình .agents/hooks.json</div>
           <div class="code-box" style="color: #fde68a;">{
-  "PreToolUse": [
-    {
-      "tool": "run_command",
-      "pattern": "(del|rmdir|Remove-Item)",
-      "action": "BLOCK_AND_ASK_USER",
-      "message": "CẢNH BÁO: Thao tác xóa file bị chặn!"
-    }
-  ]
+  "protect-root-files": {
+    "PreToolUse": [
+      {
+        "matcher": "run_command|write_to_file|replace_file_content",
+        "hooks": [
+          {
+            "command": "python3 .agents/scripts/protect_root_files.py"
+          }
+        ]
+      }
+    ]
+  }
 }</div>
         </div>
         <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
@@ -572,9 +577,9 @@ Dù bạn giao việc phức tạp hay AI chạy qua đêm, bạn hoàn toàn an
           <div class="stat-title">AI Tự Động Phanh Gấp</div>
           <div class="stat-desc">
             <ul class="key-points-list">
-              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>AI nhận diện:</strong> Hook chặn lệnh xóa, AI lập tức dừng luồng thực thi.</li>
-              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Hỏi ý kiến bạn:</strong> 'Tôi phát hiện file nháp cũ, bạn có chắc chắn muốn xóa không?'</li>
-              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Kiểm soát 100%:</strong> Quyền quyết định cuối cùng luôn thuộc về con người!</li>
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Hook chặn đứng:</strong> Trả về <code>"decision": "deny"</code> ngay trước khi AI chạm vào file.</li>
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>AI quay đầu đề xuất:</strong> 'Tôi đề xuất tạo bản sao <code>khach_hang_chua_mua_thang_10.xlsx</code> để bảo toàn file gốc.'</li>
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Kiểm soát 100%:</strong> Dữ liệu gốc an toàn tuyệt đối ngay cả khi bạn lỡ tay ra lệnh sai!</li>
             </ul>
           </div>
         </div>

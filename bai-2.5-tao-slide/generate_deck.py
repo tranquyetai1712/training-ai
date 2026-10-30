@@ -5,102 +5,185 @@ from pptx.enum.text import PP_ALIGN
 from pptx.dml.color import RGBColor
 from pptx.enum.shapes import MSO_SHAPE
 
-def create_deck():
-    prs = Presentation()
-    # 16:9 widescreen
-    prs.slide_width = Inches(13.333)
-    prs.slide_height = Inches(7.5)
-    blank_layout = prs.slide_layouts[6]
+# Color Palette - Cyber Dark Luxury
+BG_DARK = RGBColor(9, 13, 22)        # #090D16
+CARD_BG = RGBColor(19, 27, 46)       # #131B2E
+CARD_BG_ALT = RGBColor(15, 23, 42)   # #0F172A
+CARD_BORDER = RGBColor(51, 65, 85)   # #334155
+BORDER_GLOW = RGBColor(99, 102, 241) # #6366F1
+TEXT_WHITE = RGBColor(248, 250, 252) # #F8FAFC
+TEXT_MUTED = RGBColor(148, 163, 184) # #94A3B8
+TEXT_DIM = RGBColor(100, 116, 139)   # #64748B
 
-    # Color Palette - Cyber Dark Luxury
-    BG_DARK = RGBColor(9, 13, 22)        # #090D16
-    CARD_BG = RGBColor(19, 27, 46)       # #131B2E
-    CARD_BG_ALT = RGBColor(15, 23, 42)   # #0F172A
-    CARD_BORDER = RGBColor(51, 65, 85)   # #334155
-    BORDER_GLOW = RGBColor(99, 102, 241) # #6366F1
-    TEXT_WHITE = RGBColor(248, 250, 252) # #F8FAFC
-    TEXT_MUTED = RGBColor(148, 163, 184)# #94A3B8
-    TEXT_DIM = RGBColor(100, 116, 139)   # #64748B
+ACCENT_INDIGO = RGBColor(129, 140, 248) # #818CF8
+ACCENT_CYAN = RGBColor(56, 189, 248)    # #38BDF8
+ACCENT_GREEN = RGBColor(52, 211, 153)   # #34D399
+ACCENT_RED = RGBColor(244, 63, 94)      # #F43F5E
+ACCENT_AMBER = RGBColor(245, 158, 11)   # #F59E0B
+CODE_BG = RGBColor(5, 8, 17)            # #050811
+
+def set_slide_background(slide):
+    bg = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, 0, 0, Inches(13.333), Inches(7.5))
+    bg.fill.solid()
+    bg.fill.fore_color.rgb = BG_DARK
+    bg.line.fill.background()
+
+def add_top_decorations(slide, slide_num, total_slides=10, tag="⚡ CHUYÊN ĐỀ CÔNG NGHỆ NỘI BỘ • AI AGENT WORKFLOW"):
+    top_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.35), Inches(10), Inches(0.35))
+    tf = top_box.text_frame
+    tf.word_wrap = True
+    p = tf.paragraphs[0]
+    p.text = tag.upper()
+    p.font.name = "Segoe UI"
+    p.font.size = Pt(10)
+    p.font.bold = True
+    p.font.color.rgb = ACCENT_INDIGO
+
+    num_box = slide.shapes.add_textbox(Inches(11.0), Inches(0.35), Inches(1.5), Inches(0.35))
+    ntf = num_box.text_frame
+    np = ntf.paragraphs[0]
+    np.text = f"{slide_num:02d} / {total_slides:02d}"
+    np.alignment = PP_ALIGN.RIGHT
+    np.font.name = "Consolas"
+    np.font.size = Pt(11)
+    np.font.bold = True
+    np.font.color.rgb = ACCENT_CYAN
+
+    foot_box = slide.shapes.add_textbox(Inches(0.8), Inches(7.05), Inches(11.7), Inches(0.3))
+    ftf = foot_box.text_frame
+    fp = ftf.paragraphs[0]
+    fp.text = "Google Antigravity & Claude Code • Internal Tech Sharing • 2026"
+    fp.font.name = "Segoe UI"
+    fp.font.size = Pt(9)
+    fp.font.color.rgb = TEXT_DIM
+
+def add_header(slide, title, subtitle=None):
+    header_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.82), Inches(11.7), Inches(1.1))
+    tf = header_box.text_frame
+    tf.word_wrap = True
+    tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
     
-    ACCENT_INDIGO = RGBColor(129, 140, 248) # #818CF8
-    ACCENT_CYAN = RGBColor(56, 189, 248)    # #38BDF8
-    ACCENT_GREEN = RGBColor(52, 211, 153)   # #34D399
-    ACCENT_RED = RGBColor(244, 63, 94)      # #F43F5E
-    ACCENT_AMBER = RGBColor(245, 158, 11)   # #F59E0B
-    CODE_BG = RGBColor(5, 8, 17)            # #050811
+    p = tf.paragraphs[0]
+    p.text = title
+    p.font.name = "Segoe UI"
+    p.font.size = Pt(25)
+    p.font.bold = True
+    p.font.color.rgb = TEXT_WHITE
+    
+    if subtitle:
+        p2 = tf.add_paragraph()
+        p2.text = subtitle
+        p2.font.name = "Segoe UI"
+        p2.font.size = Pt(12.5)
+        p2.font.color.rgb = TEXT_MUTED
+        p2.space_before = Pt(3)
 
-    def set_slide_background(slide):
-        bg = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, 0, 0, Inches(13.333), Inches(7.5))
-        bg.fill.solid()
-        bg.fill.fore_color.rgb = BG_DARK
-        bg.line.fill.background() # no line
+def add_notes(slide, notes_text):
+    notes_slide = slide.notes_slide
+    tf = notes_slide.notes_text_frame
+    tf.text = notes_text
 
-    def add_top_decorations(slide, slide_num, total_slides=8, tag="DEVELOPER MASTERCLASS • 7 PHÚT"):
-        # Top banner text
-        top_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.4), Inches(10), Inches(0.4))
-        tf = top_box.text_frame
-        tf.word_wrap = True
-        p = tf.paragraphs[0]
-        p.text = tag.upper()
-        p.font.name = "Segoe UI"
-        p.font.size = Pt(10)
-        p.font.bold = True
-        p.font.color.rgb = ACCENT_INDIGO
+def add_flowchart_3_nodes(slide, left, top, width, height, nodes_data):
+    node_w = Inches(3.2)
+    node_h = height
+    arrow_w = Inches(0.7)
+    gap = (width - (node_w * 3) - (arrow_w * 2)) / 2
 
-        # Slide indicator
-        num_box = slide.shapes.add_textbox(Inches(11.0), Inches(0.4), Inches(1.5), Inches(0.4))
-        ntf = num_box.text_frame
-        np = ntf.paragraphs[0]
-        np.text = f"{slide_num:02d} / {total_slides:02d}"
-        np.alignment = PP_ALIGN.RIGHT
-        np.font.name = "Consolas"
-        np.font.size = Pt(11)
-        np.font.bold = True
-        np.font.color.rgb = ACCENT_CYAN
+    cur_x = left
+    for i, (title, desc) in enumerate(nodes_data):
+        node = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, cur_x, top, node_w, node_h)
+        node.fill.solid()
+        node.fill.fore_color.rgb = CARD_BG
+        node.line.color.rgb = BORDER_GLOW if i == 1 else (ACCENT_CYAN if i == 0 else ACCENT_GREEN)
+        node.line.width = Pt(1.5)
 
-        # Bottom footer
-        foot_box = slide.shapes.add_textbox(Inches(0.8), Inches(7.05), Inches(11.7), Inches(0.3))
-        ftf = foot_box.text_frame
-        fp = ftf.paragraphs[0]
-        fp.text = "Google Antigravity & Claude Code • Internal Tech Sharing • 2026"
-        fp.font.name = "Segoe UI"
-        fp.font.size = Pt(9)
-        fp.font.color.rgb = TEXT_DIM
+        ntf = node.text_frame
+        ntf.word_wrap = True
+        ntf.margin_left = ntf.margin_right = Inches(0.2)
+        ntf.margin_top = Inches(0.12)
+        p1 = ntf.paragraphs[0]
+        p1.text = title
+        p1.font.name = "Segoe UI"
+        p1.font.size = Pt(12.5)
+        p1.font.bold = True
+        p1.font.color.rgb = TEXT_WHITE
 
-    def add_header(slide, title, subtitle=None):
-        header_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.75), Inches(11.7), Inches(1.1))
-        tf = header_box.text_frame
-        tf.word_wrap = True
-        tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
-        
-        p = tf.paragraphs[0]
-        p.text = title
-        p.font.name = "Segoe UI"
-        p.font.size = Pt(26)
-        p.font.bold = True
-        p.font.color.rgb = TEXT_WHITE
-        
-        if subtitle:
-            p2 = tf.add_paragraph()
-            p2.text = subtitle
-            p2.font.name = "Segoe UI"
-            p2.font.size = Pt(13)
-            p2.font.color.rgb = TEXT_MUTED
-            p2.space_before = Pt(4)
+        p2 = ntf.add_paragraph()
+        p2.text = desc
+        p2.font.name = "Segoe UI"
+        p2.font.size = Pt(10)
+        p2.font.color.rgb = TEXT_MUTED
+        p2.space_before = Pt(4)
 
-    def add_notes(slide, notes_text):
-        notes_slide = slide.notes_slide
-        tf = notes_slide.notes_text_frame
-        tf.text = notes_text
+        cur_x += node_w
+        if i < 2:
+            arrow_x = cur_x + Inches(0.05)
+            arrow_y = top + (height / 2) - Inches(0.18)
+            arrow = slide.shapes.add_shape(MSO_SHAPE.RIGHT_ARROW, arrow_x, arrow_y, arrow_w - Inches(0.1), Inches(0.36))
+            arrow.fill.solid()
+            arrow.fill.fore_color.rgb = ACCENT_INDIGO
+            arrow.line.fill.background()
+            cur_x += arrow_w + gap
+
+def add_terminal_mockup(slide, left, top, width, height, title, command, logs):
+    win = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left, top, width, height)
+    win.fill.solid()
+    win.fill.fore_color.rgb = CODE_BG
+    win.line.color.rgb = CARD_BORDER
+    win.line.width = Pt(1)
+
+    tbar_h = Inches(0.4)
+    tbar = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, tbar_h)
+    tbar.fill.solid()
+    tbar.fill.fore_color.rgb = CARD_BG_ALT
+    tbar.line.fill.background()
+
+    # Dots
+    dot_d = Inches(0.14)
+    dot_y = top + Inches(0.13)
+    for i, color in enumerate([ACCENT_RED, ACCENT_AMBER, ACCENT_GREEN]):
+        dot = slide.shapes.add_shape(MSO_SHAPE.OVAL, left + Inches(0.2 + i * 0.22), dot_y, dot_d, dot_d)
+        dot.fill.solid()
+        dot.fill.fore_color.rgb = color
+        dot.line.fill.background()
+
+    tbox = slide.shapes.add_textbox(left + Inches(1.0), top + Inches(0.05), width - Inches(1.2), Inches(0.3))
+    ttf = tbox.text_frame
+    tp = ttf.paragraphs[0]
+    tp.text = title
+    tp.font.name = "Consolas"
+    tp.font.size = Pt(10)
+    tp.font.color.rgb = TEXT_MUTED
+
+    cbox = slide.shapes.add_textbox(left + Inches(0.25), top + tbar_h + Inches(0.1), width - Inches(0.5), height - tbar_h - Inches(0.2))
+    ctf = cbox.text_frame
+    ctf.word_wrap = True
+    
+    cp = ctf.paragraphs[0]
+    cp.text = command
+    cp.font.name = "Consolas"
+    cp.font.size = Pt(11.5)
+    cp.font.bold = True
+    cp.font.color.rgb = ACCENT_CYAN
+
+    for log in logs:
+        lp = ctf.add_paragraph()
+        lp.text = log
+        lp.font.name = "Consolas"
+        lp.font.size = Pt(10.5)
+        lp.font.color.rgb = ACCENT_GREEN if "[✓]" in log else TEXT_MUTED
+        lp.space_before = Pt(4)
+
+def build_slides_1_to_4(prs):
+    blank_layout = prs.slide_layouts[6]
 
     # =========================================================================
     # SLIDE 1: COVER / HERO SLIDE
     # =========================================================================
     s1 = prs.slides.add_slide(blank_layout)
     set_slide_background(s1)
-    add_top_decorations(s1, 1, 8, "⚡ CHUYÊN ĐỀ CÔNG NGHỆ NỘI BỘ • 7 PHÚT")
+    add_top_decorations(s1, 1, 10, "⚡ CHUYÊN ĐỀ CÔNG NGHỆ NỘI BỘ • AI AGENT WORKFLOW")
 
-    # Title Hero
     tbox = s1.shapes.add_textbox(Inches(0.8), Inches(1.1), Inches(11.7), Inches(2.2))
     tf1 = tbox.text_frame
     tf1.word_wrap = True
@@ -115,7 +198,7 @@ def create_deck():
     p2 = tf1.add_paragraph()
     p2.text = "Làm Chủ Antigravity Remote Control, App Settings & Tích Hợp Claude Code"
     p2.font.name = "Segoe UI"
-    p2.font.size = Pt(22)
+    p2.font.size = Pt(21)
     p2.font.bold = True
     p2.font.color.rgb = ACCENT_CYAN
     p2.space_before = Pt(6)
@@ -127,98 +210,106 @@ def create_deck():
     p3.font.color.rgb = TEXT_MUTED
     p3.space_before = Pt(8)
 
-    # 2 Comparison Cards (Problem vs Solution)
-    card1 = s1.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(3.6), Inches(5.7), Inches(3.1))
-    card1.fill.solid()
-    card1.fill.fore_color.rgb = CARD_BG
-    card1.line.color.rgb = ACCENT_RED
-    card1.line.width = Pt(1.5)
-    
-    ctf1 = card1.text_frame
-    ctf1.word_wrap = True
-    ctf1.margin_left = ctf1.margin_right = ctf1.margin_top = Inches(0.3)
-    cp1 = ctf1.paragraphs[0]
-    cp1.text = "⚠️  Thực Trạng & Rào Cản Thường Gặp"
-    cp1.font.name = "Segoe UI"
-    cp1.font.size = Pt(16)
-    cp1.font.bold = True
-    cp1.font.color.rgb = ACCENT_RED
-
-    bullets_c1 = [
-        ("Máy ngủ gật (Sleep Mode):", " AI đang chạy task dài, máy tự tắt làm đứt kết nối."),
-        ("Bị xích vào bàn làm việc:", " Phải ngồi canh máy chỉ để bấm Approve prompt."),
-        ("Tắt nhầm cửa sổ:", " Đóng app làm mất context phiên làm việc."),
-        ("Chi phí API & Rò rỉ code:", " Dùng cloud agent lo ngại lộ source code mật.")
+    # 3 Hero Metric Cards
+    hero_cards = [
+        ("📱 Multi-Device Control", "Lái AI Agent tự hành từ smartphone mọi lúc mọi nơi.\nXem diff, duyệt lệnh bash và gửi prompt bổ sung tức thì khi đang di chuyển.", ACCENT_CYAN),
+        ("☕ Continuous Execution", "Ngăn máy tính ngủ gật trong lúc Agent viết code ngầm xuyên đêm.\nTự động khóa và mở wake-lock cấp hệ điều hành khi hoàn thành task.", ACCENT_GREEN),
+        ("🔒 100% Offline & Zero Cost", "Tích hợp mô hình cục bộ qua Ollama vào thẳng Claude Code.\nBảo vệ 100% mã nguồn dự án tuyệt mật và cắt giảm toàn bộ chi phí token API.", ACCENT_INDIGO)
     ]
-    for b_title, b_desc in bullets_c1:
-        bp = ctf1.add_paragraph()
-        bp.space_before = Pt(8)
-        run1 = bp.add_run()
-        run1.text = "❌ " + b_title
-        run1.font.bold = True
-        run1.font.size = Pt(11.5)
-        run1.font.color.rgb = TEXT_WHITE
-        run2 = bp.add_run()
-        run2.text = b_desc
-        run2.font.size = Pt(11)
-        run2.font.color.rgb = TEXT_MUTED
+    card_w = Inches(3.7)
+    card_h = Inches(3.1)
+    card_y = Inches(3.6)
+    for i, (title, desc, border_c) in enumerate(hero_cards):
+        cx = Inches(0.8 + i * 4.0)
+        card = s1.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, cx, card_y, card_w, card_h)
+        card.fill.solid()
+        card.fill.fore_color.rgb = CARD_BG
+        card.line.color.rgb = border_c
+        card.line.width = Pt(1.5)
 
-    # Card 2 (Target)
-    card2 = s1.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(6.8), Inches(3.6), Inches(5.7), Inches(3.1))
-    card2.fill.solid()
-    card2.fill.fore_color.rgb = CARD_BG
-    card2.line.color.rgb = ACCENT_GREEN
-    card2.line.width = Pt(1.5)
+        ctf = card.text_frame
+        ctf.word_wrap = True
+        ctf.margin_left = ctf.margin_right = ctf.margin_top = Inches(0.25)
+        cp1 = ctf.paragraphs[0]
+        cp1.text = title
+        cp1.font.name = "Segoe UI"
+        cp1.font.size = Pt(15.5)
+        cp1.font.bold = True
+        cp1.font.color.rgb = border_c
 
-    ctf2 = card2.text_frame
-    ctf2.word_wrap = True
-    ctf2.margin_left = ctf2.margin_right = ctf2.margin_top = Inches(0.3)
-    cp2 = ctf2.paragraphs[0]
-    cp2.text = "🚀  Mục Tiêu & Chuẩn Thực Chiến 2026"
-    cp2.font.name = "Segoe UI"
-    cp2.font.size = Pt(16)
-    cp2.font.bold = True
-    cp2.font.color.rgb = ACCENT_GREEN
+        cp2 = ctf.add_paragraph()
+        cp2.text = desc
+        cp2.font.name = "Segoe UI"
+        cp2.font.size = Pt(12)
+        cp2.font.color.rgb = TEXT_WHITE
+        cp2.space_before = Pt(12)
 
-    bullets_c2 = [
-        ("Remote Control linh hoạt:", " Quản lý Agent trên PC từ điện thoại di động mọi lúc."),
-        ("Prevent Sleep:", " Giữ máy luôn thức trong lúc Agent viết code ngầm xuyên đêm."),
-        ("Keep In Menu Bar:", " Thường trực trên thanh hệ thống, mở ra ngay lập tức."),
-        ("Local LLMs via Ollama:", " Tích hợp model nội bộ vào Claude Code 0% phí token & bảo mật 100%.")
-    ]
-    for b_title, b_desc in bullets_c2:
-        bp = ctf2.add_paragraph()
-        bp.space_before = Pt(8)
-        run1 = bp.add_run()
-        run1.text = "✅ " + b_title
-        run1.font.bold = True
-        run1.font.size = Pt(11.5)
-        run1.font.color.rgb = TEXT_WHITE
-        run2 = bp.add_run()
-        run2.text = b_desc
-        run2.font.size = Pt(11)
-        run2.font.color.rgb = TEXT_MUTED
-
-    add_notes(s1, """[LỜI THOẠI DIỄN GIẢ - 0:00 - 0:55]
-(Hook) Chào anh em! Chắc hẳn ai trong chúng ta khi dùng Antigravity chạy những task lớn như refactor cả module hay sinh hàng chục test cases đều từng gặp cảnh: vừa đi uống cốc cà phê quay lại thì máy tính đã ngủ gật, AI bị ngắt quãng giữa chừng, hoặc phải ngồi dán mắt vào màn hình chỉ để chờ bấm Approve.
-(Why) Chúng ta đang dùng AI để giải phóng sức lao động nhưng lại vô tình bị xích vào bàn làm việc vì những thiết lập mặc định chưa tối ưu.
-(How) Trong đúng 7 phút hôm nay, mình sẽ chia sẻ với anh em 2 vũ khí cực mạnh: tính năng Remote Control điều khiển từ xa, bộ 3 thiết lập App Settings sống còn, và phần bonus đặc biệt: cách chạy Claude Code với Model bên thứ 3 hoàn toàn miễn phí, bảo mật qua Ollama.
-(Takeaway) Nắm vững những tính năng này, anh em sẽ biến công cụ AI thành một trợ lý tự hành đúng nghĩa, làm việc xuyên suốt mọi lúc mọi nơi.""")
+    add_notes(s1, """[LỜI THOẠI DIỄN GIẢ]
+Chào anh em! Chắc hẳn ai trong chúng ta khi dùng Antigravity chạy những task lớn như refactor cả module hay sinh hàng chục test cases đều từng gặp cảnh: vừa đi uống cốc cà phê quay lại thì máy tính đã ngủ gật, AI bị ngắt quãng giữa chừng, hoặc phải ngồi dán mắt vào màn hình chỉ để chờ bấm Approve.
+Chúng ta đang dùng AI để giải phóng sức lao động nhưng lại vô tình bị xích vào bàn làm việc vì những thiết lập mặc định chưa tối ưu.
+Hôm nay, mình sẽ chia sẻ với anh em 2 vũ khí cực mạnh: tính năng Remote Control điều khiển từ xa, bộ thiết lập App Settings sống còn, và cách chạy Claude Code với Model cục bộ hoàn toàn miễn phí, bảo mật qua Ollama.
+Nắm vững những tính năng này, anh em sẽ biến công cụ AI thành một trợ lý tự hành đúng nghĩa, làm việc xuyên suốt mọi lúc mọi nơi.""")
 
     # =========================================================================
-    # SLIDE 2: ANTIGRAVITY REMOTE CONTROL OVERVIEW
+    # SLIDE 2: 4 THỰC TRẠNG & RÀO CẢN
     # =========================================================================
     s2 = prs.slides.add_slide(blank_layout)
     set_slide_background(s2)
-    add_top_decorations(s2, 2, 8, "🌐 TÍNH NĂNG ĐỘT PHÁ • CROSS-DEVICE AGENT")
-    add_header(s2, "Antigravity Remote Control Là Gì?", "Giải pháp lái, giám sát và tương tác với AI Agent từ xa trên mọi thiết bị.")
+    add_top_decorations(s2, 2, 10, "⚠️ THỰC TRẠNG & RÀO CẢN THƯỜNG GẶP")
+    add_header(s2, "Bốn Rào Cản Khi Vận Hành AI Coding Agent", "AI giải phóng sức lao động nhưng các thiết lập mặc định lại trói chân kỹ sư vào bàn làm việc.")
 
-    # 2 Comparison Columns
-    col1 = s2.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(2.2), Inches(5.7), Inches(4.5))
+    pains = [
+        ("Máy ngủ gật (Sleep Mode):", "Windows và macOS tự động chuyển sang chế độ Sleep sau 10-15 phút không thao tác bàn phím/chuột. Khi đó kết nối mạng bị ngắt, tiến trình AI bị suspend và task lớn bị hỏng dở dang.", Inches(0.8), Inches(2.10)),
+        ("Bị xích vào bàn làm việc:", "Kỹ sư phải ngồi dán mắt vào màn hình chỉ để chờ Agent sinh xong code rồi bấm nút Approve lệnh bash hoặc tool calling, làm gián đoạn mọi hoạt động khác.", Inches(6.8), Inches(2.10)),
+        ("Đóng nhầm cửa sổ:", "Thói quen bấm nút 'X' để đóng cửa sổ làm tắt luôn cả tiến trình Antigravity đang chạy ngầm, làm mất sạch ngữ cảnh làm việc và các phiên terminal đang mở.", Inches(0.8), Inches(4.55)),
+        ("Nguy cơ lộ mã nguồn dự án:", "Sử dụng các Cloud Agent tiềm ẩn nguy cơ rò rỉ source code nhạy cảm vi phạm cam kết bảo mật NDA của khách hàng, đồng thời làm phát sinh chi phí token API đắt đỏ.", Inches(6.8), Inches(4.55))
+    ]
+    for p_title, p_desc, px, py in pains:
+        c = s2.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, px, py, Inches(5.7), Inches(2.2))
+        c.fill.solid()
+        c.fill.fore_color.rgb = CARD_BG
+        c.line.color.rgb = ACCENT_RED
+        c.line.width = Pt(1.5)
+
+        ctf = c.text_frame
+        ctf.word_wrap = True
+        ctf.margin_left = ctf.margin_right = ctf.margin_top = Inches(0.25)
+
+        p = ctf.paragraphs[0]
+        r1 = p.add_run()
+        r1.text = "❌ " + p_title + "\n"
+        r1.font.name = "Segoe UI"
+        r1.font.bold = True
+        r1.font.size = Pt(13.5)
+        r1.font.color.rgb = ACCENT_RED
+
+        r2 = p.add_run()
+        r2.text = p_desc
+        r2.font.name = "Segoe UI"
+        r2.font.size = Pt(11.5)
+        r2.font.color.rgb = TEXT_WHITE
+
+    add_notes(s2, """[LỜI THOẠI DIỄN GIẢ]
+Khi bắt đầu ứng dụng AI Agent vào công việc thực tế, hầu hết kỹ sư chúng ta đều va phải 4 rào cản rất khó chịu này.
+Thứ nhất là máy ngủ gật: vừa rời máy đi họp quay lại thấy màn hình đen ngòm và task bị lỗi đứt kết nối mạng.
+Thứ hai là bị xích vào bàn: AI sinh code thì nhanh nhưng cứ chốc chốc lại dừng chờ mình bấm Approve một lệnh terminal, thế là mình không dám đi đâu.
+Thứ ba là thói quen tiện tay bấm dấu X đóng cửa sổ: tắt luôn cả app, mất sạch context và các terminal tab.
+Và cuối cùng là nỗi lo bảo mật: nhiều dự án có cam kết NDA khách hàng cấm tuyệt đối gửi code lên cloud, cộng với chi phí token đắt đỏ khi phải debug lặp đi lặp lại.""")
+
+    # =========================================================================
+    # SLIDE 3: BỨC TRANH MỚI (PARADIGM SHIFT)
+    # =========================================================================
+    s3 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s3)
+    add_top_decorations(s3, 3, 10, "🌐 BỨC TRANH MỚI • TỰ DO HÓA KỸ SƯ")
+    add_header(s3, "Chuyển Dịch Từ Gò Bó Sang Tự Do Hóa Quy Trình", "Đối chiếu sự khác biệt giữa mô hình làm việc truyền thống và kỷ nguyên Cross-Device Agentic.")
+
+    # Col 1: Old way
+    col1 = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(2.10), Inches(5.7), Inches(4.65))
     col1.fill.solid()
     col1.fill.fore_color.rgb = CARD_BG
-    col1.line.color.rgb = CARD_BORDER
-    col1.line.width = Pt(1)
+    col1.line.color.rgb = ACCENT_AMBER
+    col1.line.width = Pt(1.5)
 
     tf_c1 = col1.text_frame
     tf_c1.word_wrap = True
@@ -226,245 +317,275 @@ def create_deck():
     p = tf_c1.paragraphs[0]
     p.text = "🏢 Cách Làm Cũ (Workstation Bound)"
     p.font.name = "Segoe UI"
-    p.font.size = Pt(16)
+    p.font.size = Pt(15.5)
     p.font.bold = True
     p.font.color.rgb = ACCENT_AMBER
 
     items_c1 = [
-        ("Gò bó vị trí:", " Phải ngồi trực tiếp trước màn hình máy tính công ty để xem Agent sinh code."),
-        ("Gián đoạn khi di chuyển:", " Rời bàn làm việc đi họp, đi ăn trưa là hoàn toàn mù thông tin về tiến độ."),
-        ("Phê duyệt thủ công chậm trễ:", " Agent dừng lại chờ câu trả lời xác nhận (Approve prompt / Bash tool), cả quy trình bị tắc nghẽn."),
-        ("Remote Desktop cồng kềnh:", " Dùng TeamViewer, AnyDesk ngốn băng thông, lag giật trên điện thoại.")
+        ("Gò bó vị trí địa lý:", " Bắt buộc phải ngồi trực tiếp trước màn hình máy tính công ty để theo dõi Agent sinh mã nguồn."),
+        ("Mù thông tin khi di chuyển:", " Rời bàn làm việc đi họp hay ăn trưa là hoàn toàn mất kiểm soát về tiến độ thực thi của AI."),
+        ("Phê duyệt thủ công chậm trễ:", " Agent dừng lại chờ câu trả lời xác nhận (Bash tool / Prompt approval), cả quy trình bị tắc nghẽn hàng giờ."),
+        ("Remote Desktop nặng nề:", " Dùng TeamViewer hay AnyDesk ngốn băng thông lớn, thao tác chậm chạp và giật lag trên smartphone.")
     ]
     for it_title, it_desc in items_c1:
         p = tf_c1.add_paragraph()
-        p.space_before = Pt(12)
+        p.space_before = Pt(8)
         r1 = p.add_run()
-        r1.text = "• " + it_title
+        r1.text = "• " + it_title + "\n"
         r1.font.bold = True
-        r1.font.size = Pt(12)
+        r1.font.size = Pt(11.5)
         r1.font.color.rgb = TEXT_WHITE
         r2 = p.add_run()
         r2.text = it_desc
-        r2.font.size = Pt(11.5)
+        r2.font.size = Pt(11)
         r2.font.color.rgb = TEXT_MUTED
 
-    col2 = s2.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(6.8), Inches(2.2), Inches(5.7), Inches(4.5))
+    # Col 2: New way
+    col2 = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(6.8), Inches(2.10), Inches(5.7), Inches(4.65))
     col2.fill.solid()
     col2.fill.fore_color.rgb = CARD_BG
-    col2.line.color.rgb = BORDER_GLOW
+    col2.line.color.rgb = ACCENT_CYAN
     col2.line.width = Pt(1.5)
 
     tf_c2 = col2.text_frame
     tf_c2.word_wrap = True
     tf_c2.margin_left = tf_c2.margin_right = tf_c2.margin_top = Inches(0.3)
     p = tf_c2.paragraphs[0]
-    p.text = "⚡ Chuẩn Remote Control (Bất Kỳ Đâu)"
+    p.text = "⚡ Chuẩn Mới (Cross-Device Agentic)"
     p.font.name = "Segoe UI"
-    p.font.size = Pt(16)
+    p.font.size = Pt(15.5)
     p.font.bold = True
     p.font.color.rgb = ACCENT_CYAN
 
     items_c2 = [
-        ("Mobile First Web UI:", " Giao diện web siêu nhẹ trên smartphone, tối ưu hóa cho màn hình cảm ứng."),
-        ("Theo dõi Artifacts Thời Gian Thực:", " Xem file diff, tiến độ subagent, command logs trực tiếp khi đang di chuyển."),
-        ("Tương tác & Phê duyệt 1 chạm:", " Nhấn 'Approve' hoặc gõ hướng dẫn bổ sung cho Agent ngay từ điện thoại."),
-        ("Giữ trọn môi trường Local:", " Máy trạm chịu trách nhiệm build, test, git; điện thoại đóng vai trò remote dashboard.")
+        ("Tự do di chuyển tuyệt đối:", " Theo dõi diff code, tiến độ subagent và logs thời gian thực trên điện thoại khi đang di chuyển."),
+        ("Phê duyệt một chạm tức thì:", " Nhấn 'Approve' hoặc nhập prompt bổ sung trực tiếp từ trình duyệt smartphone chỉ với một lần chạm."),
+        ("Giữ nguyên môi trường máy trạm:", " Workstation chịu trách nhiệm build, test và commit; điện thoại đóng vai trò bảng điều khiển siêu nhẹ."),
+        ("Độc lập mạng nội bộ:", " Bạn có thể ngồi ở quán cà phê dùng 4G điều khiển máy trạm công ty an toàn mà không cần cài đặt VPN phức tạp.")
     ]
     for it_title, it_desc in items_c2:
         p = tf_c2.add_paragraph()
-        p.space_before = Pt(12)
+        p.space_before = Pt(8)
         r1 = p.add_run()
-        r1.text = "✔ " + it_title
+        r1.text = "✔ " + it_title + "\n"
         r1.font.bold = True
-        r1.font.size = Pt(12)
+        r1.font.size = Pt(11.5)
         r1.font.color.rgb = ACCENT_GREEN
         r2 = p.add_run()
         r2.text = it_desc
-        r2.font.size = Pt(11.5)
-        r2.font.color.rgb = TEXT_MUTED
+        r2.font.size = Pt(11)
+        r2.font.color.rgb = TEXT_WHITE
 
-    add_notes(s2, """[LỜI THOẠI DIỄN GIẢ - 0:55 - 1:55]
-(Hook) Anh em có bao giờ ước: máy công ty cấu hình khủng cứ việc build code, còn mình thì ra quán trà sữa hay đi họp vẫn check được AI đang viết tới đâu chưa?
-(Why) Remote Control sinh ra chính là để giải quyết bài toán đó. Nó không phải là một công cụ remote desktop nặng nề như TeamViewer hay AnyDesk, mà là cầu nối giao diện web trực tiếp vào chính session Antigravity đang chạy trên workstation của anh em.
-(How) Toàn bộ mã nguồn, git branch, terminal và công cụ build vẫn chạy 100% tại máy trạm, nhưng giao diện điều khiển, danh sách artifacts và khung chat lại hiển thị mượt mà trên trình duyệt điện thoại hoặc laptop cá nhân. Anh em có thể review diff, ấn duyệt lệnh bash hay prompt bổ sung chỉ bằng một chạm trên điện thoại.
-(Takeaway) Remote Control biến cỗ máy bàn của bạn thành server AI cá nhân mà bạn nắm trọn trong lòng bàn tay.""")
-
-    # =========================================================================
-    # SLIDE 3: CƠ CHẾ KẾT NỐI & BẢO MẬT
-    # =========================================================================
-    s3 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s3)
-    add_top_decorations(s3, 3, 8, "🔐 CƠ CHẾ VẬN HÀNH • BẢO MẬT ZERO TRUST")
-    add_header(s3, "Cơ Chế Ghép Nối & Kiến Trúc Bảo Mật", "Cách bật Remote Control trong 10 giây và kiến trúc bảo vệ dữ liệu doanh nghiệp.")
-
-    # 3 Steps Cards
-    card_w = Inches(3.7)
-    card_h = Inches(4.5)
-    card_y = Inches(2.2)
-
-    # Step 1
-    c1 = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), card_y, card_w, card_h)
-    c1.fill.solid()
-    c1.fill.fore_color.rgb = CARD_BG
-    c1.line.color.rgb = CARD_BORDER
-    tfc1 = c1.text_frame
-    tfc1.word_wrap = True
-    tfc1.margin_left = tfc1.margin_right = tfc1.margin_top = Inches(0.25)
-    p = tfc1.paragraphs[0]
-    p.text = "BƯỚC 1: KÍCH HOẠT"
-    p.font.name = "Segoe UI"
-    p.font.size = Pt(12)
-    p.font.bold = True
-    p.font.color.rgb = ACCENT_CYAN
-    p2 = tfc1.add_paragraph()
-    p2.text = "⚙️ Bật Trong Settings"
-    p2.font.name = "Segoe UI"
-    p2.font.size = Pt(17)
-    p2.font.bold = True
-    p2.font.color.rgb = TEXT_WHITE
-    p2.space_before = Pt(4)
-
-    s1_details = [
-        ("Mở Settings:", " Phím tắt Ctrl + , (Windows/Linux) hoặc Cmd + , (macOS)."),
-        ("Chọn mục Application:", " Danh mục cấu hình hệ thống cấp ứng dụng."),
-        ("Gạt toggle:", " Chuyển 'Enable Remote Control' sang ON."),
-        ("Lệnh CLI tương đương:", " Gõ 'agy --remote-control' hoặc slash command '/remote-control'.")
-    ]
-    for dt, dd in s1_details:
-        p = tfc1.add_paragraph()
-        p.space_before = Pt(8)
-        r1 = p.add_run()
-        r1.text = "• " + dt
-        r1.font.bold = True
-        r1.font.size = Pt(11)
-        r1.font.color.rgb = TEXT_WHITE
-        r2 = p.add_run()
-        r2.text = dd
-        r2.font.size = Pt(10.5)
-        r2.font.color.rgb = TEXT_MUTED
-
-    # Step 2
-    c2 = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(4.8), card_y, card_w, card_h)
-    c2.fill.solid()
-    c2.fill.fore_color.rgb = CARD_BG
-    c2.line.color.rgb = BORDER_GLOW
-    c2.line.width = Pt(1.5)
-    tfc2 = c2.text_frame
-    tfc2.word_wrap = True
-    tfc2.margin_left = tfc2.margin_right = tfc2.margin_top = Inches(0.25)
-    p = tfc2.paragraphs[0]
-    p.text = "BƯỚC 2: GHÉP NỐI"
-    p.font.name = "Segoe UI"
-    p.font.size = Pt(12)
-    p.font.bold = True
-    p.font.color.rgb = ACCENT_INDIGO
-    p2 = tfc2.add_paragraph()
-    p2.text = "📱 Quét QR Code & URL"
-    p2.font.name = "Segoe UI"
-    p2.font.size = Pt(17)
-    p2.font.bold = True
-    p2.font.color.rgb = TEXT_WHITE
-    p2.space_before = Pt(4)
-
-    s2_details = [
-        ("Mã QR bảo mật:", " Máy tính sinh ngay một QR Handshake động trên màn hình."),
-        ("Quét bằng Camera:", " Dùng camera điện thoại quét mã để mở ngay session trong 2 giây."),
-        ("Truy cập qua Web:", " Vào antigravity.google và đăng nhập Google Account."),
-        ("Quản lý Host:", " Dashboard liệt kê toàn bộ các máy trạm đang mở quyền Remote.")
-    ]
-    for dt, dd in s2_details:
-        p = tfc2.add_paragraph()
-        p.space_before = Pt(8)
-        r1 = p.add_run()
-        r1.text = "• " + dt
-        r1.font.bold = True
-        r1.font.size = Pt(11)
-        r1.font.color.rgb = TEXT_WHITE
-        r2 = p.add_run()
-        r2.text = dd
-        r2.font.size = Pt(10.5)
-        r2.font.color.rgb = TEXT_MUTED
-
-    # Step 3
-    c3 = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.8), card_y, card_w, card_h)
-    c3.fill.solid()
-    c3.fill.fore_color.rgb = CARD_BG
-    c3.line.color.rgb = CARD_BORDER
-    tfc3 = c3.text_frame
-    tfc3.word_wrap = True
-    tfc3.margin_left = tfc3.margin_right = tfc3.margin_top = Inches(0.25)
-    p = tfc3.paragraphs[0]
-    p.text = "TIÊU CHUẨN AN TOÀN"
-    p.font.name = "Segoe UI"
-    p.font.size = Pt(12)
-    p.font.bold = True
-    p.font.color.rgb = ACCENT_GREEN
-    p2 = tfc3.add_paragraph()
-    p2.text = "🛡️ Bảo Mật Doanh Nghiệp"
-    p2.font.name = "Segoe UI"
-    p2.font.size = Pt(17)
-    p2.font.bold = True
-    p2.font.color.rgb = TEXT_WHITE
-    p2.space_before = Pt(4)
-
-    s3_details = [
-        ("Token Handshake:", " Mã xác thực dùng 1 lần, chống dò quét IP trái phép."),
-        ("Không mở Open Port:", " Hoạt động an toàn sau tường lửa (Firewall) và VPN công ty."),
-        ("Google Account SSO:", " Hỗ trợ Google Workspace công ty và Workload Identity Federation."),
-        ("Boundary An Toàn:", " Mã nguồn, token Git, secrets nằm nguyên vẹn tại máy trạm.")
-    ]
-    for dt, dd in s3_details:
-        p = tfc3.add_paragraph()
-        p.space_before = Pt(8)
-        r1 = p.add_run()
-        r1.text = "• " + dt
-        r1.font.bold = True
-        r1.font.size = Pt(11)
-        r1.font.color.rgb = TEXT_WHITE
-        r2 = p.add_run()
-        r2.text = dd
-        r2.font.size = Pt(10.5)
-        r2.font.color.rgb = TEXT_MUTED
-
-    add_notes(s3, """[LỜI THOẠI DIỄN GIẢ - 1:55 - 3:00]
-(Hook) Nhiều anh em sẽ hỏi: 'Remote như vậy có lộ mã nguồn công ty ra ngoài không, thiết lập có phức tạp cần mở port modem không?'.
-(Why) Câu trả lời là hoàn toàn không. Google thiết kế cơ chế ghép nối này theo triết lý Zero Trust cực kỳ nghiêm ngặt.
-(How) Bước 1: Anh em mở Settings bằng phím Ctrl + ,, vào mục Application và gạt nút 'Enable Remote Control'. Bước 2: Antigravity sẽ sinh ngay một mã QR Code bảo mật. Anh em chỉ cần giơ camera điện thoại lên quét, hoặc truy cập antigravity.google đăng nhập đúng tài khoản Google là kết nối thành công. Toàn bộ phiên làm việc xác thực bằng Token handshake dùng một lần, dữ liệu truyền tải mã hóa end-to-end và không hề mở bất kỳ open port nào trên router nội bộ.
-(Takeaway) Tiện lợi tối đa nhưng bảo mật chuẩn doanh nghiệp – anh em hoàn toàn yên tâm dùng trong mạng công ty.""")
+    add_notes(s3, """[LỜI THOẠI DIỄN GIẢ]
+Để vượt qua 4 rào cản đó, chúng ta cần một sự chuyển dịch tư duy từ cách làm cũ sang chuẩn làm việc mới.
+Cách làm cũ là mô hình phụ thuộc hoàn toàn vào máy trạm: bạn phải ngồi dính chặt vào ghế, đi đâu là mù thông tin, và muốn remote thì phải bật TeamViewer nặng nề, giật lag.
+Còn với chuẩn Cross-Device Agentic mới: máy tính công ty cấu hình mạnh cứ việc cày code và chạy test, còn bạn thì cầm chiếc điện thoại đi lại tự do. Mọi thông báo hoàn thành, mọi yêu cầu phê duyệt lệnh đều đẩy về smartphone để bạn duyệt chỉ bằng một chạm tay.""")
 
     # =========================================================================
-    # SLIDE 4: APP SETTINGS #1 - PREVENT SLEEP
+    # SLIDE 4: ANTIGRAVITY REMOTE CONTROL LÀ GÌ?
     # =========================================================================
     s4 = prs.slides.add_slide(blank_layout)
     set_slide_background(s4)
-    add_top_decorations(s4, 4, 8, "☕ CÀI ĐẶT HỆ THỐNG • LIÊN TỤC KHÔNG GIÁN ĐOẠN")
-    add_header(s4, "App Settings: Prevent Sleep", "Ngăn hệ thống tự động tắt màn hình và đưa PC vào chế độ ngủ khi AI đang làm việc.")
+    add_top_decorations(s4, 4, 10, "🌐 TÍNH NĂNG ĐỘT PHÁ • CROSS-DEVICE AGENT")
+    add_header(s4, "Antigravity Remote Control Là Gì?", "Giải pháp điều khiển, giám sát và tương tác với AI Agent từ xa qua nền tảng web bảo mật.")
 
-    # Left: The Mechanism & Risk
-    left_card = s4.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(2.2), Inches(6.0), Inches(4.5))
-    left_card.fill.solid()
-    left_card.fill.fore_color.rgb = CARD_BG
-    left_card.line.color.rgb = ACCENT_AMBER
-    left_card.line.width = Pt(1.5)
-    
-    tl = left_card.text_frame
-    tl.word_wrap = True
-    tl.margin_left = tl.margin_right = tl.margin_top = Inches(0.3)
-    p = tl.paragraphs[0]
-    p.text = "⚡ Bản Chất Cơ Chế Prevent Sleep"
+    # Left: Architecture Boundary
+    left_c4 = s4.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(2.10), Inches(4.8), Inches(4.65))
+    left_c4.fill.solid()
+    left_c4.fill.fore_color.rgb = CODE_BG
+    left_c4.line.color.rgb = CARD_BORDER
+    left_c4.line.width = Pt(1)
+
+    tl4 = left_c4.text_frame
+    tl4.word_wrap = True
+    tl4.margin_left = tl4.margin_right = tl4.margin_top = Inches(0.3)
+    p = tl4.paragraphs[0]
+    p.text = "PHÂN ĐỊNH RANH GIỚI HỆ THỐNG"
+    p.font.name = "Consolas"
+    p.font.size = Pt(12)
+    p.font.bold = True
+    p.font.color.rgb = ACCENT_CYAN
+
+    blocks = [
+        ("🖥️ WORKSTATION (MÁY TRẠM)", "Chịu 100% trách nhiệm tính toán nặng:\n• Source Code, Git branches & Worktrees\n• Trình chạy Test, Compiler & Linter\n• Toàn bộ API Secrets & Token nằm tại máy", ACCENT_INDIGO),
+        ("📱 SMARTPHONE (CLIENT TỪ XA)", "Giao diện Web UI siêu nhẹ:\n• Xem logs tiến độ thời gian thực\n• Nút Approve 1 chạm duyệt bash/tool\n• Nhập prompt bổ sung ngay lập tức", ACCENT_GREEN)
+    ]
+    for b_title, b_desc, b_color in blocks:
+        p = tl4.add_paragraph()
+        p.space_before = Pt(12)
+        r1 = p.add_run()
+        r1.text = b_title + "\n"
+        r1.font.name = "Segoe UI"
+        r1.font.bold = True
+        r1.font.size = Pt(12)
+        r1.font.color.rgb = b_color
+        r2 = p.add_run()
+        r2.text = b_desc
+        r2.font.name = "Segoe UI"
+        r2.font.size = Pt(10.5)
+        r2.font.color.rgb = TEXT_MUTED
+
+    # Right: Detailed Explanations
+    right_c4 = s4.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(5.9), Inches(2.10), Inches(6.6), Inches(4.65))
+    right_c4.fill.solid()
+    right_c4.fill.fore_color.rgb = CARD_BG
+    right_c4.line.color.rgb = BORDER_GLOW
+    right_c4.line.width = Pt(1.5)
+
+    tr4 = right_c4.text_frame
+    tr4.word_wrap = True
+    tr4.margin_left = tr4.margin_right = tr4.margin_top = Inches(0.3)
+    p = tr4.paragraphs[0]
+    p.text = "⚡ ĐẶC ĐIỂM CỐT LÕI CỦA REMOTE CONTROL"
     p.font.name = "Segoe UI"
-    p.font.size = Pt(17)
+    p.font.size = Pt(15.5)
+    p.font.bold = True
+    p.font.color.rgb = ACCENT_CYAN
+
+    rc_details = [
+        ("Không phải Remote Desktop:", "Remote Control không truyền tải hình ảnh màn hình nặng nề ngốn băng thông, mà truyền trực tiếp dữ liệu trạng thái qua web socket nhẹ nhàng."),
+        ("Máy trạm giữ quyền điều phối:", "Toàn bộ mã nguồn dự án, git branches, terminal build và các công cụ thực thi nằm nguyên vẹn tại máy trạm công ty."),
+        ("Trải nghiệm mượt mà trên di động:", "Giao diện web được tối ưu riêng cho màn hình cảm ứng, hiển thị danh sách artifacts và diff code cực kỳ sắc nét."),
+        ("Độc lập mạng nội bộ:", "Bạn có thể ngồi ở quán cà phê dùng 4G điều khiển máy trạm công ty an toàn mà không cần cài đặt VPN phức tạp.")
+    ]
+    for dt, dd in rc_details:
+        p = tr4.add_paragraph()
+        p.space_before = Pt(8)
+        r1 = p.add_run()
+        r1.text = "• " + dt + " "
+        r1.font.bold = True
+        r1.font.size = Pt(11.5)
+        r1.font.color.rgb = TEXT_WHITE
+        r2 = p.add_run()
+        r2.text = dd
+        r2.font.size = Pt(11)
+        r2.font.color.rgb = TEXT_MUTED
+
+    add_notes(s4, """[LỜI THOẠI DIỄN GIẢ]
+Vậy bản chất Antigravity Remote Control là gì?
+Anh em cần lưu ý: Nó hoàn toàn không phải là một công cụ remote desktop như TeamViewer.
+Nó là một cầu nối giao diện web trực tiếp vào session Antigravity đang chạy trên workstation của anh em.
+Toàn bộ mã nguồn, git branch, terminal và công cụ build vẫn chạy 100% tại máy trạm. Điện thoại chỉ đóng vai trò là một bảng điều khiển từ xa hiển thị danh sách file diff và khung chat.
+Nhờ đó, anh em có thể review code và ấn duyệt lệnh chỉ bằng một chạm trên điện thoại mà không tốn băng thông hay lo giật lag.""")
+
+def build_slides_5_to_7(prs):
+    blank_layout = prs.slide_layouts[6]
+
+    # =========================================================================
+    # SLIDE 5: SƠ ĐỒ GHÉP NỐI & ZERO TRUST
+    # =========================================================================
+    s5 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s5)
+    add_top_decorations(s5, 5, 10, "🔐 CƠ CHẾ VẬN HÀNH • BẢO MẬT ZERO TRUST")
+    add_header(s5, "Sơ Đồ Luồng Ghép Nối & Kiến Trúc Bảo Mật", "Cách kết nối thiết bị trong 10 giây và kiến trúc bảo vệ dữ liệu chuẩn Zero Trust.")
+
+    # Flowchart 3 Nodes
+    nodes = [
+        ("🖥️ MÁY TRẠM (HOST)", "Workstation Antigravity\nGiữ mã nguồn, test & git"),
+        ("🔐 CỔNG GHÉP NỐI (PROXY)", "Mã QR & Token Handshake\nKhông mở port Firewall / NAT"),
+        ("📱 CLIENT TỪ XA (WEB)", "Trình duyệt Smartphone\nKết nối mã hóa E2E hai chiều")
+    ]
+    add_flowchart_3_nodes(s5, Inches(0.8), Inches(2.10), Inches(11.7), Inches(1.45), nodes)
+
+    # 3 Explanation Cards
+    steps_data = [
+        ("BƯỚC 1: KÍCH HOẠT", "⚙️ Bật Trong Settings", [
+            ("Mở Settings nhanh chóng:", " Phím tắt Ctrl + , (hoặc Cmd + , trên Mac), vào mục Application và gạt nút 'Enable Remote Control' sang ON trong 10 giây."),
+            ("Khởi động qua CLI:", " Hoặc gõ lệnh 'agy --remote-control' hay slash command '/remote-control' ngay trong terminal.")
+        ], ACCENT_CYAN),
+        ("BƯỚC 2: GHÉP NỐI", "📱 Quét Mã QR & Token", [
+            ("Mã QR bảo mật dùng 1 lần:", " Máy tính sinh ngay một QR Handshake động trên màn hình, dùng camera điện thoại quét để truy cập ngay."),
+            ("Đăng nhập qua Web SSO:", " Hoặc vào trang antigravity.google đăng nhập tài khoản Google để quản lý các máy trạm.")
+        ], BORDER_GLOW),
+        ("TIÊU CHUẨN AN TOÀN", "🛡️ Bảo Mật Doanh Nghiệp", [
+            ("Chuẩn bảo mật Zero Trust:", " Hoạt động hoàn toàn phía sau tường lửa (Firewall) và VPN công ty, không mở bất kỳ cổng Open Port nào."),
+            ("Boundary bất khả xâm phạm:", " Toàn bộ mã nguồn, token Git và secrets nằm nguyên vẹn tại máy trạm, không bị gửi ra ngoài.")
+        ], ACCENT_GREEN)
+    ]
+    cw5 = Inches(3.7)
+    ch5 = Inches(2.85)
+    cy5 = Inches(3.80)
+    for i, (tag, title, items, border_c) in enumerate(steps_data):
+        cx = Inches(0.8 + i * 4.0)
+        c = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, cx, cy5, cw5, ch5)
+        c.fill.solid()
+        c.fill.fore_color.rgb = CARD_BG
+        c.line.color.rgb = border_c
+        c.line.width = Pt(1.5)
+
+        ctf = c.text_frame
+        ctf.word_wrap = True
+        ctf.margin_left = ctf.margin_right = Inches(0.2)
+        ctf.margin_top = Inches(0.18)
+
+        p = ctf.paragraphs[0]
+        p.text = tag
+        p.font.name = "Segoe UI"
+        p.font.size = Pt(10.5)
+        p.font.bold = True
+        p.font.color.rgb = border_c
+
+        p2 = ctf.add_paragraph()
+        p2.text = title
+        p2.font.name = "Segoe UI"
+        p2.font.size = Pt(14)
+        p2.font.bold = True
+        p2.font.color.rgb = TEXT_WHITE
+        p2.space_before = Pt(3)
+
+        for it, idesc in items:
+            p3 = ctf.add_paragraph()
+            p3.space_before = Pt(6)
+            r1 = p3.add_run()
+            r1.text = "• " + it
+            r1.font.bold = True
+            r1.font.size = Pt(11)
+            r1.font.color.rgb = TEXT_WHITE
+            r2 = p3.add_run()
+            r2.text = idesc
+            r2.font.size = Pt(10.5)
+            r2.font.color.rgb = TEXT_MUTED
+
+    add_notes(s5, """[LỜI THOẠI DIỄN GIẢ]
+Nhiều anh em sẽ thắc mắc: 'Điều khiển từ xa như vậy có lộ mã nguồn công ty ra ngoài không, thiết lập có phức tạp cần mở port modem không?'.
+Câu trả lời là hoàn toàn không. Google thiết kế cơ chế ghép nối này theo triết lý Zero Trust cực kỳ nghiêm ngặt.
+Bước 1: Anh em mở Settings bằng phím Ctrl + ,, vào mục Application và gạt nút 'Enable Remote Control'.
+Bước 2: Antigravity sẽ sinh ngay một mã QR Code bảo mật. Anh em chỉ cần giơ camera điện thoại lên quét, hoặc truy cập antigravity.google đăng nhập đúng tài khoản Google là kết nối thành công trong 2 giây.
+Toàn bộ phiên làm việc xác thực bằng Token handshake dùng một lần, dữ liệu truyền tải mã hóa end-to-end và không hề mở bất kỳ open port nào trên router nội bộ công ty.""")
+
+    # =========================================================================
+    # SLIDE 6: APP SETTINGS - PREVENT SLEEP
+    # =========================================================================
+    s6 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s6)
+    add_top_decorations(s6, 6, 10, "☕ CÀI ĐẶT HỆ THỐNG • LIÊN TỤC KHÔNG GIÁN ĐOẠN")
+    add_header(s6, "App Settings: Cơ Chế Prevent Sleep", "Ngăn hệ thống tự động tắt màn hình và đưa PC vào chế độ ngủ khi AI đang làm việc.")
+
+    # Left Card: Thực Trạng & Rủi Ro
+    left_c6 = s6.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(2.10), Inches(5.7), Inches(4.65))
+    left_c6.fill.solid()
+    left_c6.fill.fore_color.rgb = CARD_BG
+    left_c6.line.color.rgb = ACCENT_AMBER
+    left_c6.line.width = Pt(1.5)
+
+    tl6 = left_c6.text_frame
+    tl6.word_wrap = True
+    tl6.margin_left = tl6.margin_right = tl6.margin_top = Inches(0.3)
+
+    p = tl6.paragraphs[0]
+    p.text = "⚠️ THỰC TRẠNG & NGUY CƠ SLEEP MODE"
+    p.font.name = "Segoe UI"
+    p.font.size = Pt(15.5)
     p.font.bold = True
     p.font.color.rgb = ACCENT_AMBER
 
-    points_l = [
-        ("Nỗi đau mất kết nối:", " Windows/macOS mặc định chuyển sang Sleep sau 5-15 phút không thao tác bàn phím/chuột. Khi đó tiến trình AI bị suspend, kết nối mạng đứt, task dở dang."),
-        ("Cơ chế giữ thức thông minh:", " Khi Agent bắt đầu thực thi chuỗi prompt dài (viết test, refactor, benchmark), Antigravity tự động kích hoạt API ngăn chặn sleep ở cấp OS kernel."),
-        ("Tự động trả lại trạng thái thường:", " Ngay khi Agent hoàn tất toàn bộ công việc, hệ thống tự động giải phóng lock để máy tính quay về chế độ tiết kiệm điện bình thường.")
+    points_left_6 = [
+        ("Mặc định hệ điều hành ngắt kết nối:", " Windows và macOS tự động đưa máy vào chế độ Sleep sau 10-15 phút không có thao tác phím chuột để tiết kiệm điện năng."),
+        ("AI Agent bị suspend giữa chừng:", " Khi máy ngủ gật, toàn bộ kết nối mạng và socket bị ngắt, tiến trình AI đang viết code, sinh test hoặc chạy benchmark ngầm bị dừng đột ngột."),
+        ("Lãng phí thời gian & Token:", " Kỹ sư quay lại sau giờ ăn trưa mới phát hiện task bị hỏng dở dang, buộc phải khởi động lại từ đầu và tốn thêm chi phí token không đáng có.")
     ]
-    for pt, pd in points_l:
-        p = tl.add_paragraph()
+    for pt, pd in points_left_6:
+        p = tl6.add_paragraph()
         p.space_before = Pt(12)
         r1 = p.add_run()
         r1.text = "• " + pt + "\n"
@@ -476,453 +597,378 @@ def create_deck():
         r2.font.size = Pt(11)
         r2.font.color.rgb = TEXT_MUTED
 
-    # Right: Code Mockup / Visual Setting Box
-    right_card = s4.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(7.1), Inches(2.2), Inches(5.4), Inches(4.5))
-    right_card.fill.solid()
-    right_card.fill.fore_color.rgb = CODE_BG
-    right_card.line.color.rgb = CARD_BORDER
-    
-    tr = right_card.text_frame
-    tr.word_wrap = True
-    tr.margin_left = tr.margin_right = tr.margin_top = Inches(0.3)
-    p = tr.paragraphs[0]
-    p.text = "SETTINGS > APPLICATION"
-    p.font.name = "Consolas"
-    p.font.size = Pt(12)
-    p.font.bold = True
-    p.font.color.rgb = ACCENT_CYAN
+    # Right Card: Giải Pháp & Cơ Chế Prevent Sleep
+    right_c6 = s6.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(6.8), Inches(2.10), Inches(5.7), Inches(4.65))
+    right_c6.fill.solid()
+    right_c6.fill.fore_color.rgb = CARD_BG
+    right_c6.line.color.rgb = ACCENT_GREEN
+    right_c6.line.width = Pt(1.5)
 
-    p2 = tr.add_paragraph()
-    p2.text = "[UI Preview: System Settings Panel]"
-    p2.font.name = "Segoe UI"
-    p2.font.size = Pt(15)
-    p2.font.bold = True
-    p2.font.color.rgb = TEXT_WHITE
-    p2.space_before = Pt(8)
+    tr6 = right_c6.text_frame
+    tr6.word_wrap = True
+    tr6.margin_left = tr6.margin_right = tr6.margin_top = Inches(0.3)
 
-    mockup_lines = [
-        ("[X] Prevent Sleep", "Keep PC awake while AI agent generates code"),
-        ("    Status: ACTIVE (Agent Working...)", "System sleep lock acquired"),
-        ("[X] Keep In Menu Bar", "Remain in Windows Taskbar Tray / macOS Menu Bar"),
-        ("    Close button: MINIMIZE TO TRAY", "Never kill background agent accidentally"),
-        ("[i] Notification Settings", "Configured in Windows/macOS System Settings")
-    ]
-    for title_line, sub_line in mockup_lines:
-        p = tr.add_paragraph()
-        p.space_before = Pt(10)
-        r1 = p.add_run()
-        r1.text = title_line + "\n"
-        r1.font.name = "Consolas"
-        r1.font.bold = True
-        r1.font.size = Pt(11.5)
-        r1.font.color.rgb = ACCENT_GREEN if "[X]" in title_line else (ACCENT_AMBER if "ACTIVE" in title_line else ACCENT_INDIGO)
-        r2 = p.add_run()
-        r2.text = "   " + sub_line
-        r2.font.name = "Segoe UI"
-        r2.font.size = Pt(10.5)
-        r2.font.color.rgb = TEXT_MUTED
-
-    add_notes(s4, """[LỜI THOẠI DIỄN GIẢ - 3:00 - 4:05]
-(Hook) Đã bao giờ anh em giao cho Agent một task lớn trước khi đi ăn trưa, quay lại thấy màn hình đen ngòm và task bị failed vì máy rơi vào Sleep Mode chưa?
-(Why) Mặc định, Windows và macOS đều có chính sách tiết kiệm điện tự động ngủ sau một khoảng thời gian người dùng không gõ phím hay rê chuột. Nhưng với AI Coding Agent, lúc chúng ta không chạm vào máy lại chính là lúc nó đang làm việc vất vả nhất.
-(How) Tính năng 'Prevent Sleep' trong App Settings ra đời để giải quyết tận gốc vấn đề này. Khi được bật, Antigravity sẽ gửi tín hiệu giữ màn hình và hệ thống luôn thức (Awake) trong suốt thời gian Agent đang sinh mã hoặc chạy test. Khi Agent hoàn thành xong toàn bộ công việc, hệ thống mới quay trở lại cơ chế sleep bình thường.
-(Takeaway) Hãy bật 'Prevent Sleep' ngay hôm nay để yên tâm giao việc lớn xuyên đêm mà không lo đứt gánh giữa đường.""")
-
-    # =========================================================================
-    # SLIDE 5: APP SETTINGS #2 & #3 - KEEP IN MENU BAR & NOTIFICATIONS
-    # =========================================================================
-    s5 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s5)
-    add_top_decorations(s5, 5, 8, "📌 CÀI ĐẶT HỆ THỐNG • THƯỜNG TRỰC & THÔNG BÁO")
-    add_header(s5, "Keep In Menu Bar & Notification Settings", "Đảm bảo ứng dụng luôn thường trực tức thì và không bỏ lỡ thông báo quan trọng.")
-
-    col5_1 = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(2.2), Inches(5.7), Inches(4.5))
-    col5_1.fill.solid()
-    col5_1.fill.fore_color.rgb = CARD_BG
-    col5_1.line.color.rgb = BORDER_GLOW
-    col5_1.line.width = Pt(1.5)
-    
-    t5_1 = col5_1.text_frame
-    t5_1.word_wrap = True
-    t5_1.margin_left = t5_1.margin_right = t5_1.margin_top = Inches(0.3)
-    p = t5_1.paragraphs[0]
-    p.text = "📌 Keep In Menu Bar (Taskbar Tray)"
+    p = tr6.paragraphs[0]
+    p.text = "⚡ CƠ CHẾ PREVENT SLEEP THÔNG MINH"
     p.font.name = "Segoe UI"
-    p.font.size = Pt(17)
-    p.font.bold = True
-    p.font.color.rgb = ACCENT_INDIGO
-
-    f1 = [
-        ("Thói quen bấm 'X' tai hại:", " Đóng cửa sổ không làm tắt ứng dụng mà chỉ ẩn xuống Tray hệ thống."),
-        ("Thường trực sẵn sàng:", " Antigravity luôn chạy nền, có thể gọi lên (summon) tức thì bằng phím tắt hoặc 1 click chuột."),
-        ("Không mất Context:", " Giữ nguyên trạng thái agent, lịch sử terminal và các tab công việc đang mở."),
-        ("Tối ưu RAM/CPU:", " Ứng dụng đưa về trạng thái tối giản khi ẩn ở khay hệ thống.")
-    ]
-    for ft, fd in f1:
-        p = t5_1.add_paragraph()
-        p.space_before = Pt(12)
-        r1 = p.add_run()
-        r1.text = "✔ " + ft + "\n"
-        r1.font.bold = True
-        r1.font.size = Pt(12)
-        r1.font.color.rgb = TEXT_WHITE
-        r2 = p.add_run()
-        r2.text = fd
-        r2.font.size = Pt(11)
-        r2.font.color.rgb = TEXT_MUTED
-
-    col5_2 = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(6.8), Inches(2.2), Inches(5.7), Inches(4.5))
-    col5_2.fill.solid()
-    col5_2.fill.fore_color.rgb = CARD_BG
-    col5_2.line.color.rgb = CARD_BORDER
-    col5_2.line.width = Pt(1)
-    
-    t5_2 = col5_2.text_frame
-    t5_2.word_wrap = True
-    t5_2.margin_left = t5_2.margin_right = t5_2.margin_top = Inches(0.3)
-    p = t5_2.paragraphs[0]
-    p.text = "🔔 Quản Lý Thông Báo (OS-Level)"
-    p.font.name = "Segoe UI"
-    p.font.size = Pt(17)
-    p.font.bold = True
-    p.font.color.rgb = ACCENT_CYAN
-
-    f2 = [
-        ("Lưu ý kiến trúc cốt lõi:", " Antigravity không chứa công tắc bật/tắt thông báo trong app mà đẩy về quản lý tập trung ở Hệ điều hành."),
-        ("Cấu hình trên Windows:", " Start > Settings > System > Notifications > Bật quyền cho Antigravity."),
-        ("Cấu hình trên macOS:", " System Settings > Notifications > Antigravity > Allow Notifications."),
-        ("Nhận báo cáo tức thì:", " Được ping thông báo ngay khi Agent hoàn thành task lớn hoặc khi cần người dùng bấm xác nhận.")
-    ]
-    for ft, fd in f2:
-        p = t5_2.add_paragraph()
-        p.space_before = Pt(12)
-        r1 = p.add_run()
-        r1.text = "✔ " + ft + "\n"
-        r1.font.bold = True
-        r1.font.size = Pt(12)
-        r1.font.color.rgb = TEXT_WHITE
-        r2 = p.add_run()
-        r2.text = fd
-        r2.font.size = Pt(11)
-        r2.font.color.rgb = TEXT_MUTED
-
-    add_notes(s5, """[LỜI THOẠI DIỄN GIẢ - 4:05 - 5:10]
-(Hook) Có hai điều nhỏ nhưng ảnh hưởng cực lớn đến trải nghiệm hàng ngày của anh em: tắt nhầm cửa sổ và lỡ mất thông báo quan trọng.
-(Why) Thứ nhất, thói quen bấm nút 'X' để đóng cửa sổ thường vô tình tắt luôn cả ứng dụng đang chạy. Thứ hai, nhiều người tìm mãi trong app không thấy chỗ bật âm báo.
-(How) Về tính năng 'Keep In Menu Bar': Khi bật lên, Antigravity sẽ neo thường trực trên khay hệ thống (Windows Taskbar Tray) hoặc Mac Menu Bar. Bấm nút 'X' chỉ là ẩn cửa sổ, app vẫn sống ngầm và sẵn sàng bật lên tức thì bằng phím tắt mà không cần khởi động lại. Về 'Notification Settings': Anh em cần lưu ý, Antigravity không tự quản lý toggle thông báo bên trong app mà đẩy toàn quyền về Settings của Windows/macOS. Anh em chỉ cần cấp quyền thông báo cho Antigravity trong OS Settings là mỗi khi AI xong task hoặc cần duyệt, máy tính và điện thoại đều sẽ ting ting báo ngay.
-(Takeaway) Setup đúng 2 mục này giúp anh em luôn phản hồi kịp thời mà không tốn công chờ đợi.""")
-
-    # =========================================================================
-    # SLIDE 6: TẠI SAO CẦN MODEL BÊN THỨ 3 VÀO CLAUDE CODE?
-    # =========================================================================
-    s6 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s6)
-    add_top_decorations(s6, 6, 8, "💡 MỞ RỘNG ĐỘT PHÁ • CLAUDE CODE & LOCAL LLM")
-    add_header(s6, "Tại Sao Cần Đưa Model Bên Thứ 3 Vào Claude Code?", "Kết hợp trí tuệ mã nguồn mở với framework CLI Agentic số 1 hiện nay.")
-
-    # 3 Columns
-    col6_1 = s6.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(2.2), Inches(3.7), Inches(4.5))
-    col6_1.fill.solid()
-    col6_1.fill.fore_color.rgb = CARD_BG
-    col6_1.line.color.rgb = ACCENT_RED
-    col6_1.line.width = Pt(1.5)
-    t6_1 = col6_1.text_frame
-    t6_1.word_wrap = True
-    t6_1.margin_left = t6_1.margin_right = t6_1.margin_top = Inches(0.25)
-    p = t6_1.paragraphs[0]
-    p.text = "TRỤ CỘT 1"
-    p.font.name = "Segoe UI"
-    p.font.size = Pt(11)
-    p.font.bold = True
-    p.font.color.rgb = ACCENT_RED
-    p2 = t6_1.add_paragraph()
-    p2.text = "🔒 Bảo Mật & Air-Gapped"
-    p2.font.name = "Segoe UI"
-    p2.font.size = Pt(16)
-    p2.font.bold = True
-    p2.font.color.rgb = TEXT_WHITE
-    p2.space_before = Pt(4)
-    r_items = [
-        ("Mã nguồn dự án mật:", " NDA và bảo mật khách hàng cấm tuyệt đối gửi code lên cloud."),
-        ("Chạy 100% Offline:", " Toàn bộ suy luận xử lý ngay trên GPU máy trạm của công ty."),
-        ("Không lưu vết:", " Không có dữ liệu nào bị dùng để train lại model của bên thứ ba.")
-    ]
-    for it, idesc in r_items:
-        p = t6_1.add_paragraph()
-        p.space_before = Pt(10)
-        r1 = p.add_run()
-        r1.text = "• " + it + "\n"
-        r1.font.bold = True
-        r1.font.size = Pt(11)
-        r1.font.color.rgb = TEXT_WHITE
-        r2 = p.add_run()
-        r2.text = idesc
-        r2.font.size = Pt(10.5)
-        r2.font.color.rgb = TEXT_MUTED
-
-    col6_2 = s6.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(4.8), Inches(2.2), Inches(3.7), Inches(4.5))
-    col6_2.fill.solid()
-    col6_2.fill.fore_color.rgb = CARD_BG
-    col6_2.line.color.rgb = ACCENT_GREEN
-    col6_2.line.width = Pt(1.5)
-    t6_2 = col6_2.text_frame
-    t6_2.word_wrap = True
-    t6_2.margin_left = t6_2.margin_right = t6_2.margin_top = Inches(0.25)
-    p = t6_2.paragraphs[0]
-    p.text = "TRỤ CỘT 2"
-    p.font.name = "Segoe UI"
-    p.font.size = Pt(11)
+    p.font.size = Pt(15.5)
     p.font.bold = True
     p.font.color.rgb = ACCENT_GREEN
-    p2 = t6_2.add_paragraph()
-    p2.text = "💰 Tiết Kiệm 100% Phí API"
-    p2.font.name = "Segoe UI"
-    p2.font.size = Pt(16)
-    p2.font.bold = True
-    p2.font.color.rgb = TEXT_WHITE
-    p2.space_before = Pt(4)
-    g_items = [
-        ("Chi phí token đắt đỏ:", " Claude 3.5 Sonnet / Opus ngốn ngân sách khi debug lặp lại nhiều lần."),
-        ("Zero Cost với Ollama:", " Tận dụng model mã nguồn mở như Qwen 2.5 Coder, DeepSeek-R1, Llama 3."),
-        ("Không lo Rate Limit:", " Không bị giới hạn số lượt request mỗi phút (TPM / RPM).")
-    ]
-    for it, idesc in g_items:
-        p = t6_2.add_paragraph()
-        p.space_before = Pt(10)
-        r1 = p.add_run()
-        r1.text = "• " + it + "\n"
-        r1.font.bold = True
-        r1.font.size = Pt(11)
-        r1.font.color.rgb = TEXT_WHITE
-        r2 = p.add_run()
-        r2.text = idesc
-        r2.font.size = Pt(10.5)
-        r2.font.color.rgb = TEXT_MUTED
 
-    col6_3 = s6.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.8), Inches(2.2), Inches(3.7), Inches(4.5))
-    col6_3.fill.solid()
-    col6_3.fill.fore_color.rgb = CARD_BG
-    col6_3.line.color.rgb = ACCENT_CYAN
-    col6_3.line.width = Pt(1.5)
-    t6_3 = col6_3.text_frame
-    t6_3.word_wrap = True
-    t6_3.margin_left = t6_3.margin_right = t6_3.margin_top = Inches(0.25)
-    p = t6_3.paragraphs[0]
-    p.text = "TRỤ CỘT 3"
-    p.font.name = "Segoe UI"
-    p.font.size = Pt(11)
-    p.font.bold = True
-    p.font.color.rgb = ACCENT_CYAN
-    p2 = t6_3.add_paragraph()
-    p2.text = "⚡ Giữ Trọn Workflow Agent"
-    p2.font.name = "Segoe UI"
-    p2.font.size = Pt(16)
-    p2.font.bold = True
-    p2.font.color.rgb = TEXT_WHITE
-    p2.space_before = Pt(4)
-    b_items = [
-        ("Vỏ Claude Code Agentic:", " Tận dụng toàn bộ khả năng đọc file, ghi code, chạy bash test cực chuẩn."),
-        ("Đa dạng hóa Model:", " Thích model nào thì kéo model đó về (`ollama pull qwen2.5-coder`)."),
-        ("Tự chủ công nghệ:", " Không phụ thuộc vào sự cố gián đoạn dịch vụ của nhà cung cấp Cloud.")
+    points_right_6 = [
+        ("Kích hoạt Wake-Lock cấp Kernel:", " Khi Agent bắt đầu thực thi chuỗi task dài, Antigravity tự động kích hoạt API kernel hệ điều hành để giữ hệ thống luôn thức (Awake) ổn định."),
+        ("Tự do hóa kỹ sư hoàn toàn:", " Bạn có thể an tâm rời khỏi bàn làm việc, đi họp, ăn trưa hoặc ra ngoài mà công việc lập trình của AI vẫn diễn ra liên tục không đứt đoạn."),
+        ("Tự động hoàn trả quyền Sleep (Auto-Release):", " Ngay khi Agent hoàn thành 100% nhiệm vụ, hệ thống tự động giải phóng wake-lock để máy tính quay về chế độ tiết kiệm điện bình thường.")
     ]
-    for it, idesc in b_items:
-        p = t6_3.add_paragraph()
-        p.space_before = Pt(10)
+    for pt, pd in points_right_6:
+        p = tr6.add_paragraph()
+        p.space_before = Pt(12)
         r1 = p.add_run()
-        r1.text = "• " + it + "\n"
+        r1.text = "✔ " + pt + "\n"
         r1.font.bold = True
-        r1.font.size = Pt(11)
-        r1.font.color.rgb = TEXT_WHITE
+        r1.font.size = Pt(12)
+        r1.font.color.rgb = ACCENT_GREEN
         r2 = p.add_run()
-        r2.text = idesc
-        r2.font.size = Pt(10.5)
-        r2.font.color.rgb = TEXT_MUTED
+        r2.text = pd
+        r2.font.size = Pt(11)
+        r2.font.color.rgb = TEXT_WHITE
 
-    add_notes(s6, """[LỜI THOẠI DIỄN GIẢ - 5:10 - 6:05]
-(Hook) Sau khi đã làm chủ Antigravity, mình muốn chia sẻ thêm một kỹ thuật cực hot trong giới lập trình: Sử dụng Claude Code nhưng chạy bằng Model bên thứ 3 hoặc Model Local qua Ollama. Tại sao chúng ta lại cần điều này?
-(Why) Claude Code của Anthropic là một CLI agent xuất sắc nhất hiện nay về khả năng sửa code và chạy terminal, nhưng nó có 2 rào cản lớn: chi phí token API đắt đỏ và chính sách bảo mật dữ liệu công ty không cho phép gửi code lên cloud.
-(How) Bằng cách đưa model bên thứ 3 thông qua Ollama, anh em giải quyết được cả 2 bài toán: Thứ nhất, code chạy hoàn toàn local hoặc qua server riêng của công ty, bảo mật 100%. Thứ hai, chi phí token bằng 0 khi dùng các mô hình mã nguồn mở hàng đầu như Qwen 2.5 Coder hay DeepSeek. Chúng ta vừa có 'bộ não' miễn phí/bảo mật, vừa có 'đôi tay' agentic cực kỳ linh hoạt của Claude Code.
-(Takeaway) Tận dụng vỏ Claude Code nhưng thay ruột bằng Ollama là cách thông minh nhất để dev thỏa sức dùng AI mà sếp không lo lộ code hay tốn ngân sách.""")
+    add_notes(s6, """[LỜI THOẠI DIỄN GIẢ]
+Đã bao giờ anh em giao cho Agent một task lớn trước khi đi ăn trưa, quay lại thấy màn hình đen ngòm và task bị failed vì máy rơi vào Sleep Mode chưa?
+Mặc định, Windows và macOS đều có chính sách tiết kiệm điện tự động ngủ sau một khoảng thời gian người dùng không gõ phím. Nhưng với AI Coding Agent, lúc chúng ta không chạm vào máy lại chính là lúc nó đang làm việc vất vả nhất.
+Tính năng 'Prevent Sleep' trong App Settings sinh ra để giải quyết triệt để vấn đề này. Khi được bật, Antigravity sẽ gửi tín hiệu giữ màn hình và hệ thống luôn thức (Awake) trong suốt thời gian Agent đang sinh mã hoặc chạy test.
+Và điều tuyệt vời là khi Agent hoàn thành xong toàn bộ công việc, hệ thống sẽ tự động nhả lock để máy tính quay về cơ chế sleep bình thường nhằm tiết kiệm điện.""")
 
     # =========================================================================
-    # SLIDE 7: HƯỚNG DẪN TÍCH HỢP OLLAMA + CLAUDE CODE
+    # SLIDE 7: APP SETTINGS - MENU BAR & NOTIFICATIONS
     # =========================================================================
     s7 = prs.slides.add_slide(blank_layout)
     set_slide_background(s7)
-    add_top_decorations(s7, 7, 8, "🛠️ THỰC CHIẾN TÍCH HỢP • NATIVE ANTHROPIC API BRIDGE")
-    add_header(s7, "Cách Tích Hợp Model Vào Claude Code", "Cấu hình ghép nối Ollama với Claude Code qua 2 phương pháp đơn giản.")
+    add_top_decorations(s7, 7, 10, "📌 CÀI ĐẶT HỆ THỐNG • THƯỜNG TRỰC & THÔNG BÁO")
+    add_header(s7, "Keep In Menu Bar & Cấu Hình Thông Báo", "Đảm bảo ứng dụng luôn thường trực tức thì và không bỏ lỡ tín hiệu quan trọng từ Agent.")
 
-    # Left Card: Native CLI Launch
-    left_c7 = s7.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(2.2), Inches(5.7), Inches(4.5))
-    left_c7.fill.solid()
-    left_c7.fill.fore_color.rgb = CODE_BG
-    left_c7.line.color.rgb = ACCENT_GREEN
-    left_c7.line.width = Pt(1.5)
-
-    tl7 = left_c7.text_frame
-    tl7.word_wrap = True
-    tl7.margin_left = tl7.margin_right = tl7.margin_top = Inches(0.3)
-    p = tl7.paragraphs[0]
-    p.text = "CÁCH 1: OLLAMA LAUNCH (1 DÒNG DUY NHẤT)"
-    p.font.name = "Consolas"
-    p.font.size = Pt(13)
-    p.font.bold = True
-    p.font.color.rgb = ACCENT_GREEN
-
-    p2 = tl7.add_paragraph()
-    p2.text = "# Khởi chạy nhanh với model mặc định:\n$ ollama launch claude\n\n# Chỉ định model coding chuyên sâu:\n$ ollama launch claude --model qwen2.5-coder\n\n# Chạy tự động trong CI/CD không hỏi prompt:\n$ ollama launch claude --model qwen2.5-coder --yes"
-    p2.font.name = "Consolas"
-    p2.font.size = Pt(11)
-    p2.font.color.rgb = ACCENT_CYAN
-    p2.space_before = Pt(8)
-
-    p3 = tl7.add_paragraph()
-    p3.text = "💡 Ưu điểm vượt trội:\n• Ollama tự động thiết lập cầu nối Anthropic Messages API.\n• Tự động tải model nếu chưa có sẵn trong máy.\n• Sẵn sàng làm việc chỉ sau vài giây."
-    p3.font.name = "Segoe UI"
-    p3.font.size = Pt(11)
-    p3.font.color.rgb = TEXT_MUTED
-    p3.space_before = Pt(10)
-
-    # Right Card: Manual Environment Variables
-    right_c7 = s7.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(6.8), Inches(2.2), Inches(5.7), Inches(4.5))
-    right_c7.fill.solid()
-    right_c7.fill.fore_color.rgb = CODE_BG
-    right_c7.line.color.rgb = CARD_BORDER
-    right_c7.line.width = Pt(1)
-
-    tr7 = right_c7.text_frame
-    tr7.word_wrap = True
-    tr7.margin_left = tr7.margin_right = tr7.margin_top = Inches(0.3)
-    p = tr7.paragraphs[0]
-    p.text = "CÁCH 2: CẤU HÌNH BIẾN MÔI TRƯỜNG (ENV VARS)"
-    p.font.name = "Consolas"
-    p.font.size = Pt(13)
+    col7_1 = s7.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(2.10), Inches(5.7), Inches(4.65))
+    col7_1.fill.solid()
+    col7_1.fill.fore_color.rgb = CARD_BG
+    col7_1.line.color.rgb = BORDER_GLOW
+    col7_1.line.width = Pt(1.5)
+    
+    t7_1 = col7_1.text_frame
+    t7_1.word_wrap = True
+    t7_1.margin_left = t7_1.margin_right = t7_1.margin_top = Inches(0.3)
+    p = t7_1.paragraphs[0]
+    p.text = "📌 Keep In Menu Bar (Taskbar Tray)"
+    p.font.name = "Segoe UI"
+    p.font.size = Pt(15.5)
     p.font.bold = True
     p.font.color.rgb = ACCENT_INDIGO
 
-    p2 = tr7.add_paragraph()
-    p2.text = "# Thiết lập trên Linux / macOS (~/.zshrc hoặc ~/.bashrc):\nexport ANTHROPIC_AUTH_TOKEN=ollama\nexport ANTHROPIC_BASE_URL=http://localhost:11434\n\n# Khởi chạy Claude Code trỏ thẳng vào Ollama:\nclaude --model qwen2.5-coder\n\n# Trên Windows PowerShell:\n$env:ANTHROPIC_AUTH_TOKEN=\"ollama\"\n$env:ANTHROPIC_BASE_URL=\"http://localhost:11434\""
-    p2.font.name = "Consolas"
-    p2.font.size = Pt(10.5)
-    p2.font.color.rgb = ACCENT_INDIGO
-    p2.space_before = Pt(8)
+    f7_1 = [
+        ("Tránh đóng nhầm cửa sổ tai hại:", " Bấm nút 'X' chỉ là ẩn cửa sổ xuống khay hệ thống (Taskbar Tray / macOS Menu Bar) chứ tuyệt đối không tắt hẳn ứng dụng."),
+        ("Thường trực & Triệu hồi tức thì:", " Antigravity luôn chạy ngầm ổn định, kỹ sư có thể gọi lên tức thì bằng phím tắt hoặc 1 click chuột mà không mất thời gian nạp lại project."),
+        ("Bảo toàn 100% ngữ cảnh (Context):", " Mọi lịch sử thảo luận, các tab terminal đang chạy và trạng thái subagent được giữ nguyên vẹn không bị reset.")
+    ]
+    for ft, fd in f7_1:
+        p = t7_1.add_paragraph()
+        p.space_before = Pt(12)
+        r1 = p.add_run()
+        r1.text = "• " + ft + "\n"
+        r1.font.bold = True
+        r1.font.size = Pt(12)
+        r1.font.color.rgb = TEXT_WHITE
+        r2 = p.add_run()
+        r2.text = fd
+        r2.font.size = Pt(11)
+        r2.font.color.rgb = TEXT_MUTED
 
-    p3 = tr7.add_paragraph()
-    p3.text = "💡 Tính năng hỗ trợ toàn diện:\n• Tool calling: Tự động chạy lệnh shell, đọc & sửa file.\n• Subagents: Chia việc cho các agent con chạy song song.\n• /loop schedule: Chạy tác vụ lặp định kỳ (vd: kiểm tra PR)."
-    p3.font.name = "Segoe UI"
-    p3.font.size = Pt(11)
-    p3.font.color.rgb = TEXT_MUTED
-    p3.space_before = Pt(10)
+    col7_2 = s7.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(6.8), Inches(2.10), Inches(5.7), Inches(4.65))
+    col7_2.fill.solid()
+    col7_2.fill.fore_color.rgb = CARD_BG
+    col7_2.line.color.rgb = ACCENT_CYAN
+    col7_2.line.width = Pt(1.5)
+    
+    t7_2 = col7_2.text_frame
+    t7_2.word_wrap = True
+    t7_2.margin_left = t7_2.margin_right = t7_2.margin_top = Inches(0.3)
+    p = t7_2.paragraphs[0]
+    p.text = "🔔 Quản Lý Thông Báo Cấp Hệ Điều Hành"
+    p.font.name = "Segoe UI"
+    p.font.size = Pt(15.5)
+    p.font.bold = True
+    p.font.color.rgb = ACCENT_CYAN
 
-    add_notes(s7, """[LỜI THOẠI DIỄN GIẢ - 6:05 - 6:55]
-(Hook) Nghe thì có vẻ phức tạp nhưng thực tế tích hợp chỉ mất đúng 5 giây với 1 dòng lệnh duy nhất.
-(Why) Nhờ Ollama mới đây đã hỗ trợ native giao thức Anthropic Messages API, việc cầu nối giữa Claude Code và Ollama diễn ra hoàn toàn trong suốt.
-(How) Cách đơn giản nhất: Anh em chỉ cần gõ 'ollama launch claude --model qwen2.5-coder'. Ollama sẽ tự động bridge và mở giao diện Claude Code kết nối trực tiếp vào model máy bạn. Hoặc nếu muốn cấu hình thủ công trong profile bash/zsh, anh em chỉ cần set 2 biến môi trường: gán ANTHROPIC_BASE_URL trỏ về localhost:11434 và ANTHROPIC_AUTH_TOKEN bằng ollama. Sau đó cứ gõ lệnh 'claude' bình thường! Agent vẫn tự động đọc file, tạo commit, chạy bash script và tìm kiếm code như khi dùng Claude 3.5 Sonnet xịn.
-(Takeaway) Chỉ với một dòng lệnh, anh em đã sở hữu một AI Coding Agent độc lập, bảo mật và hoàn toàn miễn phí trên chính máy của mình.""")
+    f7_2 = [
+        ("Quản lý tập trung ở Hệ điều hành:", " Antigravity đẩy toàn bộ quyền điều khiển về trung tâm Notifications của Windows/macOS thay vì cấu hình riêng rẽ."),
+        ("Cấu hình nhanh trên máy tính:", " Vào OS Settings > Notifications và cấp quyền để nhận biểu ngữ cùng âm thanh ping mỗi khi Agent có tiến triển mới."),
+        ("Phản hồi kịp thời & Đồng bộ di động:", " Nhận thông báo ping ngay lập tức khi Agent hoàn thành task lớn hoặc cần duyệt lệnh bash, đồng bộ trực tiếp sang smartphone qua Remote Control.")
+    ]
+    for ft, fd in f7_2:
+        p = t7_2.add_paragraph()
+        p.space_before = Pt(12)
+        r1 = p.add_run()
+        r1.text = "• " + ft + "\n"
+        r1.font.bold = True
+        r1.font.size = Pt(12)
+        r1.font.color.rgb = TEXT_WHITE
+        r2 = p.add_run()
+        r2.text = fd
+        r2.font.size = Pt(11)
+        r2.font.color.rgb = TEXT_MUTED
+
+    add_notes(s7, """[LỜI THOẠI DIỄN GIẢ]
+Có hai thiết lập nhỏ nhưng ảnh hưởng cực lớn đến trải nghiệm hàng ngày: tắt nhầm cửa sổ và lỡ mất thông báo.
+Về 'Keep In Menu Bar': Khi bật lên, Antigravity sẽ neo thường trực trên khay hệ thống. Bấm nút X chỉ là ẩn cửa sổ, app vẫn sống ngầm và sẵn sàng bật lên tức thì bằng phím tắt mà không mất ngữ cảnh.
+Về 'Notification Settings': Anh em lưu ý Antigravity đẩy toàn bộ việc quản lý thông báo về Settings của Windows/macOS. Anh em chỉ cần cấp quyền thông báo trong OS Settings là mỗi khi AI hoàn thành task hoặc cần phê duyệt, máy tính và điện thoại đều sẽ ting ting báo ngay.""")
+
+def build_slides_8_to_10(prs):
+    blank_layout = prs.slide_layouts[6]
 
     # =========================================================================
-    # SLIDE 8: TỔNG KẾT & Q&A
+    # SLIDE 8: TẠI SAO CẦN LOCAL LLM TRONG CLAUDE CODE
     # =========================================================================
     s8 = prs.slides.add_slide(blank_layout)
     set_slide_background(s8)
-    add_top_decorations(s8, 8, 8, "🏁 TỔNG KẾT & HÀNH ĐỘNG • Q&A")
-    add_header(s8, "Bộ Hành Trang Kỹ Sư Tương Lai", "Checklist tối ưu quy trình làm việc với AI Agent – Setup 1 lần, thảnh thơi cả ngày.")
+    add_top_decorations(s8, 8, 10, "💡 MỞ RỘNG ĐỘT PHÁ • CLAUDE CODE & LOCAL LLM")
+    add_header(s8, "Tại Sao Cần Đưa Model Bên Thứ 3 Vào Claude Code?", "Kết hợp bộ não mã nguồn mở mạnh mẽ với framework CLI Agentic số 1 hiện nay.")
 
-    # 3 Summary Cards
+    pillars = [
+        ("TRỤ CỘT 1", "🔒 Bảo Mật & Air-Gapped", [
+            ("Tuân thủ nghiêm ngặt NDA:", " Cam kết bảo mật của khách hàng cấm tuyệt đối việc đẩy source code dự án lên các server đám mây công cộng."),
+            ("Xử lý hoàn toàn Offline:", " Toàn bộ quá trình đọc hiểu mã nguồn và sinh giải pháp được thực thi trên GPU nội bộ của máy trạm."),
+            ("Không lưu vết huấn luyện:", " Dữ liệu nội bộ không bao giờ bị sử dụng để huấn luyện lại các mô hình AI của bên thứ ba.")
+        ], ACCENT_RED),
+        ("TRỤ CỘT 2", "💰 Tiết Kiệm 100% Phí API", [
+            ("Cắt giảm chi phí token:", " Các tác vụ lặp đi lặp lại như debug hay sinh test cases ngốn hàng trăm USD nếu dùng API Claude 3.5 Sonnet."),
+            ("Sử dụng Ollama 0 đồng:", " Tận dụng tối đa sức mạnh của các model mã nguồn mở hàng đầu như Qwen 2.5 Coder, DeepSeek-R1."),
+            ("Không lo giới hạn Rate Limit:", " Không bị chặn tần suất yêu cầu trên phút (RPM/TPM) khi chạy benchmark quy mô lớn.")
+        ], ACCENT_GREEN),
+        ("TRỤ CỘT 3", "⚡ Giữ Trọn Workflow Agent", [
+            ("Tận dụng vỏ Claude Code:", " Giữ nguyên khả năng đọc ghi file chuẩn xác, tự động chạy lệnh terminal và tạo commit tự động."),
+            ("Linh hoạt đổi model coding:", " Dễ dàng chuyển đổi giữa các model coding chuyên biệt chỉ với một tham số dòng lệnh duy nhất."),
+            ("Tự chủ công nghệ lâu dài:", " Hoạt động độc lập và không phụ thuộc vào tình trạng quá tải hoặc sự cố gián đoạn của nhà cung cấp Cloud.")
+        ], ACCENT_CYAN)
+    ]
     cw8 = Inches(3.7)
-    ch8 = Inches(3.4)
-    cy8 = Inches(2.2)
+    ch8 = Inches(4.65)
+    cy8 = Inches(2.10)
+    for i, (tag, title, items, border_c) in enumerate(pillars):
+        cx = Inches(0.8 + i * 4.0)
+        c = s8.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, cx, cy8, cw8, ch8)
+        c.fill.solid()
+        c.fill.fore_color.rgb = CARD_BG
+        c.line.color.rgb = border_c
+        c.line.width = Pt(1.5)
 
-    # Box 1
-    b1 = s8.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), cy8, cw8, ch8)
-    b1.fill.solid()
-    b1.fill.fore_color.rgb = CARD_BG
-    b1.line.color.rgb = BORDER_GLOW
-    b1.line.width = Pt(1.5)
-    tb1 = b1.text_frame
-    tb1.word_wrap = True
-    tb1.margin_left = tb1.margin_right = tb1.margin_top = Inches(0.25)
-    p = tb1.paragraphs[0]
-    p.text = "1. BẬT REMOTE CONTROL"
-    p.font.name = "Segoe UI"
-    p.font.size = Pt(14)
-    p.font.bold = True
-    p.font.color.rgb = ACCENT_CYAN
-    p2 = tb1.add_paragraph()
-    p2.text = "Tự do di chuyển, duyệt code trên smartphone mọi lúc mọi nơi."
-    p2.font.name = "Segoe UI"
-    p2.font.size = Pt(11.5)
-    p2.font.color.rgb = TEXT_MUTED
-    p2.space_before = Pt(6)
+        ctf = c.text_frame
+        ctf.word_wrap = True
+        ctf.margin_left = ctf.margin_right = ctf.margin_top = Inches(0.25)
 
-    # Box 2
-    b2 = s8.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(4.8), cy8, cw8, ch8)
-    b2.fill.solid()
-    b2.fill.fore_color.rgb = CARD_BG
-    b2.line.color.rgb = ACCENT_GREEN
-    b2.line.width = Pt(1.5)
-    tb2 = b2.text_frame
-    tb2.word_wrap = True
-    tb2.margin_left = tb2.margin_right = tb2.margin_top = Inches(0.25)
-    p = tb2.paragraphs[0]
-    p.text = "2. BẬT PREVENT SLEEP"
-    p.font.name = "Segoe UI"
-    p.font.size = Pt(14)
+        p = ctf.paragraphs[0]
+        p.text = tag
+        p.font.name = "Segoe UI"
+        p.font.size = Pt(11)
+        p.font.bold = True
+        p.font.color.rgb = border_c
+
+        p2 = ctf.add_paragraph()
+        p2.text = title
+        p2.font.name = "Segoe UI"
+        p2.font.size = Pt(15.5)
+        p2.font.bold = True
+        p2.font.color.rgb = TEXT_WHITE
+        p2.space_before = Pt(4)
+
+        for it, idesc in items:
+            p3 = ctf.add_paragraph()
+            p3.space_before = Pt(8)
+            r1 = p3.add_run()
+            r1.text = "• " + it + "\n"
+            r1.font.bold = True
+            r1.font.size = Pt(11.5)
+            r1.font.color.rgb = TEXT_WHITE
+            r2 = p3.add_run()
+            r2.text = idesc
+            r2.font.size = Pt(11)
+            r2.font.color.rgb = TEXT_MUTED
+
+    add_notes(s8, """[LỜI THOẠI DIỄN GIẢ]
+Sau khi đã làm chủ Antigravity, mình muốn chia sẻ thêm một kỹ thuật cực hot: Sử dụng Claude Code nhưng chạy bằng Model bên thứ 3 hoặc Model Local qua Ollama. Tại sao chúng ta lại cần điều này?
+Claude Code của Anthropic là một CLI agent xuất sắc nhất hiện nay về khả năng sửa code và chạy terminal, nhưng nó có 2 rào cản lớn: chi phí token API đắt đỏ và chính sách bảo mật dữ liệu công ty không cho phép gửi code lên cloud.
+Bằng cách đưa model bên thứ 3 thông qua Ollama, anh em giải quyết được cả 2 bài toán:
+Thứ nhất, code chạy hoàn toàn local trên GPU máy trạm, bảo mật 100%.
+Thứ hai, chi phí token bằng 0 khi dùng các mô hình mã nguồn mở hàng đầu như Qwen 2.5 Coder hay DeepSeek.
+Chúng ta vừa có 'bộ não' miễn phí/bảo mật, vừa có 'đôi tay' agentic cực kỳ linh hoạt của Claude Code.""")
+
+    # =========================================================================
+    # SLIDE 9: THỰC CHIẾN TÍCH HỢP OLLAMA
+    # =========================================================================
+    s9 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s9)
+    add_top_decorations(s9, 9, 10, "🛠️ THỰC CHIẾN TÍCH HỢP • NATIVE ANTHROPIC API BRIDGE")
+    add_header(s9, "Cách Tích Hợp Model Vào Claude Code", "Cấu hình ghép nối Ollama với Claude Code qua 2 phương pháp đơn giản.")
+
+    # Terminal Mockup
+    add_terminal_mockup(s9, Inches(0.8), Inches(2.10), Inches(11.7), Inches(1.85), "bash — claude-code-bridge", "$ ollama launch claude --model qwen2.5-coder", [
+        "[✓] Connected to local Ollama (http://localhost:11434)",
+        "[✓] Anthropic Messages API Bridge: READY",
+        "[✓] Initializing Agent tools: ReadFile, EditFile, Bash... Done."
+    ])
+
+    # 2 Method Cards
+    m_left = s9.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(4.15), Inches(5.7), Inches(2.60))
+    m_left.fill.solid()
+    m_left.fill.fore_color.rgb = CODE_BG
+    m_left.line.color.rgb = ACCENT_GREEN
+    m_left.line.width = Pt(1.5)
+
+    tl9 = m_left.text_frame
+    tl9.word_wrap = True
+    tl9.margin_left = tl9.margin_right = tl9.margin_top = Inches(0.25)
+    p = tl9.paragraphs[0]
+    p.text = "CÁCH 1: OLLAMA LAUNCH (1 DÒNG DUY NHẤT)"
+    p.font.name = "Consolas"
+    p.font.size = Pt(12)
     p.font.bold = True
     p.font.color.rgb = ACCENT_GREEN
-    p2 = tb2.add_paragraph()
-    p2.text = "Giữ hệ thống luôn thức, tự tin giao việc nặng chạy ngầm xuyên đêm."
-    p2.font.name = "Segoe UI"
-    p2.font.size = Pt(11.5)
-    p2.font.color.rgb = TEXT_MUTED
-    p2.space_before = Pt(6)
 
-    # Box 3
-    b3 = s8.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(8.8), cy8, cw8, ch8)
-    b3.fill.solid()
-    b3.fill.fore_color.rgb = CARD_BG
-    b3.line.color.rgb = ACCENT_INDIGO
-    b3.line.width = Pt(1.5)
-    tb3 = b3.text_frame
-    tb3.word_wrap = True
-    tb3.margin_left = tb3.margin_right = tb3.margin_top = Inches(0.25)
-    p = tb3.paragraphs[0]
-    p.text = "3. CLAUDE CODE + OLLAMA"
-    p.font.name = "Segoe UI"
-    p.font.size = Pt(14)
+    p2 = tl9.add_paragraph()
+    p2.text = "$ ollama launch claude --model qwen2.5-coder"
+    p2.font.name = "Consolas"
+    p2.font.size = Pt(10.5)
+    p2.font.bold = True
+    p2.font.color.rgb = ACCENT_CYAN
+    p2.space_before = Pt(5)
+
+    p3 = tl9.add_paragraph()
+    p3.text = "• Ollama phiên bản mới tự động thiết lập cầu nối Anthropic API.\n• Tự động tải model nếu chưa có sẵn trong máy trạm.\n• Sẵn sàng làm việc chỉ sau vài giây."
+    p3.font.name = "Segoe UI"
+    p3.font.size = Pt(10.5)
+    p3.font.color.rgb = TEXT_WHITE
+    p3.space_before = Pt(5)
+
+    m_right = s9.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(6.8), Inches(4.15), Inches(5.7), Inches(2.60))
+    m_right.fill.solid()
+    m_right.fill.fore_color.rgb = CODE_BG
+    m_right.line.color.rgb = CARD_BORDER
+    m_right.line.width = Pt(1)
+
+    tr9 = m_right.text_frame
+    tr9.word_wrap = True
+    tr9.margin_left = tr9.margin_right = tr9.margin_top = Inches(0.25)
+    p = tr9.paragraphs[0]
+    p.text = "CÁCH 2: CẤU HÌNH BIẾN MÔI TRƯỜNG (ENV VARS)"
+    p.font.name = "Consolas"
+    p.font.size = Pt(12)
     p.font.bold = True
     p.font.color.rgb = ACCENT_INDIGO
-    p2 = tb3.add_paragraph()
-    p2.text = "Bảo vệ mã nguồn nhạy cảm, tiết kiệm 100% token với model open-source."
-    p2.font.name = "Segoe UI"
-    p2.font.size = Pt(11.5)
-    p2.font.color.rgb = TEXT_MUTED
-    p2.space_before = Pt(6)
 
-    # Bottom Callout / Q&A Banner
-    qa_banner = s8.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(5.8), Inches(11.7), Inches(0.95))
-    qa_banner.fill.solid()
-    qa_banner.fill.fore_color.rgb = CARD_BG_ALT
-    qa_banner.line.color.rgb = CARD_BORDER
-    tqa = qa_banner.text_frame
+    p2 = tr9.add_paragraph()
+    p2.text = "export ANTHROPIC_BASE_URL=http://localhost:11434\nexport ANTHROPIC_AUTH_TOKEN=ollama"
+    p2.font.name = "Consolas"
+    p2.font.size = Pt(10)
+    p2.font.color.rgb = ACCENT_INDIGO
+    p2.space_before = Pt(5)
+
+    p3 = tr9.add_paragraph()
+    p3.text = "• Khởi chạy lệnh 'claude --model qwen2.5-coder' như bình thường.\n• Hỗ trợ toàn diện Tool calling: Chạy lệnh shell, đọc & sửa file.\n• Tự do cấu hình trong profile ~/.bashrc hoặc ~/.zshrc."
+    p3.font.name = "Segoe UI"
+    p3.font.size = Pt(10.5)
+    p3.font.color.rgb = TEXT_WHITE
+    p3.space_before = Pt(5)
+
+    add_notes(s9, """[LỜI THOẠI DIỄN GIẢ]
+Nghe thì có vẻ phức tạp nhưng thực tế tích hợp chỉ mất đúng 5 giây với 1 dòng lệnh duy nhất.
+Nhờ Ollama mới đây đã hỗ trợ native giao thức Anthropic Messages API, việc cầu nối giữa Claude Code và Ollama diễn ra hoàn toàn trong suốt.
+Cách 1 đơn giản nhất: Anh em chỉ cần gõ 'ollama launch claude --model qwen2.5-coder'. Ollama sẽ tự động bridge và mở giao diện Claude Code kết nối trực tiếp vào model máy bạn.
+Cách 2 nếu muốn cấu hình cố định trong profile shell: Anh em set 2 biến môi trường ANTHROPIC_BASE_URL trỏ về localhost:11434 và ANTHROPIC_AUTH_TOKEN bằng ollama. Sau đó cứ gõ lệnh 'claude' bình thường!
+Agent vẫn tự động đọc file, tạo commit, chạy bash script và tìm kiếm code như khi dùng Claude 3.5 Sonnet xịn.""")
+
+    # =========================================================================
+    # SLIDE 10: TỔNG KẾT & Q&A
+    # =========================================================================
+    s10 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s10)
+    add_top_decorations(s10, 10, 10, "🏁 TỔNG KẾT & HÀNH ĐỘNG • Q&A")
+    add_header(s10, "Bộ Hành Trang Kỹ Sư Tương Lai", "Checklist 3 bước tối ưu quy trình làm việc với AI Agent – Setup 1 lần, thảnh thơi cả ngày.")
+
+    actions = [
+        ("1. BẬT REMOTE CONTROL", "Gạt nút toggle trong Settings để sẵn sàng duyệt code và bấm Approve từ điện thoại khi đi họp hoặc đi ăn trưa.\nGiải phóng bản thân khỏi việc phải ngồi canh máy tính liên tục.", ACCENT_CYAN),
+        ("2. BẬT PREVENT SLEEP & TRAY", "Giữ máy tính luôn thức trong lúc Agent cày task nặng xuyên đêm và tránh nguy cơ đóng nhầm cửa sổ bằng nút 'X'.\nỨng dụng luôn thường trực trên khay Taskbar Tray.", ACCENT_GREEN),
+        ("3. THỬ NGHIỆM OLLAMA LAUNCH", "Chạy thử lệnh 'ollama launch claude' để trải nghiệm cảm giác sở hữu một trợ lý AI Coding offline miễn phí 100%.\nBảo vệ tuyệt đối mã nguồn nhạy cảm của dự án.", ACCENT_INDIGO)
+    ]
+    for i, (a_title, a_desc, a_border) in enumerate(actions):
+        cx = Inches(0.8 + i * 4.0)
+        c = s10.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, cx, Inches(2.10), Inches(3.7), Inches(3.35))
+        c.fill.solid()
+        c.fill.fore_color.rgb = CARD_BG
+        c.line.color.rgb = a_border
+        c.line.width = Pt(1.5)
+
+        ctf = c.text_frame
+        ctf.word_wrap = True
+        ctf.margin_left = ctf.margin_right = ctf.margin_top = Inches(0.25)
+
+        p = ctf.paragraphs[0]
+        p.text = a_title
+        p.font.name = "Segoe UI"
+        p.font.size = Pt(14)
+        p.font.bold = True
+        p.font.color.rgb = a_border
+
+        p2 = ctf.add_paragraph()
+        p2.text = a_desc
+        p2.font.name = "Segoe UI"
+        p2.font.size = Pt(11.5)
+        p2.font.color.rgb = TEXT_WHITE
+        p2.space_before = Pt(8)
+
+    qa_box = s10.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(5.65), Inches(11.7), Inches(1.10))
+    qa_box.fill.solid()
+    qa_box.fill.fore_color.rgb = CARD_BG_ALT
+    qa_box.line.color.rgb = ACCENT_CYAN
+    qa_box.line.width = Pt(1.5)
+
+    tqa = qa_box.text_frame
     tqa.word_wrap = True
     tqa.margin_left = Inches(0.3)
     p = tqa.paragraphs[0]
     p.text = "💬 CẢM ƠN ANH EM ĐÃ LẮNG NGHE! CHÚNG TA CÙNG THẢO LUẬN & DEMO TRỰC TIẾP NHÉ!"
     p.font.name = "Segoe UI"
-    p.font.size = Pt(14)
+    p.font.size = Pt(13.5)
     p.font.bold = True
     p.font.color.rgb = ACCENT_CYAN
 
-    add_notes(s8, """[LỜI THOẠI DIỄN GIẢ - 6:55 - 7:45]
-(Hook) Để khép lại bài chia sẻ hôm nay, mình muốn nhắn nhủ một điều: Công nghệ AI sinh ra là để phục vụ chúng ta, giúp chúng ta làm việc thông minh hơn chứ không phải ngồi gò lưng canh chừng máy tính nhiều hơn.
-(Why) Cả Antigravity Remote Control, App Settings và Claude Code tích hợp Ollama đều cùng hướng tới một mục tiêu duy nhất: Tự động hóa triệt để và an tâm tuyệt đối.
-(How) Ngay sau buổi này, anh em chỉ cần dành 30 giây làm 3 việc: Một là gạt bật Remote Control trên Antigravity để sẵn sàng lái agent từ điện thoại. Hai là bật Prevent Sleep và Menu Bar resident. Và ba là thử gõ 'ollama launch claude' để trải nghiệm coding agent offline cực kỳ mạnh mẽ.
-(Takeaway) Cảm ơn tất cả anh em đã theo dõi! Bây giờ mình xin mở phần Q&A, anh em có câu hỏi hay muốn cùng quét QR thử nghiệm trực tiếp thì chúng ta cùng thảo luận nhé!""")
+    p2 = tqa.add_paragraph()
+    p2.text = "Hãy quét mã QR hoặc mở Settings trên máy của bạn để cùng thực hành và trải nghiệm ngay bây giờ!"
+    p2.font.name = "Segoe UI"
+    p2.font.size = Pt(11)
+    p2.font.color.rgb = TEXT_MUTED
+    p2.space_before = Pt(3)
 
-    output_path = r"d:\Project\training-ai\bai-2.5-tao-slide\Antigravity_RemoteControl_ClaudeCode_Slides.pptx"
+    add_notes(s10, """[LỜI THOẠI DIỄN GIẢ]
+Để khép lại bài chia sẻ hôm nay, mình muốn nhắn nhủ một điều: Công nghệ AI sinh ra là để phục vụ chúng ta, giúp chúng ta làm việc thông minh hơn chứ không phải ngồi gò lưng canh chừng máy tính nhiều hơn.
+Cả Antigravity Remote Control, App Settings và Claude Code tích hợp Ollama đều cùng hướng tới một mục tiêu duy nhất: Tự động hóa triệt để và an tâm tuyệt đối.
+Ngay sau buổi này, anh em chỉ cần dành 30 giây làm 3 việc:
+Một là gạt bật Remote Control trên Antigravity để sẵn sàng lái agent từ điện thoại.
+Hai là bật Prevent Sleep và Menu Bar resident.
+Và ba là thử gõ 'ollama launch claude' để trải nghiệm coding agent offline cực kỳ mạnh mẽ.
+Cảm ơn tất cả anh em đã theo dõi! Bây giờ mình xin mở phần Q&A, anh em có câu hỏi hay muốn cùng quét QR thử nghiệm trực tiếp thì chúng ta cùng thảo luận nhé!""")
+
+def create_deck(output_path=None):
+    if output_path is None:
+        output_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Antigravity_RemoteControl_ClaudeCode_Slides.pptx")
+
+    prs = Presentation()
+    prs.slide_width = Inches(13.333)
+    prs.slide_height = Inches(7.5)
+
+    build_slides_1_to_4(prs)
+    build_slides_5_to_7(prs)
+    build_slides_8_to_10(prs)
+
     prs.save(output_path)
     print(f"Presentation saved successfully to: {output_path}")
+    return output_path
 
 if __name__ == "__main__":
     create_deck()

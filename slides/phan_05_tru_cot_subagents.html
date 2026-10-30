@@ -496,12 +496,13 @@
 
   <main id="deck-stage">
 
-    <div class="slide-canvas active" data-slide="1" data-notes="Trụ cột 3 - Subagents: Đội ngũ nhân viên chuyên môn ảo.
-Khi dự án lớn và phức tạp, nếu dồn hết vào 1 cửa sổ chat, AI sẽ bị 'loãng não' (context pollution).
-Subagents sinh ra để giải quyết vấn đề này:
-1. Mỗi Subagent là 1 trợ lý độc lập, có không gian làm việc riêng.
-2. Được cấp quyền cụ thể (Role, Model, Tools). Ví dụ trợ lý nghiên cứu chỉ được đọc file và tìm web, không được sửa code.
-3. Chạy song song độc lập, sau đó chỉ báo cáo kết quả tinh gọn về cho Agent chính. Giúp tiết kiệm token và tăng độ chính xác vượt trội!">
+    <div class="slide-canvas active" data-slide="1" data-notes="Trụ cột 3 - Subagents: Đội Ngũ Nhân Viên Chuyên Môn Ảo.
+Sai lầm phổ biến: Bắt 1 AI ôm đồm mọi việc làm ô nhiễm ngữ cảnh (loãng não), phản hồi chậm và cụt ngủn.
+Nguyên lý Subagents:
+1. Phân Tách Ngữ Cảnh (Isolated Context): Mỗi trợ lý phụ được cấp 1 'căn phòng riêng' cày xới dữ liệu thô, không làm rác khung chat chính.
+2. Phân Quyền Công Cụ (Role & Tools): Được giới hạn công cụ rõ ràng, ví dụ chỉ được đọc file Excel và tính toán, không sửa xóa bậy.
+3. Báo Cáo Tinh Gọn: Chỉ mang 1 bản tóm tắt tinh hoa nhất về báo cáo sếp.
+Quy tắc vàng: Gặp việc lớn, đừng bắt 1 AI ôm hết — hãy cử Subagent chuyên trách xử lý độc lập!">
       <div class="slide-hud">
         <div class="hud-chip">TRỤ CỘT 03: <strong>SUBAGENTS ĐỘC LẬP</strong></div>
       </div>
@@ -526,7 +527,7 @@ Subagents sinh ra để giải quyết vấn đề này:
           <div class="stat-title">Phân Quyền Công Cụ</div>
           <div class="stat-desc">
             <ul class="key-points-list">
-              <li class="key-point-item"><span style="color: #38bdf8;">•</span> Cấp đúng công cụ cần thiết: Trợ lý tra cứu chỉ được đọc file.</li>
+              <li class="key-point-item"><span style="color: #38bdf8;">•</span> Cấp đúng công cụ cần thiết: Trợ lý số liệu chỉ được đọc file.</li>
               <li class="key-point-item"><span style="color: #38bdf8;">•</span> Không cho phép chạy lệnh sửa xóa ngoài phạm vi nhiệm vụ.</li>
             </ul>
           </div>
@@ -548,45 +549,48 @@ Subagents sinh ra để giải quyết vấn đề này:
       </div>
     </div>
 
-    <div class="slide-canvas" data-slide="2" data-notes="Thực hành điều phối 2 Subagents: Nghiên Cứu và Soạn Thảo.
-Mô hình phối hợp nhịp nhàng:
-- Subagent 1 (Research Specialist): Quét mạng và đọc các thông tư pháp lý hiện hành, chắt lọc điều khoản quy định.
-- Subagent 2 (Document Writer): Tiếp nhận dữ liệu chắt lọc từ Subagent 1, tiến hành soạn thảo dự thảo Tờ trình theo đúng thể thức văn bản.
-- Kết quả: Bạn chỉ cần ra lệnh 1 câu ở màn hình chính, 2 nhân viên ảo tự trao đổi và nộp văn bản hoàn chỉnh để bạn duyệt!">
+    <div class="slide-canvas" data-slide="2" data-notes="Thực hành điều phối Subagents tự động trong workspace độc lập Demo/dieu-phoi-subagents-song-song/.
+Bài toán cuối tháng với file doanh_thu_thang_10.xlsx (10 nhân viên, Top 3 và tổng doanh thu 520tr):
+1. Ra lệnh theo mục tiêu đầu ra: 'Từ tệp doanh_thu_thang_10.xlsx, hãy lọc ra Top 3 nhân viên xuất sắc nhất tháng và soạn một bức email vinh danh truyền cảm hứng gửi toàn thể công ty.'
+2. Antigravity tự động kích hoạt Subagents ngầm:
+   - Trợ lý số liệu (Data Analyst): Đọc file Excel ngầm trong phòng riêng, lọc Top 3 (An 120tr, Mai 95tr, Nam 88tr, Tổng 520tr).
+   - Trợ lý soạn thảo (Email Copywriter): Nhận số liệu sạch và chắp bút viết email vinh danh hào hứng.
+3. Nghiệm thu: Khung chat chính hoàn toàn sạch bóng dữ liệu thô, nhận ngay 2 thành phẩm hoàn hảo sau vài giây!">
       <div class="slide-hud">
+        <div class="hud-chip">WORKSPACE: <strong>DEMO/DIEU-PHOI-SUBAGENTS-SONG-SONG</strong></div>
         <div class="hud-chip">TRỤ CỘT 03: <strong>THỰC HÀNH PHỐI HỢP</strong></div>
       </div>
       <div class="anim-1">
         <span class="tag-hero" style="color: var(--accent-cyan);"><svg class="svg-icon" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg> KỊCH BẢN THỰC CHIẾN</span>
         <h2 class="title-display">Thực Hành: <span>Điều Phối 2 Trợ Lý Ảo Song Song</span></h2>
-        <p class="lead-desc">Mô hình Trợ lý Nghiên Cứu kết hợp Trợ lý Soạn Thảo — Bạn đóng vai trò Trưởng phòng duyệt sản phẩm.</p>
+        <p class="lead-desc">AI tự động phân rã bài toán, kích hoạt Subagents ngầm xử lý song song — Bạn chỉ giao mục tiêu đầu ra 1 câu duy nhất.</p>
       </div>
       <div class="card-grid col-2 anim-2">
         <div class="stat-card" style="border-top: 3px solid var(--accent-indigo);">
-          <div class="stat-header"><span class="card-badge" style="background: rgba(99,102,241,0.18); color: #a5b4fc;">TRỢ LÝ 01 • CHUYÊN GIA TRA CỨU</span></div>
-          <div class="stat-title">Research Specialist (Chỉ Đọc)</div>
+          <div class="stat-header"><span class="card-badge" style="background: rgba(99,102,241,0.18); color: #a5b4fc;">TRỢ LÝ 01 • CHUYÊN VIÊN SỐ LIỆU</span></div>
+          <div class="stat-title">Data Analyst (Chuyên Trách Số Liệu)</div>
           <div class="stat-desc">
             <ul class="key-points-list">
-              <li class="key-point-item"><span style="color: #818cf8;">•</span> <strong>Nhiệm vụ:</strong> Đọc 5 tài liệu thông tư pháp lý và tìm kiếm điều khoản mới nhất.</li>
-              <li class="key-point-item"><span style="color: #818cf8;">•</span> <strong>Quyền hạn:</strong> Read-only, không được phép can thiệp chỉnh sửa file nguồn.</li>
-              <li class="key-point-item"><span style="color: #818cf8;">•</span> <strong>Đầu ra:</strong> Bảng tổng hợp các căn cứ pháp lý cốt lõi.</li>
+              <li class="key-point-item"><span style="color: #818cf8;">•</span> <strong>Nhiệm vụ:</strong> Mở <code>doanh_thu_thang_10.xlsx</code>, lọc Top 3 và tính tổng doanh thu.</li>
+              <li class="key-point-item"><span style="color: #818cf8;">•</span> <strong>Quyền hạn:</strong> Read-only trong phòng riêng, không làm rác khung chat chính.</li>
+              <li class="key-point-item"><span style="color: #818cf8;">•</span> <strong>Đầu ra:</strong> Bảng Top 3 chuẩn xác: An (120tr), Mai (95tr), Nam (88tr), Tổng: 520tr.</li>
             </ul>
           </div>
         </div>
         <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
           <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">TRỢ LÝ 02 • CHUYÊN VIÊN SOẠN THẢO</span></div>
-          <div class="stat-title">Document Writer (Soạn Thảo)</div>
+          <div class="stat-title">Email Copywriter (Truyền Thông Nội Bộ)</div>
           <div class="stat-desc">
             <ul class="key-points-list">
-              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Nhiệm vụ:</strong> Lấy dữ liệu từ Trợ lý 01 để soạn Tờ trình xin phê duyệt.</li>
-              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Quyền hạn:</strong> Tạo file văn bản theo đúng thể thức Nghị định 30.</li>
-              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Đầu ra:</strong> File <code>To_Trinh_Phe_Duyet.docx</code> hoàn chỉnh trình sếp.</li>
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Nhiệm vụ:</strong> Nhận số liệu sạch từ Trợ lý 01 để soạn thư email vinh danh truyền cảm hứng.</li>
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Quyền hạn:</strong> Viết lách, định dạng email bắt mắt, tôn vinh tinh thần đồng đội.</li>
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Đầu ra:</strong> Bức thư email hoàn chỉnh sẵn sàng copy gửi đi ngay lập tức.</li>
             </ul>
           </div>
         </div>
       </div>
       <div class="footer-bar-summary anim-3">
-        <span>🚀 <strong>Quy trình:</strong> Trợ lý 1 tìm căn cứ ➔ Trợ lý 2 lắp vào khung mẫu ➔ Bạn ký duyệt trong 1 nốt nhạc!</span>
+        <span>🚀 <strong>Cơ chế tự hành:</strong> Giao việc 1 câu ➔ AI tự chia Subagents ngầm ➔ Nghiệm thu kết quả sạch bóng trong 2 phút!</span>
         <span style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 700;">PIPELINE AUTOMATION</span>
       </div>
     </div>

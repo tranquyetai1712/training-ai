@@ -11,7 +11,7 @@
 ## 🎬 1. CHUẨN BỊ TRƯỚC KHI QUAY
 * **Cửa sổ trình chiếu:** Mở tệp slide `slides/phan_01_khoi_dong_cai_dat.html` (chuyển tới Slide 4: *Giao Diện 3 Phân Vùng & Sân Khấu Chỉ Huy* và Slide 5: *Trung Tâm Cài Đặt Settings*).
 * **Ứng dụng thực tế:** Mở ứng dụng Antigravity Desktop song song. Chuẩn bị sẵn thao tác mở modal Settings để chỉ rõ từng tab (`General`, `Application`, `Appearance`, `Models`, `Projects`).
-* **Tông giọng:** Trực diện, tự tin, rành mạch, chuẩn phong cách giảng viên solo screencast trên Udemy.
+* **Tông giọng:** Trực diện, tự tin, cuốn hút, giàu nhịp điệu, chuẩn phong cách giảng viên solo screencast trên Udemy.
 
 ---
 
@@ -23,31 +23,35 @@
 
 "Chào mừng bạn đến với Bài 1.3!
 
-Trong video này, chúng ta sẽ cùng nhau làm chủ toàn bộ bản đồ giao diện của **Antigravity Desktop** xoay quanh **3 phân vùng cốt lõi**, sau đó khám phá **4 mục thiết lập vàng trong Settings** để bạn tối ưu hóa hiệu năng, bảo vệ dữ liệu và quản trị hạn mức sử dụng AI một cách thông minh nhất."
+Ở bài học trước, bạn đã có sẵn ứng dụng Antigravity Desktop trên máy tính rồi. 
+
+Vì vậy, ngay trong video này, chúng ta sẽ cùng nhau làm chủ toàn bộ bản đồ giao diện của Antigravity xoay quanh **3 phân vùng cốt lõi**, và đặc biệt là khám phá **4 mục thiết lập vàng trong Settings** để bạn tối ưu hóa hiệu năng, bảo vệ dữ liệu và quản trị hạn mức sử dụng AI một cách thông minh nhất!"
 
 ---
 
 ### [00:30 - 02:15] KHÁM PHÁ 3 PHÂN VÙNG GIAO DIỆN
 `[Chiếu Slide 4 kết hợp quay màn hình Antigravity Desktop]`
 
+"Trước tiên, mời bạn nhìn vào tổng thể màn hình: Antigravity được thiết kế cực kỳ khoa học chia làm 3 phân vùng chính:
+
 `[1. Cột trái - Left Sidebar]`  
-"Đầu tiên là **Left Sidebar** ở bên trái:
-* Nút **+ New Conversation**: Bấm vào đây để mở phiên làm việc mới độc lập, giúp AI có một không gian nhớ sạch sẽ, không bị lẫn lộn giữa các đầu việc.
-* Mục **Projects**: Quản lý các thư mục làm việc thật trên máy tính của bạn."
+* **Phân vùng 1 — Cột điều hướng bên trái (Left Sidebar):**
+  * Nổi bật nhất là nút **+ New Conversation**: Mỗi khi bắt đầu một công việc mới, bạn chỉ cần bấm vào đây để mở một phiên làm việc độc lập. **Nhờ đó,** AI sẽ có một bộ nhớ sạch sẽ, không bị lẫn lộn giữa hợp đồng phòng này với số liệu phòng khác.
+  * Ngay phía dưới là mục **Projects**: Nơi hiển thị các thư mục làm việc thật trên máy tính của bạn.
 
 `[2. Khung giữa - Chat Canvas & Prompt Bar]`  
-"Ở giữa là **Chat Canvas — Sân khấu chỉ huy**:
-* Khối **Thinking Traces** hiển thị minh bạch 100% từng bước lập luận của AI.
-* Dưới đáy là thanh **Prompt Bar** với 4 công cụ tiện lợi:
-  * Phím `/`: Gọi nhanh lệnh lập kế hoạch `/plan` hoặc các kỹ năng tự động.
-  * Phím `@`: Đính kèm ngay file hoặc thư mục từ máy tính vào câu lệnh.
-  * Nút dấu cộng `+`: Nạp thêm ảnh tài liệu (`Media`), gán `@ Mentions`, kích hoạt hành động (`Actions`), hoặc mở trình duyệt (`Browser`).
-  * Dropdown chọn Model: Mặc định là **Gemini 3.8 Flash High** siêu tốc độ, bạn có thể chuyển sang *Gemini 4 Argon* hoặc *Claude Sonnet* khi cần xử lý việc phức tạp, và bấm **View Usage** để kiểm tra hạn mức sử dụng."
+* **Phân vùng 2 — Khung ở giữa (Chat Canvas & Prompt Bar):** Đây chính là sân khấu chỉ huy trung tâm của bạn:
+  * Khối **Thinking Traces** ở phía trên sẽ hiển thị minh bạch 100% từng bước suy nghĩ và lập luận của AI trước khi nó hành động.
+  * Còn dưới đáy là thanh **Prompt Bar** với 4 phím tắt quyền lực:
+    * Phím gạch chéo `/`: Giúp bạn gọi nhanh các lệnh tác chiến như `/plan` hay các kỹ năng tự động.
+    * Ký tự `@`: Cho phép bạn gắn thẻ đính kèm ngay file hoặc thư mục từ máy tính vào câu lệnh.
+    * Nút dấu cộng `+`: Giúp bạn nạp ảnh tài liệu (`Media`), gán `@ Mentions`, kích hoạt hành động (`Actions`), hoặc mở trình duyệt web (`Browser`).
+    * Và góc phải là Dropdown chọn Mô hình: Mặc định là **Gemini 3.8 Flash High** với tốc độ phản hồi tính bằng mili-giây, hoặc bạn có thể chuyển sang *Claude Sonnet* khi cần giải quyết bài toán phức tạp, kèm theo nút **View Usage** để kiểm tra hạn mức sử dụng.
 
 `[3. Cột phải - Auxiliary Pane]`  
-"Cột bên phải là **Auxiliary Pane — Trạm giám sát đa năng**:
-* Quản lý các trợ lý con chạy song song tại tab **Subagents**, xem tiến trình chạy ngầm tại tab **Terminals**.
-* Đặc biệt nhất là mục **Files Changed (Uncommitted)**: Soi rõ từng dòng chỉnh sửa (màu xanh là thêm mới, màu đỏ là xóa bỏ) giúp bạn an tâm tuyệt đối trước khi quyết định lưu file."
+* **Phân vùng 3 — Cột tiện ích bên phải (Auxiliary Pane):** Đây là trạm giám sát an toàn đa năng:
+  * Bạn có thể theo dõi các trợ lý con chạy song song tại tab **Subagents**, hoặc xem tiến trình dòng lệnh tại tab **Terminals**.
+  * **Thế nhưng điều đắt giá nhất ở đây chính là:** Mục **Files Changed (Uncommitted)**. Đây chính là tấm khiên bảo vệ bạn: Nó soi rõ từng dòng thay đổi (màu xanh lá là thêm mới, màu đỏ là xóa bỏ). **Kết quả là,** bạn luôn được xem trước và phê duyệt từng con số trước khi quyết định lưu file thật!"
 
 ---
 
@@ -55,30 +59,33 @@ Trong video này, chúng ta sẽ cùng nhau làm chủ toàn bộ bản đồ gi
 `[Chuyển sang Slide 5: Trung Tâm Thiết Lập Settings: An Toàn & Quản Trị Quota]`  
 `[Bấm vào biểu tượng bánh răng Settings ở góc dưới bên trái để mở modal]`
 
+"**Bên cạnh giao diện chính,** một nơi mà bất kỳ người dùng thông minh nào cũng cần nắm rõ, đó là **Trung Tâm Cài Đặt Settings**.
+
+Bạn hãy bấm vào biểu tượng bánh răng cưa ở góc dưới cùng bên trái: Một cửa sổ cài đặt chuyên nghiệp sẽ hiện ra với **4 tab quan trọng**:
+
 `[Tab 1: General & Projects - Phân quyền an toàn]`  
-"Bây giờ, bạn bấm vào biểu tượng bánh răng **Settings** ở góc dưới cùng bên trái:
-* Đầu tiên là tab **General & Projects**:
-  * **Permission Preset:** Kiểm soát quyền hạn của AI. Nếu làm quen bạn hãy để chế độ *Default* hoặc *Turbo* nếu đã tin tưởng quy trình.
-  * **Plan Review Policy:** Hãy luôn để là **Always Ask (Luôn hỏi ý kiến)**. Tùy chọn này buộc AI phải lên bản kế hoạch các bước và chờ bạn duyệt thì mới được phép thực thi."
+* **Tab thứ nhất — General & Projects:**
+  * Mục **Permission Preset**: Giúp bạn kiểm soát quyền hạn can thiệp của AI. Khi mới làm quen, bạn hãy để chế độ *Default* để AI luôn hỏi ý kiến bạn trước khi thao tác file.
+  * Đặc biệt là mục **Plan Review Policy**: Bạn hãy luôn chọn **Always Ask (Luôn hỏi ý kiến)**. Tùy chọn này ép AI bắt buộc phải lên bản kế hoạch chi tiết và chờ bạn bấm duyệt thì mới được phép chạm vào dữ liệu của bạn!
 
 `[Tab 2: Application - Chống ngủ máy & Điều khiển từ xa]`  
-"* Tiếp theo là tab **Application**:
-  * Hãy bật công tắc **Prevent Sleep**: Tùy chọn này ngăn máy tính rơi vào trạng thái ngủ khi AI đang chạy các tác vụ nền dài hạn.
-  * Đặc biệt là tính năng **Remote Control**: Khi bật tính năng này, một mã **QR Code** sẽ hiện ra. Bạn chỉ cần dùng điện thoại quét mã QR là có thể điều khiển và theo dõi trợ lý AI từ xa mà không cần ngồi trước máy tính!"
+* **Tab thứ hai — Application:**
+  * Bạn hãy bật công tắc **Prevent Sleep**: Tùy chọn này giúp ngăn máy tính rơi vào trạng thái ngủ khi AI đang xử lý những tệp dữ liệu lớn chạy ngầm.
+  * **Và đặc biệt hơn cả là tính năng Remote Control:** Khi bạn gạt bật tính năng này, một mã **QR Code** sẽ xuất hiện trên màn hình. Bạn chỉ cần dùng điện thoại quét mã là có thể vừa đi uống cà phê vừa theo dõi và điều khiển trợ lý AI từ xa mà không cần ngồi kè kè trước máy tính!
 
 `[Tab 3: Models & Usage - Quản trị Quota]`  
-"* Sang tab **Models & Usage**: Đây là bảng điều khiển hạn mức. Các vòng tròn màu xanh hiển thị chính xác dung lượng còn lại của bạn trong chu kỳ **5 giờ (5-Hour Limit)** và **1 tuần (Weekly Limit)** cho từng dòng mô hình Gemini và Claude, kèm thời gian đếm ngược để bạn chủ động phân bổ công việc."
+* **Tab thứ ba — Models & Usage:** Đây là bảng đồng hồ đo năng lượng. Các vòng tròn màu xanh sẽ hiển thị chính xác dung lượng còn lại của bạn trong chu kỳ **5 giờ** và **1 tuần**, kèm theo đồng hồ đếm ngược để bạn chủ động điều phối công việc mà không lo hết hạn mức đột ngột.
 
 `[Tab 4: Appearance - Giao diện]`  
-"* Cuối cùng là tab **Appearance**: Cho phép bạn linh hoạt chuyển đổi giữa giao diện Sáng (**Light**), Tối (**Dark**) hoặc tăng độ tương phản (**Contrast Strong**) để làm việc thoải mái nhất theo sở thích."
+* **Tab thứ tư — Appearance:** Cho phép bạn linh hoạt đổi giữa giao diện Sáng (**Light**), Tối (**Dark**) hoặc tăng độ tương phản (**Contrast Strong**) để mắt bạn luôn dễ chịu nhất khi làm việc cả ngày dài."
 
 ---
 
 ### [04:30 - 05:00] TỔNG KẾT VÀ BƯỚC TIẾP THEO
 `[Tông giọng hào hứng, chuyển bài]`
 
-"Như vậy là bạn đã nắm vững toàn bộ giao diện điều khiển và các cài đặt bảo mật quan trọng nhất trong Antigravity Desktop!
+"**Nói tóm lại,** chỉ sau bài học này, bạn đã làm chủ trọn vẹn từ bản đồ giao diện 3 phân vùng cho đến các thiết lập an toàn tối tân nhất của Antigravity!
 
-Sau khi đã chuẩn bị xong 'vũ khí' và một không gian an toàn, câu hỏi tiếp theo là: *Làm thế nào để ra lệnh cho AI hiểu đúng 100% ý bạn mà không cần làm đi làm lại nhiều lần?*
+**Thế nhưng sau khi đã có vũ khí trong tay rồi,** câu hỏi mang tính quyết định là: *Làm thế nào để ra lệnh cho AI hiểu đúng 100% ý bạn ngay từ lần đầu tiên mà không làm bạn thất vọng?*
 
-Mời bạn bấm sang **Phần 2 — Bài 2.1: Khác biệt cốt lõi giữa Chatbot thông thường và Trợ lý AI biết tự làm việc** để cùng khám phá tư duy giao việc chuẩn sếp ngay bây giờ!"
+Mời bạn bấm ngay sang **Khối 1 — Phần 2: Tư Duy Giao Việc Cho AI**, bắt đầu với **Bài 2.1: Khác biệt cốt lõi giữa Chatbot thông thường và Trợ lý AI biết tự làm việc**!"
