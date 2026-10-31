@@ -3,14 +3,14 @@
 **Khối 1:** Khởi Động & Tư Duy Giao Việc Cho AI  
 **Phần 1:** Khởi Động Siêu Tốc & Cài Đặt Antigravity Desktop  
 **Tên bài:** Bài 1.3: Làm quen giao diện trực quan: Left Sidebar, Chat Canvas & Auxiliary Pane  
-**Thời lượng dự kiến:** 05:00 (Chuẩn Udemy Micro-Learning • Walkthrough & Settings)  
+**Thời lượng dự kiến:** 06:00 (Chuẩn Udemy Micro-Learning • Walkthrough & Settings)  
 **Slide tương ứng:** `phan_01_khoi_dong_cai_dat.html` (Slide 4 & Slide 5)
 
 ---
 
 ## 🎬 1. CHUẨN BỊ TRƯỚC KHI QUAY
 * **Cửa sổ trình chiếu:** Mở tệp slide `slides/phan_01_khoi_dong_cai_dat.html` (chuyển tới Slide 4: *Giao Diện 3 Phân Vùng & Sân Khấu Chỉ Huy* và Slide 5: *Trung Tâm Cài Đặt Settings*).
-* **Ứng dụng thực tế:** Mở ứng dụng Antigravity Desktop song song. Chuẩn bị sẵn thao tác mở modal Settings để chỉ rõ từng tab (`General`, `Application`, `Appearance`, `Models`, `Projects`).
+* **Ứng dụng thực tế:** Mở ứng dụng Antigravity Desktop song song. Chuẩn bị sẵn thao tác bấm lần lượt qua 3 mục trên Left Sidebar (`+ New Conversation` ➔ `Automations` ➔ `Customizations`) rồi mới mở modal `Settings` ở góc dưới bên trái.
 * **Tông giọng:** Trực diện, tự tin, cuốn hút, giàu nhịp điệu, chuẩn phong cách giảng viên solo screencast trên Udemy.
 
 ---
@@ -29,33 +29,42 @@ Vì vậy, ngay trong video này, chúng ta sẽ cùng nhau làm chủ toàn b�
 
 ---
 
-### [00:30 - 02:15] KHÁM PHÁ 3 PHÂN VÙNG GIAO DIỆN
-`[Chiếu Slide 4 kết hợp quay màn hình Antigravity Desktop]`
+### [00:30 - 03:30] KHÁM PHÁ 3 PHÂN VÙNG GIAO DIỆN
+`[Chiếu Slide 4 kết hợp quay màn hình Antigravity Desktop thực tế]`
 
-"Trước tiên, mời bạn nhìn vào tổng thể màn hình: Antigravity được thiết kế cực kỳ khoa học chia làm 3 phân vùng chính:
+"Trước tiên, mời bạn nhìn vào tổng thể màn hình: Antigravity được thiết kế cực kỳ khoa học chia làm 3 phân vùng chính từ trái qua phải:
 
-`[1. Cột trái - Left Sidebar]`  
+`[1. Cột trái - Left Sidebar: Di chuột từ trên xuống dưới và bấm trực tiếp từng mục]`  
 * **Phân vùng 1 — Cột điều hướng bên trái (Left Sidebar):**
-  * Nổi bật nhất là nút **+ New Conversation**: Mỗi khi bắt đầu một công việc mới, bạn chỉ cần bấm vào đây để mở một phiên làm việc độc lập. **Nhờ đó,** AI sẽ có một bộ nhớ sạch sẽ, không bị lẫn lộn giữa hợp đồng phòng này với số liệu phòng khác.
-  * Ngay phía dưới là mục **Projects**: Nơi hiển thị các thư mục làm việc thật trên máy tính của bạn.
+  * Ở ngay góc trên cùng, bên cạnh biểu tượng thu gọn thanh bên và hai mũi tên tiến lùi, bạn có nút **Kính lúp tìm kiếm (`🔍`)** giúp tra cứu lại mọi nội dung cũ chỉ trong tích tắc.
+  * Ngay bên dưới là **3 nút chức năng trung tâm** mà bạn sẽ dùng hàng ngày:
+    * `Bấm vào + New Conversation` Đầu tiên là nút **+ New Conversation**: Mỗi khi bắt đầu một đầu việc mới, bạn chỉ cần bấm vào đây để mở một phiên làm việc độc lập. **Nhờ đó,** AI sẽ có một bộ nhớ sạch sẽ, không bao giờ bị lẫn lộn giữa hợp đồng của phòng này với bảng số liệu của phòng khác.
+    * `Bấm vào Automations` Thứ hai là mục **Automations (Tự động hóa theo lịch hẹn)**: Khi bạn bấm vào đây, một bảng điều khiển hẹn giờ sẽ hiện ra với nút **`Create with Prompt`** và **`+ New`**. Bạn không cần biết lập trình, chỉ cần gõ một câu tiếng Việt vào *Create with Prompt* — chẳng hạn như *'8 giờ sáng mỗi ngày hãy tự động đọc email và tóm tắt việc gấp cho tôi'* — là AI sẽ tự động thiết lập lịch chạy ngầm đều đặn như một thư ký thực thụ!
+    * `Bấm vào Customizations` Và thứ ba là mục **Customizations (Kho tiện ích & Tùy biến)**: Bạn hãy nhìn vào 2 tab ở góc trên bên phải là **`Marketplace`** và **`Installed`**. Tại tab **Marketplace**, Google đã bày sẵn cả một 'siêu thị công cụ' — nổi bật nhất là trọn bộ **Google Workspace** gồm *Google Docs, Sheets, Slides, Drive, Calendar*. Bạn muốn AI kết nối trực tiếp vào công cụ nào thì chỉ cần bấm dấu **`+`** ở cạnh công cụ đó, và quản lý tất cả những gì đã trang bị tại tab **Installed**. Đây chính là kho vũ khí cực mạnh mà chúng ta sẽ lần lượt chinh phục ở các phần tiếp theo của khóa học!
+  * `Chỉ chuột xuống cụm Projects và Conversations ở giữa cột trái` Tiếp tục nhìn xuống phía dưới, bạn sẽ thấy 2 mục quản lý rất trực quan:
+    * Mục **Projects**: Là nơi hiển thị các thư mục làm việc thật trên ổ cứng máy tính của bạn — như thư mục `training-ai` đang mở ở đây — kèm theo nút lọc và nút thêm nhanh thư mục dự án mới ở bên phải.
+    * Và ngay dưới là mục **Conversations**: Nơi lưu trữ toàn bộ lịch sử các cuộc trò chuyện trước đó để bạn mở lại xem tiếp bất cứ lúc nào, kèm dấu **`+`** tạo nhanh hội thoại.
+  * Còn ở dưới cùng góc trái chính là biểu tượng bánh răng **Settings** mà lát nữa chúng ta sẽ đi sâu.
 
-`[2. Khung giữa - Chat Canvas & Prompt Bar]`  
-* **Phân vùng 2 — Khung ở giữa (Chat Canvas & Prompt Bar):** Đây chính là sân khấu chỉ huy trung tâm của bạn:
-  * Khối **Thinking Traces** ở phía trên sẽ hiển thị minh bạch 100% từng bước suy nghĩ và lập luận của AI trước khi nó hành động.
-  * Còn dưới đáy là thanh **Prompt Bar** với 4 phím tắt quyền lực:
+`[2. Khung giữa - Chat Canvas & Prompt Bar: Bấm quay lại + New Conversation]`  
+* **Phân vùng 2 — Khung ở giữa (Chat Canvas & Prompt Bar):** Bây giờ, khi quay lại màn hình trò chuyện, đây chính là sân khấu chỉ huy trung tâm của bạn:
+  * Khi AI làm việc, khối **Thinking Traces** ở phía trên sẽ hiển thị minh bạch 100% từng bước suy nghĩ và lập luận của AI trước khi nó hành động.
+  * Ngay phía trên khung nhập lệnh, bạn có thể kiểm tra hoặc chuyển đổi nhanh thư mục dự án đang làm việc.
+  * Còn bên trong thanh **Prompt Bar** là bộ công cụ điều khiển cực kỳ quyền lực:
     * Phím gạch chéo `/`: Giúp bạn gọi nhanh các lệnh tác chiến như `/plan` hay các kỹ năng tự động.
     * Ký tự `@`: Cho phép bạn gắn thẻ đính kèm ngay file hoặc thư mục từ máy tính vào câu lệnh.
     * Nút dấu cộng `+`: Giúp bạn nạp ảnh tài liệu (`Media`), gán `@ Mentions`, kích hoạt hành động (`Actions`), hoặc mở trình duyệt web (`Browser`).
-    * Và góc phải là Dropdown chọn Mô hình: Mặc định là **Gemini 3.8 Flash High** với tốc độ phản hồi tính bằng mili-giây, hoặc bạn có thể chuyển sang *Claude Sonnet* khi cần giải quyết bài toán phức tạp, kèm theo nút **View Usage** để kiểm tra hạn mức sử dụng.
+    * Bên cạnh đó là Dropdown **chọn Mô hình AI**: Bạn có thể linh hoạt chọn các thế hệ mô hình **Gemini** tốc độ cao (như *Gemini 4 Argon* hay *Gemini Flash*) hoặc chuyển sang *Claude Sonnet* khi cần xử lý bài toán phức tạp, kèm theo mục **View Usage** để kiểm tra hạn mức.
+    * Và ở góc phải thanh nhập lệnh, bạn còn có nút chọn nhanh chế độ phân quyền (mặc định là **`Default`**) cùng biểu tượng **Micro thu âm** — giúp bạn đọc lệnh trực tiếp bằng giọng nói tiếng Việt cực kỳ nhàn nhã khi mỏi tay gõ phím!
 
 `[3. Cột phải - Auxiliary Pane]`  
-* **Phân vùng 3 — Cột tiện ích bên phải (Auxiliary Pane):** Đây là trạm giám sát an toàn đa năng:
+* **Phân vùng 3 — Cột tiện ích bên phải (Auxiliary Pane):** Khi bước vào một phiên xử lý công việc, cột bên phải sẽ đóng vai trò là trạm giám sát an toàn đa năng:
   * Bạn có thể theo dõi các trợ lý con chạy song song tại tab **Subagents**, hoặc xem tiến trình dòng lệnh tại tab **Terminals**.
   * **Thế nhưng điều đắt giá nhất ở đây chính là:** Mục **Files Changed (Uncommitted)**. Đây chính là tấm khiên bảo vệ bạn: Nó soi rõ từng dòng thay đổi (màu xanh lá là thêm mới, màu đỏ là xóa bỏ). **Kết quả là,** bạn luôn được xem trước và phê duyệt từng con số trước khi quyết định lưu file thật!"
 
 ---
 
-### [02:15 - 04:30] TRUNG TÂM CÀI ĐẶT SETTINGS THỰC CHIẾN
+### [03:30 - 05:30] TRUNG TÂM CÀI ĐẶT SETTINGS THỰC CHIẾN
 `[Chuyển sang Slide 5: Trung Tâm Thiết Lập Settings: An Toàn & Quản Trị Quota]`  
 `[Bấm vào biểu tượng bánh răng Settings ở góc dưới bên trái để mở modal]`
 
@@ -81,7 +90,7 @@ Bạn hãy bấm vào biểu tượng bánh răng cưa ở góc dưới cùng b�
 
 ---
 
-### [04:30 - 05:00] TỔNG KẾT VÀ BƯỚC TIẾP THEO
+### [05:30 - 06:00] TỔNG KẾT VÀ BƯỚC TIẾP THEO
 `[Tông giọng hào hứng, chuyển bài]`
 
 "**Nói tóm lại,** chỉ sau bài học này, bạn đã làm chủ trọn vẹn từ bản đồ giao diện 3 phân vùng cho đến các thiết lập an toàn tối tân nhất của Antigravity!
