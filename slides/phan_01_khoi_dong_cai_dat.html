@@ -622,51 +622,49 @@ Bước 3: Qua 3 màn hình chào mừng (Next ➔ Màn hình bảo mật: Học
       </div>
     </div>
 
-    <div class="slide-canvas" data-slide="4" data-notes="Bản đồ giao diện chuẩn của Antigravity Desktop gồm đúng 3 phân vùng từ Trái qua Phải:
-1. Cột trái (Left Sidebar): Thanh công cụ tìm kiếm nhanh ở trên; 3 nút cốt lõi gồm + New Conversation (mở phiên mới sạch sẽ), Automations (hẹn giờ tự động với Create with Prompt) và Customizations (kho tiện ích Marketplace kết nối Google Workspace & quản lý Installed); cụm quản lý thư mục thật (Projects), lịch sử trò chuyện (Conversations) và bánh răng Settings ở dưới cùng.
-2. Khung giữa (Chat Canvas): Sân khấu đối thoại và điều hành trực tiếp. Xem minh bạch luồng suy nghĩ Thinking Traces, thanh Prompt Bar hỗ trợ phím tắt '/' gọi lệnh, '@' đính kèm file nhanh, nút '+' nạp ảnh/tài liệu, chọn Model Gemini/Claude kèm chế độ Default và Micro nhập giọng nói.
-3. Khung phải (Auxiliary Pane): Trạm giám sát đa năng theo dõi Subagents, Terminals ngầm, và đặc biệt là Files Changed soi từng dòng sửa đổi an toàn!">
+    <div class="slide-canvas" data-slide="4" data-notes="Bản đồ giao diện chuẩn của Antigravity Desktop được thiết kế tinh gọn gồm 2 phân vùng chính từ Trái qua Phải:
+1. Phân vùng 1 — Cột điều hướng bên trái (Left Sidebar):
+• Kính lúp tìm kiếm nhanh ở trên cùng.
+• 3 nút cốt lõi: + New Conversation (mở phiên mới sạch sẽ); Automations (hẹn giờ tự động với 6 ví dụ thực tế cho người không chuyên: 8h sáng tóm tắt Email gấp, 9h sáng điểm tin giá vàng/thị trường, 12h trưa gom ảnh hóa đơn vào Excel, 17h chiều tổng hợp tiến độ việc trong ngày, tối Thứ 6 dọn thư mục Downloads, mùng 1 đầu tháng nhắc hạn thanh toán hợp đồng); Customizations (kho tiện ích Marketplace kết nối Google Workspace & quản lý Installed).
+• Cụm quản lý: Projects (giải thích 3 lợi ích thêm Project: khoanh vùng an toàn dữ liệu, phân tách từng mảng việc, lưu riêng Rules/lịch sử — thực hành bấm '+' thêm thư mục D:\AI-PROJECT), lịch sử trò chuyện (Conversations) và bánh răng Settings ở dưới cùng.
+2. Phân vùng 2 — Khung trò chuyện và làm việc chính bên phải (Chat Canvas):
+• Sân khấu chỉ huy trung tâm: Hiển thị rõ tên thư mục dự án đang mở (như AI-PROJECT) ngay phía trên khung nhập lệnh.
+• Giao việc trực tiếp bằng tiếng Việt tự nhiên ở khung nhập lệnh và theo dõi minh bạch 100% từng bước suy nghĩ (Thinking Traces) cũng như kết quả thực thi của AI.">
       <div class="slide-hud">
         <div class="hud-chip">PHẦN 01: <strong>BẢN ĐỒ GIAO DIỆN CHÍNH THỐNG</strong></div>
       </div>
       <div class="anim-1">
         <span class="tag-hero" style="color: var(--accent-rose);"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> KIẾN TRÚC GOOGLE ANTIGRAVITY</span>
-        <h2 class="title-display">Giao Diện 3 Phân Vùng <span>& Sân Khấu Chỉ Huy</span></h2>
-        <p class="lead-desc">Nắm vững 3 phân vùng cốt lõi: Left Sidebar, Chat Canvas và Auxiliary Pane giúp bạn điều hành AI chuyên nghiệp và an toàn tuyệt đối.</p>
+        <h2 class="title-display">Giao Diện 2 Phân Vùng <span>& Sân Khấu Chỉ Huy</span></h2>
+        <p class="lead-desc">Làm chủ trọn vẹn Antigravity chỉ với 2 phân vùng trực quan: Cột điều hướng bên trái (Left Sidebar) và Khung làm việc chính bên phải (Chat Canvas).</p>
       </div>
-      <div class="card-grid col-3 anim-2">
-        <div class="stat-card" style="border-color: rgba(99,102,241,0.35);">
-          <div class="stat-header"><span class="card-badge" style="background: rgba(99,102,241,0.18); color: #c7d2fe;">LEFT SIDEBAR</span></div>
-          <div class="stat-title">Điều Hướng & Kho Tiện Ích</div>
+      <div class="card-grid col-2 anim-2">
+        <div class="stat-card" style="border-top: 3px solid var(--accent-indigo);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(99,102,241,0.18); color: #c7d2fe;">PHÂN VÙNG 01 • LEFT SIDEBAR</span></div>
+          <div class="stat-title">Cột Điều Hướng, Kho Tiện Ích & Quản Lý Dự Án</div>
           <div class="stat-desc">
-            • <strong>3 nút cốt lõi:</strong> <code>+ New Conversation</code>, <code>Automations</code> (hẹn giờ bằng Prompt) & <code>Customizations</code> (Marketplace Google Workspace).
-            <br>• <strong>Quản lý:</strong> Thư mục thật (<code>Projects</code>), lịch sử chat (<code>Conversations</code>) & mở <code>Settings</code>.
+            • <strong>3 nút chức năng trung tâm:</strong>
+            <br>&nbsp;&nbsp;◦ <code>+ New Conversation</code>: Mở phiên làm việc mới độc lập, sạch bộ nhớ.
+            <br>&nbsp;&nbsp;◦ <code>Automations</code>: Hẹn giờ AI tự thức dậy làm việc ngầm theo lịch (Email, Báo cáo, Hóa đơn, Dọn file...).
+            <br>&nbsp;&nbsp;◦ <code>Customizations</code>: Kho <code>Marketplace</code> kết nối trọn bộ Google Workspace & quản lý tại <code>Installed</code>.
+            <br>• <strong>Quản lý <code>Projects</code> (<code>D:\AI-PROJECT</code>):</strong> Khoanh vùng an toàn dữ liệu trên ổ cứng, phân tách từng mảng công việc và lưu riêng lịch sử <code>Conversations</code>.
+            <br>• <strong>Góc dưới cùng:</strong> Biểu tượng bánh răng mở trung tâm cài đặt <code>Settings</code>.
           </div>
         </div>
-        <div class="stat-card" style="border-color: rgba(14,165,233,0.35);">
-          <div class="stat-header"><span class="card-badge" style="background: rgba(14,165,233,0.18); color: #7dd3fc;">CHAT CANVAS</span></div>
-          <div class="stat-title">Chỉ Huy & Prompt Bar</div>
+        <div class="stat-card" style="border-top: 3px solid var(--accent-cyan);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(14,165,233,0.18); color: #7dd3fc;">PHÂN VÙNG 02 • CHAT CANVAS</span></div>
+          <div class="stat-title">Khung Trò Chuyện & Làm Việc Chính</div>
           <div class="stat-desc">
-            Sân khấu đối thoại trực tiếp:
-            <br>• Minh bạch luồng suy nghĩ <strong>Thinking Traces</strong>
-            <br>• Phím tắt <code>/</code> gọi lệnh, <code>@</code> đính kèm tệp, nút <code>+</code> nạp tài liệu
-            <br>• Chọn <strong>Model</strong>, quyền <code>Default</code> & <strong>Micro giọng nói</strong>.
-          </div>
-        </div>
-        <div class="stat-card" style="border-color: rgba(16,185,129,0.35);">
-          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">AUXILIARY PANE</span></div>
-          <div class="stat-title">Tiện Ích & Review Diff</div>
-          <div class="stat-desc">
-            Trạm quan sát 4 trong 1:
-            <br>• Giám sát <strong>Subagents</strong> & <strong>Terminals</strong>
-            <br>• Soi <strong>Files Changed</strong>: <span style="color: #4ade80;">+ Xanh (Thêm)</span> | <span style="color: #f87171;">- Đỏ (Xóa)</span>
-            <br>• Bấm <strong>Approve</strong> mới lưu, <strong>Reject</strong> giữ nguyên gốc!
+            Sân khấu chỉ huy trung tâm ở bên phải màn hình:
+            <br>• <strong>Kiểm soát dự án đang mở:</strong> Hiển thị rõ tên thư mục làm việc hiện tại (như <code>AI-PROJECT</code>) ngay phía trên khung nhập lệnh để kiểm tra hoặc chuyển đổi nhanh.
+            <br>• <strong>Ra lệnh bằng tiếng Việt tự nhiên:</strong> Khung nhập lệnh trực quan ở trung tâm — chỉ cần gõ yêu cầu công việc hàng ngày như đang nhắn tin cho trợ lý.
+            <br>• <strong>Minh bạch từng bước suy nghĩ (<code>Thinking Traces</code>):</strong> Theo dõi trực tiếp toàn bộ quá trình AI phân tích, lập luận và trả kết quả hoàn chỉnh ngay trước mắt bạn!
           </div>
         </div>
       </div>
       <div class="footer-bar-summary anim-3">
-        <span>🔒 <strong>Nguyên tắc vàng:</strong> AI đề xuất giải pháp — Bạn là người giữ chìa khóa duyệt thay đổi cuối cùng!</span>
-        <span style="font-family: var(--font-mono); color: var(--accent-rose); font-weight: 700;">CHECKPOINT GATE</span>
+        <span>💡 <strong>Thiết kế tinh gọn cho người không chuyên:</strong> Cột trái quản lý công cụ & thư mục dự án — Khung phải giao việc và nhận kết quả tức thì!</span>
+        <span style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 700;">2-ZONE WORKSPACE</span>
       </div>
     </div>
 

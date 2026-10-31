@@ -78,4 +78,4 @@ Màn hình thứ nhất là **Get Anything Done with Antigravity**: Đây là m�
 
 **Thế nhưng, khi mở ứng dụng lên,** làm sao để chúng ta làm quen với từng nút bấm và thiết lập các tính năng bảo mật nâng cao?
 
-Mời bạn bấm ngay sang **Bài 1.3** để cùng tôi khám phá **Bản đồ giao diện 3 phân vùng** nhé!"
+Mời bạn bấm ngay sang **Bài 1.3** để cùng tôi khám phá **Bản đồ giao diện 2 phân vùng** nhé!"

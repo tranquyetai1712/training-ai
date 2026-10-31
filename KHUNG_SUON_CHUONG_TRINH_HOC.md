@@ -19,7 +19,7 @@
 ├── Phần 1: Khởi Động Siêu Tốc & Cài Đặt Antigravity Desktop (3 bài • 11.5m)
 │   ├── Bài 1.1: Google Antigravity là gì? Biến bạn thành "Tổng Chỉ Huy" đội ngũ trợ lý AI (3m) [Preview]
 │   ├── Bài 1.2: Hướng dẫn tải và cài đặt Antigravity Desktop (Windows / macOS) (3.5m)
-│   └── Bài 1.3: Làm quen giao diện 3 phân vùng & khung tiện ích đa năng (5m)
+│   └── Bài 1.3: Làm quen giao diện trực quan 2 phân vùng: Left Sidebar & Chat Canvas (7m)
 └── Phần 2: Tư Duy Giao Việc Cho AI: Giao Chuẩn – Làm Đúng (3 bài • 11.5m)
     ├── Bài 2.1: Khác biệt cốt lõi: Chatbot thụ động vs Trợ lý AI biết tự làm việc (3.5m)
     ├── Bài 2.2: Công thức 4 bước vàng ra lệnh: Mục tiêu – Bối cảnh – Tiêu chuẩn – Giới hạn (4m)
@@ -76,7 +76,7 @@
 | **KHỐI 1** | | **KHỞI ĐỘNG & TƯ DUY GIAO VIỆC CHO AI** | **23m** | | | |
 | 1 | Bài 1.1 | Google Antigravity là gì? Biến bạn thành "Tổng Chỉ Huy" AI | 3m | `slides/loi-thoai/bai_01_p01_google_antigravity_la_gi_tong_chi_huy.md` | `slides/phan_01_khoi_dong_cai_dat.html` | Slide 1, 2 |
 | 2 | Bài 1.2 | Hướng dẫn tải và cài đặt Antigravity Desktop | 3.5m | `slides/loi-thoai/bai_02_p01_cai_dat_antigravity_desktop.md` | `slides/phan_01_khoi_dong_cai_dat.html` | Slide 3 |
-| 3 | Bài 1.3 | Làm quen giao diện 3 phân vùng & khung tiện ích đa năng | 5m | `slides/loi-thoai/bai_03_p01_lam_quen_giao_dien_desktop.md` | `slides/phan_01_khoi_dong_cai_dat.html` | Slide 4, 5 |
+| 3 | Bài 1.3 | Làm quen giao diện trực quan 2 phân vùng: Left Sidebar & Chat Canvas | 7m | `slides/loi-thoai/bai_03_p01_lam_quen_giao_dien_desktop.md` | `slides/phan_01_khoi_dong_cai_dat.html` | Slide 4, 5 |
 | 4 | Bài 2.1 | Khác biệt cốt lõi: Chatbot thụ động vs Trợ lý AI biết tự làm việc | 3.5m | `slides/loi-thoai/bai_04_p02_khac_biet_chatbot_vs_ai_biet_lam_viec.md` | `slides/phan_02_tu_duy_giao_viec.html` | Slide 1 |
 | 5 | Bài 2.2 | Công thức 4 bước vàng ra lệnh cho AI | 4m | `slides/loi-thoai/bai_05_p02_cong_thuc_4_buoc_vang_ra_lenh.md` | `slides/phan_02_tu_duy_giao_viec.html` | Slide 2 |
 | 6 | Bài 2.3 | Điều hướng thông minh: Bộ đôi lệnh quyền lực /plan và /grill-me | 4m | `slides/loi-thoai/bai_06_p02_dieu_huong_thong_minh_plan_compact.md` | `slides/phan_02_tu_duy_giao_viec.html` | Slide 3 |
