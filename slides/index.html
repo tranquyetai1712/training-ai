@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LÀM CHỦ GOOGLE ANTIGRAVITY CHO NGƯỜI KHÔNG CHUYÊN • TỔNG QUAN 12 PHẦN HỌC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-void: #0a0e17;
+      --bg-surface: #12192a;
+      --bg-surface-elevated: #1a233a;
+      --border-subtle: rgba(255, 255, 255, 0.09);
+      --border-focus: rgba(99, 102, 241, 0.5);
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-dim: #94a3b8;
+      
+      --accent-indigo: #6366f1;
+      --accent-cyan: #0ea5e9;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-void);
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(14, 165, 233, 0.1) 0%, transparent 45%);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(10, 14, 23, 0.85);
+      backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(99, 102, 241, 0.18);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      color: #c7d2fe;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 32px 70px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero-banner {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .tag-hero {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-cyan);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .hero-title {
+      font-size: 2.6rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.035em;
+    }
+    .hero-title span {
+      background: linear-gradient(90deg, #818cf8, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 960px;
+    }
+
+    /* Stats Quick Bar */
+    .quick-stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .stat-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .stat-pill-num {
+      font-family: var(--font-mono);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+    }
+    .stat-pill-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    /* Block Header */
+    .block-section {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .block-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 12px;
+    }
+    .block-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .block-pill-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.05em;
+    }
+    .block-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .block-meta {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    /* Parts Grid */
+    .parts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 20px;
+      width: 100%;
+    }
+
+    .part-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 24px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+    }
+    .part-card:hover {
+      background: var(--bg-surface-elevated);
+      border-color: var(--border-focus);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 1px rgba(255, 255, 255, 0.2);
+    }
+
+    .card-top {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card-hud {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .card-badge-pill {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .card-slide-badge {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #f1f5f9;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.35;
+    }
+    .card-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .card-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    .btn-card-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+      background: var(--accent-indigo);
+      padding: 7px 14px;
+      border-radius: 7px;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .part-card:hover .btn-card-action {
+      transform: translateY(-1px);
+    }
+    .card-status {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-emerald);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Controls & Buttons */
+    .btn-nav {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-nav:hover {
+      background: rgba(99, 102, 241, 0.18);
+      border-color: rgba(99, 102, 241, 0.5);
+      transform: translateY(-1px);
+      color: #fff;
+    }
+    .btn-nav.active {
+      background: var(--accent-indigo);
+      border-color: #818cf8;
+      box-shadow: 0 0 16px rgba(99, 102, 241, 0.4);
+      color: #fff;
+    }
+
+    .kbd {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      padding: 1px 6px;
+      color: #93c5fd;
+    }
+
+    /* Speaker Notes Backdrop & Drawer */
+    #notes-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 70;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    #notes-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #notes-drawer {
+      position: fixed;
+      right: 0;
+      top: 64px;
+      width: 580px;
+      max-width: 100vw;
+      height: calc(100vh - 64px);
+      background: #090e1c;
+      border-left: 1px solid rgba(99, 102, 241, 0.35);
+      box-shadow: -12px 0 40px rgba(0, 0, 0, 0.85);
+      padding: 26px 24px 40px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 80;
+      overflow-y: auto;
+    }
+    #notes-drawer.open {
+      transform: translateX(0);
+    }
+    #notes-drawer::-webkit-scrollbar {
+      width: 5px;
+    }
+    #notes-drawer::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 4px;
+    }
+
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      margin-bottom: 16px;
+    }
+    .notes-title {
+      font-size: 0.94rem;
+      font-weight: 700;
+      color: #818cf8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .notes-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      background: rgba(6, 182, 212, 0.14);
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      border: 1px solid rgba(6, 182, 212, 0.25);
+    }
+    .notes-content {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: #cbd5e1;
+    }
+    .notes-content blockquote {
+      background: rgba(99, 102, 241, 0.1);
+      border-left: 3px solid var(--accent-indigo);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 12px 0 16px;
+      color: #e0e7ff;
+    }
+    .notes-content p {
+      margin-bottom: 12px;
+    }
+    .notes-content h3 {
+      font-size: 0.98rem;
+      color: #38bdf8;
+      margin: 20px 0 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+      padding-bottom: 4px;
+    }
+    .notes-content strong {
+      color: #ffffff;
+    }
+
+    /* Footer */
+    footer {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 40px;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(10, 14, 23, 0.85);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .quick-stats-bar { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .quick-stats-bar { grid-template-columns: 1fr; }
+      header { padding: 0 16px; }
+      .container { padding: 24px 16px 40px; }
+      .hero-title { font-size: 1.85rem; }
+      footer { padding: 14px 16px; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <span class="brand-badge">
+        <svg style="width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2;" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+        ANTIGRAVITY
+      </span>
+      <span>GOOGLE ANTIGRAVITY MASTERCLASS</span>
+    </div>
+    <div class="header-actions">
+      <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--accent-cyan); font-weight: 700;">
+        4 KHỐI • 12 PHẦN • 31 BÀI HỌC
+      </span>
+      <button class="btn-nav" id="btn-notes" title="Bật/Tắt Lời thoại kịch bản dẫn nhập (Phím S)">
+        🎙️ Lời Thoại (S)
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero-banner">
+      <span class="tag-hero">
+        <svg style="width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2;" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        CHƯƠNG TRÌNH HUẤN LUYỆN THỰC CHIẾN 5.5H • DÀNH CHO NON-CODER
+      </span>
+      <h1 class="hero-title">
+        Làm Chủ Google Antigravity <span>Cho Người Không Chuyên</span>
+      </h1>
+      <p class="hero-desc">
+        Hệ thống giáo trình mô-đun 12 phần thực chiến đồng bộ 1:1 với 31 kịch bản bài giảng — Giúp nhân viên văn phòng, kế toán, quản lý làm chủ 7 Trụ Cột Vũ Khí AI và 3 Dự án thực chiến đỉnh cao mà không cần viết code!
+      </p>
+
+      <div class="quick-stats-bar">
+        <div class="stat-pill">
+          <div class="stat-pill-num">5.5h</div>
+          <div class="stat-pill-text">Thời lượng thực chiến chuẩn hóa</div>
+        </div>
+        <div class="stat-pill">
+          <div class="stat-pill-num">12</div>
+          <div class="stat-pill-text">Slide Decks mô-đun độc lập</div>
+        </div>
+        <div class="stat-pill">
+          <div class="stat-pill-num">7</div>
+          <div class="stat-pill-text">Trụ cột vũ khí tự động hóa</div>
+        </div>
+        <div class="stat-pill">
+          <div class="stat-pill-num">3</div>
+          <div class="stat-pill-text">Dự án văn phòng đỉnh cao</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KHỐI 1: NỀN TẢNG & TƯ DUY -->
+    <section class="block-section">
+      <div class="block-header">
+        <div class="block-title-wrap">
+          <span class="block-pill-badge" style="background: rgba(14,165,233,0.18); color: #7dd3fc; border: 1px solid rgba(14,165,233,0.3);">KHỐI 1</span>
+          <h2 class="block-title">Nền Tảng & Tư Duy Lãnh Đạo AI</h2>
+        </div>
+        <span class="block-meta">2 PHẦN • 5 BÀI • 45 PHÚT</span>
+      </div>
+
+      <div class="parts-grid">
+        <!-- Phần 1 -->
+        <a class="part-card" href="phan_01_khoi_dong_cai_dat.html" style="border-top: 3px solid var(--accent-cyan);">
+          <div class="card-top">
+            <div class="card-hud">
+              <span class="card-badge-pill" style="background: rgba(14,165,233,0.18); color: #7dd3fc; border: 1px solid rgba(14,165,233,0.3);">
+                PHẦN 01 • KHỞI ĐỘNG
+              </span>
+              <span class="card-slide-badge">4 SLIDES</span>
+            </div>
+            <h3 class="card-title">Khởi Động & Cài Đặt Antigravity</h3>
+            <p class="card-desc">Cài đặt ứng dụng Desktop, thiết lập vùng an toàn Sandbox 100% không lo lỗi máy, làm quen giao diện chuẩn văn phòng.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-status">● 3 Bài • 30m</span>
+            <span class="btn-card-action" style="background: #0284c7;">Vào Học ▶</span>
+          </div>
+        </a>
+
+        <!-- Phần 2 -->
+        <a class="part-card" href="phan_02_tu_duy_giao_viec.html" style="border-top: 3px solid var(--accent-indigo);">
+          <div class="card-top">
+            <div class="card-hud">
+              <span class="card-badge-pill" style="background: rgba(99,102,241,0.18); color: #c7d2fe; border: 1px solid rgba(99,102,241,0.3);">
+                PHẦN 02 • TƯ DUY GIAO VIỆC
+              </span>
+              <span class="card-slide-badge">3 SLIDES</span>
+            </div>
+            <h3 class="card-title">Tư Duy Giao Việc Chuẩn Sếp</h3>
+            <p class="card-desc">Chuyển từ chat vặt sang ủy quyền có kế hoạch, dùng lệnh <code>/plan</code> lập kế hoạch trước khi làm và <code>/compact</code> dọn dẹp bộ nhớ.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-status">● 2 Bài • 15m</span>
+            <span class="btn-card-action" style="background: #4f46e5;">Vào Học ▶</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- KHỐI 2: KHO 7 TRỤ CỘT VŨ KHÍ -->
+    <section class="block-section">
+      <div class="block-header">
+        <div class="block-title-wrap">
+          <span class="block-pill-badge" style="background: rgba(99,102,241,0.18); color: #c7d2fe; border: 1px solid rgba(99,102,241,0.3);">KHỐI 2</span>
+          <h2 class="block-title">Kho 7 Trụ Cột Vũ Khí Tự Động Hóa</h2>
+        </div>
+        <span class="block-meta">6 PHẦN • 14 BÀI • 1 GIỜ 55 PHÚT</span>
+      </div>
+
+      <div class="parts-grid">
+        <!-- Phần 3 -->
+        <a class="part-card" href="phan_03_tru_cot_rules.html" style="border-top: 3px solid var(--accent-indigo);">
+          <div class="card-top">
+            <div class="card-hud">
+              <span class="card-badge-pill" style="background: rgba(99,102,241,0.18); color: #c7d2fe; border: 1px solid rgba(99,102,241,0.3);">
+                PHẦN 03 • TRỤ CỘT 1
+              </span>
+              <span class="card-slide-badge">3 SLIDES</span>
+            </div>
+            <h3 class="card-title">Trụ Cột 1 — Rules: Sổ Tay Nội Quy & AGENTS.md</h3>
+            <p class="card-desc">Dặn một lần nhớ mãi mãi — Thiết lập Global Rules toàn máy và tệp AGENTS.md / GEMINI.md chuẩn Google cho thư mục dự án văn phòng.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-status">● 3 Bài • 28m</span>
+            <span class="btn-card-action" style="background: #4f46e5;">Vào Học ▶</span>
+          </div>
+        </a>
+
+        <!-- Phần 4 -->
+        <a class="part-card" href="phan_04_tru_cot_skills.html" style="border-top: 3px solid var(--accent-emerald);">
+          <div class="card-top">
+            <div class="card-hud">
+              <span class="card-badge-pill" style="background: rgba(16,185,129,0.18); color: #a7f3d0; border: 1px solid rgba(16,185,129,0.3);">
+                PHẦN 04 • TRỤ CỘT 2
+              </span>
+              <span class="card-slide-badge">2 SLIDES</span>
+            </div>
+            <h3 class="card-title">Trụ Cột 2 — Skills: Bí Kíp & Đổi Tên File</h3>
+            <p class="card-desc">Cấu trúc SKILL.md chuẩn hóa và thực hành skill <code>doi-ten-file-tu-dong</code> đọc nội dung đổi tên snake_case an toàn.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-status">● 2 Bài • 15m</span>
+            <span class="btn-card-action" style="background: #059669;">Vào Học ▶</span>
+          </div>
+        </a>
+
+        <!-- Phần 5 -->
+        <a class="part-card" href="phan_05_tru_cot_subagents.html" style="border-top: 3px solid var(--accent-cyan);">
+          <div class="card-top">
+            <div class="card-hud">
+              <span class="card-badge-pill" style="background: rgba(14,165,233,0.18); color: #7dd3fc; border: 1px solid rgba(14,165,233,0.3);">
+                PHẦN 05 • TRỤ CỘT 3
+              </span>
+              <span class="card-slide-badge">2 SLIDES</span>
+            </div>
+            <h3 class="card-title">Trụ Cột 3 — Subagents: Nhân Viên Ảo</h3>
+            <p class="card-desc">Chia nhỏ việc phức tạp cho các trợ lý chuyên môn chạy song song, phối hợp 1 trợ lý Nghiên cứu và 1 trợ lý Soạn thảo.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-status">● 2 Bài • 15m</span>
+            <span class="btn-card-action" style="background: #0891b2;">Vào Học ▶</span>
+          </div>
+        </a>
+
+        <!-- Phần 6 -->
+        <a class="part-card" href="phan_06_tru_cot_hooks.html" style="border-top: 3px solid var(--accent-rose);">
+          <div class="card-top">
+            <div class="card-hud">
+              <span class="card-badge-pill" style="background: rgba(244,63,94,0.18); color: #fda4af; border: 1px solid rgba(244,63,94,0.3);">
+                PHẦN 06 • TRỤ CỘT 4
+              </span>
+              <span class="card-slide-badge">2 SLIDES</span>
+            </div>
+            <h3 class="card-title">Trụ Cột 4 — Hooks: Vòng Kim Cô Giám Sát</h3>
+            <p class="card-desc">Kiểm soát an toàn với PreToolUse & PostToolUse, tự động chặn đứng lệnh xóa file nhạy cảm và bảo vệ tài liệu công ty.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-status">● 2 Bài • 15m</span>
+            <span class="btn-card-action" style="background: #e11d48;">Vào Học ▶</span>
+          </div>
+        </a>
+
+        <!-- Phần 7 -->
+        <a class="part-card" href="phan_07_tru_cot_mcp.html" style="border-top: 3px solid var(--accent-cyan);">
+          <div class="card-top">
+            <div class="card-hud">
+              <span class="card-badge-pill" style="background: rgba(14,165,233,0.18); color: #7dd3fc; border: 1px solid rgba(14,165,233,0.3);">
+                PHẦN 07 • TRỤ CỘT 5
+              </span>
+              <span class="card-slide-badge">2 SLIDES</span>
+            </div>
+            <h3 class="card-title">Trụ Cột 5 — MCP: Cổng Kết Nối Vạn Năng</h3>
+            <p class="card-desc">Chuẩn kết nối USB-C của AI, cắm Filesystem MCP an toàn trỏ vào thư mục Hợp đồng nội bộ để rà soát hạn chót.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-status">● 2 Bài • 15m</span>
+            <span class="btn-card-action" style="background: #0284c7;">Vào Học ▶</span>
+          </div>
+        </a>
+
+        <!-- Phần 8 -->
+        <a class="part-card" href="phan_08_tru_cot_plugins_sidecars.html" style="border-top: 3px solid var(--accent-amber);">
+          <div class="card-top">
+            <div class="card-hud">
+              <span class="card-badge-pill" style="background: rgba(245,158,11,0.18); color: #fde68a; border: 1px solid rgba(245,158,11,0.3);">
+                PHẦN 08 • TRỤ CỘT 6 & 7
+              </span>
+              <span class="card-slide-badge">3 SLIDES</span>
+            </div>
+            <h3 class="card-title">Trụ Cột 6 & 7 — Plugins & Sidecars</h3>
+            <p class="card-desc">Vali đóng gói giải pháp với Plugin <code>q-file-organizer</code> dọn dẹp Downloads, trợ lý vệ tinh Sidecars và bản đồ 1 trang.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-status">● 3 Bài • 20m</span>
+            <span class="btn-card-action" style="background: #d97706;">Vào Học ▶</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- KHỐI 3: PHÒNG THÍ NGHIỆM THỰC CHIẾN -->
+    <section class="block-section">
+      <div class="block-header">
+        <div class="block-title-wrap">
+          <span class="block-pill-badge" style="background: rgba(244,63,94,0.18); color: #fda4af; border: 1px solid rgba(244,63,94,0.3);">KHỐI 3</span>
+          <h2 class="block-title">Phòng Thí Nghiệm Thực Chiến Đỉnh Cao</h2>
+        </div>
+        <span class="block-meta">3 DỰ ÁN • 9 BÀI • 1 GIỜ 55 PHÚT</span>
+      </div>
+
+      <div class="parts-grid">
+        <!-- Phần 9 -->
+        <a class="part-card" href="phan_09_thuc_chien_email.html" style="border-top: 3px solid var(--accent-rose);">
+          <div class="card-top">
+            <div class="card-hud">
+              <span class="card-badge-pill" style="background: rgba(244,63,94,0.18); color: #fda4af; border: 1px solid rgba(244,63,94,0.3);">
+                PHẦN 09 • THỰC CHIẾN 01
+              </span>
+              <span class="card-slide-badge">3 SLIDES</span>
+            </div>
+            <h3 class="card-title">Thực Chiến 1 — Trợ Lý Hộp Thư Tự Động</h3>
+            <p class="card-desc">Gắn 4 nhãn màu chuẩn công sở bằng Gmail MCP và đặt lịch hẹn giờ <code>/schedule</code> 8h00 sáng mỗi ngày AI tự điểm tin thư.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-status">● 3 Bài • 30m</span>
+            <span class="btn-card-action" style="background: #e11d48;">Vào Dự Án ▶</span>
+          </div>
+        </a>
+
+        <!-- Phần 10 -->
+        <a class="part-card" href="phan_10_thuc_chien_hoa_don_excel.html" style="border-top: 3px solid var(--accent-emerald);">
+          <div class="card-top">
+            <div class="card-hud">
+              <span class="card-badge-pill" style="background: rgba(16,185,129,0.18); color: #a7f3d0; border: 1px solid rgba(16,185,129,0.3);">
+                PHẦN 10 • THỰC CHIẾN 02
+              </span>
+              <span class="card-slide-badge">3 SLIDES</span>
+            </div>
+            <h3 class="card-title">Thực Chiến 2 — Kế Toán Số Quét Hóa Đơn</h3>
+            <p class="card-desc">Đôi Mắt Số AI quét ảnh hóa đơn mờ/scan, tự động bóc tách số tiền, tiền thuế VAT và xuất bảng Excel có công thức <code>=SUM()</code>.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-status">● 3 Bài • 30m</span>
+            <span class="btn-card-action" style="background: #059669;">Vào Dự Án ▶</span>
+          </div>
+        </a>
+
+        <!-- Phần 11 -->
+        <a class="part-card" href="phan_11_thuc_chien_thu_ky_hop.html" style="border-top: 3px solid var(--accent-cyan);">
+          <div class="card-top">
+            <div class="card-hud">
+              <span class="card-badge-pill" style="background: rgba(14,165,233,0.18); color: #7dd3fc; border: 1px solid rgba(14,165,233,0.3);">
+                PHẦN 11 • THỰC CHIẾN 03
+              </span>
+              <span class="card-slide-badge">3 SLIDES</span>
+            </div>
+            <h3 class="card-title">Thực Chiến 3 — Thư Ký Họp Ghi Âm & Phân Việc</h3>
+            <p class="card-desc">Thả file ghi âm cho AI nghe, bóc tách nghị quyết và bảng Action Items, tự động tạo thẻ Trello và bắn thông báo nhóm Slack.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-status">● 3 Bài • 30m</span>
+            <span class="btn-card-action" style="background: #0284c7;">Vào Dự Án ▶</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- KHỐI 4: TỔNG KẾT & TỐT NGHIỆP -->
+    <section class="block-section">
+      <div class="block-header">
+        <div class="block-title-wrap">
+          <span class="block-pill-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0; border: 1px solid rgba(16,185,129,0.3);">KHỐI 4</span>
+          <h2 class="block-title">Tổng Kết & Lễ Tốt Nghiệp</h2>
+        </div>
+        <span class="block-meta">1 PHẦN • 3 BÀI • 25 PHÚT</span>
+      </div>
+
+      <div class="parts-grid">
+        <!-- Phần 12 -->
+        <a class="part-card" href="phan_12_tong_ket_tot_nghiep.html" style="border-top: 3px solid var(--accent-emerald); grid-column: 1 / -1;">
+          <div class="card-top">
+            <div class="card-hud">
+              <span class="card-badge-pill" style="background: rgba(16,185,129,0.18); color: #a7f3d0; border: 1px solid rgba(16,185,129,0.3);">
+                PHẦN 12 • TỐT NGHIỆP
+              </span>
+              <span class="card-slide-badge" style="background: rgba(16, 185, 129, 0.2); color: #a7f3d0; border-color: rgba(16,185,129,0.4);">2 SLIDES • STARTER KIT</span>
+            </div>
+            <h3 class="card-title">Tổng Kết Khóa Học & Lễ Tốt Nghiệp: Vận Hành Đội Ngũ AI</h3>
+            <p class="card-desc">Ma trận quyết định khi nào dùng vũ khí nào, trao chứng nhận tốt nghiệp và bàn giao Bộ Quà Tặng Starter Kit văn phòng (mẫu Rules, Skills, MCP config) sẵn sàng vận hành.</p>
+          </div>
+          <div class="card-bottom">
+            <span class="card-status">★ Hoàn Thành 100% Khóa Học</span>
+            <span class="btn-card-action" style="background: #059669;">Vào Lễ Tốt Nghiệp ▶</span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Speaker Notes Backdrop Overlay -->
+  <div id="notes-backdrop"></div>
+
+  <!-- Speaker Notes Drawer -->
+  <aside id="notes-drawer">
+    <div class="notes-header">
+      <div class="notes-title">
+        <svg style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2;" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+        <span>KỊCH BẢN GIẢNG VIÊN • KHỞI ĐỘNG KHÓA HỌC</span>
+      </div>
+      <button class="btn-nav" id="btn-close-notes" style="padding: 3px 9px;">✕</button>
+    </div>
+
+    <span class="notes-tag">PORTAL LOBBY • TỔNG QUAN 12 PHẦN HỌC</span>
+
+    <div class="notes-content">
+      <blockquote>
+        <p><strong>Lời dặn trước khi lên lớp:</strong> Giữ tâm thế tự tin, truyền cảm hứng mạnh mẽ về bức tranh tương lai. Khẳng định khóa học giúp bất kỳ ai cũng có thể làm chủ cỗ máy AI để giải phóng sức lao động mà không cần biết viết code.</p>
+      </blockquote>
+
+      <h3>1. Tuyên Bố Sứ Mệnh Khóa Học</h3>
+      <p>Chào mừng tất cả các anh chị và các bạn học viên đã có mặt tại khóa học <strong>Làm Chủ Google Antigravity Cho Người Không Chuyên</strong>! Khóa học này sinh ra với một mục tiêu duy nhất: Giúp tất cả các bạn — dù là học sinh, sinh viên, nhân viên văn phòng hay người làm kinh doanh — đều có thể <strong>bứt phá năng suất làm việc gấp N lần</strong> và giải phóng đến 80% công việc thủ công, mà không cần phải biết một dòng code lập trình nào cả!</p>
+
+      <h3>2. Cấu Trúc 4 Khối & 12 Phần Huấn Luyện</h3>
+      <p>Để đưa các bạn từ người chưa biết gì trở thành người làm chủ công nghệ, toàn bộ chương trình 5.5 giờ được thiết kế thành 4 khối vững chắc:</p>
+      <p>🔹 <strong>Khối 1 • Nền Tảng & Tư Duy (Phần 1 - 2):</strong> Cài đặt Desktop an toàn 100% Sandbox và xác lập tư duy giao việc chuẩn sếp với <code>/plan</code> & <code>/compact</code>.</p>
+      <p>🔹 <strong>Khối 2 • Kho 7 Trụ Cột Vũ Khí (Phần 3 - 8):</strong> Khám phá trọn bộ 7 món bảo bối: Rules & AGENTS.md (Hiến pháp dự án chuẩn Google), Skills (Bí kíp thực hành đổi tên file), Subagents (Nhân viên ảo song song), Hooks (Vòng kim cô chặn xóa file), MCP (Cổng cắm hợp đồng nội bộ), Plugins (Vali đóng gói q-file-organizer) & Sidecars (Vệ tinh hỗ trợ).</p>
+      <p>🔹 <strong>Khối 3 • Thực Chiến Đỉnh Cao (Phần 9 - 11):</strong> Trực tiếp giải quyết 3 bài toán văn phòng gai góc: Dán nhãn email Gmail MCP & hẹn giờ 8h sáng, Kế toán số quét ảnh hóa đơn xuất Excel công thức =SUM(), và Thư ký họp nghe audio bóc băng tạo thẻ Trello & Slack.</p>
+      <p>🔹 <strong>Khối 4 • Tổng Kết & Tốt Nghiệp (Phần 12):</strong> Ma trận quyết định vũ khí thông minh, cấp chứng nhận tốt nghiệp và bàn giao Bộ Starter Kit văn phòng.</p>
+
+      <h3>3. Cách Thức Giảng Dạy & Tương Tác</h3>
+      <p>Mỗi slide đều tập trung vào các <strong>ý chính, sơ đồ trực quan và hộp số liệu rõ ràng</strong>. Bất cứ lúc nào trong giờ giảng, giảng viên chỉ cần bấm phím <strong>S</strong> để mở ngăn kéo Lời Thoại kịch bản chi tiết hỗ trợ dẫn dắt tự nhiên nhất.</p>
+    </div>
+  </aside>
+
+  <footer>
+    <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 8px;">
+      <span>GOOGLE ANTIGRAVITY MASTERCLASS • DÀNH CHO NON-CODER</span>
+      <span style="color: var(--border-subtle);">|</span>
+      <span>Phím tắt: <span class="kbd">S</span> Lời thoại kịch bản</span>
+      <span><span class="kbd">Esc</span> Đóng</span>
+    </div>
+    <div style="font-family: var(--font-mono);">
+      <span>0 CODE • 100% SANDBOX AN TOÀN • 12 MÔ-ĐUN CHUẨN HÓA</span>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const btnNotes = document.getElementById('btn-notes');
+      const btnCloseNotes = document.getElementById('btn-close-notes');
+      const notesDrawer = document.getElementById('notes-drawer');
+      const notesBackdrop = document.getElementById('notes-backdrop');
+
+      function toggleNotes() {
+        const isOpen = notesDrawer.classList.toggle('open');
+        notesBackdrop.classList.toggle('open', isOpen);
+        btnNotes.classList.toggle('active', isOpen);
+      }
+
+      function closeNotes() {
+        notesDrawer.classList.remove('open');
+        notesBackdrop.classList.remove('open');
+        btnNotes.classList.remove('active');
+      }
+
+      if (btnNotes) btnNotes.addEventListener('click', toggleNotes);
+      if (btnCloseNotes) btnCloseNotes.addEventListener('click', closeNotes);
+      if (notesBackdrop) notesBackdrop.addEventListener('click', closeNotes);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 's' || e.key === 'S') {
+          if (!['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+            e.preventDefault();
+            toggleNotes();
+          }
+        } else if (e.key === 'Escape') {
+          closeNotes();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

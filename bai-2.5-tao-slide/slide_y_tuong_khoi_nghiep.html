@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VIBE COFFEE - CÀ PHÊ CÔNG NGHỆ CHO DÂN SÁNG TẠO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Theme 1: Cyber Dark (Default) */
+      --bg-main: #090d16;
+      --bg-card: rgba(18, 24, 38, 0.85);
+      --bg-card-hover: rgba(28, 38, 58, 0.95);
+      --border-card: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(99, 102, 241, 0.35);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent-primary: #6366f1;
+      --accent-secondary: #06b6d4;
+      --accent-success: #10b981;
+      --accent-warning: #f59e0b;
+      --accent-danger: #f43f5e;
+      --accent-purple: #a855f7;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --card-glow: 0 0 25px rgba(99, 102, 241, 0.25);
+    }
+
+    /* Theme 1 alias: Cyber Dark */
+    body.theme-cyber-dark {
+      --bg-main: #090d16;
+      --bg-card: rgba(18, 24, 38, 0.85);
+      --bg-card-hover: rgba(28, 38, 58, 0.95);
+      --border-card: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(99, 102, 241, 0.35);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent-primary: #6366f1;
+      --accent-secondary: #06b6d4;
+      --card-glow: 0 0 25px rgba(99, 102, 241, 0.25);
+    }
+
+    /* Optional Theme: Deep Navy */
+    body.theme-deep-navy {
+      --bg-main: #0a1128;
+      --bg-card: rgba(16, 28, 56, 0.85);
+      --bg-card-hover: rgba(24, 40, 78, 0.95);
+      --border-card: rgba(56, 189, 248, 0.12);
+      --border-accent: rgba(56, 189, 248, 0.4);
+      --accent-primary: #0284c7;
+      --accent-secondary: #38bdf8;
+      --card-glow: 0 0 25px rgba(2, 132, 199, 0.25);
+    }
+
+    /* Optional Theme: Clean Light */
+    body.theme-clean-light {
+      --bg-main: #f1f5f9;
+      --bg-card: rgba(255, 255, 255, 0.92);
+      --bg-card-hover: #ffffff;
+      --border-card: rgba(0, 0, 0, 0.08);
+      --border-accent: rgba(99, 102, 241, 0.3);
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-dim: #94a3b8;
+      --card-glow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Navigation & Progress Bar */
+    #progress-bar-container {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.06);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+    #progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-success));
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    header {
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(9, 13, 22, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 50;
+    }
+    body.theme-clean-light header {
+      background: rgba(255, 255, 255, 0.85);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: -0.01em;
+    }
+    .brand-tag {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(6, 182, 212, 0.25));
+      border: 1px solid var(--border-accent);
+      color: #a5b4fc;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-action {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-main);
+      padding: 6px 13px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-action:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.22);
+      transform: translateY(-1px);
+    }
+    .btn-action.active {
+      background: linear-gradient(135deg, var(--accent-primary), #4f46e5);
+      border-color: #818cf8;
+      box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+      color: #ffffff;
+    }
+
+    .slide-counter {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0 8px;
+    }
+
+    /* Main Deck Stage */
+    #deck-stage {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 40px 48px;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      width: 92%;
+      max-width: 1280px;
+      height: calc(100vh - 120px);
+      max-height: 720px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      padding: 38px 48px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.96) translateY(20px);
+      transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+      overflow-y: auto;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+      z-index: 10;
+    }
+
+    /* Micro-animations: Staggered Fade-up for child components */
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .slide.active .slide-eyebrow {
+      animation: slideInUp 0.38s ease 0.05s both;
+    }
+    .slide.active .slide-title {
+      animation: slideInUp 0.42s ease 0.12s both;
+    }
+    .slide.active .slide-subtitle {
+      animation: slideInUp 0.45s ease 0.18s both;
+    }
+    .slide.active .grid-2 > *,
+    .slide.active .grid-3 > *,
+    .slide.active .grid-4 > * {
+      animation: slideInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .slide.active .grid-2 > *:nth-child(1),
+    .slide.active .grid-3 > *:nth-child(1),
+    .slide.active .grid-4 > *:nth-child(1) { animation-delay: 0.22s; }
+    .slide.active .grid-2 > *:nth-child(2),
+    .slide.active .grid-3 > *:nth-child(2),
+    .slide.active .grid-4 > *:nth-child(2) { animation-delay: 0.29s; }
+    .slide.active .grid-3 > *:nth-child(3),
+    .slide.active .grid-4 > *:nth-child(3) { animation-delay: 0.36s; }
+    .slide.active .grid-4 > *:nth-child(4) { animation-delay: 0.43s; }
+
+    .slide.active .terminal-box,
+    .slide.active .compare-table {
+      animation: slideInUp 0.45s ease 0.25s both;
+    }
+
+    /* Typography */
+    .slide-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    .eyebrow-indigo { color: #818cf8; }
+    .eyebrow-cyan { color: #22d3ee; }
+    .eyebrow-emerald { color: #34d399; }
+    .eyebrow-amber { color: #fbbf24; }
+    .eyebrow-rose { color: #fb7185; }
+
+    .slide-title {
+      font-size: 2.15rem;
+      font-weight: 800;
+      line-height: 1.22;
+      letter-spacing: -0.025em;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    body.theme-clean-light .slide-title {
+      color: #0f172a;
+    }
+
+    .slide-subtitle {
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 22px;
+    }
+
+    /* Grids & Cards */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      flex: 1;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      flex: 1;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      flex: 1;
+    }
+
+    .box-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 14px;
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .box-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(99, 102, 241, 0.35);
+      box-shadow: var(--card-glow);
+      transform: translateY(-3px);
+    }
+    body.theme-clean-light .box-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+    body.theme-clean-light .box-card:hover {
+      background: #ffffff;
+      border-color: #cbd5e1;
+    }
+
+    .box-card-highlight {
+      background: linear-gradient(145deg, rgba(99, 102, 241, 0.12), rgba(6, 182, 212, 0.06));
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .card-header-icon {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+    .card-heading {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    body.theme-clean-light .card-heading {
+      color: #0f172a;
+    }
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    /* Terminal Window Mockup */
+    .terminal-box {
+      background: #0b0f19;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      overflow: hidden;
+      font-family: var(--font-mono);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+      margin-top: 10px;
+    }
+    .terminal-topbar {
+      background: #131b2e;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid #1e293b;
+    }
+    .term-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .term-dot-r { background: #ef4444; }
+    .term-dot-y { background: #f59e0b; }
+    .term-dot-g { background: #10b981; }
+    .term-title {
+      font-size: 0.72rem;
+      color: #64748b;
+      margin-left: 8px;
+    }
+    .terminal-body {
+      padding: 16px 18px;
+      font-size: 0.82rem;
+      line-height: 1.65;
+      color: #e2e8f0;
+      overflow-x: auto;
+    }
+    .term-cmd { color: #38bdf8; font-weight: 600; }
+    .term-flag { color: #f43f5e; }
+    .term-comment { color: #64748b; font-style: italic; }
+    .term-success { color: #34d399; }
+    .term-warn { color: #fbbf24; }
+
+    /* Comparison Table */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 0.86rem;
+    }
+    .compare-table th {
+      background: rgba(255, 255, 255, 0.05);
+      text-align: left;
+      padding: 12px 16px;
+      font-weight: 700;
+      color: #e2e8f0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .compare-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .compare-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Badges & Pills */
+    .badge-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+    }
+    .pill-red { background: rgba(239, 68, 68, 0.18); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .pill-green { background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .pill-blue { background: rgba(99, 102, 241, 0.18); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); }
+    .pill-amber { background: rgba(245, 158, 11, 0.18); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+
+    /* Bottom Navigation Bar */
+    footer {
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(9, 13, 22, 0.85);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+    body.theme-clean-light footer {
+      background: rgba(255, 255, 255, 0.85);
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-hints {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .kbd {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-main);
+    }
+
+    /* Speaker Notes Drawer (Nút bật kịch bản người nói) */
+    #notes-drawer {
+      position: fixed;
+      right: 0;
+      top: 56px;
+      width: 440px;
+      height: calc(100vh - 108px);
+      background: #0d121f;
+      border-left: 1px solid rgba(99, 102, 241, 0.25);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 80;
+      overflow-y: auto;
+    }
+    body.theme-clean-light #notes-drawer {
+      background: #ffffff;
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    }
+    #notes-drawer.open {
+      transform: translateX(0);
+    }
+
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 16px;
+    }
+    .notes-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #818cf8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .notes-content {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+    }
+    body.theme-clean-light .notes-content {
+      color: #334155;
+    }
+    .notes-content blockquote {
+      background: rgba(99, 102, 241, 0.1);
+      border-left: 3px solid var(--accent-primary);
+      padding: 12px 14px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0;
+      font-style: italic;
+      color: #e0e7ff;
+    }
+    body.theme-clean-light .notes-content blockquote {
+      background: #eff6ff;
+      color: #1e3a8a;
+    }
+    .notes-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    /* Print / PDF Mode */
+    @media print {
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
+      body {
+        overflow: visible !important;
+        height: auto !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      header, footer, #notes-drawer, #progress-bar-container {
+        display: none !important;
+      }
+      #deck-stage {
+        display: block !important;
+        padding: 0 !important;
+      }
+      .slide {
+        position: relative !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100vh !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: #ffffff !important;
+        color: #0f172a !important;
+      }
+      .slide-title { color: #0f172a !important; }
+      .box-card {
+        background: #f8fafc !important;
+        border-color: #e2e8f0 !important;
+        color: #1e293b !important;
+      }
+      .card-heading { color: #0f172a !important; }
+      .card-desc { color: #475569 !important; }
+      .terminal-box { background: #0f172a !important; color: #f8fafc !important; }
+    }
+  </style>
+</head>
+<body class="theme-cyber-dark">
+
+  <!-- Top Progress Bar -->
+  <div id="progress-bar-container">
+    <div id="progress-bar"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <span class="brand-tag">⚡ KHỞI NGHIỆP CÔNG NGHỆ</span>
+      <span>VIBE COFFEE - CÀ PHÊ CÔNG NGHỆ CHO DÂN SÁNG TẠO</span>
+    </div>
+
+    <div class="controls">
+      <span class="slide-counter" id="slide-num">01 / 07</span>
+      <button class="btn-action" id="btn-prev" title="Trang trước (Phím Mũi tên Trái)">◀ Trước</button>
+      <button class="btn-action" id="btn-next" title="Trang sau (Phím Mũi tên Phải hoặc Phím Cách)">Sau ▶</button>
+      <button class="btn-action" id="btn-notes" title="Bật/Tắt Lời thoại kịch bản thuyết trình (Phím S)">🎙️ Lời Thoại (S)</button>
+      <button class="btn-action" id="btn-fullscreen" title="Toàn màn hình (Phím F)">⛶ Toàn Màn Hình</button>
+    </div>
+  </header>
+
+  <!-- Main Slide Deck Stage -->
+  <main id="deck-stage">
+    <!-- SLIDES_START -->
+    <!-- SLIDE 01: HERO COVER SLIDE -->
+    <div class="slide active" data-slide="01" data-notes="Đã bao giờ các bạn cảm thấy bất lực khi đang cần tập trung viết một dòng code hóc búa hay hoàn thiện bản thiết kế gấp, nhưng xung quanh quán cà phê lại xập xình nhạc remix và tiếng nói chuyện oang oang chưa? VIBE COFFEE ra đời không chỉ để bán một ly nước giải khát, mà giải quyết triệt để bài toán không gian làm việc sâu kết hợp công nghệ AI và cà phê đặc sản dành riêng cho cộng đồng công nghệ và sáng tạo. Hôm nay, tôi xin đại diện đội ngũ sáng lập chia sẻ chi tiết về mô hình kinh doanh và giải pháp đột phá của VIBE COFFEE!">
+      <span class="slide-eyebrow eyebrow-indigo">⚡ KHỞI ĐỘNG DỰ ÁN</span>
+      <h1 class="slide-title" style="font-size: 2.35rem; background: linear-gradient(135deg, #ffffff 40%, #818cf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        VIBE COFFEE: CÀ PHÊ CÔNG NGHỆ CHO DÂN SÁNG TẠO
+      </h1>
+      <p class="slide-subtitle">
+        Hệ sinh thái không gian làm việc sâu (Deep Work) kết hợp AI cá nhân hóa và cà phê đặc sản cho Developer &amp; Creator
+      </p>
+
+      <div class="grid-2">
+        <!-- Thực trạng hiện nay -->
+        <div class="box-card">
+          <span class="card-header-icon">⚠️</span>
+          <h3 class="card-heading" style="color: #f87171;">Nỗi Đau Thực Tế Hiện Nay</h3>
+          <p class="card-desc">
+            • <strong>Mất tập trung:</strong> Nhạc remix ồn ào, xung quanh nói chuyện điện thoại oang oang.<br>
+            • <strong>Nghẽn kết nối:</strong> Wifi chập chờn, họp Meet giật lag, push GitHub toàn timeout.<br>
+            • <strong>Hạ tầng bất tiện:</strong> Thiếu ổ cắm điện, bàn ghế không chuẩn công thái học gây đau mỏi.<br>
+            • <strong>Đồ uống nghèo nàn:</strong> Lặp đi lặp lại, siro ngọt gắt không giúp tỉnh táo thực sự.
+          </p>
+        </div>
+
+        <!-- Mục tiêu giải pháp Vibe Coffee -->
+        <div class="box-card box-card-highlight">
+          <span class="card-header-icon">🚀</span>
+          <h3 class="card-heading" style="color: #38bdf8;">Mục Tiêu Đột Phá Đề Xuất</h3>
+          <p class="card-desc">
+            • <strong>Không gian 3 phân khu:</strong> Tách biệt Focus Pod (làm việc sâu), Chill &amp; Collab, Brainstorm Lab.<br>
+            • <strong>AI Mood Barista:</strong> Gợi ý thức uống adaptogen giảm stress theo tâm trạng thực tế.<br>
+            • <strong>Hạ tầng chuẩn Tech:</strong> Wifi 6 1Gbps, 4 ổ cắm + 2 cổng sạc Type-C PD 65W tại mỗi bàn.<br>
+            • <strong>Trải nghiệm độc bản:</strong> In Latte Art từ prompt AI, mượn màn hình phụ &amp; tai nghe ANC.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 02: SPLIT COMPARISON 2 CỘT -->
+    <div class="slide" data-slide="02" data-notes="Chúng ta hãy cùng nhìn vào hai bức tranh đối lập này để hiểu vì sao những người làm việc tri thức đang khao khát một chốn làm việc đúng nghĩa. Trong khi các quán truyền thống chỉ bán chỗ ngồi đơn thuần với mạng Wifi chập chờn và bàn ghế gây đau lưng, VIBE COFFEE thiết lập tiêu chuẩn mới: không gian cách âm, mạng Gigabit, ổ cắm Type-C PD 65W tại từng bàn và thức uống thảo mộc lành mạnh. Đây chính là lợi thế cạnh tranh cốt lõi giúp chúng ta giữ chân tệp khách hàng tri thức gắn bó lâu dài.">
+      <span class="slide-eyebrow eyebrow-rose">⚖️ ĐỐI CHIẾU THỰC TẾ</span>
+      <h2 class="slide-title">Quán Cà Phê Truyền Thống vs VIBE COFFEE</h2>
+      <p class="slide-subtitle">
+        Sự khác biệt căn bản giữa mô hình quán cà phê giải trí phổ thông và không gian chuyên biệt cho hiệu suất cao
+      </p>
+
+      <div class="grid-2">
+        <!-- Cột Quán cũ -->
+        <div class="box-card" style="border-left: 4px solid #ef4444;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">❌</span>
+            <span class="badge-pill pill-red">QUÁN TRUYỀN THỐNG</span>
+          </div>
+          <h3 class="card-heading">Môi Trường Bất Cập &amp; Phân Mảnh</h3>
+          <p class="card-desc">
+            <strong>1. Ô nhiễm tiếng ồn:</strong> Bật nhạc thương mại ầm ĩ, không có ranh giới giữa nói chuyện và làm việc.<br><br>
+            <strong>2. Hạ tầng tạm bợ:</strong> Wifi gia đình 50-100Mbps dùng chung cả quán; tranh giành 2-3 ổ cắm góc tường.<br><br>
+            <strong>3. Thiếu công năng:</strong> Bàn ghế thấp mỏi lưng; không có phòng họp nhóm nhỏ, đành nói to giữa quán.<br><br>
+            <strong>4. Đồ uống công nghiệp:</strong> Toàn siro đường ngọt gắt gây tụt năng lượng (sugar crash) sau 1 giờ.
+          </p>
+        </div>
+
+        <!-- Cột Vibe Coffee -->
+        <div class="box-card box-card-highlight" style="border-left: 4px solid #10b981;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">✅</span>
+            <span class="badge-pill pill-green">VIBE COFFEE</span>
+          </div>
+          <h3 class="card-heading">Hệ Sinh Thái Tối Ưu Năng Suất</h3>
+          <p class="card-desc">
+            <strong>1. Không gian âm học:</strong> Phân khu Focus Pod cách âm yên tĩnh tuyệt đối; vách ngăn riêng tư từng người.<br><br>
+            <strong>2. Hạ tầng chuẩn Kỹ sư:</strong> Wifi 6 tốc độ 1Gbps; 4 ổ cắm + Type-C PD 65W tại bàn; mượn màn hình phụ.<br><br>
+            <strong>3. Công năng linh hoạt:</strong> Ghế Ergonomic chuẩn công thái học; phòng họp Brainstorm Lab thông minh 4-6 người.<br><br>
+            <strong>4. Cà phê &amp; Adaptogen:</strong> Specialty Arabica Cầu Đất, Cold Brew thảo mộc giúp tỉnh táo bền bỉ.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 03: KIẾN TRÚC 3 PHÂN KHU -->
+    <div class="slide" data-slide="03" data-notes="Làm thế nào để một quán cà phê vừa giữ được sự tĩnh lặng như thư viện nhưng vẫn đảm bảo tính mở cho các buổi thảo luận sáng tạo? Bí quyết nằm ở thiết kế phân khu âm học chuẩn mực: Focus Pod dành riêng cho Deep Work; Chill &amp; Collab ngập tràn Lo-fi dịu êm cho đối tác; và Brainstorm Lab trang bị bảng kính, màn hình 4K cho các buổi họp nhóm chớp nhoáng. Cấu trúc phân khu này giúp tối ưu hóa công suất khai thác mặt bằng và phục vụ đúng nhu cầu từng thời điểm của khách hàng.">
+      <span class="slide-eyebrow eyebrow-cyan">🏢 THIẾT KẾ KHÔNG GIAN</span>
+      <h2 class="slide-title">Kiến Trúc 3 Phân Khu Tối Ưu Âm Học</h2>
+      <p class="slide-subtitle">
+        Quy hoạch 90 - 120m² thông minh đáp ứng linh hoạt từ trạng thái tập trung cá nhân đến làm việc nhóm
+      </p>
+
+      <div class="grid-3">
+        <!-- Phân khu 1: Focus Pod -->
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">🎧</span>
+            <span class="badge-pill pill-blue">KHU VỰC 01</span>
+          </div>
+          <h3 class="card-heading">Focus Pod (Làm Việc Sâu)</h3>
+          <p class="card-desc">
+            • <strong>Yên tĩnh tuyệt đối:</strong> Quy định ngầm như thư viện, không đàm thoại âm lượng lớn.<br>
+            • <strong>Booth cá nhân:</strong> Vách ngăn tiêu âm cao cấp, đèn bàn warm light chống chói lóa mắt.<br>
+            • <strong>Ghế Ergonomic:</strong> Chuẩn công thái học cao cấp hỗ trợ ngồi liên tục 6-8 tiếng.<br>
+            • <em>Mục tiêu: Đạt trạng thái Flow State cao độ.</em>
+          </p>
+        </div>
+
+        <!-- Phân khu 2: Chill & Collab -->
+        <div class="box-card box-card-highlight">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">☕</span>
+            <span class="badge-pill pill-green">KHU VỰC 02</span>
+          </div>
+          <h3 class="card-heading">Chill &amp; Collab (Kết Nối)</h3>
+          <p class="card-desc">
+            • <strong>Âm nhạc tuyển chọn:</strong> Giai điệu Lo-fi / Ambient êm dịu giữ nhịp sáng tạo.<br>
+            • <strong>Nội thất êm ái:</strong> Sofa module hiện đại, thích hợp đối thoại nhẹ nhàng.<br>
+            • <strong>Giao lưu cởi mở:</strong> Nơi gặp gỡ đối tác, trao đổi ý tưởng và networking cộng đồng.<br>
+            • <em>Mục tiêu: Thư giãn và tái tạo cảm hứng.</em>
+          </p>
+        </div>
+
+        <!-- Phân khu 3: Brainstorm Lab -->
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">💡</span>
+            <span class="badge-pill pill-amber">KHU VỰC 03</span>
+          </div>
+          <h3 class="card-heading">Brainstorm Lab (Họp Nhóm)</h3>
+          <p class="card-desc">
+            • <strong>Phòng họp mini:</strong> Quy mô 4 - 6 người cách âm độc lập hoàn toàn.<br>
+            • <strong>Công nghệ họp:</strong> Bảng kính viết ý tưởng, màn hình 4K kết nối AirPlay/HDMI, micro hội nghị.<br>
+            • <strong>Thuê linh hoạt:</strong> Đặt phòng theo giờ qua app không cần hợp đồng văn phòng.<br>
+            • <em>Mục tiêu: Chốt quyết định nhanh và hiệu quả.</em>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 04: ĐỘT PHÁ CÔNG NGHỆ -->
+    <div class="slide" data-slide="04" data-notes="Điều gì sẽ khiến khách hàng phải thốt lên kinh ngạc và muốn rút điện thoại quay video chia sẻ ngay lập tức khi bước vào quán? Đó là 3 điểm chạm công nghệ độc nhất: AI Barista cá nhân hóa công thức nước uống theo trạng thái cảm xúc; máy in bọt sữa Prompt Latte Art tạo hình độc bản trong 15 giây; cùng đặc quyền mượn màn hình di động và tai nghe chống ồn chủ động hoàn toàn miễn phí. Đây là đòn bẩy tự nhiên biến mỗi khách hàng thành một đại sứ thương hiệu lan tỏa trên mạng xã hội.">
+      <span class="slide-eyebrow eyebrow-emerald">🤖 ĐỘT PHÁ CÔNG NGHỆ</span>
+      <h2 class="slide-title">Bộ 3 &quot;Vũ Khí&quot; Công Nghệ &amp; AI Độc Nhất</h2>
+      <p class="slide-subtitle">
+        Những trải nghiệm chạm công nghệ đỉnh cao (Wow Factors) tạo lợi thế cạnh tranh áp đảo
+      </p>
+
+      <div class="grid-3">
+        <!-- Vũ khí 1: AI Mood Barista -->
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">🧠</span>
+            <span class="badge-pill pill-blue">AI BARISTA</span>
+          </div>
+          <h3 class="card-heading">AI Mood Barista</h3>
+          <p class="card-desc">
+            • <strong>Quét QR Check-in:</strong> Khách chọn tâm trạng (buồn ngủ, stress, chuẩn bị thuyết trình, deep work).<br>
+            • <strong>Phân tích tức thì:</strong> Thuật toán AI tính toán tỷ lệ caffeine &amp; thảo mộc adaptogen phù hợp.<br>
+            • <strong>Cá nhân hóa đồ uống:</strong> Gợi ý công thức tối ưu hóa sóng não và độ tỉnh táo cho từng người.
+          </p>
+        </div>
+
+        <!-- Vũ khí 2: Prompt Latte Art -->
+        <div class="box-card box-card-highlight">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">🎨</span>
+            <span class="badge-pill pill-green">GENERATIVE ART</span>
+          </div>
+          <h3 class="card-heading">Prompt Latte Art (15 Giây)</h3>
+          <p class="card-desc">
+            • <strong>Nhập Prompt trên App:</strong> Khách gõ từ khóa hoặc lời chúc (ví dụ: 'Cyberpunk Cat', 'Fix all bugs').<br>
+            • <strong>In bọt sữa tự động:</strong> Máy in vi sinh tự động vẽ tác phẩm nghệ thuật lên tách latte trong 15s.<br>
+            • <strong>Viral Social Media:</strong> Kích thích khách chụp ảnh, quay TikTok check-in truyền miệng 0 đồng.
+          </p>
+        </div>
+
+        <!-- Vũ khí 3: Hạ tầng Tech chuẩn mực -->
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">⚡</span>
+            <span class="badge-pill pill-amber">HARDWARE TECH</span>
+          </div>
+          <h3 class="card-heading">Hạ Tầng Chuẩn Kỹ Sư</h3>
+          <p class="card-desc">
+            • <strong>Mạng Wifi 6 (1Gbps):</strong> Đường truyền cáp quang kép chịu tải 200 thiết bị mượt mà.<br>
+            • <strong>Trạm sạc tại chỗ:</strong> 4 ổ cắm AC + 2 cổng sạc nhanh Type-C PD 65W cho laptop/điện thoại.<br>
+            • <strong>Thiết bị mượn miễn phí:</strong> Tai nghe chống ồn chủ động (ANC) và màn hình phụ di động 15.6 inch.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 05: MÔ HÌNH DOANH THU & KPI -->
+    <div class="slide" data-slide="05" data-notes="Đâu là bài toán kinh tế giúp VIBE COFFEE không chỉ dừng lại ở một ý tưởng độc đáo mà là một cỗ máy sinh lời bền vững? Chúng tôi đa dạng hóa nguồn thu qua 4 trụ cột: Specialty Coffee giá từ 55.000đ - 85.000đ, gói Day-Pass 99.000đ, thẻ thành viên tháng 1.5 triệu, cho thuê phòng Brainstorm Lab 150.000đ/giờ và đồ ăn nhẹ dinh dưỡng; hướng tới tỷ lệ khách quay lại vượt 45%. Cơ cấu doanh thu định kỳ này giúp điểm hòa vốn được rút ngắn đáng kể so với mô hình F&amp;B thông thường.">
+      <span class="slide-eyebrow eyebrow-emerald">📊 MÔ HÌNH TÀI CHÍNH</span>
+      <h2 class="slide-title">4 Dòng Doanh Thu &amp; Các Chỉ Số Mục Tiêu</h2>
+      <p class="slide-subtitle">
+        Kết hợp mô hình F&amp;B truyền thống với dịch vụ thuê chỗ linh hoạt (Space-as-a-Service)
+      </p>
+
+      <div class="grid-3">
+        <!-- Stat 1: 99.000đ -->
+        <div class="box-card" style="text-align: center; justify-content: center; padding: 28px 18px;">
+          <div style="font-size: 3rem; font-weight: 800; font-family: var(--font-mono); color: #38bdf8; line-height: 1; margin-bottom: 10px;">
+            99K
+          </div>
+          <h3 class="card-heading" style="justify-content: center; font-size: 1.1rem; color: #f8fafc;">
+            Combo &quot;Deep Work 4H&quot;
+          </h3>
+          <p class="card-desc" style="margin-top: 6px;">
+            Bao gồm 1 ly Specialty Coffee + 4 giờ booth Focus Pod riêng tư + mượn màn hình phụ di động.
+          </p>
+        </div>
+
+        <!-- Stat 2: 1.500.000đ -->
+        <div class="box-card box-card-highlight" style="text-align: center; justify-content: center; padding: 28px 18px;">
+          <div style="font-size: 3rem; font-weight: 800; font-family: var(--font-mono); color: #34d399; line-height: 1; margin-bottom: 10px;">
+            1.5M
+          </div>
+          <h3 class="card-heading" style="justify-content: center; font-size: 1.1rem; color: #f8fafc;">
+            Member Pass / Tháng
+          </h3>
+          <p class="card-desc" style="margin-top: 6px;">
+            Truy cập không giới hạn cho Remote Worker, tặng 30 ly cà phê AI và 5 giờ họp Brainstorm Lab/tháng.
+          </p>
+        </div>
+
+        <!-- Stat 3: > 45% -->
+        <div class="box-card" style="text-align: center; justify-content: center; padding: 28px 18px;">
+          <div style="font-size: 3rem; font-weight: 800; font-family: var(--font-mono); color: #a855f7; line-height: 1; margin-bottom: 10px;">
+            &gt; 45%
+          </div>
+          <h3 class="card-heading" style="justify-content: center; font-size: 1.1rem; color: #f8fafc;">
+            Retention Rate Kỳ Vọng
+          </h3>
+          <p class="card-desc" style="margin-top: 6px;">
+            Tỷ lệ khách hàng quay lại hàng tuần nhờ thói quen làm việc sâu và thẻ hội viên tích hợp app.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 06: DỰ TOÁN NGÂN SÁCH & KẾ HOẠCH -->
+    <div class="slide" data-slide="06" data-notes="Với nguồn vốn ban đầu từ 350 đến 450 triệu đồng, ngân sách sẽ được phân bổ như thế nào để tối đa hóa hiệu quả và phòng ngừa rủi ro? Bảng phân bổ thể hiện chiến lược rõ ràng: 45% cho cải tạo mặt bằng và nội thất công thái học, 25% cho thiết bị pha chế Specialty chất lượng cao, 15% cho hạ tầng IT &amp; máy in bọt sữa, và 15% duy trì chi phí Pop-up 3 tháng đầu tại khu vực Cầu Giấy hoặc Bách Khoa để đo lường chỉ số NPS từ 100 khách hàng đầu tiên. Kế hoạch chi tiết này đảm bảo an toàn vốn tối đa trước khi mở rộng quy mô.">
+      <span class="slide-eyebrow eyebrow-amber">📋 DỰ TOÁN NGÂN SÁCH</span>
+      <h2 class="slide-title">Kế Hoạch Phân Bổ Vốn Khởi Điểm (350 - 450 Triệu)</h2>
+      <p class="slide-subtitle">
+        Chi tiết dự toán ngân sách và kế hoạch kiểm thử thực tế giai đoạn Pop-up 3 tháng đầu
+      </p>
+
+      <div class="box-card" style="padding: 10px; overflow-x: auto;">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th style="width: 26%;">Hạng Mục Đầu Tư</th>
+              <th style="width: 32%;">Nội Dung Trọng Tâm</th>
+              <th style="width: 14%;">Tỷ Trọng</th>
+              <th style="width: 14%;">Ngân Sách Dự Kiến</th>
+              <th style="width: 14%;">Trạng Thái</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color: #f8fafc;">1. Mặt Bằng &amp; Fit-out</strong></td>
+              <td>Cải tạo 90-120m², vách tiêu âm booth cá nhân, ghế Ergonomic</td>
+              <td>45%</td>
+              <td>160 - 200 Triệu</td>
+              <td><span class="badge-pill pill-blue">ĐANG KHẢO SÁT</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color: #f8fafc;">2. Máy Pha Chế Specialty</strong></td>
+              <td>Máy Espresso 2 group, cối xay Mazzer, dụng cụ Cold Brew &amp; Kombucha</td>
+              <td>25%</td>
+              <td>90 - 110 Triệu</td>
+              <td><span class="badge-pill pill-green">SẴN SÀNG BÁO GIÁ</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color: #f8fafc;">3. Hạ Tầng AI &amp; Mạng Tech</strong></td>
+              <td>Wifi 6 Mesh, máy in bọt Latte Art, 10 màn hình phụ &amp; tai nghe ANC</td>
+              <td>15%</td>
+              <td>50 - 70 Triệu</td>
+              <td><span class="badge-pill pill-green">ĐÃ LÊN LIST THIẾT BỊ</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color: #f8fafc;">4. Vận Hành Pop-up 3 Tháng</strong></td>
+              <td>Nguyên liệu, marketing ban đầu, kiểm thử NPS 100 khách hàng đầu</td>
+              <td>15%</td>
+              <td>50 - 70 Triệu</td>
+              <td><span class="badge-pill pill-amber">DỰ PHÒNG AN TOÀN</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SLIDE 07: KÊU GỌI HÀNH ĐỘNG & BƯỚC ĐI TIẾP THEO -->
+    <div class="slide" data-slide="07" data-notes="Để đưa ý tưởng từ bản thảo thành một điểm đến sáng tạo thực tế, những bước đi tiếp theo của chúng tôi là gì? Đội ngũ đã vạch sẵn 4 ưu tiên hành động trước mắt: tuyển chọn Co-founder am hiểu F&amp;B, chạy thử nghiệm Bot AI gợi ý nước uống trên Telegram, khảo sát 200 khách hàng tiềm năng và hoàn tất bộ hồ sơ gọi vốn thiên thần. Rất mong nhận được những góp ý, sự đồng hành và cơ hội hợp tác đầu tư từ quý anh chị. Hãy cùng chúng tôi tạo nên làn sóng mới cho văn hóa làm việc tại Việt Nam!">
+      <span class="slide-eyebrow eyebrow-indigo">🎯 HÀNH ĐỘNG NGAY</span>
+      <h2 class="slide-title">4 Bước Đi Tiên Quyết &amp; Kêu Gọi Đồng Hành</h2>
+      <p class="slide-subtitle">
+        Lộ trình hành động cụ thể để hiện thực hóa VIBE COFFEE trong vòng 60 ngày tới
+      </p>
+
+      <div class="grid-2">
+        <!-- Cột 4 việc cần làm ngay -->
+        <div class="box-card">
+          <span class="card-header-icon">🚀</span>
+          <h3 class="card-heading">4 Ưu Tiên Hành Động Trước Mắt</h3>
+          <p class="card-desc">
+            <strong>1. Tìm Co-founder F&amp;B:</strong> Kết nạp 1 đối tác am hiểu Specialty Coffee &amp; vận hành quán.<br><br>
+            <strong>2. Prototype Bot AI:</strong> Triển khai nhanh bot Telegram tư vấn nước uống theo mood.<br><br>
+            <strong>3. Khảo sát 200 Khách hàng:</strong> Khảo sát nhu cầu thực tế cộng đồng Dev &amp; Freelancer.<br><br>
+            <strong>4. Pitching Gọi Vốn:</strong> Hoàn thiện Pitch Deck gặp gỡ các Angel Investors công nghệ.
+          </p>
+        </div>
+
+        <!-- Cột Thảo luận & Kêu gọi đầu tư -->
+        <div class="box-card box-card-highlight" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <span class="card-header-icon">🤝</span>
+            <h3 class="card-heading" style="color: #38bdf8;">Đồng Hành Cùng VIBE COFFEE</h3>
+            <p class="card-desc">
+              Chúng tôi chào đón sự hợp tác của các Nhà đầu tư thiên thần, Đối tác F&amp;B và Cộng đồng Công nghệ để cùng kiến tạo trạm sạc năng lượng lý tưởng nhất cho người làm tri thức.
+            </p>
+          </div>
+
+          <div style="background: rgba(255, 255, 255, 0.04); border-radius: 10px; padding: 14px 16px; border: 1px solid rgba(255, 255, 255, 0.08); margin-top: 16px;">
+            <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 4px;">Liên hệ sáng lập dự án:</div>
+            <div style="font-size: 0.98rem; font-weight: 700; color: #f8fafc;">VIBE COFFEE FOUNDING TEAM</div>
+            <div style="font-size: 0.82rem; color: #818cf8; font-family: var(--font-mono); margin-top: 4px;">vibecoffee@startup.internal | Hotline: 0988.xxx.xxx</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- SLIDES_END -->
+  </main>
+
+  <!-- Speaker Notes Drawer -->
+  <aside id="notes-drawer">
+    <div class="notes-header">
+      <div class="notes-title">
+        <span>🎙️</span>
+        <span>KỊCH BẢN NGƯỜI NÓI (SPEAKER SCRIPT)</span>
+      </div>
+      <button class="btn-action" id="btn-close-notes" style="padding: 4px 8px;">✕</button>
+    </div>
+    <span class="notes-tag" id="notes-slide-tag">SLIDE 01</span>
+    <div class="notes-content" id="notes-body">
+      <!-- Script will be injected via JS -->
+    </div>
+  </aside>
+
+  <!-- Footer Navigation -->
+  <footer>
+    <div class="nav-hints">
+      <span>Điều khiển:</span>
+      <span><span class="kbd">◀</span> <span class="kbd">▶</span> hoặc <span class="kbd">Space</span> để chuyển slide</span>
+      <span><span class="kbd">S</span> Bật lời thoại</span>
+      <span><span class="kbd">F</span> Toàn màn hình</span>
+      <span><span class="kbd">Ctrl+P</span> Xuất PDF</span>
+    </div>
+    <div>
+      <span>© 2026 Vibe Coffee Project. Mọi quyền được bảo lưu.</span>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const slides = document.querySelectorAll('.slide');
+      const progressBar = document.getElementById('progress-bar');
+      const slideNumDisplay = document.getElementById('slide-num');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const btnNotes = document.getElementById('btn-notes');
+      const btnCloseNotes = document.getElementById('btn-close-notes');
+      const btnFullscreen = document.getElementById('btn-fullscreen');
+      const notesDrawer = document.getElementById('notes-drawer');
+      const notesBody = document.getElementById('notes-body');
+      const notesSlideTag = document.getElementById('notes-slide-tag');
+
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+
+      function updateSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= totalSlides) index = totalSlides - 1;
+        currentSlide = index;
+
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === currentSlide);
+        });
+
+        // Update progress bar
+        const progress = totalSlides > 0 ? ((currentSlide + 1) / totalSlides) * 100 : 0;
+        progressBar.style.width = progress + '%';
+
+        // Update counter
+        const currentStr = String(currentSlide + 1).padStart(2, '0');
+        const totalStr = String(totalSlides).padStart(2, '0');
+        slideNumDisplay.textContent = `${currentStr} / ${totalStr}`;
+
+        // Update notes & auto scroll drawer to top
+        const activeSlideElem = slides[currentSlide];
+        if (activeSlideElem) {
+          const notesText = activeSlideElem.getAttribute('data-notes') || 'Chưa có ghi chú kịch bản cho slide này.';
+          notesSlideTag.textContent = `SLIDE ${currentStr} / ${totalStr}`;
+          notesBody.innerHTML = `<blockquote>"${notesText}"</blockquote>`;
+        }
+        notesDrawer.scrollTop = 0;
+      }
+
+      function nextSlide() {
+        if (currentSlide < totalSlides - 1) {
+          updateSlide(currentSlide + 1);
+        }
+      }
+
+      function prevSlide() {
+        if (currentSlide > 0) {
+          updateSlide(currentSlide - 1);
+        }
+      }
+
+      function toggleNotes() {
+        notesDrawer.classList.toggle('open');
+        btnNotes.classList.toggle('active', notesDrawer.classList.contains('open'));
+      }
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => {
+            console.error('Error attempting to enable fullscreen:', err);
+          });
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+        }
+      }
+
+      // Event listeners
+      btnNext.addEventListener('click', nextSlide);
+      btnPrev.addEventListener('click', prevSlide);
+      btnNotes.addEventListener('click', toggleNotes);
+      btnCloseNotes.addEventListener('click', toggleNotes);
+      btnFullscreen.addEventListener('click', toggleFullscreen);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'Enter' || e.key === 'PageDown') {
+          e.preventDefault();
+          nextSlide();
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp' || e.key === 'Backspace') {
+          e.preventDefault();
+          prevSlide();
+        } else if (e.key === 's' || e.key === 'S') {
+          e.preventDefault();
+          toggleNotes();
+        } else if (e.key === 'f' || e.key === 'F') {
+          e.preventDefault();
+          toggleFullscreen();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          updateSlide(0);
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          updateSlide(totalSlides - 1);
+        }
+      });
+
+      // Initialize first slide
+      updateSlide(0);
+    })();
+  </script>
+</body>
+</html>

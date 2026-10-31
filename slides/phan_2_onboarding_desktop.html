@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>PHẦN 02: Cài Đặt & Tạo Vùng Làm Việc An Toàn Trong 15 Phút • GOOGLE ANTIGRAVITY MASTERCLASS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-void: #0a0e17;
+      --bg-surface: #111827;
+      --bg-surface-elevated: #1e293b;
+      --border-subtle: rgba(255, 255, 255, 0.1);
+      --border-focus: rgba(99, 102, 241, 0.5);
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-dim: #94a3b8;
+      
+      --accent-indigo: #6366f1;
+      --accent-cyan: #0ea5e9;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-void);
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 90% 90%, rgba(6, 182, 212, 0.1) 0%, transparent 45%);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Progress Bar */
+    #progress-bar-container {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+    #progress-bar {
+      height: 100%;
+      width: 14.29%;
+      background: linear-gradient(90deg, var(--accent-indigo), var(--accent-cyan));
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.6);
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Header Bar */
+    header {
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(7, 9, 14, 0.85);
+      backdrop-filter: blur(16px);
+      z-index: 50;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #a5b4fc;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-nav {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-nav:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--border-focus);
+      transform: translateY(-1px);
+    }
+    .btn-nav.active {
+      background: var(--accent-indigo);
+      border-color: #818cf8;
+      box-shadow: 0 0 16px rgba(99, 102, 241, 0.4);
+      color: #fff;
+    }
+
+    .slide-index {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--accent-cyan);
+      font-weight: 700;
+      padding: 3px 9px;
+      background: rgba(6, 182, 212, 0.08);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      border-radius: 6px;
+    }
+
+    /* Main Deck Stage */
+    #deck-stage {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 24px;
+      overflow: hidden;
+      touch-action: pan-y;
+    }
+
+    .slide-canvas {
+      position: absolute;
+      width: 100%;
+      max-width: 1320px;
+      height: 100%;
+      max-height: 740px;
+      background: linear-gradient(180deg, #131c2e 0%, #0d1524 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 32px 44px;
+      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.97) translateY(16px);
+      transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+      overflow: hidden; /* Desktop No-Scroll */
+    }
+
+    .slide-canvas.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+      z-index: 10;
+    }
+
+    /* Staggered Animations */
+    @keyframes fadeInSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+        filter: blur(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    .slide-canvas:not(.active) * {
+      opacity: 0;
+    }
+
+    .slide-canvas.active .anim-1 { animation: fadeInSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both; }
+    .slide-canvas.active .anim-2 { animation: fadeInSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both; }
+    .slide-canvas.active .anim-3 { animation: fadeInSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both; }
+    .slide-canvas.active .anim-4 { animation: fadeInSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 1.35s both; }
+    .slide-canvas.active .anim-5 { animation: fadeInSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 1.95s both; }
+
+    /* SVG Icons */
+    .svg-icon {
+      width: 20px;
+      height: 20px;
+      stroke-width: 2;
+      stroke: currentColor;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .svg-icon-lg {
+      width: 32px;
+      height: 32px;
+    }
+
+    /* Typography */
+    .tag-hero {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-cyan);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .title-display {
+      font-size: 2.45rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.035em;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    .title-display span {
+      background: linear-gradient(90deg, #818cf8, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .lead-desc {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      max-width: 840px;
+      font-weight: 400;
+    }
+
+    /* HUD Top Right */
+    .slide-hud {
+      position: absolute;
+      top: 32px;
+      right: 44px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hud-chip {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 5px 12px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hud-chip strong {
+      color: var(--accent-cyan);
+    }
+
+    /* Posters */
+    .poster-hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      flex: 1;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .manifesto-quote {
+      border-left: 2px solid var(--accent-indigo);
+      padding-left: 20px;
+      font-size: 1.12rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+      font-style: italic;
+    }
+    .manifesto-quote strong {
+      color: #fff;
+      font-style: normal;
+    }
+
+    .spec-sheet-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .spec-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .spec-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .spec-label {
+      font-size: 0.84rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .spec-value {
+      font-family: var(--font-mono);
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* Split Reality */
+    .split-reality-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      flex: 1;
+      margin-top: 14px;
+    }
+
+    .reality-pane {
+      background: rgba(255, 255, 255, 0.015);
+      border-radius: 16px;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+    .reality-pane-past {
+      border-color: rgba(244, 63, 94, 0.25);
+    }
+    .reality-pane-past:hover {
+      background: rgba(244, 63, 94, 0.03);
+      border-color: rgba(244, 63, 94, 0.4);
+    }
+    .reality-pane-future {
+      background: linear-gradient(145deg, rgba(99, 102, 241, 0.08), rgba(6, 182, 212, 0.04));
+      border-color: rgba(99, 102, 241, 0.35);
+      box-shadow: 0 0 40px rgba(99, 102, 241, 0.1);
+    }
+    .reality-pane-future:hover {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 50px rgba(6, 182, 212, 0.2);
+    }
+
+    .pane-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .pane-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pane-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .reality-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .reality-item {
+      display: flex;
+      gap: 12px;
+      font-size: 0.86rem;
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
+    .reality-item strong {
+      color: #fff;
+    }
+
+    /* Pipeline Nodes */
+    .flow-pipeline-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .pipeline-nodes-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      position: relative;
+    }
+
+    .pipeline-node {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 20px 18px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .pipeline-node:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--accent-indigo);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .node-step-num {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .node-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .node-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .feedback-loop-bar {
+      background: rgba(16, 185, 129, 0.06);
+      border: 1px dashed rgba(16, 185, 129, 0.35);
+      border-radius: 10px;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: #a7f3d0;
+    }
+    .feedback-loop-bar strong {
+      color: var(--accent-emerald);
+      font-family: var(--font-mono);
+    }
+
+    /* =========================================================================
+       MODERN BENTO GRID & CARD SYSTEM (DESIGN TASTE FRONTEND V2)
+       ========================================================================= */
+
+    .card-grid {
+      display: grid;
+      gap: 20px;
+      align-items: stretch;
+      margin-top: 1.2rem;
+      width: 100%;
+    }
+
+    .card-grid.col-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card-grid.col-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-grid.col-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Modern Bento Tile Card */
+    .stat-card, .feature-card {
+      background: rgba(18, 25, 42, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 16px;
+      padding: 24px 22px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .stat-card:hover, .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(99, 102, 241, 0.35);
+      box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.65), 0 0 1px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Stat Card Specifics */
+    .stat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .stat-title {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 3px 8px;
+      border-radius: 5px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .stat-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
+
+    .stat-desc {
+      font-size: 0.88rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      font-weight: 400;
+      flex: 1;
+    }
+
+    .stat-desc strong {
+      color: #f1f5f9;
+      font-weight: 600;
+    }
+
+    .stat-desc code {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: #38bdf8;
+    }
+
+    /* Feature Card Specifics */
+    .feature-card .card-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      margin-bottom: 12px;
+    }
+
+    .feature-card .card-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+
+    .feature-card .card-desc {
+      font-size: 0.88rem;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+
+    .feature-card .card-desc strong {
+      color: #f1f5f9;
+      font-weight: 600;
+    }
+
+    /* VS Matrix Grid (Chatbot vs Agentic, Desktop vs IDE) */
+    .vs-matrix-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 1.2rem;
+      align-items: stretch;
+      width: 100%;
+    }
+
+    .vs-card {
+      border-radius: 18px;
+      padding: 26px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 12px 35px -10px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(12px);
+      transition: all 0.25s ease;
+    }
+
+    .vs-card.active {
+      background: linear-gradient(170deg, rgba(16, 28, 48, 0.95), rgba(12, 20, 36, 0.92));
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      box-shadow: 0 16px 45px -10px rgba(6, 182, 212, 0.15), inset 0 1px 0 rgba(6, 182, 212, 0.2);
+    }
+
+    .vs-card.passive {
+      background: linear-gradient(170deg, rgba(32, 20, 26, 0.8), rgba(18, 14, 22, 0.88));
+      border: 1px solid rgba(244, 63, 94, 0.25);
+      box-shadow: 0 16px 45px -10px rgba(244, 63, 94, 0.08);
+    }
+
+    .vs-header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      padding-bottom: 12px;
+    }
+
+    .vs-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      font-family: var(--font-mono);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .vs-badge.active {
+      background: rgba(6, 182, 212, 0.16);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+    }
+
+    .vs-badge.passive {
+      background: rgba(244, 63, 94, 0.14);
+      color: var(--accent-rose);
+      border: 1px solid rgba(244, 63, 94, 0.25);
+    }
+
+    .vs-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+
+    .vs-subtitle {
+      font-size: 0.84rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    .vs-body {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .vs-point {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: var(--text-muted);
+    }
+
+    .vs-point svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .vs-point strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Footer */
+    footer {
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(7, 9, 14, 0.85);
+      font-size: 0.76rem;
+      color: var(--text-dim);
+    }
+    .kbd {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-main);
+    }
+
+    /* Speaker Notes Drawer */
+    #notes-drawer {
+      position: fixed;
+      right: 0;
+      top: 54px;
+      width: 500px;
+      height: calc(100vh - 102px);
+      background: #090e1c;
+      border-left: 1px solid rgba(99, 102, 241, 0.35);
+      box-shadow: -12px 0 35px rgba(0, 0, 0, 0.8);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 80;
+      overflow-y: auto;
+    }
+    #notes-drawer.open {
+      transform: translateX(0);
+    }
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 14px;
+    }
+    .notes-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #818cf8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .notes-content {
+      font-size: 0.92rem;
+      line-height: 1.75;
+      color: #cbd5e1;
+    }
+    .notes-content blockquote {
+      background: rgba(99, 102, 241, 0.12);
+      border-left: 3px solid var(--accent-indigo);
+      padding: 14px 16px;
+      border-radius: 0 10px 10px 0;
+      margin: 12px 0;
+      color: #e0e7ff;
+    }
+    .notes-content p {
+      margin-bottom: 12px;
+    }
+    .notes-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      background: rgba(6, 182, 212, 0.14);
+      padding: 3px 9px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      header { height: 48px; padding: 0 14px; }
+      .brand { font-size: 0.76rem; gap: 6px; }
+      .brand-title-text { display: none !important; }
+      .brand-badge { font-size: 0.65rem; padding: 2px 7px; }
+      .controls { gap: 4px; }
+      #btn-prev, #btn-next, #btn-fullscreen { display: none !important; }
+      .slide-index { font-size: 0.74rem; padding: 2px 6px; }
+
+      #deck-stage { padding: 8px 10px 60px; }
+
+      .slide-canvas {
+        max-width: 100%;
+        height: 100%;
+        max-height: calc(100vh - 116px);
+        padding: 20px 14px;
+        border-radius: 14px;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+        display: flex;
+        flex-direction: column;
+      }
+      .slide-canvas::-webkit-scrollbar { width: 3px; }
+      .slide-canvas::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.18); border-radius: 3px; }
+
+      .title-display { font-size: 1.45rem !important; line-height: 1.25 !important; margin-bottom: 6px !important; }
+      .lead-desc { font-size: 0.84rem !important; line-height: 1.5 !important; margin-bottom: 12px !important; }
+      .tag-hero { font-size: 0.66rem !important; margin-bottom: 4px !important; }
+
+      .slide-hud { position: static !important; margin-bottom: 8px !important; flex-wrap: wrap !important; gap: 6px !important; }
+      .hud-chip { font-size: 0.65rem !important; padding: 3px 8px !important; }
+
+      .poster-hero-grid, .split-reality-grid, .pipeline-nodes-row, .card-grid, .vs-matrix-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+        margin-top: 8px !important;
+      }
+
+      .stat-card, .feature-card, .vs-card {
+        padding: 16px 14px !important;
+        border-radius: 12px !important;
+      }
+      .stat-value, .feature-card .card-title, .vs-title {
+        font-size: 1.1rem !important;
+      }
+      .stat-desc, .feature-card .card-desc, .vs-point {
+        font-size: 0.82rem !important;
+      }
+
+      .manifesto-quote { font-size: 0.92rem !important; line-height: 1.55 !important; padding-left: 12px !important; }
+      .spec-sheet-card { padding: 14px 12px !important; gap: 10px !important; }
+      .reality-pane { padding: 16px 12px !important; }
+      .pipeline-node { padding: 14px 12px !important; }
+      .feedback-loop-bar { flex-direction: column !important; align-items: flex-start !important; gap: 6px !important; padding: 10px 12px !important; }
+
+      footer {
+        height: 52px !important;
+        padding: 0 12px !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        z-index: 60 !important;
+        background: rgba(7, 9, 14, 0.95) !important;
+        backdrop-filter: blur(16px) !important;
+        border-top: 1px solid var(--border-subtle) !important;
+      }
+      #footer-desktop-hint, #footer-desktop-tag { display: none !important; }
+      #footer-mobile-controls { display: flex !important; align-items: center; justify-content: space-between; width: 100%; gap: 10px; }
+      .btn-touch {
+        flex: 1;
+        min-height: 38px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid var(--border-subtle);
+        color: #fff;
+        border-radius: 8px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        cursor: pointer;
+      }
+      .btn-touch:active { background: var(--accent-indigo); }
+
+      #notes-drawer {
+        width: 100vw !important;
+        height: 82vh !important;
+        top: auto !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        border-left: none !important;
+        border-top: 2px solid var(--accent-indigo) !important;
+        border-radius: 20px 20px 0 0 !important;
+        transform: translateY(100%) !important;
+        box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.9) !important;
+        padding: 20px 16px 30px !important;
+      }
+      #notes-drawer.open { transform: translateY(0) !important; }
+    }
+
+    @media (max-height: 520px) and (orientation: landscape) {
+      header { height: 38px !important; padding: 0 16px !important; }
+      #deck-stage { padding: 6px 12px !important; }
+      .slide-canvas { padding: 12px 18px !important; max-height: calc(100vh - 46px) !important; overflow-y: auto !important; }
+      .title-display { font-size: 1.25rem !important; margin-bottom: 4px !important; }
+      .lead-desc { font-size: 0.76rem !important; margin-bottom: 6px !important; }
+      .pipeline-nodes-row { grid-template-columns: repeat(4, 1fr) !important; gap: 8px !important; }
+      footer { display: none !important; }
+    }
+
+    @media print {
+      body { overflow: visible !important; height: auto !important; background: #fff !important; color: #000 !important; }
+      header, footer, #notes-drawer, #progress-bar-container { display: none !important; }
+      #deck-stage { display: block !important; padding: 0 !important; }
+      .slide-canvas { position: relative !important; opacity: 1 !important; visibility: visible !important; transform: none !important; page-break-after: always !important; width: 100% !important; height: 100vh !important; border: none !important; background: #fff !important; color: #000 !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="progress-bar-container">
+    <div id="progress-bar"></div>
+  </div>
+
+  <header>
+    <div class="brand">
+      <button class="btn-nav" onclick="window.location.href='index.html'" title="Về trang Lobby tổng quan" style="background: rgba(99, 102, 241, 0.15); border-color: rgba(99, 102, 241, 0.4); color: #c7d2fe;">
+        🏠 Lobby
+      </button>
+      <span class="brand-badge">PHẦN 02</span>
+      <span class="brand-title-text">CÀI ĐẶT & TẠO VÙNG LÀM VIỆC AN TOÀN TRONG 15 PHÚT</span>
+    </div>
+
+    <div class="controls">
+      <span class="slide-index" id="slide-num">01 / 07</span>
+      <button class="btn-nav" id="btn-prev" title="Trang trước (Phím ◀)">◀ Lùi</button>
+      <button class="btn-nav" id="btn-next" title="Trang sau (Phím ▶ hoặc Space)">Tiếp ▶</button>
+      <button class="btn-nav" id="btn-notes" title="Bật/Tắt Lời thoại kịch bản (Phím S)">🎙️ Lời Thoại (S)</button>
+      <button class="btn-nav" id="btn-fullscreen" title="Toàn màn hình (Phím F)">⛶ Toàn Màn Hình</button>
+    </div>
+  </header>
+
+  <main id="deck-stage">
+
+<div class="slide-canvas active" data-slide="1" data-notes="Chào mừng các bạn bước vào Phần 2: Bật nguồn Antigravity và thiết lập vùng an toàn!
+
+Nhiều bạn thường hỏi tôi: 'Google Antigravity là cái gì? Có phải lại là một phần mềm gõ code phức tạp không?' Tôi xin khẳng định ngay: Hoàn toàn không!
+
+Antigravity là một không gian làm việc cùng trợ lý AI thế hệ mới do đội ngũ Google DeepMind phát triển. Nó được thiết kế với triết lý: Bạn là người chỉ huy ra quyết định cấp cao, còn AI là người cộng sự số trực tiếp bắt tay vào làm việc.
+
+Điểm đột phá nhất của Antigravity là nó sở hữu đôi tay và các công cụ thực thi: nó có thể tự mở thư mục trên máy bạn, tự đọc tài liệu PDF, phân tích số liệu và tự xuất ra các báo cáo hoàn chỉnh. Hãy xem nó như một văn phòng ảo thu nhỏ, nơi bạn vừa là người quản lý, vừa có sẵn một dàn trợ lý đắc lực luôn túc trực 24/7!">
+  <div class="slide-hud">
+    <div class="hud-chip">
+      <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      PHẦN 02: <strong>NỀN TẢNG AN TOÀN</strong>
+    </div>
+    <div class="hud-chip">
+      <svg class="svg-icon" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+      PLATFORM: <strong>GOOGLE ANTIGRAVITY</strong>
+    </div>
+  </div>
+
+  <div class="anim-1">
+    <span class="tag-hero">
+      <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      CHƯƠNG KHỞI ĐẦU
+    </span>
+    <h1 class="title-display">
+      Antigravity Là Gì?<br>
+      <span>Tổng Hành Dinh Trợ Lý AI</span> Của Bạn
+    </h1>
+    <p class="lead-desc">
+      Không đơn thuần là công cụ sinh văn bản. Google Antigravity là trung tâm chỉ huy trợ lý AI — nơi bạn đóng vai Tổng Chỉ Huy và AI là đội ngũ thực thi tự động.
+    </p>
+  </div>
+
+  <div class="card-grid col-3 anim-2" style="margin-top: 1.5rem;">
+    <div class="stat-card" style="border-top: 3px solid var(--accent-indigo);">
+      <div class="stat-header">
+        <span class="stat-title">TRIẾT LÝ HUMAN-IN-THE-LOOP</span>
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+      </div>
+      <div class="stat-value" style="font-size: 1.35rem; color: var(--accent-indigo);">Bạn Chỉ Huy • AI Thi Hành</div>
+      <div class="stat-desc">
+        Bạn không cần tự tay làm từng thao tác cơ bắp. Bạn chỉ cần đưa ra mục tiêu, phê duyệt các mốc quan trọng và nhận kết quả hoàn thiện.
+      </div>
+    </div>
+
+    <div class="stat-card" style="border-top: 3px solid var(--accent-cyan);">
+      <div class="stat-header">
+        <span class="stat-title">ĐÔI TAY & GIÁC QUAN SỐ</span>
+        <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+      </div>
+      <div class="stat-value" style="font-size: 1.35rem; color: var(--accent-cyan);">Hệ Thống Native Tools</div>
+      <div class="stat-desc">
+        Tự động đọc ghi file trên máy tính, Tự động xử lý dữ liệu và thao tác an toàn trong vùng bảo vệ (Sandbox) cùng hệ sinh thái công cụ phong phú.
+      </div>
+    </div>
+
+    <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
+      <div class="stat-header">
+        <span class="stat-title">KHÔNG CẦN BIẾT CODE</span>
+        <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+      </div>
+      <div class="stat-value" style="font-size: 1.35rem; color: var(--accent-emerald);">100% Tiếng Việt Tự Nhiên</div>
+      <div class="stat-desc">
+        Giao tiếp hoàn toàn bằng văn phong giao việc hàng ngày. AI tự phân rã nhiệm vụ và phối hợp các công cụ chuyên sâu dưới nền.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="slide-canvas" data-slide="2" data-notes="Ở slide này, chúng ta cùng làm rõ một ranh giới then chốt: Sự khác nhau giữa một Chatbot thụ động và một Trợ lý AI chủ động.
+
+Các chatbot thông thường bạn hay dùng giống như một nhân viên thụ động hỏi gì đáp nấy: bạn hỏi một câu thì nó trả lời một câu, rồi sau đó nó đứng im. Nó không hề biết tự mở tài liệu trên máy tính của bạn, không thể tự xử lý dữ liệu, và khi bạn bảo nó sửa lỗi thì nó lại bắt bạn tự copy-paste thủ công.
+
+Ngược lại hoàn toàn, Trợ lý AI trong Antigravity là một 'cộng sự có năng lực hành động'. Khi bạn giao mục tiêu: 'Hãy dọn dẹp thư mục Downloads và phân loại hóa đơn', nó sẽ:
+1. Tự mở thư mục khảo sát dữ liệu (Sense).
+2. Tự lên kế hoạch phân loại theo từng tháng (Plan).
+3. Tự gom file vào từng thư mục ngăn nắp (Execute).
+4. Tự kiểm tra lại xem có nhầm lẫn gì không (Reflection).
+Nó không chỉ 'nói' — nó thực sự 'làm'! Đó chính là bước nhảy vọt từ AI thụ động sang AI hành động.">
+  <div class="slide-hud">
+    <div class="hud-chip">
+      <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+      BƯỚC NGOẶT TƯ DUY
+    </div>
+    <div class="hud-chip">
+      <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+      KHÁI NIỆM CỐT LÕI
+    </div>
+  </div>
+
+  <div class="anim-1">
+    <span class="tag-hero">
+      <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      THẤU HIỂU BẢN CHẤT
+    </span>
+    <h1 class="title-display">
+      Chatbot Thụ Động vs <span>Agentic AI</span><br>
+      Từ Kẻ Trả Lời Thành <span>Người Hành Động</span>
+    </h1>
+    <p class="lead-desc">
+      Hiểu rõ sự khác biệt giữa AI thụ động hỏi gì đáp nấy và Trợ lý AI chủ động có khả năng tư duy độc lập, tự chủ hoàn thành mục tiêu.
+    </p>
+  </div>
+
+  <div class="vs-matrix-grid anim-2">
+    <!-- LEFT: CHATBOT THỤ ĐỘNG -->
+    <div class="vs-card passive">
+      <div class="vs-header">
+        <div class="vs-badge passive">CHATBOT THỤ ĐỘNG (HỎI GÌ ĐÁP NẤY)</div>
+        <div class="vs-title" style="color: var(--accent-rose);">Trợ Lý "Gõ Văn Bản"</div>
+        <p class="vs-subtitle">
+          Chỉ biết trả lời văn bản một chiều, thụ động chờ lệnh từng câu và không có khả năng thao tác trên máy tính.
+        </p>
+      </div>
+
+      <div class="vs-body">
+        <div class="vs-point">
+          <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+          <div><strong>Chỉ phản hồi khi được hỏi:</strong> Trả lời từng câu rời rạc, không có khả năng tự bắt đầu hành động.</div>
+        </div>
+        <div class="vs-point">
+          <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+          <div><strong>Bị giam trong khung chat:</strong> Không có giác quan đọc file nội bộ, không thể tự chạy phần mềm trên máy.</div>
+        </div>
+        <div class="vs-point">
+          <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+          <div><strong>Đùn đẩy việc thực thi cho bạn:</strong> Chỉ sinh code hoặc văn bản mẫu, bắt người dùng tự copy-paste thủ công.</div>
+        </div>
+        <div class="vs-point">
+          <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+          <div><strong>Không có phản tư (Reflection):</strong> Đưa kết quả sai cũng không biết tự kiểm tra, tiếp tục ảo giác nếu không bị nhắc nhở.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: AGENTIC AI -->
+    <div class="vs-card active">
+      <div class="vs-header">
+        <div class="vs-badge active">AGENTIC AI (ANTIGRAVITY)</div>
+        <div class="vs-title" style="color: var(--accent-cyan);">Trợ Lý "Đồng Đội Chủ Động"</div>
+        <p class="vs-subtitle">
+          Nhân sự kỹ thuật số có mục tiêu, có công cụ thao tác và tự chịu trách nhiệm về kết quả cuối cùng.
+        </p>
+      </div>
+
+      <div class="vs-body">
+        <div class="vs-point">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <div><strong>Chủ động phân rã mục tiêu:</strong> Nhận lệnh tổng quát, tự chia nhỏ thành lộ trình từng bước logic.</div>
+        </div>
+        <div class="vs-point">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <div><strong>Trang bị đôi tay số (Tools & MCP):</strong> Tự mở tệp, tự chạy lệnh dòng lệnh, tự kết nối API bên thứ ba.</div>
+        </div>
+        <div class="vs-point">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <div><strong>Tự sửa sai (Self-Healing Loop):</strong> Gặp lỗi khi chạy lệnh? Tự đọc log, sửa mã và thử lại cho tới khi thành công.</div>
+        </div>
+        <div class="vs-point">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <div><strong>Tạo sản phẩm trực quan:</strong> Xuất Artifacts, bảng Excel, giao diện web chạy trực tiếp tại chỗ.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="slide-canvas" data-slide="3" data-notes="Tại sao rất nhiều người khi dùng AI thường than phiền: 'Sao AI làm việc lung tung thế?'. Bí mật nằm ở chỗ: Cách chúng ta ra lệnh! Bộ não AI cũng như con người: khi nhận một yêu cầu mông lung, nó sẽ phải đoán mò và dễ làm sai lệch.
+
+Các bạn hãy nhìn lên màn hình, cùng một mục tiêu nhưng kết quả sẽ khác nhau hoàn toàn:
+
+Ở ví dụ thứ nhất về số liệu Excel: Mục tiêu là báo cáo doanh số tháng 10. Nếu bạn chỉ nói 'Xem doanh số rồi làm báo cáo', AI không biết mở file nào, lấy chỉ số gì nên sẽ tự bịa số liệu mẫu. Nhưng nếu bạn chia thành 3 bước nguyên tử: Mở file doanh_thu_thang_10.xlsx, Lọc Top 5 sản phẩm, và Xuất bảng tổng kết chi nhánh — AI sẽ thao tác chính xác 100% trên dữ liệu thật của bạn.
+
+Ở ví dụ thứ hai về tóm tắt tài liệu nghiên cứu: Bạn có file PDF dài 30 trang mang tên tai_lieu_nghien_cuu.pdf. Nếu bạn chỉ nói chung chung 'Đọc tài liệu nghiên cứu này rồi tóm tắt ý chính giúp tôi', AI sẽ tóm tắt lan man cả 30 trang khiến bản báo cáo ngập tràn chữ. Nhưng khi bạn chỉ rõ: Đọc file tai_lieu_nghien_cuu.pdf, trích 3 luận điểm cốt lõi ở Chương 1, lấy số liệu dẫn chứng và chốt kết quả dưới 500 từ — bạn sẽ nhận được một bản tóm tắt súc tích, đọc 3 phút là nắm trọn bài nghiên cứu.
+
+Hãy nhớ công thức vàng của một người quản lý giỏi: Chỉ định rõ nguồn file ➔ Chia nhỏ thành chuỗi thao tác đơn lẻ ➔ Quy định định dạng kết quả đầu ra!">
+  <div class="slide-hud">
+    <div class="hud-chip">
+      <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+      KỸ NĂNG CHỈ HUY
+    </div>
+    <div class="hud-chip">
+      <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+      PHƯƠNG PHÁP ATOMIC TASKS
+    </div>
+  </div>
+
+  <div class="anim-1">
+    <span class="tag-hero">
+      <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      QUẢN TRỊ HIỆU SUẤT TRỢ LÝ AI
+    </span>
+    <h1 class="title-display">
+      Tư Duy Giao Việc Cụ Thể (Atomic Tasks):<br>
+      <span>Chia Nhỏ Đầu Việc</span> Đập Tan Ảo Giác AI
+    </h1>
+    <p class="lead-desc">
+      Cùng một mục tiêu nhưng cách ra lệnh quyết định 100% thành bại. Chia nhỏ nhiệm vụ thành từng hành động đơn lẻ để AI làm việc chính xác.
+    </p>
+  </div>
+
+  <!-- 2 VÍ DỤ ĐỐI CHIẾU 1:1 SONG SONG -->
+  <div class="card-grid col-2 anim-2" style="margin-top: 1rem; gap: 16px;">
+    
+    <!-- VÍ DỤ 1: EXCEL BÁN HÀNG -->
+    <div class="feature-card" style="padding: 18px 20px; border-top: 3px solid var(--accent-cyan); display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 6px;">
+        <span style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: var(--accent-cyan);">VÍ DỤ 1 • VĂN PHÒNG / KẾ TOÁN</span>
+        <span style="font-size: 0.65rem; background: rgba(6,182,212,0.12); color: var(--accent-cyan); padding: 2px 7px; border-radius: 4px;">File: doanh_thu_thang_10.xlsx</span>
+      </div>
+
+      <!-- Mơ hồ -->
+      <div style="background: rgba(244,63,94,0.06); border: 1px solid rgba(244,63,94,0.25); border-radius: 8px; padding: 10px 12px; font-size: 0.78rem;">
+        <div style="color: var(--accent-rose); font-weight: 700; font-size: 0.72rem; margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
+          <span>❌ YÊU CẦU MƠ HỒ (AI ĐOÁN MÒ):</span>
+        </div>
+        <div style="color: #fca5a5; font-style: italic;">"Xem doanh số tháng này rồi làm báo cáo tình hình giúp tôi nhé."</div>
+        <div style="color: var(--text-dim); font-size: 0.7rem; margin-top: 4px;">➔ AI không biết mở file nào, lấy chỉ số gì nên tự bịa số liệu mẫu không dùng được.</div>
+      </div>
+
+      <!-- Nguyên tử hóa -->
+      <div style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.25); border-radius: 8px; padding: 10px 12px; font-size: 0.78rem;">
+        <div style="color: var(--accent-emerald); font-weight: 700; font-size: 0.72rem; margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
+          <span>✅ NGUYÊN TỬ HÓA (ATOMIC TASKS):</span>
+        </div>
+        <div style="color: #e2e8f0; line-height: 1.45;">
+          "Đọc file <code>doanh_thu_thang_10.xlsx</code> tại thư mục này:<br>
+          <strong>1.</strong> Lọc Top 5 sản phẩm có doanh số cao nhất.<br>
+          <strong>2.</strong> Tính tổng doanh thu theo từng chi nhánh.<br>
+          <strong>3.</strong> Xuất kết quả thành bảng tóm tắt kèm 3 nhận xét."
+        </div>
+        <div style="color: #6ee7b7; font-size: 0.7rem; margin-top: 4px;">➔ AI tính đúng số thật 100%, bảng biểu rõ ràng dùng được ngay!</div>
+      </div>
+    </div>
+
+    <!-- VÍ DỤ 2: TÓM TẮT TÀI LIỆU NGHIÊN CỨU -->
+    <div class="feature-card" style="padding: 18px 20px; border-top: 3px solid var(--accent-indigo); display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 6px;">
+        <span style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: #a5b4fc;">VÍ DỤ 2 • HỌC TẬP / NGHIÊN CỨU</span>
+        <span style="font-size: 0.65rem; background: rgba(99,102,241,0.12); color: #a5b4fc; padding: 2px 7px; border-radius: 4px;">File: tai_lieu_nghien_cuu.pdf (30 trang)</span>
+      </div>
+
+      <!-- Mơ hồ -->
+      <div style="background: rgba(244,63,94,0.06); border: 1px solid rgba(244,63,94,0.25); border-radius: 8px; padding: 10px 12px; font-size: 0.78rem;">
+        <div style="color: var(--accent-rose); font-weight: 700; font-size: 0.72rem; margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
+          <span>❌ YÊU CẦU MƠ HỒ (AI ĐOÁN MÒ):</span>
+        </div>
+        <div style="color: #fca5a5; font-style: italic;">"Đọc tài liệu nghiên cứu này rồi tóm tắt ý chính giúp tôi nhé."</div>
+        <div style="color: var(--text-dim); font-size: 0.7rem; margin-top: 4px;">➔ Dài 30 trang, AI không biết tóm tắt phần nào nên tóm tắt tràn lan cả 30 trang ngập chữ.</div>
+      </div>
+
+      <!-- Nguyên tử hóa -->
+      <div style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.25); border-radius: 8px; padding: 10px 12px; font-size: 0.78rem;">
+        <div style="color: var(--accent-emerald); font-weight: 700; font-size: 0.72rem; margin-bottom: 4px; display: flex; align-items: center; gap: 5px;">
+          <span>✅ NGUYÊN TỬ HÓA (ATOMIC TASKS):</span>
+        </div>
+        <div style="color: #e2e8f0; line-height: 1.45;">
+          "Đọc file <code>tai_lieu_nghien_cuu.pdf</code> tại thư mục này:<br>
+          <strong>1.</strong> Trích xuất 3 luận điểm cốt lõi ở Chương 1.<br>
+          <strong>2.</strong> Liệt kê các số liệu dẫn chứng cụ thể cho từng luận điểm.<br>
+          <strong>3.</strong> Xuất kết quả thành một bản tóm tắt ngắn gọn dưới 500 từ."
+        </div>
+        <div style="color: #6ee7b7; font-size: 0.7rem; margin-top: 4px;">➔ Trúng đích, súc tích, đọc 3 phút là nắm trọn bài nghiên cứu!</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- THANH NGUYÊN TẮC VÀNG DƯỚI CÙNG -->
+  <div style="background: rgba(255,255,255,0.02); border: 1px dashed var(--border-subtle); border-radius: 8px; padding: 8px 16px; margin-top: 10px; display: flex; align-items: center; justify-content: space-between; font-size: 0.74rem;">
+    <span style="color: var(--text-dim);">💡 CÔNG THỨC CHỈ HUY BÁCH PHÁT BÁCH TRÚNG:</span>
+    <span style="color: var(--text-main); font-weight: 600;">
+      <span style="color: var(--accent-cyan);">1. Chỉ định file nguồn</span> ➔ 
+      <span style="color: var(--accent-indigo);">2. Tách bước đơn lẻ (Step-by-step)</span> ➔ 
+      <span style="color: var(--accent-emerald);">3. Chốt định dạng đầu ra</span>
+    </span>
+  </div>
+</div>
+
+
+<div class="slide-canvas" data-slide="4" data-notes="Trước khi mở ứng dụng, tôi muốn giải đáp một thắc mắc rất phổ biến: 'Google Antigravity có 2 phiên bản là Desktop và IDE, tôi nên dùng bản nào?'
+
+Hãy nhìn lên màn hình so sánh:
+
+Antigravity Desktop là phiên bản sinh ra dành cho tất cả mọi người — từ học sinh, sinh viên, nhân viên văn phòng, kế toán đến người làm kinh doanh. Nó sở hữu giao diện thoáng đãng, xem trước bảng biểu, tài liệu trực quan và quản lý trợ lý bằng các nút bấm cực kỳ đơn giản.
+
+Còn bản Antigravity IDE là công cụ chuyên sâu dành riêng cho các kỹ sư phần mềm muốn can thiệp trực tiếp vào từng dòng code phức tạp.
+
+Trong khóa học này, chúng ta tập trung 100% vào Antigravity Desktop để giải phóng sức lao động bằng ngôn ngữ tự nhiên hàng ngày, không cần học lập trình!">
+  <div class="slide-hud">
+    <div class="hud-chip">
+      <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+      LỰA CHỌN PHÙ HỢP
+    </div>
+    <div class="hud-chip">
+      <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+      KHUYẾN NGHỊ KHÓA HỌC
+    </div>
+  </div>
+
+  <div class="anim-1">
+    <span class="tag-hero">
+      <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      PHÂN BIỆT RÕ RÀNG
+    </span>
+    <h1 class="title-display">
+      Antigravity Desktop vs <span>Antigravity IDE</span><br>
+      Chọn Đúng Vũ Khí Phù Hợp Với Bạn
+    </h1>
+    <p class="lead-desc">
+      Hai biến thể cùng chung lõi não bộ Agentic nhưng phục vụ hai đối tượng hoàn toàn khác nhau.
+    </p>
+  </div>
+
+  <div class="vs-matrix-grid anim-2">
+    <!-- ANTIGRAVITY DESKTOP -->
+    <div class="vs-card active" style="border: 2px solid var(--accent-cyan); box-shadow: 0 0 24px rgba(6, 182, 212, 0.15);">
+      <div class="vs-header">
+        <div class="vs-badge active" style="background: rgba(6, 182, 212, 0.2); color: var(--accent-cyan);">KHUYẾN NGHỊ CHO KHÓA HỌC</div>
+        <div class="vs-title" style="color: var(--accent-cyan);">ANTIGRAVITY DESKTOP</div>
+        <p class="vs-subtitle">Môi trường Chỉ Huy Trợ Lý AI Trực Quan dành cho mọi người.</p>
+      </div>
+
+      <div class="vs-body">
+        <div class="vs-point">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <div><strong>Trải nghiệm Canvas & Chat thoáng đãng:</strong> Không bị choáng ngợp bởi hàng ngàn thanh công cụ lập trình phức tạp.</div>
+        </div>
+        <div class="vs-point">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <div><strong>Hiển thị Artifacts & Widgets sinh động:</strong> Đọc bảng biểu, báo cáo markdown, slide trình chiếu ngay trong app.</div>
+        </div>
+        <div class="vs-point">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <div><strong>Quản lý Subagent & MCP bằng 1 chạm:</strong> Bật tắt kỹ năng, quản lý quyền hạn cực kỳ an toàn.</div>
+        </div>
+        <div class="vs-point">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <div><strong>Đối tượng chính:</strong> Học sinh, sinh viên, người làm kinh doanh, văn phòng, quản lý, người không chuyên.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANTIGRAVITY IDE -->
+    <div class="vs-card passive">
+      <div class="vs-header">
+        <div class="vs-badge passive">DÀNH CHO LẬP TRÌNH VIÊN</div>
+        <div class="vs-title" style="color: var(--text-muted);">ANTIGRAVITY IDE</div>
+        <p class="vs-subtitle">Môi trường Code Editor tích hợp dựa trên nền tảng VS Code.</p>
+      </div>
+
+      <div class="vs-body">
+        <div class="vs-point">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+          <div><strong>Trình biên tập mã nguồn chuyên sâu:</strong> Hỗ trợ Syntax Highlighting, Debugger, Git Worktrees phức tạp.</div>
+        </div>
+        <div class="vs-point">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+          <div><strong>Đa cửa sổ dòng lệnh (Multi-Terminal):</strong> Dành cho phát triển phần mềm toàn ngăn (Full-stack dev).</div>
+        </div>
+        <div class="vs-point">
+          <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+          <div><strong>Độ dốc học tập cao:</strong> Cần hiểu biết về cấu trúc thư mục code, dependencies, cú pháp ngôn ngữ lập trình.</div>
+        </div>
+        <div class="vs-point">
+          <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          <div><strong>Đối tượng chính:</strong> Kỹ sư phần mềm, lập trình viên muốn can thiệp code chuyên sâu.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="slide-canvas" data-slide="5" data-notes="Và bây giờ, chúng ta hãy cùng nhau 'mục sở thị' giao diện thực tế của Antigravity Desktop 2.0 — trạm chỉ huy trung tâm chuẩn chính hãng Google mà các bạn sẽ làm việc mỗi ngày!
+
+Giao diện Antigravity Desktop được các kỹ sư Google thiết kế cực kỳ trực quan và nhất quán theo 3 phân vùng cốt lõi:
+
+Thứ nhất là Cột điều hướng bên trái (Left-hand Sidebar):
+Ở trên cùng là nút '+ New Conversation' để khởi tạo một phiên làm việc độc lập, sạch sẽ. Ngay phía dưới là các mục trọng yếu: Lịch sử (History), Tác vụ hẹn giờ tự động (Automations), và Kho kỹ năng & MCP (Customizations). Đặc biệt là mục 'Projects' — nơi Antigravity gắn kết từng phiên đối thoại trực tiếp vào đúng thư mục dữ liệu thật trên ổ cứng của bạn. Dưới cùng là bánh răng Settings để quản lý phân quyền công cụ và chế độ an toàn.
+
+Thứ hai là Sân khấu chỉ huy ở giữa (Chat Canvas):
+Đây là không gian tương tác trực tiếp nơi bạn và Agent cùng phối hợp. AI không chạy giấu giếm mà hiển thị minh bạch 100% 'Thinking Traces' (từng bước tư duy) và thời gian thực thi công cụ. Ở dưới đáy là thanh Prompt thông minh: bạn có thể bấm phím tắt '/' để gọi bí kíp, gõ '@' để đính kèm đích danh file/thư mục, chuyển đổi linh hoạt giữa não bộ Flash siêu tốc và Pro suy luận sâu, hoặc ra lệnh bằng giọng nói.
+
+Thứ ba là Khung tiện ích đa năng bên phải (Auxiliary Pane):
+Đây là trạm quan sát và kiểm duyệt toàn năng. Thay vì chỉ xem kết quả sơ sài, Auxiliary Pane chia làm 4 tab chuyên sâu: Tab Subagents theo dõi các trợ lý con chạy song song; Tab Artifacts lưu trữ các bản kế hoạch và tài liệu đóng gói để xem trước tức thì; Tab Terminals giám sát lệnh ngầm; và đỉnh cao nhất là Tab Files Changed (Diff Viewer) — tấm khiên bảo vệ dữ liệu với 2 nút quyền lực Approve (Đồng ý) và Reject (Từ chối). AI tuyệt đối không thể tự ý ghi đè file khi chưa có cái gật đầu của bạn!
+
+Ba phân vùng phối hợp nhịp nhàng tạo nên trải nghiệm làm việc tự hành: Minh bạch - An toàn - Tốc độ!">
+  <div class="slide-hud">
+    <div class="hud-chip">
+      <svg class="svg-icon" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+      TOUR THỰC TẾ
+    </div>
+    <div class="hud-chip">
+      <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+      ANTIGRAVITY DESKTOP 2.0
+    </div>
+  </div>
+
+  <div class="anim-1">
+    <span class="tag-hero">
+      <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      BẢN ĐỒ ĐIỀU KHIỂN CHÍNH THỐNG
+    </span>
+    <h1 class="title-display">
+      Bản Đồ Giao Diện <span>Antigravity Desktop</span><br>
+      3 Phân Vùng Kiến Trúc Chuẩn Google Antigravity
+    </h1>
+    <p class="lead-desc">
+      Kiến trúc giao diện chính thức từ tài liệu Google: Kết hợp nhịp nhàng giữa quản lý dự án, đối thoại minh bạch và kiểm soát dữ liệu an toàn.
+    </p>
+  </div>
+
+  <!-- INTERACTIVE MOCKUP STAGE: KHỚP 100% KIẾN TRÚC ANTIGRAVITY DESKTOP -->
+  <div style="display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 1rem; margin-top: 0.8rem; align-items: stretch;">
+    
+    <!-- LEFT: MOCKUP INTERFACE CHUẨN 3 PHÂN VÙNG -->
+    <div style="background: #0b0f19; border: 1px solid var(--border-subtle); border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 15px 35px rgba(0,0,0,0.6);">
+      
+      <!-- TOP WINDOW HEADER -->
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 5px; font-size: 0.65rem; color: var(--text-dim);">
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <span style="font-weight: 700; color: #fff;">Antigravity</span>
+          <span>File</span>
+          <span>Edit</span>
+          <span>View</span>
+          <span>Terminal</span>
+          <span>Help</span>
+        </div>
+        <div style="font-family: var(--font-mono); font-size: 0.6rem; color: var(--accent-cyan); display: flex; align-items: center; gap: 6px;">
+          <span>workspace: training-ai</span>
+          <span style="background: rgba(16,185,129,0.2); color: #34d399; padding: 1px 5px; border-radius: 3px;">● Connected</span>
+        </div>
+      </div>
+
+      <!-- MAIN BODY: 3 COLUMNS (LEFT SIDEBAR + CHAT CANVAS + AUXILIARY PANE) -->
+      <div style="display: grid; grid-template-columns: 100px 1fr 135px; gap: 6px; height: 185px;">
+        
+        <!-- [1] LEFT SIDEBAR -->
+        <div style="background: #080c14; border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 6px 4px; display: flex; flex-direction: column; font-size: 0.58rem; gap: 4px;">
+          <div style="background: rgba(99,102,241,0.25); border: 1px solid rgba(99,102,241,0.4); border-radius: 4px; padding: 3px 4px; font-weight: 700; color: #fff; text-align: center; margin-bottom: 2px;">
+            + New Chat
+          </div>
+          <div style="color: var(--text-muted); padding: 2px 3px; display: flex; align-items: center; gap: 3px;">🕒 History</div>
+          <div style="color: var(--text-muted); padding: 2px 3px; display: flex; align-items: center; gap: 3px;">⏰ Scheduled</div>
+          <div style="color: var(--text-muted); padding: 2px 3px; display: flex; align-items: center; gap: 3px;">🧰 Custom Skills</div>
+          
+          <div style="margin-top: 4px; font-weight: 700; color: var(--accent-cyan); font-size: 0.55rem; text-transform: uppercase; padding-left: 2px;">
+            📁 Projects
+          </div>
+          <div style="color: #e2e8f0; font-weight: 600; padding-left: 4px; background: rgba(255,255,255,0.05); border-radius: 3px;">▾ training-ai</div>
+          <div style="color: var(--accent-cyan); font-size: 0.52rem; padding-left: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">• Slide P2 Map ●</div>
+          <div style="color: var(--text-dim); font-size: 0.52rem; padding-left: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">• Lời Thoại P1</div>
+          
+          <div style="margin-top: auto; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 3px; color: var(--text-muted); display: flex; align-items: center; gap: 3px; padding-left: 2px;">
+            ⚙️ Settings
+          </div>
+        </div>
+
+        <!-- [2] CHAT CANVAS -->
+        <div style="background: #101726; border: 1px solid rgba(255,255,255,0.06); border-radius: 6px; padding: 6px; display: flex; flex-direction: column; justify-content: space-between; font-size: 0.65rem; overflow: hidden;">
+          
+          <!-- THINKING TRACE & STATUS -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <span style="background: rgba(99,102,241,0.2); color: #a5b4fc; padding: 1px 5px; border-radius: 3px; font-size: 0.56rem; font-family: var(--font-mono);">
+                ⚡ Thinking (High Level)
+              </span>
+              <span style="color: var(--accent-emerald); font-size: 0.56rem; font-family: var(--font-mono);">
+                Execution: 42s
+              </span>
+            </div>
+            
+            <div style="color: var(--text-muted); font-size: 0.6rem; line-height: 1.3; margin-bottom: 4px; background: rgba(0,0,0,0.25); padding: 4px; border-radius: 4px; border-left: 2px solid var(--accent-indigo);">
+              <span style="color: #cbd5e1; font-weight: 600;">Agent:</span> Đã rà soát tài liệu chính thống Google Docs và điều chỉnh 3 phân vùng giao diện chuẩn xác.
+            </div>
+
+            <!-- TOOL CALL BADGE -->
+            <div style="font-size: 0.55rem; color: var(--text-dim); display: flex; align-items: center; gap: 4px; font-family: var(--font-mono);">
+              <span style="color: var(--accent-amber);">➔ tool_call:</span> edit_file(Slide_5, Script_1.3)
+            </div>
+          </div>
+
+          <!-- BOTTOM SMART PROMPT BAR -->
+          <div style="background: #090e18; border: 1px solid rgba(245,158,11,0.4); border-radius: 5px; padding: 4px 6px; display: flex; flex-direction: column; gap: 3px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: var(--text-dim); font-size: 0.58rem;">Dùng "/" để gọi skill, "@" để chọn file...</span>
+              <span style="color: var(--accent-amber); font-size: 0.55rem; font-weight: 700;">↵ Enter</span>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 2px; font-size: 0.52rem;">
+              <span style="color: #93c5fd; font-weight: 600;">+ Context</span>
+              <span style="color: var(--accent-indigo); font-family: var(--font-mono);">Gemini 3.8 Flash High ▾</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- [3] AUXILIARY PANE (KHUNG TIỆN ÍCH ĐA NĂNG PHÍA PHẢI) -->
+        <div style="background: #0d1322; border: 1px solid rgba(16,185,129,0.3); border-radius: 6px; padding: 5px; display: flex; flex-direction: column; font-size: 0.58rem; gap: 4px;">
+          <!-- TABS HEADER -->
+          <div style="display: flex; gap: 2px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 3px; font-size: 0.5rem; justify-content: space-between;">
+            <span style="color: var(--text-dim);">Agents</span>
+            <span style="color: var(--text-dim);">Artifacts</span>
+            <span style="color: #6ee7b7; font-weight: 700; border-bottom: 1px solid #10b981;">Diff</span>
+            <span style="color: var(--text-dim);">Term</span>
+          </div>
+
+          <!-- DIFF PREVIEW CONTENT -->
+          <div style="background: rgba(0,0,0,0.3); border-radius: 4px; padding: 4px; font-family: var(--font-mono); font-size: 0.5rem; line-height: 1.25; flex: 1; overflow: hidden;">
+            <div style="color: #94a3b8; font-weight: 700; margin-bottom: 2px;">Review Changes:</div>
+            <div style="color: #f87171; background: rgba(239,68,68,0.15); padding: 1px 2px; border-radius: 2px;">- Cũ: Cây thư mục</div>
+            <div style="color: #4ade80; background: rgba(34,197,94,0.15); padding: 1px 2px; border-radius: 2px; margin-top: 1px;">+ Mới: Auxiliary Pane</div>
+          </div>
+
+          <!-- APPROVE / REJECT BUTTONS -->
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-top: auto;">
+            <button style="background: #10b981; color: #000; border: none; border-radius: 3px; font-weight: 700; font-size: 0.52rem; padding: 2px 0; cursor: pointer;">
+              ✓ Approve
+            </button>
+            <button style="background: rgba(239,68,68,0.2); color: #f87171; border: 1px solid rgba(239,68,68,0.4); border-radius: 3px; font-size: 0.52rem; padding: 2px 0; cursor: pointer;">
+              ✗ Reject
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT: 3 KHU VỰC VÀNG GIẢNG VIÊN ĐIỂM DANH -->
+    <div style="display: flex; flex-direction: column; gap: 8px; justify-content: center;">
+      
+      <div style="background: var(--bg-surface); border: 1px solid rgba(6,182,212,0.3); padding: 9px 12px; border-radius: 8px; font-size: 0.78rem;">
+        <div style="font-weight: 700; color: var(--accent-cyan); margin-bottom: 3px; display: flex; align-items: center; gap: 6px;">
+          <span>1. CỘT ĐIỀU HƯỚNG & DỰ ÁN (LEFT SIDEBAR)</span>
+        </div>
+        <div style="color: var(--text-muted); line-height: 1.45; font-size: 0.72rem;">
+          • Nút <strong>+ New Conversation:</strong> Khởi tạo phiên làm việc độc lập.<br>
+          • <strong>Projects:</strong> Gom nhóm hội thoại gắn chặt vào thư mục ổ cứng.<br>
+          • <strong>Automations, Customizations & Settings:</strong> Quản lý tác vụ ngầm, nạp kho kỹ năng và phân quyền an toàn.
+        </div>
+      </div>
+
+      <div style="background: var(--bg-surface); border: 1px solid rgba(245,158,11,0.3); padding: 9px 12px; border-radius: 8px; font-size: 0.78rem;">
+        <div style="font-weight: 700; color: var(--accent-amber); margin-bottom: 3px; display: flex; align-items: center; gap: 6px;">
+          <span>2. SÂN KHẤU CHỈ HUY & ĐỐI THOẠI (CHAT CANVAS)</span>
+        </div>
+        <div style="color: var(--text-muted); line-height: 1.45; font-size: 0.72rem;">
+          • <strong>Thinking Traces:</strong> Minh bạch 100% từng bước tư duy của AI.<br>
+          • <strong>Bàn đạp Prompt Bar:</strong> Gõ <code>/</code> để gọi lệnh nhanh, gõ <code>@</code> để bơm context tệp tin.<br>
+          • Chuyển đổi linh hoạt Model (Flash/Pro) & Thinking Level.
+        </div>
+      </div>
+
+      <div style="background: var(--bg-surface); border: 1px solid rgba(16,185,129,0.3); padding: 9px 12px; border-radius: 8px; font-size: 0.78rem;">
+        <div style="font-weight: 700; color: var(--accent-emerald); margin-bottom: 3px; display: flex; align-items: center; gap: 6px;">
+          <span>3. KHUNG TIỆN ÍCH ĐA NĂNG (AUXILIARY PANE)</span>
+        </div>
+        <div style="color: var(--text-muted); line-height: 1.45; font-size: 0.72rem;">
+          • <strong>Subagents:</strong> Giám sát các agent con thực thi song song.<br>
+          • <strong>Artifacts:</strong> Thư viện xem trước kế hoạch, tài liệu tức thì.<br>
+          • <strong>Files Changed:</strong> Soi Diff từng dòng, phê duyệt <code>Approve</code> / <code>Reject</code> bảo vệ dữ liệu gốc an toàn 100%.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="slide-canvas" data-slide="6" data-notes="Một trong những nỗi sợ lớn nhất của người mới khi nghe nói 'AI có thể tự chạy lệnh trên máy tính' là:
+'Trời ơi, lỡ nó xóa mất dữ liệu gia đình hay xóa nhầm báo cáo công ty của tôi thì sao?'
+
+Đây là một nỗi sợ hoàn toàn chính đáng! Và đó là lý do vì sao Google Antigravity xây dựng sẵn một hệ thống lá chắn đa tầng mà tôi gọi vui là: 'Bộ 3 Bùa Hộ Mệnh An Toàn Tuyệt Đối'.
+
+1. Bùa hộ mệnh thứ nhất - Artifacts Sandbox: Mọi sản phẩm mới do Agent sinh ra như kế hoạch, mã nguồn, bảng tính... đều được cách ly hoàn toàn trong thư mục Artifacts của phiên làm việc. Nó không bao giờ tự ý ghi đè vào các file quan trọng của bạn.
+2. Bùa hộ mệnh thứ hai - Review Checkpoint (Diff Viewer): Trước khi bất kỳ một dòng chữ nào trong file cũ bị thay đổi, Antigravity sẽ mở ra một cửa sổ so sánh từng dòng (màu xanh là dòng mới thêm, màu đỏ là dòng xóa đi). AI phải đứng nghiêm chờ bạn bấm nút 'Approve' (Đồng ý) thì mới được sửa. Nếu bạn thấy có dấu hiệu lạ, bấm 'Reject' là xong!
+3. Bùa hộ mệnh thứ ba - Command Confirmation & Blacklist: Những câu lệnh nguy hiểm như xóa ổ cứng, format đĩa hay gửi mật khẩu ra ngoài đều bị chặn đứng bởi danh sách đen (Blacklist). Mỗi khi chạy một lệnh ảnh hưởng hệ thống, Antigravity bắt buộc phải xin phép bạn.
+
+Với 3 bùa hộ mệnh này, máy tính của bạn an toàn 100%. Bạn có thể hoàn toàn yên tâm trao quyền cho AI làm việc!">
+  <div class="slide-hud">
+    <div class="hud-chip">
+      <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+      AN TOÀN HỆ THỐNG
+    </div>
+    <div class="hud-chip">
+      <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      3 TẦNG BẢO VỆ
+    </div>
+  </div>
+
+  <div class="anim-1">
+    <span class="tag-hero">
+      <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      BẢO VỆ DỮ LIỆU CỦA BẠN
+    </span>
+    <h1 class="title-display">
+      Bộ 3 <span>"Bùa Hộ Mệnh"</span> An Toàn<br>
+      Không Bao Giờ Lo AI Phá Hỏng Máy Tính
+    </h1>
+    <p class="lead-desc">
+      Cơ chế phòng vệ đa lớp đảm bảo bạn luôn là người nắm quyền phán quyết cuối cùng trước mọi hành động của AI.
+    </p>
+  </div>
+
+  <div class="card-grid col-3 anim-2" style="margin-top: 1.2rem;">
+    <div class="stat-card" style="border-top: 3px solid var(--accent-cyan);">
+      <div class="stat-header">
+        <span class="stat-title">LÁ CHẮN 1</span>
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+      </div>
+      <div class="stat-value" style="font-size: 1.25rem; color: var(--accent-cyan);">Artifacts Sandbox</div>
+      <div class="stat-desc">
+        Khu vực cách ly an toàn 100%. Toàn bộ tài liệu, kế hoạch, giao diện mới đều được tạo trong vùng đệm, không bao giờ tự ý ghi đè file hệ thống.
+      </div>
+    </div>
+
+    <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
+      <div class="stat-header">
+        <span class="stat-title">LÁ CHẮN 2</span>
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+      </div>
+      <div class="stat-value" style="font-size: 1.25rem; color: var(--accent-emerald);">Review Diff Checkpoint</div>
+      <div class="stat-desc">
+        Kính hiển vi soi từng ký tự thay đổi (Màu xanh thêm vào, màu đỏ bỏ đi). AI bắt buộc phải dừng lại chờ bạn bấm <strong>[Approve]</strong> mới được áp dụng.
+      </div>
+    </div>
+
+    <div class="stat-card" style="border-top: 3px solid var(--accent-rose);">
+      <div class="stat-header">
+        <span class="stat-title">LÁ CHẮN 3</span>
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      </div>
+      <div class="stat-value" style="font-size: 1.25rem; color: var(--accent-rose);">Command Blacklist</div>
+      <div class="stat-desc">
+        Bộ lọc lệnh phá hoại ngăn chặn mọi thao tác xóa ổ đĩa nguy hiểm. Cảnh báo hiển thị xác nhận người dùng trước mọi tác vụ nhạy cảm.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="slide-canvas" data-slide="7" data-notes="Và bây giờ, hãy khép lại Phần 2 bằng một chiến thắng đầu tiên ngoạn mục: First Win trong đúng 5 phút!
+
+Cách tốt nhất để xóa bỏ mọi nghi ngờ là tự tay nhìn thấy kết quả. Tôi muốn bạn mở Antigravity Desktop lên và thực hiện đúng 3 bước siêu đơn giản này:
+
+- Bước 1 - Mở thư mục làm việc: Chọn một thư mục đang lộn xộn trên máy bạn, ví dụ thư mục Downloads hoặc một thư mục tài liệu dự án.
+- Bước 2 - Ra lệnh ngôn ngữ tự nhiên: Bạn chỉ cần gõ vào khung chat một câu mộc mạc: 'Hãy quét toàn bộ file trong thư mục này, phân loại thành các nhóm: Tài liệu PDF, Bảng tính Excel, Hình ảnh và Báo cáo tóm tắt cho tôi.'
+- Bước 3 - Phê duyệt kết quả: Bạn sẽ thấy Agent tự mở công cụ quét file, liệt kê danh sách và tạo cho bạn một bản thống kê cực kỳ gọn gàng. Bạn bấm 'Approve' để nó gom các file vào đúng từng thư mục con tương ứng.
+
+Chỉ mất đúng 5 phút, bạn đã vừa chiêu mộ thành công trợ lý AI đầu tiên giải quyết xong một đầu việc thực tế mà bình thường bạn phải mất cả nửa tiếng click chuột bằng tay!">
+  <div class="slide-hud">
+    <div class="hud-chip">
+      <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+      THỰC HÀNH NGAY
+    </div>
+    <div class="hud-chip">
+      <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+      FIRST WIN: <strong>5 PHÚT</strong>
+    </div>
+  </div>
+
+  <div class="anim-1">
+    <span class="tag-hero">
+      <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      TRẢI NGHIỆM CHIẾN THẮNG ĐẦU TIÊN
+    </span>
+    <h1 class="title-display">
+      Chiêu Mộ Agent Đầu Tiên:<br>
+      <span>3 Bước Trong 5 Phút</span> Để Thấy Phép Màu
+    </h1>
+    <p class="lead-desc">
+      Đừng chỉ nghe lý thuyết. Hãy mở Antigravity và giao bài toán đầu tiên để trải nghiệm cảm giác làm một Tổng Chỉ Huy thực thụ.
+    </p>
+  </div>
+
+  <div class="card-grid col-3 anim-2" style="margin-top: 1.2rem;">
+    <div class="stat-card" style="border-top: 3px solid var(--accent-indigo);">
+      <div class="stat-header">
+        <span class="stat-title">BƯỚC 1 (1 PHÚT)</span>
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+      </div>
+      <div class="stat-value" style="font-size: 1.3rem; color: var(--accent-indigo);">Mở Thư Mục</div>
+      <div class="stat-desc">
+        Tại Antigravity Desktop, bấm <strong>Open Workspace</strong> và chọn thư mục cần xử lý (ví dụ: thư mục chứa file báo cáo hoặc thư mục Downloads).
+      </div>
+    </div>
+
+    <div class="stat-card" style="border-top: 3px solid var(--accent-cyan);">
+      <div class="stat-header">
+        <span class="stat-title">BƯỚC 2 (2 PHÚT)</span>
+        <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+      </div>
+      <div class="stat-value" style="font-size: 1.3rem; color: var(--accent-cyan);">Ra Lệnh Tự Nhiên</div>
+      <div class="stat-desc">
+        Gõ lệnh: <code style="color:var(--accent-cyan); font-size: 0.72rem;">"Hãy quét toàn bộ file trong thư mục này, tóm tắt nội dung từng file và phân loại gọn gàng."</code>
+      </div>
+    </div>
+
+    <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
+      <div class="stat-header">
+        <span class="stat-title">BƯỚC 3 (2 PHÚT)</span>
+        <svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div class="stat-value" style="font-size: 1.3rem; color: var(--accent-emerald);">Duyệt Kết Quả</div>
+      <div class="stat-desc">
+        Chiêm ngưỡng Agent tự gọi công cụ đọc file, kiểm tra kế hoạch trên Review Bar và nhấn <strong>Approve</strong> để nhận kết quả mỹ mãn!
+      </div>
+    </div>
+  </div>
+</div>
+
+  </main>
+
+  <aside id="notes-drawer">
+    <div class="notes-header">
+      <div class="notes-title">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+        KỊCH BẢN GIẢNG VIÊN TOÀN VĂN
+      </div>
+      <button class="btn-nav" id="btn-close-notes" style="padding: 2px 8px;">✕</button>
+    </div>
+    <span class="notes-tag" id="notes-slide-tag">SLIDE 01 / 07</span>
+    <div class="notes-content" id="notes-body"></div>
+  </aside>
+
+  <footer>
+    <div id="footer-desktop-hint">
+      <span>Điều khiển:</span>
+      <span style="margin-left: 8px;"><span class="kbd">◀</span> <span class="kbd">▶</span> hoặc <span class="kbd">Space</span> chuyển slide</span>
+      <span style="margin-left: 8px;"><span class="kbd">S</span> Kịch bản</span>
+      <span style="margin-left: 8px;"><span class="kbd">F</span> Toàn màn hình</span>
+      <span style="margin-left: 8px;"><span class="kbd">Ctrl+P</span> In PDF</span>
+    </div>
+    <div id="footer-desktop-tag" style="font-family: var(--font-mono); color: var(--text-dim);">
+      <span>PHẦN 02 • 7 SLIDES</span>
+    </div>
+
+    <div id="footer-mobile-controls" style="display: none;">
+      <button class="btn-touch" id="btn-touch-prev">◀ Lùi</button>
+      <button class="btn-touch" id="btn-touch-notes" style="background: rgba(99, 102, 241, 0.2); border-color: rgba(99, 102, 241, 0.4); color: #a5b4fc;">🎙️ Lời thoại (S)</button>
+      <button class="btn-touch" id="btn-touch-next" style="background: var(--accent-indigo); color: #fff;">Tiếp ▶</button>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const slides = document.querySelectorAll('.slide-canvas');
+      const progressBar = document.getElementById('progress-bar');
+      const slideNumDisplay = document.getElementById('slide-num');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const btnNotes = document.getElementById('btn-notes');
+      const btnCloseNotes = document.getElementById('btn-close-notes');
+      const btnFullscreen = document.getElementById('btn-fullscreen');
+      const notesDrawer = document.getElementById('notes-drawer');
+      const notesBody = document.getElementById('notes-body');
+      const notesSlideTag = document.getElementById('notes-slide-tag');
+
+      const btnTouchPrev = document.getElementById('btn-touch-prev');
+      const btnTouchNext = document.getElementById('btn-touch-next');
+      const btnTouchNotes = document.getElementById('btn-touch-notes');
+      const deckStage = document.getElementById('deck-stage');
+
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+
+      function updateSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= totalSlides) index = totalSlides - 1;
+        currentSlide = index;
+
+        slides.forEach((slide, i) => {
+          if (i === currentSlide) {
+            slide.classList.remove('active');
+            void slide.offsetWidth; // Force reflow
+            slide.classList.add('active');
+            slide.scrollTop = 0;
+            // Check if slide has custom interactive motion trigger
+            if (typeof window.triggerSlideMotion === 'function') {
+              window.triggerSlideMotion(currentSlide);
+            }
+          } else {
+            slide.classList.remove('active');
+          }
+        });
+
+        const progress = ((currentSlide + 1) / totalSlides) * 100;
+        progressBar.style.width = progress + '%';
+
+        const currentStr = String(currentSlide + 1).padStart(2, '0');
+        const totalStr = String(totalSlides).padStart(2, '0');
+        slideNumDisplay.textContent = `${currentStr} / ${totalStr}`;
+
+        const activeSlideElem = slides[currentSlide];
+        const notesText = activeSlideElem.getAttribute('data-notes') || 'Chưa có ghi chú kịch bản cho slide này.';
+        notesSlideTag.textContent = `SLIDE ${currentStr} / ${totalStr}`;
+        
+        const formattedNotes = notesText.split('\n\n').map(p => `<p>${p}</p>`).join('');
+        notesBody.innerHTML = `<blockquote>${formattedNotes}</blockquote>`;
+        notesDrawer.scrollTop = 0;
+      }
+
+      function nextSlide() {
+        if (currentSlide < totalSlides - 1) updateSlide(currentSlide + 1);
+      }
+      function prevSlide() {
+        if (currentSlide > 0) updateSlide(currentSlide - 1);
+      }
+      function toggleNotes() {
+        notesDrawer.classList.toggle('open');
+        btnNotes.classList.toggle('active', notesDrawer.classList.contains('open'));
+      }
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => console.error(err));
+        } else {
+          if (document.exitFullscreen) document.exitFullscreen();
+        }
+      }
+
+      btnNext.addEventListener('click', nextSlide);
+      btnPrev.addEventListener('click', prevSlide);
+      btnNotes.addEventListener('click', toggleNotes);
+      btnCloseNotes.addEventListener('click', toggleNotes);
+      if (btnFullscreen) btnFullscreen.addEventListener('click', toggleFullscreen);
+
+      if (btnTouchPrev) btnTouchPrev.addEventListener('click', prevSlide);
+      if (btnTouchNext) btnTouchNext.addEventListener('click', nextSlide);
+      if (btnTouchNotes) btnTouchNotes.addEventListener('click', toggleNotes);
+
+      // Touch Swipe Gestures
+      let touchStartX = 0;
+      let touchStartY = 0;
+      let touchEndX = 0;
+      let touchEndY = 0;
+
+      deckStage.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+      }, { passive: true });
+
+      deckStage.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        const diffX = touchEndX - touchStartX;
+        const diffY = touchEndY - touchStartY;
+        if (Math.abs(diffX) > Math.abs(diffY) * 1.5 && Math.abs(diffX) > 45) {
+          if (diffX < 0) nextSlide();
+          else prevSlide();
+        }
+      }, { passive: true });
+
+      // Keyboard Controls
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+          e.preventDefault();
+          nextSlide();
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'Backspace') {
+          e.preventDefault();
+          prevSlide();
+        } else if (e.key === 's' || e.key === 'S') {
+          e.preventDefault();
+          toggleNotes();
+        } else if (e.key === 'f' || e.key === 'F') {
+          e.preventDefault();
+          toggleFullscreen();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          updateSlide(0);
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          updateSlide(totalSlides - 1);
+        }
+      });
+
+      updateSlide(0);
+    })();
+  </script>
+</body>
+</html>

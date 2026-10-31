@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "gmail": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@gongrzhe/server-gmail-autoauth-mcp"
+      ],
+      "env": {
+        "GOOGLE_CLIENT_ID": "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com",
+        "GOOGLE_CLIENT_SECRET": "YOUR_GOOGLE_CLIENT_SECRET",
+        "CREDENTIALS_PATH": "~/.gemini/config/mcp/google-oauth-credentials.json",
+        "GMAIL_TOKEN_PATH": "~/.gemini/config/mcp/gmail-token.json"
+      }
+    }
+  }
+}

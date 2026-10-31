@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đề Xuất Tự Động Hóa Hệ Thống Báo Cáo Q4</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Theme 1: Cyber Dark (Default) */
+      --bg-main: #090d16;
+      --bg-card: rgba(18, 24, 38, 0.85);
+      --bg-card-hover: rgba(28, 38, 58, 0.95);
+      --border-card: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(99, 102, 241, 0.35);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent-primary: #6366f1;
+      --accent-secondary: #06b6d4;
+      --accent-success: #10b981;
+      --accent-warning: #f59e0b;
+      --accent-danger: #f43f5e;
+      --accent-purple: #a855f7;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --card-glow: 0 0 25px rgba(99, 102, 241, 0.25);
+    }
+
+    /* Theme 1 alias: Cyber Dark */
+    body.theme-cyber-dark {
+      --bg-main: #090d16;
+      --bg-card: rgba(18, 24, 38, 0.85);
+      --bg-card-hover: rgba(28, 38, 58, 0.95);
+      --border-card: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(99, 102, 241, 0.35);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent-primary: #6366f1;
+      --accent-secondary: #06b6d4;
+      --card-glow: 0 0 25px rgba(99, 102, 241, 0.25);
+    }
+
+    /* Optional Theme: Deep Navy */
+    body.theme-deep-navy {
+      --bg-main: #0a1128;
+      --bg-card: rgba(16, 28, 56, 0.85);
+      --bg-card-hover: rgba(24, 40, 78, 0.95);
+      --border-card: rgba(56, 189, 248, 0.12);
+      --border-accent: rgba(56, 189, 248, 0.4);
+      --accent-primary: #0284c7;
+      --accent-secondary: #38bdf8;
+      --card-glow: 0 0 25px rgba(2, 132, 199, 0.25);
+    }
+
+    /* Optional Theme: Clean Light */
+    body.theme-clean-light {
+      --bg-main: #f1f5f9;
+      --bg-card: rgba(255, 255, 255, 0.92);
+      --bg-card-hover: #ffffff;
+      --border-card: rgba(0, 0, 0, 0.08);
+      --border-accent: rgba(99, 102, 241, 0.3);
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-dim: #94a3b8;
+      --card-glow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Navigation & Progress Bar */
+    #progress-bar-container {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.06);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+    #progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-success));
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    header {
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(9, 13, 22, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 50;
+    }
+    body.theme-clean-light header {
+      background: rgba(255, 255, 255, 0.85);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: -0.01em;
+    }
+    .brand-tag {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(6, 182, 212, 0.25));
+      border: 1px solid var(--border-accent);
+      color: #a5b4fc;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-action {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-main);
+      padding: 6px 13px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-action:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.22);
+      transform: translateY(-1px);
+    }
+    .btn-action.active {
+      background: linear-gradient(135deg, var(--accent-primary), #4f46e5);
+      border-color: #818cf8;
+      box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+      color: #ffffff;
+    }
+
+    .slide-counter {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0 8px;
+    }
+
+    /* Main Deck Stage */
+    #deck-stage {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 40px 48px;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      width: 92%;
+      max-width: 1280px;
+      height: calc(100vh - 120px);
+      max-height: 720px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      padding: 38px 48px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.96) translateY(20px);
+      transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+      overflow-y: auto;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+      z-index: 10;
+    }
+
+    /* Micro-animations: Staggered Fade-up for child components */
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .slide.active .slide-eyebrow {
+      animation: slideInUp 0.38s ease 0.05s both;
+    }
+    .slide.active .slide-title {
+      animation: slideInUp 0.42s ease 0.12s both;
+    }
+    .slide.active .slide-subtitle {
+      animation: slideInUp 0.45s ease 0.18s both;
+    }
+    .slide.active .grid-2 > *,
+    .slide.active .grid-3 > *,
+    .slide.active .grid-4 > * {
+      animation: slideInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .slide.active .grid-2 > *:nth-child(1),
+    .slide.active .grid-3 > *:nth-child(1),
+    .slide.active .grid-4 > *:nth-child(1) { animation-delay: 0.22s; }
+    .slide.active .grid-2 > *:nth-child(2),
+    .slide.active .grid-3 > *:nth-child(2),
+    .slide.active .grid-4 > *:nth-child(2) { animation-delay: 0.29s; }
+    .slide.active .grid-3 > *:nth-child(3),
+    .slide.active .grid-4 > *:nth-child(3) { animation-delay: 0.36s; }
+    .slide.active .grid-4 > *:nth-child(4) { animation-delay: 0.43s; }
+
+    .slide.active .terminal-box,
+    .slide.active .compare-table {
+      animation: slideInUp 0.45s ease 0.25s both;
+    }
+
+    /* Typography */
+    .slide-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    .eyebrow-indigo { color: #818cf8; }
+    .eyebrow-cyan { color: #22d3ee; }
+    .eyebrow-emerald { color: #34d399; }
+    .eyebrow-amber { color: #fbbf24; }
+    .eyebrow-rose { color: #fb7185; }
+
+    .slide-title {
+      font-size: 2.15rem;
+      font-weight: 800;
+      line-height: 1.22;
+      letter-spacing: -0.025em;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+    body.theme-clean-light .slide-title {
+      color: #0f172a;
+    }
+
+    .slide-subtitle {
+      font-size: 1.02rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 22px;
+    }
+
+    /* Grids & Cards */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      flex: 1;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      flex: 1;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      flex: 1;
+    }
+
+    .box-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 14px;
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .box-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(99, 102, 241, 0.35);
+      box-shadow: var(--card-glow);
+      transform: translateY(-3px);
+    }
+    body.theme-clean-light .box-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+    }
+    body.theme-clean-light .box-card:hover {
+      background: #ffffff;
+      border-color: #cbd5e1;
+    }
+
+    .box-card-highlight {
+      background: linear-gradient(145deg, rgba(99, 102, 241, 0.12), rgba(6, 182, 212, 0.06));
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .card-header-icon {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+    .card-heading {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    body.theme-clean-light .card-heading {
+      color: #0f172a;
+    }
+    .card-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    /* Terminal Window Mockup */
+    .terminal-box {
+      background: #0b0f19;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      overflow: hidden;
+      font-family: var(--font-mono);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+      margin-top: 10px;
+    }
+    .terminal-topbar {
+      background: #131b2e;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid #1e293b;
+    }
+    .term-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .term-dot-r { background: #ef4444; }
+    .term-dot-y { background: #f59e0b; }
+    .term-dot-g { background: #10b981; }
+    .term-title {
+      font-size: 0.72rem;
+      color: #64748b;
+      margin-left: 8px;
+    }
+    .terminal-body {
+      padding: 16px 18px;
+      font-size: 0.82rem;
+      line-height: 1.65;
+      color: #e2e8f0;
+      overflow-x: auto;
+    }
+    .term-cmd { color: #38bdf8; font-weight: 600; }
+    .term-flag { color: #f43f5e; }
+    .term-comment { color: #64748b; font-style: italic; }
+    .term-success { color: #34d399; }
+    .term-warn { color: #fbbf24; }
+
+    /* Comparison Table */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 0.86rem;
+    }
+    .compare-table th {
+      background: rgba(255, 255, 255, 0.05);
+      text-align: left;
+      padding: 12px 16px;
+      font-weight: 700;
+      color: #e2e8f0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .compare-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .compare-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Badges & Pills */
+    .badge-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+    }
+    .pill-red { background: rgba(239, 68, 68, 0.18); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .pill-green { background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .pill-blue { background: rgba(99, 102, 241, 0.18); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); }
+    .pill-amber { background: rgba(245, 158, 11, 0.18); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+
+    /* Bottom Navigation Bar */
+    footer {
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(9, 13, 22, 0.85);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+    body.theme-clean-light footer {
+      background: rgba(255, 255, 255, 0.85);
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .nav-hints {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .kbd {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-main);
+    }
+
+    /* Speaker Notes Drawer (Nút bật kịch bản người nói) */
+    #notes-drawer {
+      position: fixed;
+      right: 0;
+      top: 56px;
+      width: 440px;
+      height: calc(100vh - 108px);
+      background: #0d121f;
+      border-left: 1px solid rgba(99, 102, 241, 0.25);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 80;
+      overflow-y: auto;
+    }
+    body.theme-clean-light #notes-drawer {
+      background: #ffffff;
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+    }
+    #notes-drawer.open {
+      transform: translateX(0);
+    }
+
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 16px;
+    }
+    .notes-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #818cf8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .notes-content {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+    }
+    body.theme-clean-light .notes-content {
+      color: #334155;
+    }
+    .notes-content blockquote {
+      background: rgba(99, 102, 241, 0.1);
+      border-left: 3px solid var(--accent-primary);
+      padding: 12px 14px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0;
+      font-style: italic;
+      color: #e0e7ff;
+    }
+    body.theme-clean-light .notes-content blockquote {
+      background: #eff6ff;
+      color: #1e3a8a;
+    }
+    .notes-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    /* Print / PDF Mode */
+    @media print {
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
+      body {
+        overflow: visible !important;
+        height: auto !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      header, footer, #notes-drawer, #progress-bar-container {
+        display: none !important;
+      }
+      #deck-stage {
+        display: block !important;
+        padding: 0 !important;
+      }
+      .slide {
+        position: relative !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100vh !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: #ffffff !important;
+        color: #0f172a !important;
+      }
+      .slide-title { color: #0f172a !important; }
+      .box-card {
+        background: #f8fafc !important;
+        border-color: #e2e8f0 !important;
+        color: #1e293b !important;
+      }
+      .card-heading { color: #0f172a !important; }
+      .card-desc { color: #475569 !important; }
+      .terminal-box { background: #0f172a !important; color: #f8fafc !important; }
+    }
+  </style>
+</head>
+<body class="theme-cyber-dark">
+
+  <!-- Top Progress Bar -->
+  <div id="progress-bar-container">
+    <div id="progress-bar"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <span class="brand-tag">DỰ ÁN TỰ ĐỘNG HÓA DOANH NGHIỆP</span>
+      <span>Đề Xuất Tự Động Hóa Hệ Thống Báo Cáo Q4</span>
+    </div>
+
+    <div class="controls">
+      <span class="slide-counter" id="slide-num">01 / 07</span>
+      <button class="btn-action" id="btn-prev" title="Trang trước (Phím Mũi tên Trái)">◀ Trước</button>
+      <button class="btn-action" id="btn-next" title="Trang sau (Phím Mũi tên Phải hoặc Phím Cách)">Sau ▶</button>
+      <button class="btn-action" id="btn-notes" title="Bật/Tắt Lời thoại kịch bản thuyết trình (Phím S)">🎙️ Lời Thoại (S)</button>
+      <button class="btn-action" id="btn-fullscreen" title="Toàn màn hình (Phím F)">⛶ Toàn Màn Hình</button>
+    </div>
+  </header>
+
+  <!-- Main Slide Deck Stage -->
+  <main id="deck-stage">
+    <!-- SLIDES_START -->
+    <!-- SLIDE 01: HERO COVER -->
+    <div class="slide active" data-slide="01" data-notes="Kính thưa Ban Giám đốc và các anh chị quản lý, trong 9 tháng đầu năm 2026, quy mô dữ liệu công ty tăng gấp 3.5 lần, nhưng đội ngũ chúng ta vẫn đang tiêu tốn hơn 40 giờ mỗi tháng để xử lý file Excel thủ công và đối mặt với tỷ lệ sai sót từ 5 đến 8%. Đề án hôm nay mang đến giải pháp xây dựng hệ thống tự động hóa Data Pipeline và Dashboard thời gian thực, giải phóng nhân sự khỏi gánh nặng nhập liệu và đem lại số liệu chuẩn xác 99.8%. Hãy cùng tôi điểm qua chi tiết phương án và lộ trình triển khai ngay sau đây!">
+      <span class="slide-eyebrow eyebrow-indigo">⚡ KHỞI ĐỘNG DỰ ÁN Q4</span>
+      <h1 class="slide-title" style="font-size: 2.35rem; background: linear-gradient(135deg, #ffffff 40%, #818cf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        TỰ ĐỘNG HÓA HỆ THỐNG BÁO CÁO DOANH NGHIỆP
+      </h1>
+      <p class="slide-subtitle">
+        Đề xuất chuyển đổi số quy trình báo cáo dữ liệu định kỳ ứng dụng kết nối API và trực quan hóa thời gian thực
+      </p>
+
+      <div class="grid-2">
+        <!-- Hộp Thực trạng / Nỗi đau hiện tại -->
+        <div class="box-card">
+          <span class="card-header-icon">⚠️</span>
+          <h3 class="card-heading" style="color: #f87171;">Thực Trạng Hiện Nay</h3>
+          <p class="card-desc">
+            • <strong>Tốn 40+ giờ/tháng</strong> cho mỗi phòng ban để tải file, lọc dữ liệu và tổng hợp thủ công.<br>
+            • <strong>Tỷ lệ sai sót 5% - 8%</strong> do nhập liệu tay, số liệu thiếu nhất quán giữa các bộ phận.<br>
+            • <strong>Độ trễ 2 - 3 ngày làm việc</strong>, ban lãnh đạo chỉ xem được số liệu quá khứ thay vì tức thời.
+          </p>
+        </div>
+
+        <!-- Hộp Mục tiêu đột phá đề xuất -->
+        <div class="box-card box-card-highlight">
+          <span class="card-header-icon">🚀</span>
+          <h3 class="card-heading" style="color: #38bdf8;">Mục Tiêu Đột Phá Đề Xuất</h3>
+          <p class="card-desc">
+            • <strong>Kết nối API Data Pipeline 24/7</strong> gom dữ liệu tự động từ CRM, ERP và kho vận.<br>
+            • <strong>Cắt giảm 65% thời gian</strong> làm báo cáo, thời gian xử lý toàn hệ thống dưới 15 phút.<br>
+            • <strong>Cam kết chuẩn xác 99.8%</strong>, tự động phát hiện số liệu bất thường và gửi cảnh báo bot.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 02: SPLIT COMPARISON 2 CỘT -->
+    <div class="slide" data-slide="02" data-notes="Thưa các anh chị, nhìn vào bảng so sánh này, chúng ta thấy rõ điểm nghẽn lớn nhất trong vận hành hiện nay. Cách làm cũ khiến 3 phòng ban tiêu tốn hơn 120 giờ mỗi tháng và luôn bị trễ 2 đến 3 ngày so với thị trường, đồng thời rủi ro phụ thuộc lớn vào cá nhân giữ file macro phức tạp. Với mô hình tự động hóa mới, dữ liệu từ CRM và ERP được kéo về Data Warehouse theo thời gian thực, bot AI cảnh báo ngay khi phát hiện chỉ số bất thường. Đây chính là bước chuyển then chốt để công ty chuyển từ phản ứng thụ động sang điều hành chủ động theo dữ liệu.">
+      <span class="slide-eyebrow eyebrow-rose">⚖️ ĐỐI CHIẾU THỰC TRẠNG</span>
+      <h2 class="slide-title">Quy Trình Thủ Công vs Hệ Thống Tự Động Hóa</h2>
+      <p class="slide-subtitle">
+        Sự khác biệt căn bản giữa mô hình xử lý phân mảnh truyền thống và nền tảng dữ liệu đồng bộ tập trung
+      </p>
+
+      <div class="grid-2">
+        <!-- Cột Cách làm cũ / Thủ công -->
+        <div class="box-card" style="border-left: 4px solid #ef4444;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">❌</span>
+            <span class="badge-pill pill-red">QUY TRÌNH HIỆN TẠI (CŨ)</span>
+          </div>
+          <h3 class="card-heading">Vận Hành Thủ Công Phân Mảnh</h3>
+          <p class="card-desc">
+            <strong>1. Thu thập dữ liệu rời rạc:</strong> Tải file Excel thủ công từ CRM, ERP, Ngân hàng; tiêu tốn hơn 40 giờ/tháng mỗi phòng ban.<br><br>
+            <strong>2. Rủi ro sai số cao:</strong> Tỷ lệ lỗi 5% - 8% do thao tác tay; phát hiện bất thường rất muộn sau khi sự việc đã xảy ra.<br><br>
+            <strong>3. Báo cáo độ trễ lớn:</strong> Chậm từ 2 đến 3 ngày làm việc; rủi ro phụ thuộc cá nhân khi nhân sự phụ trách nghỉ phép.
+          </p>
+        </div>
+
+        <!-- Cột Cách làm mới / Tự động hóa -->
+        <div class="box-card box-card-highlight" style="border-left: 4px solid #10b981;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">✅</span>
+            <span class="badge-pill pill-green">HỆ THỐNG MỚI (ĐỀ XUẤT)</span>
+          </div>
+          <h3 class="card-heading">Nền Tảng Tự Động Hóa Tập Trung</h3>
+          <p class="card-desc">
+            <strong>1. Đồng bộ luồng API 24/7:</strong> Tự động gom và hợp nhất dữ liệu vào Data Warehouse tập trung, xử lý dưới 15 phút.<br><br>
+            <strong>2. Chuẩn hóa & Cảnh báo tức thì:</strong> Cam kết 99.8% chuẩn hóa không sai lệch; Bot cảnh báo chỉ số bất thường ngay qua Slack/Email.<br><br>
+            <strong>3. Bảng điều khiển Real-time:</strong> Cập nhật dữ liệu thời gian thực; chuẩn hóa quy trình, loại bỏ triệt để phụ thuộc cá nhân.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 03: GRID 3 CỘT (LỘ TRÌNH 3 GIAI ĐOẠN) -->
+    <div class="slide" data-slide="03" data-notes="Một câu hỏi lớn Ban Lãnh Đạo thường đặt ra là: Liệu việc thay đổi này có làm đảo lộn quy trình vận hành đang chạy hay không? Nhóm đã thiết kế lộ trình 10 tuần với 3 giai đoạn rất chặt chẽ: 3 tuần đầu xây hạ tầng ngầm Data Pipeline, 4 tuần tiếp theo thử nghiệm pilot song song tại 2 bộ phận trọng yếu là Kinh doanh và Tài chính để kiểm chứng, và 3 tuần cuối đào tạo chuyển giao toàn diện trước khi đóng hoàn toàn file Excel cũ. Với cách làm cuốn chiếu này, mọi rủi ro gián đoạn đều được kiểm soát ở mức thấp nhất.">
+      <span class="slide-eyebrow eyebrow-cyan">🔄 LỘ TRÌNH THỰC HIỆN</span>
+      <h2 class="slide-title">Kế Hoạch Triển Khai Trong 10 Tuần</h2>
+      <p class="slide-subtitle">
+        Lộ trình 3 giai đoạn tinh gọn, kiểm thử cuốn chiếu đảm bảo tính an toàn và không gián đoạn hoạt động kinh doanh
+      </p>
+
+      <div class="grid-3">
+        <!-- Bước 1 -->
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">🔌</span>
+            <span class="badge-pill pill-blue">GIAI ĐOẠN 01 (TUẦN 1 - 3)</span>
+          </div>
+          <h3 class="card-heading">Khảo Sát & Xây Pipeline</h3>
+          <p class="card-desc">
+            • Khảo sát toàn diện 3 nguồn: CRM khách hàng, ERP kế toán và kho vận.<br>
+            • Xây dựng Data Dictionary chuẩn và quy tắc đối soát tự động liên phòng ban.<br>
+            • Thiết lập Data Pipeline tự động gom dữ liệu về Data Warehouse trên Cloud.
+          </p>
+        </div>
+
+        <!-- Bước 2 -->
+        <div class="box-card box-card-highlight">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">⚙️</span>
+            <span class="badge-pill pill-green">GIAI ĐOẠN 02 (TUẦN 4 - 7)</span>
+          </div>
+          <h3 class="card-heading">Phát Triển & Thí Điểm</h3>
+          <p class="card-desc">
+            • Thiết kế Executive Dashboard trực quan cho Ban Giám đốc và Trưởng phòng.<br>
+            • Thử nghiệm Pilot Phase song song tại Phòng Kinh doanh và Phòng Tài chính.<br>
+            • Thu thập phản hồi người dùng thực tế, tối ưu hóa giao diện và logic chỉ số.
+          </p>
+        </div>
+
+        <!-- Bước 3 -->
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">🎓</span>
+            <span class="badge-pill pill-amber">GIAI ĐOẠN 03 (TUẦN 8 - 10)</span>
+          </div>
+          <h3 class="card-heading">Mở Rộng & Chuyển Giao</h3>
+          <p class="card-desc">
+            • Mở rộng quyền truy cập toàn diện cho tất cả các phòng ban trong công ty.<br>
+            • Tổ chức 3 buổi workshop đào tạo và chuyển giao tài liệu vận hành chuẩn SOP.<br>
+            • Đóng quy trình Excel thủ công, đưa hệ thống tự động Go-live 100%.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 04: KPI STATS SLIDE -->
+    <div class="slide" data-slide="04" data-notes="Dự án này không chỉ giải quyết sự vất vả của nhân viên, mà còn mang lại lợi ích đo đếm được bằng những con số định lượng cụ thể. Chúng tôi cam kết 3 KPI cốt lõi: Giảm ngay 65% thời gian chuẩn bị báo cáo, tăng 3.2 lần năng suất phân tích chiến lược của đội ngũ, và nâng độ chính xác dữ liệu lên ngưỡng 99.8% với cơ chế đối soát 2 chiều tự động. Đây là nền tảng vững chắc giúp ban điều hành đưa ra các quyết định chuẩn xác và kịp thời theo nhịp đập thị trường.">
+      <span class="slide-eyebrow eyebrow-emerald">📊 HIỆU QUẢ ĐO LƯỜNG</span>
+      <h2 class="slide-title">Mục Tiêu & Chỉ Số KPI Định Lượng</h2>
+      <p class="slide-subtitle">
+        Cam kết hiệu quả có thể đo lường trực tiếp sau khi hệ thống tự động hóa đi vào vận hành
+      </p>
+
+      <div class="grid-3">
+        <!-- Stat 1 -->
+        <div class="box-card" style="text-align: center; justify-content: center; padding: 30px 20px;">
+          <div style="font-size: 3.5rem; font-weight: 800; font-family: var(--font-mono); color: #38bdf8; line-height: 1; margin-bottom: 10px;">
+            -65%
+          </div>
+          <h3 class="card-heading" style="justify-content: center; font-size: 1.12rem; color: #f8fafc;">
+            Thời Gian Báo Cáo
+          </h3>
+          <p class="card-desc" style="margin-top: 6px;">
+            Giảm thời gian xử lý số liệu từ 40 giờ/tháng xuống dưới 14 giờ/tháng; tiết kiệm ít nhất 26 giờ/nhân sự.
+          </p>
+        </div>
+
+        <!-- Stat 2 -->
+        <div class="box-card box-card-highlight" style="text-align: center; justify-content: center; padding: 30px 20px;">
+          <div style="font-size: 3.5rem; font-weight: 800; font-family: var(--font-mono); color: #34d399; line-height: 1; margin-bottom: 10px;">
+            3.2x
+          </div>
+          <h3 class="card-heading" style="justify-content: center; font-size: 1.12rem; color: #f8fafc;">
+            Năng Suất Phân Tích
+          </h3>
+          <p class="card-desc" style="margin-top: 6px;">
+            Chuyển dịch vai trò từ thợ nhập liệu sang đối tác phân tích chiến lược, tăng tốc độ đề xuất kinh doanh gấp 3.2 lần.
+          </p>
+        </div>
+
+        <!-- Stat 3 -->
+        <div class="box-card" style="text-align: center; justify-content: center; padding: 30px 20px;">
+          <div style="font-size: 3.5rem; font-weight: 800; font-family: var(--font-mono); color: #a855f7; line-height: 1; margin-bottom: 10px;">
+            99.8%
+          </div>
+          <h3 class="card-heading" style="justify-content: center; font-size: 1.12rem; color: #f8fafc;">
+            Độ Chính Xác Dữ Liệu
+          </h3>
+          <p class="card-desc" style="margin-top: 6px;">
+            Loại bỏ triệt để rủi ro lỗi nhập tay; số liệu được đối soát 2 chiều tự động trước khi hiển thị lên dashboard.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 05: BẢNG MA TRẬN NGÂN SÁCH -->
+    <div class="slide" data-slide="05" data-notes="Kính thưa Ban Giám đốc, câu hỏi tiếp theo chắc chắn là: Dự án này cần đầu tư bao nhiêu và bao lâu thì thu hồi vốn? Tổng ngân sách đề xuất là 150 triệu VND cho toàn bộ Quý 4/2026, trong đó 40% dành cho bản quyền phần mềm BI, 30% cho hạ tầng Cloud và API, 17% cho đào tạo và 13% quỹ dự phòng rủi ro. Nhờ tiết kiệm hơn 120 giờ lao động mỗi tháng của đội ngũ chuyên viên, thời gian thu hồi vốn dự kiến chỉ dưới 4.5 tháng. Đây là khoản đầu tư rất tối ưu với tỷ suất sinh lời vượt trội về mặt chi phí vận hành.">
+      <span class="slide-eyebrow eyebrow-amber">📋 DỰ TOÁN TÀI CHÍNH</span>
+      <h2 class="slide-title">Dự Toán Ngân Sách & Phân Bổ Chi Phí</h2>
+      <p class="slide-subtitle">
+        Tổng ngân sách đầu tư 150 triệu VND với thời gian hoàn vốn (Payback Period) ước tính dưới 4.5 tháng
+      </p>
+
+      <div class="box-card" style="padding: 10px; overflow-x: auto;">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th style="width: 28%;">Hạng Mục Đầu Tư</th>
+              <th style="width: 38%;">Mô Tả Chi Tiết & Phạm Vi</th>
+              <th style="width: 18%;">Dự Toán (VND)</th>
+              <th style="width: 16%;">Tỷ Trọng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color: #f8fafc;">1. Hạ tầng Cloud & API Connector</strong></td>
+              <td>Máy chủ lưu trữ, băng thông và cổng tích hợp dữ liệu an toàn trong 12 tháng</td>
+              <td><span style="font-family: var(--font-mono); color: #38bdf8;">45.000.000 đ</span></td>
+              <td><span class="badge-pill pill-blue">30%</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color: #f8fafc;">2. Bản quyền phần mềm & Công cụ BI</strong></td>
+              <td>License gói doanh nghiệp cho nền tảng trực quan hóa dữ liệu và dashboard</td>
+              <td><span style="font-family: var(--font-mono); color: #34d399;">60.000.000 đ</span></td>
+              <td><span class="badge-pill pill-green">40%</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color: #f8fafc;">3. Đào tạo nội bộ & Tài liệu hóa SOP</strong></td>
+              <td>Tổ chức 3 workshop, biên soạn video cẩm nang hướng dẫn và hỗ trợ 1-1</td>
+              <td><span style="font-family: var(--font-mono); color: #fbbf24;">25.000.000 đ</span></td>
+              <td><span class="badge-pill pill-amber">17%</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color: #f8fafc;">4. Quỹ dự phòng rủi ro kỹ thuật</strong></td>
+              <td>Dự phòng phát sinh trong quá trình chuẩn hóa dữ liệu cũ và mở rộng API</td>
+              <td><span style="font-family: var(--font-mono); color: #a855f7;">20.000.000 đ</span></td>
+              <td><span class="badge-pill pill-blue">13%</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center; padding: 12px 18px; background: rgba(99, 102, 241, 0.08); border-radius: 10px; border: 1px solid rgba(99, 102, 241, 0.25);">
+        <div style="font-size: 0.88rem; color: #cbd5e1;">
+          💰 <strong style="color: #f8fafc;">TỔNG CỘNG: 150.000.000 VND</strong> (100% Phân Bổ)
+        </div>
+        <div style="font-size: 0.82rem; color: #34d399; font-weight: 600;">
+          ⚡ Thời gian hoàn vốn dự kiến: Dưới 4.5 tháng dựa trên giá trị giải phóng nhân lực
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 06: NHẬN DIỆN RỦI RO & PHÒNG NGỪA -->
+    <div class="slide" data-slide="06" data-notes="Một kế hoạch tốt không chỉ nói về màu hồng mà phải lường trước mọi rủi ro có thể phát sinh trong thực tế. Nhóm đã chủ động nhận diện 3 rủi ro lớn nhất: Dữ liệu cũ thiếu chuẩn hóa được giải quyết bằng script mapping tự động; tâm lý ngại thay đổi được tháo gỡ bằng tính năng xuất Excel 1 click kèm chế độ Buddy Support 1 kèm 1 trong 2 tuần đầu; và tính bảo mật được đảm bảo bằng phân quyền RBAC cùng mã hóa toàn diện. Chúng tôi cam kết hệ thống vận hành an toàn tuyệt đối ngay từ ngày đầu tiên.">
+      <span class="slide-eyebrow eyebrow-rose">🛡️ QUẢN TRỊ RỦI RO</span>
+      <h2 class="slide-title">Nhận Diện Rủi Ro & Kế Hoạch Phòng Ngừa</h2>
+      <p class="slide-subtitle">
+        Các giải pháp kiểm soát toàn diện về kỹ thuật, tâm lý chuyển đổi và an toàn bảo mật thông tin
+      </p>
+
+      <div class="grid-3">
+        <!-- Rủi ro 1 -->
+        <div class="box-card" style="border-top: 3px solid #f43f5e;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">🗃️</span>
+            <span class="badge-pill pill-red">RỦI RO DỮ LIỆU</span>
+          </div>
+          <h3 class="card-heading">Dữ Liệu Lịch Sử Bất Nhất</h3>
+          <p class="card-desc">
+            <strong>• Nguy cơ:</strong> Định dạng dữ liệu cũ thiếu nhất quán giữa các năm.<br><br>
+            <strong>• Giải pháp:</strong> Viết script tự động làm sạch và mapping dữ liệu trước khi nạp vào kho; tuyệt đối không can thiệp trực tiếp database cũ.
+          </p>
+        </div>
+
+        <!-- Rủi ro 2 -->
+        <div class="box-card box-card-highlight" style="border-top: 3px solid #fbbf24;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">👥</span>
+            <span class="badge-pill pill-amber">RỦI RO THÓI QUEN</span>
+          </div>
+          <h3 class="card-heading">Ngại Đổi Mới Từ Excel</h3>
+          <p class="card-desc">
+            <strong>• Nguy cơ:</strong> Nhân sự phòng ban quen thao tác thủ công trên Excel.<br><br>
+            <strong>• Giải pháp:</strong> Thiết kế giao diện thân thiện, tính năng 'Xuất Excel 1-click', cử nhân sự hỗ trợ trực tiếp (Buddy Support) trong 2 tuần đầu.
+          </p>
+        </div>
+
+        <!-- Rủi ro 3 -->
+        <div class="box-card" style="border-top: 3px solid #38bdf8;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">🔒</span>
+            <span class="badge-pill pill-blue">RỦI RO BẢO MẬT</span>
+          </div>
+          <h3 class="card-heading">Bảo Mật Dữ Liệu Nhạy Cảm</h3>
+          <p class="card-desc">
+            <strong>• Nguy cơ:</strong> Rò rỉ thông tin doanh thu, chi phí tài chính nội bộ.<br><br>
+            <strong>• Giải pháp:</strong> Cơ chế phân quyền theo vai trò (RBAC), mã hóa dữ liệu 2 đầu và lưu trữ nhật ký truy vết chi tiết (Audit Log).
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 07: SUMMARY & KÊU GỌI HÀNH ĐỘNG -->
+    <div class="slide" data-slide="07" data-notes="Để khép lại bài trình bày hôm nay, tôi xin nhấn mạnh rằng việc tự động hóa báo cáo lúc này không còn là một lựa chọn thêm, mà là điều kiện tiên quyết để doanh nghiệp tăng tốc trong quý cuối năm. Chúng tôi đã sẵn sàng mọi phương án kỹ thuật và nhân lực để đem lại kết quả hoàn vốn trong 4.5 tháng. Kính mong Ban Lãnh Đạo xem xét thông qua chủ trương trước ngày 25/10 để Tổ công tác có thể chính thức khởi động dự án vào ngày 01/11. Bây giờ, tôi xin trân trọng lắng nghe các câu hỏi và ý kiến đóng góp từ Ban Giám đốc!">
+      <span class="slide-eyebrow eyebrow-indigo">🎯 TỔNG KẾT & BÀN GIAO</span>
+      <h2 class="slide-title">Đúc Kết Cốt Lõi & Đề Xuất Hành Động</h2>
+      <p class="slide-subtitle">
+        Những thông điệp then chốt cần ghi nhớ và các bước đi tiếp theo để đưa dự án vào thực tiễn
+      </p>
+
+      <div class="grid-2">
+        <!-- Cột 3 đúc kết cốt lõi -->
+        <div class="box-card">
+          <span class="card-header-icon">💡</span>
+          <h3 class="card-heading">3 Thông Điệp Then Chốt</h3>
+          <p class="card-desc">
+            <strong>1. Bước chuyển mình sống còn:</strong> Tự động hóa báo cáo không chỉ là cải tiến công nghệ, mà là đòn bẩy nâng cao năng lực cạnh tranh và sự linh hoạt quản trị.<br><br>
+            <strong>2. Hiệu quả chứng minh ngay:</strong> Cắt giảm 65% thời gian thủ công, độ chính xác đạt 99.8% và hoàn vốn đầu tư chỉ sau 4.5 tháng.<br><br>
+            <strong>3. Triển khai an toàn:</strong> Lộ trình 10 tuần kiểm thử cuốn chiếu, tích hợp giải pháp phòng ngừa rủi ro và đào tạo chuyển giao toàn diện.
+          </p>
+        </div>
+
+        <!-- Cột Kêu gọi hành động & Q&A -->
+        <div class="box-card box-card-highlight" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <span class="card-header-icon">🤝</span>
+            <h3 class="card-heading" style="color: #38bdf8;">Đề Xuất Hành Động Ngay</h3>
+            <p class="card-desc">
+              <strong>1. Phê duyệt chủ trương:</strong> Ban Lãnh Đạo xem xét phê duyệt đề xuất và ngân sách 150 triệu VND trước ngày <strong>25/10/2026</strong>.<br><br>
+              <strong>2. Thành lập Taskforce:</strong> Thành lập Tổ công tác chuyên trách gồm IT, Tài chính và Vận hành để khởi động Giai đoạn 1 vào ngày <strong>01/11/2026</strong>.
+            </p>
+          </div>
+
+          <div style="background: rgba(255, 255, 255, 0.04); border-radius: 10px; padding: 14px 16px; border: 1px solid rgba(255, 255, 255, 0.08); margin-top: 16px;">
+            <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 4px;">Đầu mối phụ trách đề xuất:</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: #f8fafc;">Nguyễn Văn A - Trưởng nhóm Vận hành Số</div>
+            <div style="font-size: 0.82rem; color: #818cf8; font-family: var(--font-mono); margin-top: 4px;">Phòng Kỹ thuật & Tối ưu Hóa Vận Hành | Hotline: 0988.xxx.xxx</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- SLIDES_END -->
+  </main>
+
+  <!-- Speaker Notes Drawer -->
+  <aside id="notes-drawer">
+    <div class="notes-header">
+      <div class="notes-title">
+        <span>🎙️</span>
+        <span>KỊCH BẢN NGƯỜI NÓI (SPEAKER SCRIPT)</span>
+      </div>
+      <button class="btn-action" id="btn-close-notes" style="padding: 4px 8px;">✕</button>
+    </div>
+    <span class="notes-tag" id="notes-slide-tag">SLIDE 01</span>
+    <div class="notes-content" id="notes-body">
+      <!-- Script will be injected via JS -->
+    </div>
+  </aside>
+
+  <!-- Footer Navigation -->
+  <footer>
+    <div class="nav-hints">
+      <span>Điều khiển:</span>
+      <span><span class="kbd">◀</span> <span class="kbd">▶</span> hoặc <span class="kbd">Space</span> để chuyển slide</span>
+      <span><span class="kbd">S</span> Bật lời thoại</span>
+      <span><span class="kbd">F</span> Toàn màn hình</span>
+      <span><span class="kbd">Ctrl+P</span> Xuất PDF</span>
+    </div>
+    <div>
+      <span>Bản quyền Ban Đào Tạo AI • 2026</span>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const slides = document.querySelectorAll('.slide');
+      const progressBar = document.getElementById('progress-bar');
+      const slideNumDisplay = document.getElementById('slide-num');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const btnNotes = document.getElementById('btn-notes');
+      const btnCloseNotes = document.getElementById('btn-close-notes');
+      const btnFullscreen = document.getElementById('btn-fullscreen');
+      const notesDrawer = document.getElementById('notes-drawer');
+      const notesBody = document.getElementById('notes-body');
+      const notesSlideTag = document.getElementById('notes-slide-tag');
+
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+
+      function updateSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= totalSlides) index = totalSlides - 1;
+        currentSlide = index;
+
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === currentSlide);
+        });
+
+        // Update progress bar
+        const progress = totalSlides > 0 ? ((currentSlide + 1) / totalSlides) * 100 : 0;
+        progressBar.style.width = progress + '%';
+
+        // Update counter
+        const currentStr = String(currentSlide + 1).padStart(2, '0');
+        const totalStr = String(totalSlides).padStart(2, '0');
+        slideNumDisplay.textContent = `${currentStr} / ${totalStr}`;
+
+        // Update notes & auto scroll drawer to top
+        const activeSlideElem = slides[currentSlide];
+        if (activeSlideElem) {
+          const notesText = activeSlideElem.getAttribute('data-notes') || 'Chưa có ghi chú kịch bản cho slide này.';
+          notesSlideTag.textContent = `SLIDE ${currentStr} / ${totalStr}`;
+          notesBody.innerHTML = `<blockquote>"${notesText}"</blockquote>`;
+        }
+        notesDrawer.scrollTop = 0;
+      }
+
+      function nextSlide() {
+        if (currentSlide < totalSlides - 1) {
+          updateSlide(currentSlide + 1);
+        }
+      }
+
+      function prevSlide() {
+        if (currentSlide > 0) {
+          updateSlide(currentSlide - 1);
+        }
+      }
+
+      function toggleNotes() {
+        notesDrawer.classList.toggle('open');
+        btnNotes.classList.toggle('active', notesDrawer.classList.contains('open'));
+      }
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => {
+            console.error('Error attempting to enable fullscreen:', err);
+          });
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+        }
+      }
+
+      // Event listeners
+      btnNext.addEventListener('click', nextSlide);
+      btnPrev.addEventListener('click', prevSlide);
+      btnNotes.addEventListener('click', toggleNotes);
+      btnCloseNotes.addEventListener('click', toggleNotes);
+      btnFullscreen.addEventListener('click', toggleFullscreen);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'Enter' || e.key === 'PageDown') {
+          e.preventDefault();
+          nextSlide();
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp' || e.key === 'Backspace') {
+          e.preventDefault();
+          prevSlide();
+        } else if (e.key === 's' || e.key === 'S') {
+          e.preventDefault();
+          toggleNotes();
+        } else if (e.key === 'f' || e.key === 'F') {
+          e.preventDefault();
+          toggleFullscreen();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          updateSlide(0);
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          updateSlide(totalSlides - 1);
+        }
+      });
+
+      // Initialize first slide
+      updateSlide(0);
+    })();
+  </script>
+</body>
+</html>

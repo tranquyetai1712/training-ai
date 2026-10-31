@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trụ Cột 5: Cổng Kết Nối Đa Năng MCP • GOOGLE ANTIGRAVITY MASTERCLASS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-void: #0a0e17;
+      --bg-surface: #111827;
+      --bg-surface-elevated: #1e293b;
+      --border-subtle: rgba(255, 255, 255, 0.1);
+      --border-focus: rgba(99, 102, 241, 0.5);
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-dim: #94a3b8;
+      
+      --accent-indigo: #6366f1;
+      --accent-cyan: #0ea5e9;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-void);
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 90% 90%, rgba(6, 182, 212, 0.1) 0%, transparent 45%);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #progress-bar-container {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+    #progress-bar {
+      height: 100%;
+      width: 25%;
+      background: linear-gradient(90deg, var(--accent-indigo), var(--accent-cyan));
+      box-shadow: 0 0 10px rgba(6, 182, 212, 0.6);
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    header {
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(7, 9, 14, 0.85);
+      backdrop-filter: blur(16px);
+      z-index: 50;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+    .brand a {
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .brand a:hover { color: var(--accent-cyan); }
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: #a5b4fc;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .slide-counter {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+    .slide-counter strong { color: var(--accent-cyan); }
+
+    .btn-nav {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-nav:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    #deck-stage {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 24px;
+      overflow: hidden;
+    }
+
+    .slide-canvas {
+      position: absolute;
+      width: 100%;
+      max-width: 1320px;
+      height: 100%;
+      max-height: 740px;
+      background: linear-gradient(180deg, #131c2e 0%, #0d1524 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 28px 40px;
+      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.97) translateY(16px);
+      transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+      overflow: hidden;
+    }
+
+    .slide-canvas.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+      z-index: 10;
+    }
+
+    @keyframes fadeInSlideUp {
+      from { opacity: 0; transform: translateY(16px); filter: blur(4px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+
+    .slide-canvas:not(.active) * { opacity: 0; }
+    .slide-canvas.active .anim-1 { animation: fadeInSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both; }
+    .slide-canvas.active .anim-2 { animation: fadeInSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both; }
+    .slide-canvas.active .anim-3 { animation: fadeInSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both; }
+    .slide-canvas.active .anim-4 { animation: fadeInSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both; }
+
+    .svg-icon {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
+      stroke: currentColor;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    .tag-hero {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-cyan);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .title-display {
+      font-size: 2.15rem;
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .title-display span {
+      background: linear-gradient(90deg, #818cf8, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .lead-desc {
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      max-width: 900px;
+      font-weight: 400;
+    }
+
+    .slide-hud {
+      position: absolute;
+      top: 26px;
+      right: 36px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hud-chip {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hud-chip strong { color: var(--accent-cyan); }
+
+    /* Layout Cards & Grids */
+    .card-grid {
+      display: grid;
+      gap: 16px;
+      flex: 1;
+      align-items: stretch;
+      margin-top: 14px;
+    }
+    .col-2 { grid-template-columns: repeat(2, 1fr); }
+    .col-3 { grid-template-columns: repeat(3, 1fr); }
+    .col-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .stat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .card-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .stat-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .stat-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      flex: 1;
+    }
+    .stat-desc ul {
+      margin-left: 18px;
+      margin-top: 6px;
+    }
+    .stat-desc li {
+      margin-bottom: 4px;
+    }
+
+    .key-points-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .key-point-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.86rem;
+      line-height: 1.45;
+      color: var(--text-main);
+    }
+    .key-point-item strong {
+      color: #38bdf8;
+    }
+
+    .code-box {
+      background: #080d1a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: #93c5fd;
+      line-height: 1.45;
+      overflow-x: auto;
+      margin-top: 8px;
+    }
+
+    .footer-bar-summary {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    /* Speaker Notes Drawer */
+    #notes-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 199;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    #notes-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #notes-drawer {
+      position: fixed;
+      top: 0;
+      right: -520px;
+      width: 500px;
+      height: 100vh;
+      background: #0d131f;
+      border-left: 1px solid var(--border-subtle);
+      box-shadow: -15px 0 40px rgba(0, 0, 0, 0.8);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #notes-drawer.open { right: 0; }
+
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .notes-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .notes-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-cyan);
+      margin-top: 12px;
+    }
+    .notes-content {
+      flex: 1;
+      overflow-y: auto;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-top: 14px;
+      white-space: pre-wrap;
+    }
+
+    footer {
+      height: 38px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      background: rgba(7, 9, 14, 0.9);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+    }
+    .kbd {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-family: var(--font-mono);
+      color: #fff;
+    }
+
+    /* Hidden UI controls & Watermark */
+    .header-actions, .header-controls {
+      display: none !important;
+    }
+    footer > div:first-child {
+      display: none !important;
+    }
+    footer {
+      height: 44px;
+      justify-content: flex-end;
+      position: relative;
+      z-index: 60;
+      overflow: visible;
+    }
+    .footer-watermark-brand {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-mono);
+      color: var(--accent-cyan);
+      font-weight: 700;
+    }
+    .watermark-ai-code {
+      position: fixed;
+      top: 10px;
+      right: 24px;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2.5px solid rgba(56, 189, 248, 0.8);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.8), 0 0 18px rgba(99, 102, 241, 0.6), 0 0 8px rgba(14, 165, 233, 0.65);
+      z-index: 90;
+      pointer-events: none;
+    }
+    .slide-hud {
+      right: 116px;
+    }
+</style>
+</head>
+<body>
+
+  <div id="progress-bar-container"><div id="progress-bar"></div></div>
+
+  <header>
+    <div class="brand">
+      <a href="index.html" title="Trở về Trang chủ Portal Lobby">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>LOBBY</span>
+      </a>
+      <span style="color: var(--border-subtle);">/</span>
+      <span class="brand-badge">PHẦN 07</span>
+      <span style="color: #fff; font-weight: 600;">Trụ Cột 5: Cổng Kết Nối Đa Năng MCP</span>
+    </div>
+    <div class="header-actions">
+      <div class="slide-counter">SLIDE <strong id="slide-num">1 / 2</strong></div>
+      <button class="btn-nav" id="btn-prev">◀ Lùi</button>
+      <button class="btn-nav" id="btn-next">Tiếp ▶</button>
+      <button class="btn-nav" id="btn-notes" title="Bật/Tắt Lời thoại kịch bản (Phím S)">🎙️ Lời Thoại (S)</button>
+      <button class="btn-nav" id="btn-fullscreen" title="Toàn màn hình (Phím F)">⛶</button>
+    </div>
+  </header>
+
+  <main id="deck-stage">
+
+    <div class="slide-canvas active" data-slide="1" data-notes="Trụ cột 5 - MCP (Model Context Protocol): Cổng kết nối vạn năng.
+Trước đây, muốn AI đọc dữ liệu từ Gmail, Slack, cơ sở dữ liệu hay thư mục ổ cứng, lập trình viên phải viết hàng trăm dòng code API phức tạp.
+MCP giải quyết điều này bằng 1 giao thức chuẩn duy nhất (giống như cổng cắm USB-C trên điện thoại/laptop):
+1. Cắm là chạy (Plug and Play): Chỉ cần khai báo tên server và tham số trong file cấu hình.
+2. An toàn tuyệt đối: Dữ liệu được đọc trực tiếp từ máy bạn, không gửi toàn bộ dữ liệu nhạy cảm lên máy chủ bên thứ ba.
+3. Hỗ trợ hàng trăm dịch vụ: Gmail, Google Drive, PostgreSQL, SQLite, Slack, Notion, GitHub... mở rộng sức mạnh vô hạn cho AI!">
+      <div class="slide-hud">
+        <div class="hud-chip">TRỤ CỘT 05: <strong>CỔNG KẾT NỐI MCP</strong></div>
+      </div>
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-cyan);"><svg class="svg-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg> CỔNG USB-C CỦA THẾ GIỚI AI</span>
+        <h1 class="title-display">Trụ Cột 5 — MCP: <span>Cổng Kết Nối Vạn Năng</span></h1>
+        <p class="lead-desc">Chuẩn kết nối mở rộng Model Context Protocol — Giúp AI vươn tay chạm tới thế giới ứng dụng thực tế.</p>
+      </div>
+      <div class="card-grid col-3 anim-2">
+        <div class="stat-card" style="border-top: 3px solid var(--accent-indigo);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(99,102,241,0.18); color: #a5b4fc;">ĐẶC ĐIỂM 01</span></div>
+          <div class="stat-title">Chuẩn Hóa USB-C</div>
+          <div class="stat-desc">
+            <ul class="key-points-list">
+              <li class="key-point-item"><span style="color: #818cf8;">•</span> Không cần viết mã tích hợp API riêng cho từng phần mềm.</li>
+              <li class="key-point-item"><span style="color: #818cf8;">•</span> Khai báo cấu hình 1 lần — Kết nối mọi phần mềm văn phòng.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="stat-card" style="border-top: 3px solid var(--accent-cyan);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(14,165,233,0.18); color: #7dd3fc;">ĐẶC ĐIỂM 02</span></div>
+          <div class="stat-title">Thao Tác Thời Gian Thực</div>
+          <div class="stat-desc">
+            <ul class="key-points-list">
+              <li class="key-point-item"><span style="color: #38bdf8;">•</span> Đọc ghi trực tiếp: Gửi email, đẩy việc lên Trello, tạo sự kiện.</li>
+              <li class="key-point-item"><span style="color: #38bdf8;">•</span> Dữ liệu luôn cập nhật mới nhất, không bị lỗi thời.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">ĐẶC ĐIỂM 03</span></div>
+          <div class="stat-title">Bảo Mật Nội Bộ</div>
+          <div class="stat-desc">
+            <ul class="key-points-list">
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> Kết nối nội bộ qua giao thức cục bộ an toàn.</li>
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> Kiểm soát chặt chẽ quyền truy cập từng thư mục cụ thể.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bar-summary anim-3">
+        <span>🔌 <strong>Hiểu đơn giản:</strong> MCP chính là những cánh tay robot giúp AI gõ phím, mở hộp thư và quản lý file thay bạn!</span>
+        <span style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 700;">UNIVERSAL PROTOCOL</span>
+      </div>
+    </div>
+
+    <div class="slide-canvas" data-slide="2" data-notes="Thực hành MCP thực tế: Kết nối cổng Gmail MCP trong workspace độc lập Demo/ket-noi-mcp-gmail/.
+Nỗi ám ảnh mỗi sáng: Hòm thư Gmail ngập tràn hơn 50 email lộn xộn.
+Kích hoạt cổng Gmail MCP:
+1. Cấu hình server 'gmail' trong mcp_config.json: Cấp quyền truy cập một lần duy nhất qua giao thức an toàn.
+2. AI tự động trang bị các công cụ: search_emails, read_email, draft_email.
+3. Ra lệnh tự nhiên: 'Kiểm tra email 24h qua, lọc thư chứa từ khóa Báo giá hoặc Hợp đồng và lập bảng tóm tắt nội dung chính'.
+4. Kết quả: Quét 50 thư trong 8 giây, xuất bảng Markdown ngăn nắp gồm 3 việc khẩn cấp cần xử lý!">
+      <div class="slide-hud">
+        <div class="hud-chip">WORKSPACE: <strong>DEMO/KET-NOI-MCP-GMAIL</strong></div>
+        <div class="hud-chip">TRỤ CỘT 05: <strong>THỰC HÀNH GMAIL MCP</strong></div>
+      </div>
+      <div class="anim-1">
+        <span class="tag-hero" style="color: var(--accent-emerald);"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> THỰC HÀNH CẮM LÀ CHẠY</span>
+        <h2 class="title-display">Thực Hành: <span>Kết Nối Cổng Gmail MCP</span></h2>
+        <p class="lead-desc">Khai thác dữ liệu hòm thư thực tế — Tự động tìm kiếm, đọc hiểu và tóm tắt email công việc chỉ bằng 1 câu lệnh.</p>
+      </div>
+      <div class="card-grid col-2 anim-2">
+        <div class="stat-card" style="border-top: 3px solid var(--accent-cyan);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(14,165,233,0.18); color: #7dd3fc;">CẤU HÌNH MCP</span></div>
+          <div class="stat-title">mcp_config.json</div>
+          <div class="code-box" style="color: #7dd3fc;">{
+  "mcpServers": {
+    "gmail": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@gongrzhe/server-gmail-autoauth-mcp"
+      ]
+    }
+  }
+}</div>
+        </div>
+        <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">KẾT QUẢ THỰC TẾ</span></div>
+          <div class="stat-title">Thư Ký AI Quét Hòm Thư Tức Thì</div>
+          <div class="stat-desc">
+            <ul class="key-points-list">
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Quét thần tốc:</strong> Lọc hơn 50 email trong vài giây qua lệnh <code>search_emails</code>.</li>
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Bóc tách việc gấp:</strong> Lọc chính xác email chứa Báo giá, Dự thảo HĐ, Hóa đơn VAT.</li>
+              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Bảng tóm tắt tinh gọn:</strong> Xuất bảng Markdown tóm tắt người gửi, hạn chót và nội dung cần làm.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bar-summary anim-3">
+        <span>📬 <strong>Hiệu quả vượt bậc:</strong> Tạm biệt nỗi ám ảnh lọc email thủ công mỗi sáng — AI tự động tóm tắt công việc trong 30 giây!</span>
+        <span style="font-family: var(--font-mono); color: var(--accent-emerald); font-weight: 700;">SAFE & POWERFUL</span>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="notes-backdrop"></div>
+  <aside id="notes-drawer">
+    <div class="notes-header">
+      <div class="notes-title">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+        <span>KỊCH BẢN GIẢNG VIÊN</span>
+      </div>
+      <button class="btn-nav" id="btn-close-notes">✕</button>
+    </div>
+    <span class="notes-tag" id="notes-slide-tag">SLIDE 01 / 2</span>
+    <div class="notes-content" id="notes-body"></div>
+  </aside>
+
+  <footer>
+    <div>
+      <span>Điều khiển:</span>
+      <span style="margin-left: 8px;"><span class="kbd">◀</span> <span class="kbd">▶</span> hoặc <span class="kbd">Space</span> chuyển slide</span>
+      <span style="margin-left: 8px;"><span class="kbd">S</span> Kịch bản</span>
+      <span style="margin-left: 8px;"><span class="kbd">F</span> Toàn màn hình</span>
+    </div>
+    <div class="footer-watermark-brand" style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 700;">
+      <span>GOOGLE ANTIGRAVITY MASTERCLASS • 2026</span>
+      <img src="ai-code-watermark.png" alt="AI CODE" class="watermark-ai-code">
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const slides = document.querySelectorAll('.slide-canvas');
+      const progressBar = document.getElementById('progress-bar');
+      const slideNumDisplay = document.getElementById('slide-num');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const btnNotes = document.getElementById('btn-notes');
+      const btnCloseNotes = document.getElementById('btn-close-notes');
+      const btnFullscreen = document.getElementById('btn-fullscreen');
+      const notesDrawer = document.getElementById('notes-drawer');
+      const notesBody = document.getElementById('notes-body');
+      const notesSlideTag = document.getElementById('notes-slide-tag');
+      const notesBackdrop = document.getElementById('notes-backdrop');
+
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+
+      function updateSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= totalSlides) index = totalSlides - 1;
+        currentSlide = index;
+
+        slides.forEach((s, idx) => {
+          if (idx === currentSlide) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+
+        const pct = ((currentSlide + 1) / totalSlides) * 100;
+        if (progressBar) progressBar.style.width = pct + '%';
+        if (slideNumDisplay) slideNumDisplay.textContent = (currentSlide + 1) + ' / ' + totalSlides;
+
+        const activeSlide = slides[currentSlide];
+        if (activeSlide && notesBody) {
+          notesBody.textContent = activeSlide.getAttribute('data-notes') || 'Chưa có ghi chú cho slide này.';
+        }
+        if (notesSlideTag) {
+          notesSlideTag.textContent = 'SLIDE ' + (currentSlide + 1) + ' / ' + totalSlides;
+        }
+      }
+
+      function toggleNotes() {
+        const isOpen = notesDrawer.classList.contains('open');
+        if (isOpen) {
+          notesDrawer.classList.remove('open');
+          notesBackdrop.classList.remove('open');
+        } else {
+          notesDrawer.classList.add('open');
+          notesBackdrop.classList.add('open');
+        }
+      }
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => {});
+        } else {
+          if (document.exitFullscreen) document.exitFullscreen();
+        }
+      }
+
+      if (btnPrev) btnPrev.addEventListener('click', () => updateSlide(currentSlide - 1));
+      if (btnNext) btnNext.addEventListener('click', () => updateSlide(currentSlide + 1));
+      if (btnNotes) btnNotes.addEventListener('click', toggleNotes);
+      if (btnCloseNotes) btnCloseNotes.addEventListener('click', toggleNotes);
+      if (notesBackdrop) notesBackdrop.addEventListener('click', toggleNotes);
+      if (btnFullscreen) btnFullscreen.addEventListener('click', toggleFullscreen);
+
+      window.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.key === 'ArrowRight' || e.key === 'Space') {
+          e.preventDefault();
+          updateSlide(currentSlide + 1);
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          updateSlide(currentSlide - 1);
+        } else if (e.key === 's' || e.key === 'S') {
+          toggleNotes();
+        } else if (e.key === 'f' || e.key === 'F') {
+          toggleFullscreen();
+        }
+      });
+
+      updateSlide(0);
+    })();
+</script>
+</body>
+</html>

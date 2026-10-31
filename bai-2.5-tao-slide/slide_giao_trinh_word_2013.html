@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LÀM CHỦ MICROSOFT WORD 2013 - BÀI GIẢNG TOÀN DIỆN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Theme: Cyber Dark */
+      --bg-main: #090d16;
+      --bg-card: rgba(18, 24, 38, 0.85);
+      --bg-card-hover: rgba(28, 38, 58, 0.95);
+      --border-card: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(99, 102, 241, 0.35);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent-primary: #6366f1;
+      --accent-secondary: #06b6d4;
+      --accent-success: #10b981;
+      --accent-warning: #f59e0b;
+      --accent-danger: #f43f5e;
+      --accent-purple: #a855f7;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --card-glow: 0 0 25px rgba(99, 102, 241, 0.25);
+    }
+
+    body.theme-cyber-dark {
+      --bg-main: #090d16;
+      --bg-card: rgba(18, 24, 38, 0.85);
+      --bg-card-hover: rgba(28, 38, 58, 0.95);
+      --border-card: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(99, 102, 241, 0.35);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent-primary: #6366f1;
+      --accent-secondary: #06b6d4;
+      --card-glow: 0 0 25px rgba(99, 102, 241, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Navigation & Progress Bar */
+    #progress-bar-container {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.06);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+    #progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary), var(--accent-success));
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    header {
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(9, 13, 22, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 50;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: -0.01em;
+    }
+    .brand-tag {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(6, 182, 212, 0.25));
+      border: 1px solid var(--border-accent);
+      color: #a5b4fc;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-action {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-main);
+      padding: 6px 13px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .btn-action:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.22);
+      transform: translateY(-1px);
+    }
+    .btn-action.active {
+      background: linear-gradient(135deg, var(--accent-primary), #4f46e5);
+      border-color: #818cf8;
+      box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+      color: #ffffff;
+    }
+
+    .slide-counter {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 0 8px;
+    }
+
+    /* Main Deck Stage */
+    #deck-stage {
+      flex: 1;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 40px 48px;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      width: 92%;
+      max-width: 1280px;
+      height: calc(100vh - 120px);
+      max-height: 720px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      padding: 36px 46px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.96) translateY(20px);
+      transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+      overflow-y: auto;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1) translateY(0);
+      z-index: 10;
+    }
+
+    /* Micro-animations: Staggered Fade-up */
+    @keyframes slideInUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .slide.active .slide-eyebrow {
+      animation: slideInUp 0.38s ease 0.05s both;
+    }
+    .slide.active .slide-title {
+      animation: slideInUp 0.42s ease 0.12s both;
+    }
+    .slide.active .slide-subtitle {
+      animation: slideInUp 0.45s ease 0.18s both;
+    }
+    .slide.active .grid-2 > *,
+    .slide.active .grid-3 > * {
+      animation: slideInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .slide.active .grid-2 > *:nth-child(1),
+    .slide.active .grid-3 > *:nth-child(1) { animation-delay: 0.22s; }
+    .slide.active .grid-2 > *:nth-child(2),
+    .slide.active .grid-3 > *:nth-child(2) { animation-delay: 0.29s; }
+    .slide.active .grid-3 > *:nth-child(3) { animation-delay: 0.36s; }
+
+    .slide.active .compare-table {
+      animation: slideInUp 0.45s ease 0.25s both;
+    }
+
+    /* Typography */
+    .slide-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+    .eyebrow-indigo { color: #818cf8; }
+    .eyebrow-cyan { color: #22d3ee; }
+    .eyebrow-emerald { color: #34d399; }
+    .eyebrow-amber { color: #fbbf24; }
+    .eyebrow-rose { color: #fb7185; }
+
+    .slide-title {
+      font-size: 2.1rem;
+      font-weight: 800;
+      line-height: 1.22;
+      letter-spacing: -0.025em;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .slide-subtitle {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    /* Grids & Cards */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      flex: 1;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      flex: 1;
+    }
+
+    .box-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 14px;
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .box-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(99, 102, 241, 0.35);
+      box-shadow: var(--card-glow);
+      transform: translateY(-3px);
+    }
+
+    .box-card-highlight {
+      background: linear-gradient(145deg, rgba(99, 102, 241, 0.12), rgba(6, 182, 212, 0.06));
+      border-color: rgba(99, 102, 241, 0.3);
+    }
+
+    .card-header-icon {
+      font-size: 1.45rem;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    .card-heading {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .card-desc {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    /* Comparison Table */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 0.85rem;
+    }
+    .compare-table th {
+      background: rgba(255, 255, 255, 0.05);
+      text-align: left;
+      padding: 12px 14px;
+      font-weight: 700;
+      color: #e2e8f0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .compare-table td {
+      padding: 11px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .compare-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    /* Badges & Pills */
+    .badge-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+    }
+    .pill-red { background: rgba(239, 68, 68, 0.18); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+    .pill-green { background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .pill-blue { background: rgba(99, 102, 241, 0.18); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.3); }
+    .pill-amber { background: rgba(245, 158, 11, 0.18); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+
+    /* Bottom Navigation Bar */
+    footer {
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(9, 13, 22, 0.85);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+    }
+
+    .nav-hints {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .kbd {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      padding: 1px 6px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-main);
+    }
+
+    /* Speaker Notes Drawer */
+    #notes-drawer {
+      position: fixed;
+      right: 0;
+      top: 56px;
+      width: 440px;
+      height: calc(100vh - 108px);
+      background: #0d121f;
+      border-left: 1px solid rgba(99, 102, 241, 0.25);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.6);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 80;
+      overflow-y: auto;
+    }
+    #notes-drawer.open {
+      transform: translateX(0);
+    }
+
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 16px;
+    }
+    .notes-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #818cf8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .notes-content {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+    }
+    .notes-content blockquote {
+      background: rgba(99, 102, 241, 0.1);
+      border-left: 3px solid var(--accent-primary);
+      padding: 12px 14px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0;
+      font-style: italic;
+      color: #e0e7ff;
+    }
+    .notes-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    /* Print / PDF Mode */
+    @media print {
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
+      body {
+        overflow: visible !important;
+        height: auto !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      header, footer, #notes-drawer, #progress-bar-container {
+        display: none !important;
+      }
+      #deck-stage {
+        display: block !important;
+        padding: 0 !important;
+      }
+      .slide {
+        position: relative !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100vh !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: #ffffff !important;
+        color: #0f172a !important;
+      }
+      .slide-title { color: #0f172a !important; }
+      .box-card {
+        background: #f8fafc !important;
+        border-color: #e2e8f0 !important;
+        color: #1e293b !important;
+      }
+      .card-heading { color: #0f172a !important; }
+      .card-desc { color: #475569 !important; }
+    }
+  </style>
+</head>
+<body class="theme-cyber-dark">
+
+  <!-- Top Progress Bar -->
+  <div id="progress-bar-container">
+    <div id="progress-bar"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <span class="brand-tag">📘 BÀI GIẢNG WORD 2013</span>
+      <span>LÀM CHỦ MICROSOFT WORD 2013 - BÀI GIẢNG TOÀN DIỆN</span>
+    </div>
+
+    <div class="controls">
+      <span class="slide-counter" id="slide-num">01 / 12</span>
+      <button class="btn-action" id="btn-prev" title="Trang trước (Phím Mũi tên Trái)">◀ Trước</button>
+      <button class="btn-action" id="btn-next" title="Trang sau (Phím Mũi tên Phải hoặc Phím Cách)">Sau ▶</button>
+      <button class="btn-action" id="btn-notes" title="Bật/Tắt Lời thoại kịch bản thuyết trình (Phím S)">🎙️ Lời Thoại (S)</button>
+      <button class="btn-action" id="btn-fullscreen" title="Toàn màn hình (Phím F)">⛶ Toàn Màn Hình</button>
+    </div>
+  </header>
+
+  <!-- Main Slide Deck Stage -->
+  <main id="deck-stage">
+    <!-- SLIDES_START -->
+
+    <!-- SLIDE 01: HERO COVER SLIDE -->
+    <div class="slide active" data-slide="01" data-notes="Chào mừng các bạn đến với khóa học Microsoft Word 2013! Đã bao giờ bạn tự hỏi tại sao cùng soạn một văn bản nhưng có người làm mất 3 tiếng với đầy lỗi lệch dòng, trong khi dân chuyên nghiệp chỉ mất 30 phút để xuất bản một bản in hoàn hảo? Khóa học này được thiết kế dựa trên giáo trình 6 bài học thực chiến, giúp bạn nắm vững toàn bộ quy trình từ thiết lập giao diện, quy tắc gõ văn bản thô, xử lý bảng tính toán cho đến đóng gáy in ấn. Hãy cùng tôi bước vào bài học đầu tiên để làm chủ giao diện làm việc thông minh của Word 2013!">
+      <span class="slide-eyebrow eyebrow-indigo">⚡ TỔNG QUAN KHÓA HỌC</span>
+      <h1 class="slide-title" style="font-size: 2.35rem; background: linear-gradient(135deg, #ffffff 40%, #818cf8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        LÀM CHỦ MICROSOFT WORD 2013
+      </h1>
+      <p class="slide-subtitle">
+        Khóa học toàn diện bám sát giáo trình 146 trang: Từ giao diện cơ bản đến soạn thảo, bảng biểu, đồ họa &amp; in ấn chuyên nghiệp
+      </p>
+
+      <div class="grid-2">
+        <div class="box-card">
+          <span class="card-header-icon">⚠️</span>
+          <h3 class="card-heading" style="color: #f87171;">Thực Trạng Soạn Thảo Tự Phát</h3>
+          <p class="card-desc">
+            • <strong>Vừa gõ vừa căn chỉnh:</strong> Lạm dụng phím Space và Enter tạo khoảng cách khiến văn bản xô lệch khi mở trên máy khác.<br>
+            • <strong>Lỗi bảng biểu &amp; lề giấy:</strong> Không thiết lập khổ giấy và lề trang trước, dẫn đến mất góc và đứt trang khi in ấn.<br>
+            • <strong>Bỏ quên công cụ tự động:</strong> Làm thủ công các thao tác đánh số, mục lục, tính tổng số liệu và xử lý hình ảnh.
+          </p>
+        </div>
+
+        <div class="box-card box-card-highlight">
+          <span class="card-header-icon">🚀</span>
+          <h3 class="card-heading" style="color: #38bdf8;">Lộ Trình Đào Tạo 6 Bài Học</h3>
+          <p class="card-desc">
+            • <strong>Bài 1:</strong> Giao diện Ribbon &amp; Tùy biến Quick Access Toolbar.<br>
+            • <strong>Bài 2:</strong> Kỹ thuật soạn thảo thô &amp; Cài đặt Page Setup khổ A4 chuẩn.<br>
+            • <strong>Bài 3:</strong> Hiệu chỉnh Paragraph, thước Ruler &amp; chia cột Columns.<br>
+            • <strong>Bài 4:</strong> Làm việc với Bảng biểu Table &amp; Công thức Formula tính toán.<br>
+            • <strong>Bài 5:</strong> Chèn Picture, SmartArt sơ đồ, Chart biểu đồ &amp; Equation.<br>
+            • <strong>Bài 6:</strong> Kỹ thuật in ấn chuyên nghiệp, số trang &amp; đóng gáy Mirror Margins.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 02: BÀI 1: GIAO DIỆN -->
+    <div class="slide" data-slide="02" data-notes="Khi mở Word 2013, đập vào mắt chúng ta là một thanh công cụ dày đặc nút bấm – làm sao để không bị rối mắt? Bí quyết của Bài 1 là hiểu cơ chế Tab ngữ cảnh của thanh Ribbon: các nút lệnh chỉ sáng lên khi bạn chọn đúng đối tượng. Đồng thời, việc đưa các lệnh thường dùng lên thanh Quick Access và làm chủ menu File sẽ giúp bạn thao tác nhanh gấp ba lần so với rê chuột tìm kiếm. Hãy ghim ngay các nút lệnh quen thuộc lên Quick Access Toolbar để tối ưu không gian làm việc.">
+      <span class="slide-eyebrow eyebrow-cyan">🎛️ BÀI 1: KHÁM PHÁ GIAO DIỆN</span>
+      <h2 class="slide-title">Làm Chủ Thanh Ribbon &amp; Quick Access Toolbar</h2>
+      <p class="slide-subtitle">
+        Tối ưu hóa không gian làm việc và nắm vững cơ chế hiển thị lệnh theo ngữ cảnh trong Word 2013
+      </p>
+
+      <div class="grid-3">
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">🎛️</span>
+            <span class="badge-pill pill-blue">CẤU TRÚC LỆNH</span>
+          </div>
+          <h3 class="card-heading">Thanh Công Cụ Ribbon</h3>
+          <p class="card-desc">
+            • <strong>Các Tab chính:</strong> Home, Insert, Design, Page Layout, References, Mailings, Review, View.<br>
+            • <strong>Tab ngữ cảnh (Contextual):</strong> Format, Design, Layout chỉ xuất hiện khi click chọn Hình ảnh hoặc Bảng.<br>
+            • <strong>Tùy biến Ribbon:</strong> Chuột phải chọn Customize Ribbon để ẩn/hiện hoặc tạo tab mới theo ý muốn.
+          </p>
+        </div>
+
+        <div class="box-card box-card-highlight">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">⚡</span>
+            <span class="badge-pill pill-green">THAO TÁC NHANH</span>
+          </div>
+          <h3 class="card-heading">Quick Access Toolbar</h3>
+          <p class="card-desc">
+            • <strong>Góc trên cùng bên trái:</strong> Tích hợp các nút lệnh thao tác tức thời không phụ thuộc Tab hiện tại.<br>
+            • <strong>Các nút mặc định:</strong> Save (Ctrl+S), Undo (Ctrl+Z), Redo (Ctrl+Y), New (Ctrl+N), Quick Print.<br>
+            • <strong>Đổi vị trí hiển thị:</strong> Chọn 'Show Below the Ribbon' để mở rộng không gian nút bấm thuận tiện.
+          </p>
+        </div>
+
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">📂</span>
+            <span class="badge-pill pill-amber">QUẢN TRỊ TỆP</span>
+          </div>
+          <h3 class="card-heading">Office Button (Tab File)</h3>
+          <p class="card-desc">
+            • <strong>Mục Info:</strong> Xem số trang, dung lượng, tác giả và phân quyền bảo vệ tài liệu Protect Document.<br>
+            • <strong>Mục New &amp; Template:</strong> Khởi tạo văn bản trắng (Blank) hoặc kế thừa hàng trăm mẫu thiết kế sẵn.<br>
+            • <strong>Export PDF/XPS:</strong> Xuất bản tệp tin sang định dạng PDF chuẩn chỉ trong 1 cú nhấp chuột.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 03: BÀI 2: SOẠN THẢO THÔ -->
+    <div class="slide" data-slide="03" data-notes="Đâu là sai lầm phổ biến nhất khiến văn bản của bạn bị vỡ vụn khi mở trên máy tính khác? Đó chính là thói quen nhấn phím Space liên tục để đẩy chữ và nhấn nhiều phím Enter tạo khoảng trống. Nguyên tắc vàng của Bài 2: giai đoạn soạn thảo thô chỉ tập trung gõ nhanh và đúng chính tả; mọi thao tác ngắt dòng phải dùng Shift+Enter, còn sang trang mới bắt buộc dùng Ctrl+Enter. Hãy rèn luyện thói quen tắt chế độ vừa gõ vừa chỉnh font để tối đa hóa tốc độ nhập liệu.">
+      <span class="slide-eyebrow eyebrow-rose">✍️ BÀI 2: SOẠN THẢO VĂN BẢN</span>
+      <h2 class="slide-title">Quy Tắc Văn Bản Thô &amp; Kỹ Thuật Ngắt Dòng Chuẩn</h2>
+      <p class="slide-subtitle">
+        Loại bỏ các thói quen gõ phím tự phát gây lỗi bố cục và làm chậm tốc độ soạn thảo
+      </p>
+
+      <div class="grid-2">
+        <div class="box-card" style="border-left: 4px solid #ef4444;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">❌</span>
+            <span class="badge-pill pill-red">THÓI QUEN SAI LẦM</span>
+          </div>
+          <h3 class="card-heading">Soạn Thảo Tự Phát Gây Lỗi</h3>
+          <p class="card-desc">
+            <strong>1. Thừa phím Space:</strong> Nhấn liên tiếp dấu cách để đẩy tiêu đề ra giữa trang, đổi máy khác sẽ bị nhảy lệch dòng.<br><br>
+            <strong>2. Thừa phím Enter:</strong> Gõ Enter nhiều lần để tạo khoảng cách giữa 2 đoạn văn bản, gây thừa trang trắng vô ích.<br><br>
+            <strong>3. Phân tâm định dạng:</strong> Vừa gõ được 1 câu đã lo đổi màu chữ, in đậm, đổi font làm giảm 50% tốc độ gõ máy.<br><br>
+            <strong>4. Sai dấu ngắt câu:</strong> Đặt dấu chấm, phẩy cách xa từ đứng trước (Ví dụ: 'công ty , phần mềm').
+          </p>
+        </div>
+
+        <div class="box-card box-card-highlight" style="border-left: 4px solid #10b981;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">✅</span>
+            <span class="badge-pill pill-green">CHUẨN QUY KỸ THUẬT</span>
+          </div>
+          <h3 class="card-heading">Nguyên Tắc Văn Bản Thô 2013</h3>
+          <p class="card-desc">
+            <strong>1. Gõ thô liên tục:</strong> Nhập toàn bộ nội dung với phông mặc định Times New Roman 14, tập trung vào tính đúng đắn.<br><br>
+            <strong>2. Ngắt dòng (Shift + Enter):</strong> Xuống dòng nhưng vẫn giữ nguyên chung 1 Paragraph (Line Break) không sinh khoảng cách thừa.<br><br>
+            <strong>3. Ngắt trang (Ctrl + Enter):</strong> Sang trang mới độc lập hoàn toàn (Page Break), không phụ thuộc vào độ dài trang trước.<br><br>
+            <strong>4. Word Wrap tự động:</strong> Để văn bản tự động xuống dòng khi chạm lề phải, chỉ bấm Enter khi kết thúc hẳn một đoạn ý.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 04: BÀI 2: PAGE SETUP -->
+    <div class="slide" data-slide="04" data-notes="Tại sao văn bản in ra thường bị kẹp mất chữ vào gáy tài liệu hoặc bị tràn lề dưới chân trang? Vì đa số người dùng bỏ qua bước Page Setup ngay từ đầu. Một trang văn bản chuẩn hành chính bắt buộc phải đặt khổ giấy A4, để lề trái từ 3.0 đến 3.5cm cho việc đóng bìa gáy sách, và lề phải khoảng 1.5 đến 2cm. Mỗi khi tạo tệp văn bản mới, việc đầu tiên bạn phải làm là mở Tab Page Layout để cài đặt Page Setup chuẩn.">
+      <span class="slide-eyebrow eyebrow-cyan">📐 BÀI 2: THIẾT LẬP TRANG</span>
+      <h2 class="slide-title">Thiết Lập Khổ Giấy A4 &amp; Căn Lề Văn Bản (Margins)</h2>
+      <p class="slide-subtitle">
+        Khung cài đặt kích thước chuẩn mực cho tài liệu văn phòng và hồ sơ lưu trữ theo chuẩn hành chính
+      </p>
+
+      <div class="grid-3">
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">📄</span>
+            <span class="badge-pill pill-blue">KHỔ GIẤY</span>
+          </div>
+          <h3 class="card-heading">Cố Định Khổ A4 Chuẩn</h3>
+          <p class="card-desc">
+            • <strong>Vào Page Layout ➔ Size:</strong> Chọn khổ giấy A4 (Kích thước chuẩn: 210 x 297 mm).<br>
+            • <strong>Tránh dùng Letter:</strong> Mặc định Office thường để Letter (khổ Mỹ), in tại Việt Nam sẽ bị thừa đuôi và hụt chiều ngang.<br>
+            • <strong>Orientation:</strong> Portrait (chiều dọc văn bản thông thường) hoặc Landscape (chiều ngang cho bảng biểu lớn).
+          </p>
+        </div>
+
+        <div class="box-card box-card-highlight">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">📏</span>
+            <span class="badge-pill pill-green">ĐẶT LỀ MARGINS</span>
+          </div>
+          <h3 class="card-heading">Căn Lề Chuẩn Hành Chính</h3>
+          <p class="card-desc">
+            • <strong>Top (Lề Trên):</strong> Đặt từ 2.0 cm - 2.5 cm.<br>
+            • <strong>Bottom (Lề Dưới):</strong> Đặt từ 2.0 cm - 2.5 cm.<br>
+            • <strong>Left (Lề Trái):</strong> Đặt từ 3.0 cm - 3.5 cm (Chừa khoảng trống rộng để bấm gáy sách / kẹp file tài liệu).<br>
+            • <strong>Right (Lề Phải):</strong> Đặt từ 1.5 cm - 2.0 cm.
+          </p>
+        </div>
+
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">🔤</span>
+            <span class="badge-pill pill-amber">FONT CHỮ GỐC</span>
+          </div>
+          <h3 class="card-heading">Thiết Lập Font Mặc Định</h3>
+          <p class="card-desc">
+            • <strong>Font chữ quy chuẩn:</strong> Times New Roman hoặc Arial đảm bảo độ trang trọng.<br>
+            • <strong>Cỡ chữ chuẩn:</strong> Font Size 13pt hoặc 14pt (theo Nghị định 30 văn bản nhà nước).<br>
+            • <strong>Nút 'Set As Default':</strong> Lưu cài đặt font và lề trang áp dụng vĩnh viễn cho mọi tài liệu mới sau này.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 05: BÀI 3: CHỌN VÙNG & CHIA CỘT -->
+    <div class="slide" data-slide="05" data-notes="Khi copy văn bản từ trên mạng về Word, làm thế nào để không bị dính màu nền lạ và phông chữ lộn xộn? Bài 3 giải quyết triệt để vấn đề này với công cụ Paste Options: hãy chọn Keep Text Only để chỉ lấy chữ thô và kế thừa định dạng hiện hành. Ngoài ra, tính năng Columns sẽ giúp bạn chia văn bản thành 2-3 cột báo chí chuyên nghiệp kèm đường kẻ line giữa các cột. Hãy tập thói quen bấm chuột phải kiểm tra tùy chọn Paste trước khi dán nội dung vào tài liệu.">
+      <span class="slide-eyebrow eyebrow-emerald">✂️ BÀI 3: HIỆU CHỈNH VĂN BẢN</span>
+      <h2 class="slide-title">Kỹ Thuật Chọn Vùng, Cắt Dán &amp; Chia Cột Báo Chí</h2>
+      <p class="slide-subtitle">
+        Thao tác xử lý khối dữ liệu nhanh và xây dựng bố cục đa cột linh hoạt cho ấn phẩm
+      </p>
+
+      <div class="grid-3">
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">🖱️</span>
+            <span class="badge-pill pill-blue">CHỌN VĂN BẢN</span>
+          </div>
+          <h3 class="card-heading">Thao Tác Bôi Đen (Select)</h3>
+          <p class="card-desc">
+            • <strong>Bằng chuột:</strong> Nhấp đúp chuột chọn 1 từ; nhấp 3 lần chọn toàn bộ đoạn văn bản.<br>
+            • <strong>Bằng phím:</strong> <code class="kbd">Shift + → / ←</code> chọn từng ký tự; <code class="kbd">Shift + End</code> chọn đến hết dòng; <code class="kbd">Ctrl + Shift + ↓</code> chọn cả đoạn.<br>
+            • <strong>Select Text with Similar Formatting:</strong> Bôi đen toàn bộ các dòng có cùng định dạng chỉ với 1 click.
+          </p>
+        </div>
+
+        <div class="box-card box-card-highlight">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">📋</span>
+            <span class="badge-pill pill-green">PASTE OPTIONS</span>
+          </div>
+          <h3 class="card-heading">3 Chế Độ Cắt Dán Thông Minh</h3>
+          <p class="card-desc">
+            • <strong>Keep Source Formatting:</strong> Dán giữ nguyên phông chữ, màu sắc và định dạng gốc.<br>
+            • <strong>Merge Formatting:</strong> Hòa trộn định dạng nguồn với văn bản hiện tại của tài liệu.<br>
+            • <strong>Keep Text Only:</strong> Chỉ lấy chữ thô thuần túy, loại bỏ triệt để màu nền mạng, link ẩn và lỗi font ngoại lai.
+          </p>
+        </div>
+
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">📰</span>
+            <span class="badge-pill pill-amber">LAYOUT BÁO CHÍ</span>
+          </div>
+          <h3 class="card-heading">Chia Cột Văn Bản (Columns)</h3>
+          <p class="card-desc">
+            • <strong>Vào Page Layout ➔ Columns:</strong> Lựa chọn chia 2 cột (Two), 3 cột (Three), hoặc lệch trái/phải.<br>
+            • <strong>More Columns:</strong> Đặt khoảng cách giữa các cột trong mục Spacing.<br>
+            • <strong>Tùy chọn 'Line Between':</strong> Tự động thêm đường kẻ ngăn cách giữa các cột báo chuyên nghiệp.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 06: BÀI 3: ĐOẠN VĂN & THƯỚC RULER -->
+    <div class="slide" data-slide="06" data-notes="Làm thế nào để thụt đầu dòng hàng loạt đoạn văn mà không cần gõ phím Tab thủ công từng dòng? Chúng ta sử dụng thanh thước ngang Ruler: kéo con trượt First Line Indent sang phải 1cm cho toàn bộ văn bản. Đồng thời, sử dụng hộp thoại Paragraph để đặt Spacing After 6pt và dùng Multilevel List để Word tự động đánh số La Mã I, II, A, B mà không bao giờ lo nhầm lẫn. Hãy bật thanh thước Ruler như một công cụ thường trực trên màn hình.">
+      <span class="slide-eyebrow eyebrow-amber">📏 BÀI 3: ĐOẠN VĂN &amp; DANH SÁCH</span>
+      <h2 class="slide-title">Định Dạng Paragraph, Thước Ruler &amp; Multilevel List</h2>
+      <p class="slide-subtitle">
+        Điều khiển khoảng cách dòng, độ thụt lề chuẩn mực và đánh số đề mục phân cấp tự động
+      </p>
+
+      <div class="grid-2">
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">📐</span>
+            <span class="badge-pill pill-blue">THƯỚC RULER &amp; INDENT</span>
+          </div>
+          <h3 class="card-heading">Điều Khiển Thước Ngang Ruler</h3>
+          <p class="card-desc">
+            • <strong>First Line Indent (Tam giác trên):</strong> Kéo trượt sang phải để tự động thụt đầu dòng cho mọi đoạn văn (thường đặt 1.0 - 1.27 cm).<br><br>
+            • <strong>Left Indent (Khối vuông dưới):</strong> Thụt toàn bộ nội dung khối văn bản sang bên phải.<br><br>
+            • <strong>Hộp thoại Paragraph:</strong> Đặt Spacing Before: 0pt, After: 6pt để tạo khoảng thở giữa các đoạn mà không dùng phím Enter thừa.<br><br>
+            • <strong>Line Spacing:</strong> Thiết lập khoảng cách giãn dòng 1.15 hoặc 1.5 lines giúp mắt đọc êm ái, chống mỏi mắt.
+          </p>
+        </div>
+
+        <div class="box-card box-card-highlight">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">🔢</span>
+            <span class="badge-pill pill-green">ĐÁNH SỐ TỰ ĐỘNG</span>
+          </div>
+          <h3 class="card-heading">Bullets, Numbering &amp; Multilevel List</h3>
+          <p class="card-desc">
+            • <strong>Bullets (Ký hiệu đầu đoạn):</strong> Đánh dấu hoa thị, chấm tròn hoặc ảnh đại diện cho các gạch đầu dòng liệt kê.<br><br>
+            • <strong>Numbering:</strong> Đánh số thứ tự 1, 2, 3 hoặc I, II, III; hỗ trợ Set Numbering Value để bắt đầu đánh số từ một giá trị bất kỳ.<br><br>
+            • <strong>Multilevel List (Đề mục đa cấp):</strong> Phân cấp bài học chuẩn học thuật: Cấp 1 (Chương 1) ➔ Cấp 2 (Bài 1) ➔ Cấp 3 (Mục a, b).<br><br>
+            • <strong>Change List Level:</strong> Nhấn phím <code class="kbd">Tab</code> để hạ xuống cấp con, nhấn <code class="kbd">Shift + Tab</code> để nâng lên cấp cha.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 07: BÀI 4: BẢNG BIỂU & FORMULA -->
+    <div class="slide" data-slide="07" data-notes="Nhiều người nghĩ tính toán số liệu bảng biểu bắt buộc phải chuyển sang Excel – liệu Word có tự cộng được không? Bài 4 sẽ mở khóa sức mạnh bất ngờ của Word: bạn có thể viết công thức '=SUM(ABOVE)' để cộng tổng cột tiền, tính Thực lĩnh bằng công thức lương và sắp xếp danh sách theo thứ tự tên hoặc điểm số tăng/giảm bằng công cụ Sort ngay trong Tab Layout. Hãy ứng dụng ngay tính năng Formula cho các bảng báo giá và bảng lương nội bộ trong Word.">
+      <span class="slide-eyebrow eyebrow-emerald">🧮 BÀI 4: LÀM VIỆC VỚI BẢNG BIỂU</span>
+      <h2 class="slide-title">Thao Tác Table Chuyên Sâu &amp; Công Thức Tính Toán Formula</h2>
+      <p class="slide-subtitle">
+        Tổ chức dữ liệu dạng bảng, căn chỉnh ô đa hướng và xử lý tính toán số học tự động ngay trong Word
+      </p>
+
+      <div class="grid-3">
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">📊</span>
+            <span class="badge-pill pill-blue">CẤU TRÚC BẢNG</span>
+          </div>
+          <h3 class="card-heading">Hiệu Chỉnh Hàng &amp; Ô (Cell)</h3>
+          <p class="card-desc">
+            • <strong>Thêm/Xóa nhanh:</strong> Insert Above/Below (hàng), Insert Left/Right (cột).<br>
+            • <strong>Gộp &amp; Tách:</strong> Merge Cells gộp nhiều ô làm tiêu đề; Split Cells chia nhỏ ô theo số cột mong muốn.<br>
+            • <strong>AutoFit thông minh:</strong> 'AutoFit to Contents' tự co giãn theo độ dài chữ; 'AutoFit to Window' dàn đều theo khổ giấy.
+          </p>
+        </div>
+
+        <div class="box-card box-card-highlight">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">🧭</span>
+            <span class="badge-pill pill-green">CĂN CHỈNH Ô</span>
+          </div>
+          <h3 class="card-heading">Căn Lề 9 Vị Trí &amp; Text Direction</h3>
+          <p class="card-desc">
+            • <strong>Nhóm lệnh Alignment:</strong> Cung cấp 9 vị trí căn chữ trong ô (Align Center Left, Align Center, Align Top Right...).<br>
+            • <strong>Quy tắc nghề nghiệp:</strong> Cột chữ căn trái, cột số căn phải, tiêu đề căn chính giữa.<br>
+            • <strong>Text Direction:</strong> Xoay chữ dọc 90° hoặc 270° cho các cột tiêu đề hẹp (như điểm số) giúp tiết kiệm diện tích.
+          </p>
+        </div>
+
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">🧮</span>
+            <span class="badge-pill pill-amber">TÍNH TOÁN FORMULA</span>
+          </div>
+          <h3 class="card-heading">Hàm Formula &amp; Sắp Xếp Sort</h3>
+          <p class="card-desc">
+            • <strong>Tính tổng tự động:</strong> Dùng lệnh Formula điền <code class="kbd">=SUM(ABOVE)</code> để tính tổng tiền/điểm.<br>
+            • <strong>Tính lương phức tạp:</strong> Hỗ trợ biểu thức toán học như: Thực lĩnh = Lương Chính + Phụ Cấp - Tạm Ứng.<br>
+            • <strong>Sắp xếp dữ liệu (Sort):</strong> Sắp xếp danh sách theo bảng chữ cái ABC hoặc theo cột điểm thi tăng/giảm dần.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 08: BÀI 5: ĐỒ HỌA & PICTURE -->
+    <div class="slide" data-slide="08" data-notes="Bạn chèn một bức ảnh vào văn bản nhưng chữ chạy tán loạn không thể kiểm soát được vị trí ảnh? Điều bạn cần nắm vững trong Bài 5 là thuộc tính Wrap Text: chuyển sang chế độ Square hoặc In Front of Text để tự do di chuyển ảnh. Đặc biệt, tính năng Screenshot và Screen Clipping mới của Word 2013 cho phép bạn chụp bất kỳ góc màn hình nào dán trực tiếp mà không cần dùng Snipping Tool. Khám phá ngay thư viện Picture Styles để biến các hình ảnh minh họa thô sơ thành khung ảnh bắt mắt.">
+      <span class="slide-eyebrow eyebrow-cyan">🖼️ BÀI 5: CHÈN ĐỐI TƯỢNG ĐỒ HỌA</span>
+      <h2 class="slide-title">Xử Lý Hình Ảnh Picture, Picture Styles &amp; Screenshot</h2>
+      <p class="slide-subtitle">
+        Tích hợp hình ảnh minh họa sắc nét và kiểm soát vị trí tương tác giữa ảnh và văn bản
+      </p>
+
+      <div class="grid-3">
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">🖼️</span>
+            <span class="badge-pill pill-blue">VỊ TRÍ ẢNH</span>
+          </div>
+          <h3 class="card-heading">Chèn Ảnh &amp; Wrap Text</h3>
+          <p class="card-desc">
+            • <strong>Nguồn ảnh:</strong> Chèn tệp ảnh từ máy tính (Picture) hoặc tra cứu trực tuyến (Online Picture).<br>
+            • <strong>Chế độ Wrap Text cốt lõi:</strong> 'In Line with Text' (ảnh như ký tự), 'Square' (chữ bao quanh ô vuông), 'Tight' (chữ bo sát viền ảnh).<br>
+            • <strong>Position &amp; Align:</strong> Căn thẳng ảnh vào góc trên, giữa hoặc dưới trang theo tỷ lệ chính xác.
+          </p>
+        </div>
+
+        <div class="box-card box-card-highlight">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">🎨</span>
+            <span class="badge-pill pill-green">BỘ LỌC NGHỆ THUẬT</span>
+          </div>
+          <h3 class="card-heading">Picture Styles &amp; Cắt Cúp</h3>
+          <p class="card-desc">
+            • <strong>Thư viện Picture Styles:</strong> Áp dụng khung viền bóng đổ, phản chiếu gương, viền mờ 3D đẹp mắt.<br>
+            • <strong>Picture Border:</strong> Tùy biến màu viền, nét vẽ mảnh hoặc đứt đoạn quanh hình ảnh.<br>
+            • <strong>Công cụ Crop:</strong> Cắt bỏ viền thừa của ảnh trực tiếp trên văn bản; nén dung lượng ảnh với Compress Pictures.
+          </p>
+        </div>
+
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">📸</span>
+            <span class="badge-pill pill-amber">SCREEN CLIPPING</span>
+          </div>
+          <h3 class="card-heading">Chụp Màn Hình (Screenshot)</h3>
+          <p class="card-desc">
+            • <strong>Tính năng mới của Word 2013:</strong> Vào Insert ➔ Screenshot chụp nhanh các cửa sổ ứng dụng đang chạy.<br>
+            • <strong>Screen Clipping:</strong> Quét chuột chọn một góc màn hình tùy ý, nhả chuột là ảnh tự động dán ngay vào trang.<br>
+            • <strong>Tiết kiệm thời gian:</strong> Loại bỏ hoàn toàn các bước mở Paint hay chụp màn hình qua app bên ngoài.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 09: BÀI 5: SMARTART, CHART & EQUATION -->
+    <div class="slide" data-slide="09" data-notes="Làm thế nào để trình bày một cơ cấu phòng ban hay một công thức toán phức tạp mà không tốn công vẽ từng hình hộp? Thư viện SmartArt cung cấp hàng trăm sơ đồ tổ chức chuyên nghiệp, tự động co giãn chữ theo khung. Đối với báo cáo tài chính, công cụ Chart liên kết trực tiếp với Excel giúp biểu đồ cập nhật theo thời gian thực; còn Equation hỗ trợ đầy đủ ký hiệu toán học chuẩn mực quốc tế. Hãy thay thế các gạch đầu dòng liệt kê khô khan bằng sơ đồ SmartArt sinh động.">
+      <span class="slide-eyebrow eyebrow-emerald">📊 BÀI 5: TRỰC QUAN HÓA DỮ LIỆU</span>
+      <h2 class="slide-title">Sơ Đồ SmartArt, Biểu Đồ Chart &amp; Soạn Thảo Equation</h2>
+      <p class="slide-subtitle">
+        Biến dữ liệu trừu tượng thành sơ đồ trực quan và trình bày công thức học thuật chuẩn mực
+      </p>
+
+      <div class="grid-3">
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">🌳</span>
+            <span class="badge-pill pill-blue">SƠ ĐỒ TỔ CHỨC</span>
+          </div>
+          <h3 class="card-heading">SmartArt Đa Dạng</h3>
+          <p class="card-desc">
+            • <strong>Nhóm Hierarchy:</strong> Vẽ sơ đồ cơ cấu tổ chức công ty, cây phả hệ, danh mục sách theo chủ đề.<br>
+            • <strong>Điều khiển cấp bậc:</strong> Dùng lệnh 'Promote' để nâng cấp hình khối và 'Demote' để hạ xuống cấp con.<br>
+            • <strong>Tự động định dạng:</strong> Chữ tự co giãn vừa vặn với kích thước hộp; hỗ trợ đổi màu với Change Colors.
+          </p>
+        </div>
+
+        <div class="box-card box-card-highlight">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">📈</span>
+            <span class="badge-pill pill-green">BIỂU ĐỒ SỐ LIỆU</span>
+          </div>
+          <h3 class="card-heading">Vẽ Biểu Đồ Chart &amp; Excel</h3>
+          <p class="card-desc">
+            • <strong>Kết nối trực tiếp Excel:</strong> Chèn Chart, cửa sổ Excel thu nhỏ mở ra để bạn nhập số liệu nguồn thực tế.<br>
+            • <strong>Đa dạng loại hình:</strong> Biểu đồ hình cột (Column), đường biểu diễn (Line), hình tròn tỷ trọng (Pie).<br>
+            • <strong>Tinh chỉnh chi tiết:</strong> Thêm Chart Title, Data Labels (hiện số liệu trên đỉnh cột) và Axis Title nhãn trục.
+          </p>
+        </div>
+
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">∑</span>
+            <span class="badge-pill pill-amber">TOÁN HỌC &amp; KÝ TỰ</span>
+          </div>
+          <h3 class="card-heading">Equation &amp; Ký Tự Symbol</h3>
+          <p class="card-desc">
+            • <strong>Soạn thảo Equation:</strong> Hỗ trợ phân số (Fraction), căn bậc (Radical), tích phân (Integral), ma trận (Matrix).<br>
+            • <strong>Ký tự đặc biệt (Symbol):</strong> Chèn các biểu tượng pháp lý ©, ®, dấu tiền tệ $, €, ¥, mũi tên chỉ dẫn.<br>
+            • <strong>Chuẩn học thuật:</strong> Chuyển đổi giữa định dạng Professional (chuẩn in ấn) và Linear (ký tự dòng).
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 10: BÀI 6: IN ẤN & ĐÓNG GÁY -->
+    <div class="slide" data-slide="10" data-notes="Khâu cuối cùng nhưng mang tính quyết định: làm thế nào để cuốn tài liệu sau khi in ấn và bấm gáy không bị lệch trang hay lỗi lề? Bài 6 tổng hợp toàn bộ các kỹ thuật kiểm soát in ấn: thiết lập Header/Footer riêng biệt cho trang đầu (Different First Page), bật tùy chọn Mirror Margins trong Page Setup để lề gáy đối xứng hai mặt chẵn lẻ, và kiểm tra Print Preview trước khi bấm lệnh Print. Đừng bao giờ nhấn Ctrl+P khi chưa kiểm tra chế độ Mirror Margins và trang ngắt.">
+      <span class="slide-eyebrow eyebrow-rose">🖨️ BÀI 6: XUẤT BẢN &amp; IN ẤN</span>
+      <h2 class="slide-title">Chuẩn Hóa Ấn Phẩm Trước Khi In &amp; Kỹ Thuật Đóng Gáy</h2>
+      <p class="slide-subtitle">
+        Các bước kiểm soát chất lượng trang in cuối cùng để đảm bảo thẩm mỹ và tính chuẩn xác
+      </p>
+
+      <div class="grid-2">
+        <div class="box-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">📑</span>
+            <span class="badge-pill pill-blue">HOÀN THIỆN NỘI DUNG</span>
+          </div>
+          <h3 class="card-heading">Kiểm Tra Header, Footer &amp; Số Trang</h3>
+          <p class="card-desc">
+            • <strong>Header &amp; Footer:</strong> Đặt tiêu đề đầu trang và chân trang thống nhất; phân tách các chương bằng Next Section ngắt đoạn.<br><br>
+            • <strong>Different First Page:</strong> Tích chọn mục này để trang bìa đầu tiên không bị dính Header và không hiển thị số trang.<br><br>
+            • <strong>Different Odd &amp; Even Pages:</strong> Tạo tiêu đề và số trang so le cho trang chẵn và trang lẻ khi in sách hai mặt.<br><br>
+            • <strong>Format Page Numbers:</strong> Thiết lập đánh số trang kiểu La Mã (i, ii, iii) cho mục lục và số thường (1, 2, 3) cho nội dung chính.
+          </p>
+        </div>
+
+        <div class="box-card box-card-highlight">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+            <span class="card-header-icon" style="margin: 0;">🖨️</span>
+            <span class="badge-pill pill-green">CẤU HÌNH IN (CTRL+P)</span>
+          </div>
+          <h3 class="card-heading">Kỹ Thuật In Đóng Gáy (Mirror Margins)</h3>
+          <p class="card-desc">
+            • <strong>Mirror Margins (Lề đối xứng):</strong> Thiết lập lề Inside (gáy trong) rộng 3.5cm và Outside 1.5cm giúp cuốn sách mở ra hai trang cân xứng hoàn hảo.<br><br>
+            • <strong>Chọn trang in thông minh:</strong> Gõ <code class="kbd">5-10</code> để in liên tục từ trang 5 đến 10; gõ <code class="kbd">1, 3, 7</code> để in các trang rời rạc.<br><br>
+            • <strong>Print Odd/Even:</strong> In toàn bộ trang lẻ trước, sau đó lật giấy in tiếp trang chẵn cho máy in một mặt.<br><br>
+            • <strong>Page Per Sheet:</strong> In 2 hoặc 4 trang thu nhỏ trên cùng 1 mặt giấy A4 giúp tiết kiệm chi phí in tài liệu nháp.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 11: TỔNG HỢP PHÍM TẮT -->
+    <div class="slide" data-slide="11" data-notes="Một chuyên viên văn phòng làm việc hiệu quả khác người bình thường ở điểm nào? Đó là họ hiếm khi phải buông tay khỏi bàn phím. Bảng ma trận này đúc kết 16 phím tắt quyền lực nhất được rút ra từ toàn bộ 146 trang giáo trình: từ Shift+Enter ngắt dòng, Ctrl+Enter sang trang, Ctrl+B/I/U định dạng, đến Ctrl+P in ấn thông minh. Hãy in bảng ma trận này hoặc dán ngay cạnh màn hình máy tính để thực hành hàng ngày.">
+      <span class="slide-eyebrow eyebrow-amber">📋 TỔNG HỢP KỸ NĂNG</span>
+      <h2 class="slide-title">Ma Trận Phím Tắt &amp; Thao Tác Quyền Lực Nhất</h2>
+      <p class="slide-subtitle">
+        Bảng tra cứu các tổ hợp phím tắt cốt lõi được trích xuất từ 6 bài học trong giáo trình Word 2013
+      </p>
+
+      <div class="box-card" style="padding: 10px; overflow-x: auto;">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th style="width: 22%;">Nhóm Kỹ Năng</th>
+              <th style="width: 26%;">Tổ Hợp Phím Tắt</th>
+              <th style="width: 38%;">Ý Nghĩa &amp; Tác Vụ Thực Tiễn</th>
+              <th style="width: 14%;">Ưu Tiên</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color: #f8fafc;">1. Soạn Thảo &amp; Ngắt</strong></td>
+              <td><code class="kbd">Shift + Enter</code> / <code class="kbd">Ctrl + Enter</code></td>
+              <td>Xuống dòng không tách đoạn (Line Break) &amp; Ngắt trang mới sạch sẽ (Page Break)</td>
+              <td><span class="badge-pill pill-green">BẮT BUỘC</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color: #f8fafc;">2. Điều Hướng Con Trỏ</strong></td>
+              <td><code class="kbd">Ctrl + ← / →</code> / <code class="kbd">Home / End</code></td>
+              <td>Nhảy nhanh qua từng từ nguyên vẹn; về đầu dòng hoặc cuối dòng hiện thời</td>
+              <td><span class="badge-pill pill-blue">TĂNG TỐC</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color: #f8fafc;">3. Chọn &amp; Bôi Đen</strong></td>
+              <td><code class="kbd">Shift + End</code> / <code class="kbd">Ctrl + A</code></td>
+              <td>Bôi đen nhanh từ con trỏ tới cuối dòng; chọn toàn bộ nội dung văn bản</td>
+              <td><span class="badge-pill pill-green">THƯỜNG DÙNG</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color: #f8fafc;">4. Định Dạng Nhanh</strong></td>
+              <td><code class="kbd">Ctrl + B / I / U</code> / <code class="kbd">Ctrl + [ / ]</code></td>
+              <td>In đậm, in nghiêng, gạch chân; tăng giảm kích thước cỡ chữ từng đơn vị</td>
+              <td><span class="badge-pill pill-green">CƠ BẢN</span></td>
+            </tr>
+            <tr>
+              <td><strong style="color: #f8fafc;">5. Quản Trị &amp; In Ấn</strong></td>
+              <td><code class="kbd">Ctrl + S</code> / <code class="kbd">Ctrl + P</code> / <code class="kbd">Ctrl + F1</code></td>
+              <td>Lưu tệp tức thì; mở màn hình Print Preview và Ẩn/Hiện thanh Ribbon</td>
+              <td><span class="badge-pill pill-amber">XUẤT BẢN</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SLIDE 12: TỔNG KẾT & BÀI TẬP -->
+    <div class="slide" data-slide="12" data-notes="Để khép lại khóa học, đâu là 3 kim chỉ nam bạn cần ghi nhớ suốt sự nghiệp văn phòng? Thứ nhất: Soạn thô trước - Định dạng sau. Thứ hai: Dùng công cụ tự động - Không căn chỉnh thủ công. Thứ ba: Luôn kiểm tra Page Setup và lề in trước khi xuất bản. Áp dụng 3 điều này cùng bài tập thực hành cuối khóa sẽ biến bạn thành chuyên gia Word thực thụ. Bây giờ, xin mời quý học viên bắt tay vào bài tập thực hành tổng hợp và gửi câu hỏi giao lưu!">
+      <span class="slide-eyebrow eyebrow-indigo">🎯 TỔNG KẾT &amp; THỰC HÀNH</span>
+      <h2 class="slide-title">3 Nguyên Tắc Vàng &amp; Bài Tập Đồ Án Cuối Khóa</h2>
+      <p class="slide-subtitle">
+        Những tư duy bất biến để duy trì năng suất và bài tập ứng dụng toàn diện 6 bài học
+      </p>
+
+      <div class="grid-2">
+        <div class="box-card">
+          <span class="card-header-icon">💡</span>
+          <h3 class="card-heading">3 Nguyên Tắc Vàng Cốt Lõi</h3>
+          <p class="card-desc">
+            <strong>1. Soạn Thô Trước - Format Sau:</strong> Tập trung gõ nội dung nhanh và chuẩn chính tả, không vừa gõ vừa tô màu hoặc chỉnh kích thước chữ thủ công.<br><br>
+            <strong>2. Tận Dụng Công Cụ Tự Động:</strong> Dùng Indent thước đo thay phím Space, dùng Paragraph Spacing thay phím Enter, dùng Formula và SmartArt thay vẽ tay.<br><br>
+            <strong>3. Kiểm Soát Trước Khi In:</strong> Luôn cài đặt khổ giấy A4, cấu hình Mirror Margins cho tài liệu đóng gáy và kiểm tra số trang chẵn lẻ trên Print Preview.
+          </p>
+        </div>
+
+        <div class="box-card box-card-highlight" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <span class="card-header-icon">🎓</span>
+            <h3 class="card-heading" style="color: #38bdf8;">Đồ Án Thực Hành Tổng Hợp</h3>
+            <p class="card-desc">
+              <strong>Đề bài thực chiến:</strong> Soạn thảo hồ sơ 'Hợp Đồng Kinh Tế &amp; Báo Cáo Nhân Sự':<br>
+              • Cài đặt Page Setup khổ A4, lề trái 3.5cm đóng gáy.<br>
+              • Tạo bảng lương phòng ban, dùng lệnh Formula tính Thực Lĩnh và Sort theo lương.<br>
+              • Vẽ sơ đồ cơ cấu tổ chức phòng ban bằng SmartArt Hierarchy.<br>
+              • Thiết lập Header/Footer và xuất bản thành file PDF in hai mặt hoàn chỉnh.
+            </p>
+          </div>
+
+          <div style="background: rgba(255, 255, 255, 0.04); border-radius: 10px; padding: 14px 16px; border: 1px solid rgba(255, 255, 255, 0.08); margin-top: 14px;">
+            <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 4px;">Khóa học tin học văn phòng:</div>
+            <div style="font-size: 0.98rem; font-weight: 700; color: #f8fafc;">MICROSOFT WORD 2013 MASTERCLASS</div>
+            <div style="font-size: 0.82rem; color: #818cf8; font-family: var(--font-mono); margin-top: 4px;">training@word2013.internal | Giải đáp thực hành 24/7</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDES_END -->
+  </main>
+
+  <!-- Speaker Notes Drawer -->
+  <aside id="notes-drawer">
+    <div class="notes-header">
+      <div class="notes-title">
+        <span>🎙️</span>
+        <span>KỊCH BẢN NGƯỜI NÓI (SPEAKER SCRIPT)</span>
+      </div>
+      <button class="btn-action" id="btn-close-notes" style="padding: 4px 8px;">✕</button>
+    </div>
+    <span class="notes-tag" id="notes-slide-tag">SLIDE 01 / 12</span>
+    <div class="notes-content" id="notes-body">
+      <!-- Script will be injected via JS -->
+    </div>
+  </aside>
+
+  <!-- Footer Navigation -->
+  <footer>
+    <div class="nav-hints">
+      <span>Điều khiển:</span>
+      <span><span class="kbd">◀</span> <span class="kbd">▶</span> hoặc <span class="kbd">Space</span> để chuyển slide</span>
+      <span><span class="kbd">S</span> Bật lời thoại</span>
+      <span><span class="kbd">F</span> Toàn màn hình</span>
+      <span><span class="kbd">Ctrl+P</span> Xuất PDF</span>
+    </div>
+    <div>
+      <span>© 2026 Giáo Trình Microsoft Word 2013. Mọi quyền được bảo lưu.</span>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const slides = document.querySelectorAll('.slide');
+      const progressBar = document.getElementById('progress-bar');
+      const slideNumDisplay = document.getElementById('slide-num');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const btnNotes = document.getElementById('btn-notes');
+      const btnCloseNotes = document.getElementById('btn-close-notes');
+      const btnFullscreen = document.getElementById('btn-fullscreen');
+      const notesDrawer = document.getElementById('notes-drawer');
+      const notesBody = document.getElementById('notes-body');
+      const notesSlideTag = document.getElementById('notes-slide-tag');
+
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+
+      function updateSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= totalSlides) index = totalSlides - 1;
+        currentSlide = index;
+
+        slides.forEach((slide, i) => {
+          slide.classList.toggle('active', i === currentSlide);
+        });
+
+        // Update progress bar
+        const progress = totalSlides > 0 ? ((currentSlide + 1) / totalSlides) * 100 : 0;
+        progressBar.style.width = progress + '%';
+
+        // Update counter
+        const currentStr = String(currentSlide + 1).padStart(2, '0');
+        const totalStr = String(totalSlides).padStart(2, '0');
+        slideNumDisplay.textContent = `${currentStr} / ${totalStr}`;
+
+        // Update notes & auto scroll drawer to top
+        const activeSlideElem = slides[currentSlide];
+        if (activeSlideElem) {
+          const notesText = activeSlideElem.getAttribute('data-notes') || 'Chưa có ghi chú kịch bản cho slide này.';
+          notesSlideTag.textContent = `SLIDE ${currentStr} / ${totalStr}`;
+          notesBody.innerHTML = `<blockquote>"${notesText}"</blockquote>`;
+        }
+        notesDrawer.scrollTop = 0;
+      }
+
+      function nextSlide() {
+        if (currentSlide < totalSlides - 1) {
+          updateSlide(currentSlide + 1);
+        }
+      }
+
+      function prevSlide() {
+        if (currentSlide > 0) {
+          updateSlide(currentSlide - 1);
+        }
+      }
+
+      function toggleNotes() {
+        notesDrawer.classList.toggle('open');
+        btnNotes.classList.toggle('active', notesDrawer.classList.contains('open'));
+      }
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => {
+            console.error('Error attempting to enable fullscreen:', err);
+          });
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+        }
+      }
+
+      // Event listeners
+      btnNext.addEventListener('click', nextSlide);
+      btnPrev.addEventListener('click', prevSlide);
+      btnNotes.addEventListener('click', toggleNotes);
+      btnCloseNotes.addEventListener('click', toggleNotes);
+      btnFullscreen.addEventListener('click', toggleFullscreen);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ' || e.key === 'Enter' || e.key === 'PageDown') {
+          e.preventDefault();
+          nextSlide();
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'PageUp' || e.key === 'Backspace') {
+          e.preventDefault();
+          prevSlide();
+        } else if (e.key === 's' || e.key === 'S') {
+          e.preventDefault();
+          toggleNotes();
+        } else if (e.key === 'f' || e.key === 'F') {
+          e.preventDefault();
+          toggleFullscreen();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          updateSlide(0);
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          updateSlide(totalSlides - 1);
+        }
+      });
+
+      // Initialize first slide
+      updateSlide(0);
+    })();
+  </script>
+</body>
+</html>

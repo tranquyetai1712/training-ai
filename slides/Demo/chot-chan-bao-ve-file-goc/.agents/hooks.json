@@ -1,0 +1,16 @@
+{
+  "protect-root-files": {
+    "PreToolUse": [
+      {
+        "matcher": "run_command|write_to_file|replace_file_content",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .agents/scripts/protect_root_files.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
