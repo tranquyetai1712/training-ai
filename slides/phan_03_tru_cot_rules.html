@@ -417,14 +417,20 @@
       font-weight: 700;
     }
     .watermark-ai-code {
-      width: 64px;
-      height: 64px;
+      position: fixed;
+      top: 10px;
+      right: 24px;
+      width: 96px;
+      height: 96px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid rgba(56, 189, 248, 0.75);
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.75), 0 0 14px rgba(99, 102, 241, 0.55), 0 0 6px rgba(14, 165, 233, 0.6);
-      transform: translateY(-14px);
-      flex-shrink: 0;
+      border: 2.5px solid rgba(56, 189, 248, 0.8);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.8), 0 0 18px rgba(99, 102, 241, 0.6), 0 0 8px rgba(14, 165, 233, 0.65);
+      z-index: 90;
+      pointer-events: none;
+    }
+    .slide-hud {
+      right: 116px;
     }
 </style>
 </head>
