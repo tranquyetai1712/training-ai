@@ -10,6 +10,7 @@
 
 ## 🎬 1. CHUẨN BỊ TRƯỚC KHI QUAY
 * **Cửa sổ trình chiếu:** Mở tệp slide `slides/phan_02_tu_duy_giao_viec.html` (Slide 1: Từ Chatbot Thụ Động Sang Trợ Lý Biết Tự Làm Việc).
+* **Môi trường thực hành (Minh họa trực quan):** Mở sẵn Antigravity Desktop tại thư mục `slides/Demo/so-sanh-chatbot-vs-antigravity/` có chứa tệp dữ liệu gốc `chi_phi_cong_tac_thang_10.xlsx` (gồm 16 khoản chi công tác của 4 phòng ban: Marketing 18,2 triệu; Kinh Doanh 14,5 triệu; Kỹ Thuật 9,8 triệu; Nhân Sự 6,5 triệu — Tổng 49 triệu VNĐ) để chiếu minh họa và gõ lệnh giao việc trực tiếp.
 * **Tông giọng:** Điềm tĩnh, tự tin, cuốn hút, mang phong thái của một người quản lý phân quyền và ủy thác công việc chuyên nghiệp.
 
 ---
@@ -29,12 +30,13 @@ Có bao giờ bạn tự hỏi: Tại sao cùng sử dụng AI, có người l�
 ---
 
 ### [00:30 - 01:30] SO SÁNH THỰC TẾ: CHATBOT CŨ VS GOOGLE ANTIGRAVITY
-`[Chỉ vào Cột trái: Chatbot cũ ➔ Chuyển sang Cột phải: Google Antigravity]`
+`[Chỉ vào Cột trái: Chatbot cũ ➔ Chuyển sang Cột phải: Google Antigravity]`  
+`[Mở nhanh tệp chi_phi_cong_tac_thang_10.xlsx trong workspace slides/Demo/so-sanh-chatbot-vs-antigravity/ để người xem thấy bảng 16 dòng chi phí công tác chưa tổng hợp, sau đó gõ lệnh trực tiếp vào khung chat Antigravity]`
 
-"Để bạn dễ hình dung, hãy lấy một ví dụ rất quen thuộc trong công sở: Bạn cần tính tổng chi phí công tác theo từng phòng ban từ một bảng tính Excel.
+"Để bạn dễ hình dung, hãy lấy một ví dụ rất quen thuộc trong công sở: Bạn cần tính tổng chi phí công tác theo từng phòng ban từ một bảng tính Excel như file `chi_phi_cong_tac_thang_10.xlsx` trên màn hình.
 
 * **Nếu bạn dùng một Chatbot thông thường:** Khi bạn hỏi cách làm, chatbot sẽ trả lời bạn một đoạn lý thuyết: *'Hãy mở Excel, dùng hàm SUMIF với cú pháp này...'*. Chatbot trả lời rất đúng, **thế nhưng** người phải tự tay mở file, gõ từng ký tự hàm, rồi kéo chuột mỏi tay... **thì rốt cuộc vẫn là chính đôi tay bạn!**
-* **Thế nhưng với một Trợ lý AI thực thụ như Antigravity:** Bạn chỉ cần gửi file Excel và yêu cầu: *'Hãy đọc file này, tính tổng chi phí từng phòng ban và xuất báo cáo hoàn chỉnh cho tôi.'*
+* **Thế nhưng với một Trợ lý AI thực thụ như Antigravity:** Bạn chỉ cần gửi file Excel và yêu cầu: *'Hãy đọc file `chi_phi_cong_tac_thang_10.xlsx`, tính tổng chi phí từng phòng ban và xuất báo cáo hoàn chỉnh cho tôi.'*
 
 **Ngay lập tức,** Antigravity sẽ **tự mở file ra đọc**, **tự động tính toán số liệu**, và **tự tạo ra một file Excel mới hoàn chỉnh** đặt ngay ngắn trên máy tính cho bạn nghiệm thu!
 
