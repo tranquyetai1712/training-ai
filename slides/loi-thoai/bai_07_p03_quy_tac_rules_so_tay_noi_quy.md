@@ -52,6 +52,8 @@ Hãy hình dung Rules giống hệt như **Cuốn Sổ Tay Nội Quy Công Ty** 
 
 * **Tầng thứ nhất — Global Rules (Nội quy toàn máy tính):**
   * Nằm tại thư mục cấu hình chung của bạn (`~/.gemini/config/rules/`).
+  * **Dành riêng cho bạn nào dùng Windows:** Đừng lo lắng nếu thấy ký hiệu dấu ngã (`~`) hơi lạ lẫm nhé! Ký hiệu này thực chất chỉ là cách viết tắt của thư mục tài khoản cá nhân trên máy tính của bạn (`C:\Users\<Tên_Của_Bạn>\`). Như vậy, đường dẫn thực tế trên Windows chính là: `C:\Users\<Tên_Của_Bạn>\.gemini\config\rules\`.
+  * **Mẹo mở nhanh 1 giây cho dân văn phòng:** Bạn không cần phải lần mò tìm thư mục ẩn làm gì. Chỉ cần nhấn tổ hợp phím **Windows + R** trên bàn phím, dán dòng chữ `%USERPROFILE%\.gemini\config\rules\` rồi bấm **Enter**, thư mục nội quy này sẽ lập tức hiện ra ngay trước mắt bạn!
   * Tự động áp dụng cho **mọi dự án**, mọi lần bạn mở máy tính làm việc.
   * Ví dụ: Những nguyên tắc bất biến của cá nhân bạn như *'Luôn xưng hô lịch sự bằng tiếng Việt'*, hoặc *'Tuyệt đối không được tự ý xóa file khi chưa hỏi ý kiến tôi'*.
 * **Tầng thứ hai — Workspace Rules (Nội quy riêng của từng dự án):**

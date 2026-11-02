@@ -467,7 +467,7 @@ Khắc phục triệt để tật 'nói trước quên sau' của AI. Bình thư
 Bản chất của Rules là Cuốn sổ tay nội quy phát cho nhân viên mới vào ngày đầu đi làm.
 Đặc biệt, theo chuẩn Google: Rule dành cho các 'Ràng buộc & Bất biến' (Constraints & Invariants) - lằn ranh đỏ AI không được vi phạm; khác với Skill là quy trình từng bước.
 2 Cấp độ phân tầng đơn giản:
-1. Global Rules (~/.gemini/config/rules/): Áp dụng cho mọi dự án, mọi lần mở máy (luôn xưng hô lịch sự tiếng Việt, không tự xóa file).
+1. Global Rules: Nằm tại thư mục cấu hình chung trên máy tính. Với người dùng Windows, dấu ngã (~) đại diện cho thư mục tài khoản cá nhân: C:\Users\<Tên_Bạn>\.gemini\config\rules\. Mẹo mở 1 giây: Bấm Windows + R, dán %USERPROFILE%\.gemini\config\rules\ rồi nhấn Enter là mở ra ngay! Áp dụng cho mọi dự án, mọi lần mở máy (luôn xưng hô lịch sự tiếng Việt, không tự xóa file).
 2. Workspace Rules (AGENTS.md hoặc rules/*.md): Áp dụng riêng cho thư mục công việc đó (tiền tệ VNĐ, thể thức công văn).
 Lưu ý quan trọng: Dung lượng file súc tích dưới 24KB để tiết kiệm token và giúp AI phản hồi nhanh nhất!">
       <div class="slide-hud">
@@ -484,7 +484,7 @@ Lưu ý quan trọng: Dung lượng file súc tích dưới 24KB để tiết ki
           <div class="stat-header"><span class="card-badge" style="background: rgba(14,165,233,0.18); color: #7dd3fc;">CẤP ĐỘ 01</span></div>
           <div class="stat-title">Global Rules (Toàn Máy Tính)</div>
           <div class="stat-desc">
-            Vị trí: <code>~/.gemini/config/rules/</code>
+            Vị trí: <code>~/.gemini/config/rules/</code> (Trên Windows: <code>C:\Users\&lt;Tên_Bạn&gt;\.gemini\config\rules\</code>)
             <ul class="key-points-list">
               <li class="key-point-item"><span style="color: #38bdf8;">•</span> Tự động nạp vào <strong>MỌI dự án</strong> khi khởi động Antigravity.</li>
               <li class="key-point-item"><span style="color: #38bdf8;">•</span> Quy định cốt lõi: Luôn xưng hô lịch sự bằng tiếng Việt, tuyệt đối không tự xóa file khi chưa hỏi.</li>
