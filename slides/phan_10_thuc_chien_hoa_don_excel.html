@@ -315,12 +315,29 @@
       margin-top: 10px;
     }
     .key-point-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
+      position: relative;
+      padding-left: 14px;
+      
+      
       font-size: 0.86rem;
       line-height: 1.45;
       color: var(--text-main);
+    }
+    .key-point-item > span:first-child {
+      position: absolute;
+      left: 0;
+      top: 0;
+      line-height: inherit;
+    }
+    .key-point-item code,
+    .stat-desc code {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 4px;
+      padding: 1px 5px;
+      color: #38bdf8;
     }
     .key-point-item strong {
       color: #38bdf8;

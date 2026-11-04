@@ -73,8 +73,8 @@ Bạn có thể coi tệp `AGENTS.md` chính là **Bản Hiến Pháp Của Dự
 
 ---
 
-### [03:25 - 04:30] BÍ QUYẾT TỪ GOOGLE: TÁCH LUẬT CHUYÊN NGÀNH VỚI THƯ MỤC RULES/*.MD & YAML FRONTMATTER
-`[Slide 2: Mở rộng sang Cột Modular Rules]`  
+### [03:25 - 04:30] BÍ QUYẾT TỪ GOOGLE: TÁCH LUẬT CHUYÊN NGÀNH VỚI THƯ MỤC RULES/*.MD & 4 CÔNG TẮC TRIGGER
+`[Slide 2: Mở rộng sang Cột Modular Rules & 4 Chế Độ Trigger]`  
 `[Tông giọng nâng tầm chuyên gia, hào hứng]`
 
 "**Đến đây, bạn có thể thắc mắc:** Nếu dự án của bạn có quá nhiều quy định chi tiết — từ kế toán, nhân sự đến thể thức hợp đồng — nếu nhét tất cả vào một tệp `AGENTS.md` thì file sẽ rất dài và làm AI bị quá tải bộ nhớ!
@@ -83,19 +83,33 @@ Bạn có thể coi tệp `AGENTS.md` chính là **Bản Hiến Pháp Của Dự
 
 Thay vì dồn vào một file duy nhất, bạn tạo một thư mục mang tên `rules/` (hoặc `.agents/rules/`) ngay trong dự án, và chia nhỏ thành từng file: `rules/dinh_dang_tien_te.md`, `rules/soan_thao_hop_dong.md`.
 
-**Khác biệt cốt lõi ở đây là:** Mọi file trong thư mục `rules/*.md` bắt buộc phải có một khối khai báo YAML ở đầu trang (gọi là **YAML Frontmatter**) để kiểm soát thời điểm kích hoạt:
-```yaml
----
-trigger: glob
-globs: "*.txt, *.csv"
-description: "Quy chuẩn định dạng tiền tệ VNĐ và ngày tháng khi xử lý số liệu"
----
-```
-Google cung cấp các chế độ kích hoạt (`trigger`) cực kỳ thông minh:
-1. **Chế độ `glob`:** AI chỉ nạp quy tắc này khi bạn ra lệnh thao tác trên đúng các loại file chỉ định trong `globs` (như file `.txt`, `.csv` hay `.xlsx`).
-2. **Chế độ `model_decision`:** Đây là cơ chế **Tiết lộ lũy tiến (Progressive Disclosure)** — Antigravity chỉ nạp dòng tóm tắt `description` vào bộ nhớ lúc đầu. Chỉ khi nào bạn yêu cầu việc liên quan đến tài chính, AI mới tự giác đọc toàn bộ file rule! Vừa cực kỳ thông minh, vừa tiết kiệm token tối đa.
+**Khác biệt cốt lõi ở đây là:** Mọi file trong thư mục `rules/*.md` bắt buộc phải có một khối khai báo YAML ở đầu trang (gọi là **YAML Frontmatter**) để kiểm soát công tắc kích hoạt `trigger`.
 
-⚠️ **Một cảnh báo kỹ thuật từ Google:** Hệ thống chỉ quét các file `.md` nằm trực tiếp ngay trong thư mục `rules/` (gọi là *Flat Scanning*), tuyệt đối không giấu file vào các thư mục con lồng nhau."
+Theo tài liệu chính thức của Google Antigravity, hệ thống cung cấp **4 chế độ kích hoạt (`trigger`)** với các ý nghĩa riêng biệt:
+1. **`always_on`:** Luôn luôn được nạp vào bộ nhớ (System Prompt) của AI trong mọi phiên làm việc, bất kể bạn yêu cầu tác vụ gì.
+2. **`glob`:** Tự động kích hoạt khi bạn thao tác trên các file có đường dẫn hoặc phần mở rộng khớp với mẫu chỉ định trong `globs` (như file `.txt`, `.csv` hay `.xlsx`).
+3. **`model_decision`:** Cơ chế **Tiết lộ lũy tiến (Progressive Disclosure)** — Antigravity ban đầu chỉ nạp dòng tóm tắt `description` rất nhẹ. Chỉ khi nào yêu cầu công việc thực sự cần đến, AI mới tự giác đọc toàn bộ file rule! Tiết kiệm token tối đa cho các tài liệu hướng dẫn dài.
+4. **`manual`:** Hoàn toàn thủ công — AI không bao giờ tự nạp, chỉ khi nào bạn chủ động gõ `@tên-rule` trong ô chat thì quy tắc mới được gọi ra (rất thích hợp cho bảng checklist kiểm tra chất lượng hay quy trình phát hành).
+
+**Trong thực tế công việc văn phòng, bạn hãy tập trung làm chủ 2 chế độ trọng tâm nhất: `always_on` và `glob`!**
+
+* **Đầu tiên là ví dụ về `always_on`:**  
+  Chế độ này sinh ra để bảo vệ các **Ràng buộc cốt lõi (Invariants)** mà bạn không bao giờ muốn AI được phép quên.  
+  Điển hình chính là tệp `AGENTS.md` ở thư mục gốc (hoặc một rule chuyên biệt cài `trigger: always_on`). Ví dụ bạn cài: *'Luôn xưng hô Tôi - Bạn lịch sự bằng 100% tiếng Việt'* và *'Tuyệt đối không tự ý xóa đè file gốc'*. Cứ mỗi khi bạn mở phiên chat mới — dù bạn nhờ AI làm thơ, tính toán ngân sách hay viết email — hai điều luật sống còn này luôn luôn hiện diện trong đầu AI, đảm bảo an toàn tuyệt đối 100%!
+
+* **Tiếp theo là ví dụ về `glob`:**  
+  Chế độ này dùng khi bạn có những quy chuẩn định dạng rất chi tiết nhưng chỉ áp dụng cho một số loại tệp dữ liệu nhất định.  
+  Bạn chỉ cần khai báo khối YAML Frontmatter:
+  ```yaml
+  ---
+  trigger: glob
+  globs: "*.txt, *.csv"
+  description: "Quy chuẩn định dạng tiền tệ VNĐ và ngày tháng khi xử lý số liệu"
+  ---
+  ```
+  **Hãy quan sát cơ chế vận hành thông minh của nó:** Khi bạn ra lệnh: *'Hãy xử lý file chi_phi.txt'*, AI phát hiện bạn đang đụng tới file đuôi `.txt` trùng khớp với `globs` ➔ Nó lập tức kích hoạt bộ quy tắc này để ép số tiền sang chuẩn `1.500.000 VNĐ` có dấu chấm và ngày `DD/MM/YYYY`. Nhưng nếu bạn chỉ nhờ AI: *'Hãy soạn giúp tôi một email xin nghỉ phép'*, quy tắc `glob` này sẽ hoàn toàn ngủ yên, không tốn dù chỉ một token bộ nhớ của bạn!
+
+⚠️ **Một cảnh báo kỹ thuật sống còn từ Google:** Hệ thống Antigravity sử dụng cơ chế quét phẳng (*Flat Scanning*) — tất cả các file rule `.md` bắt buộc phải nằm trực tiếp ngay trong thư mục `rules/` (hoặc `.agents/rules/`), tuyệt đối không lồng vào các thư mục con (như `rules/ke_toan/tien_te.md`) vì AI sẽ bị 'mù' và âm thầm bỏ qua không một lời cảnh báo!"
 
 ---
 
@@ -104,7 +118,7 @@ Google cung cấp các chế độ kích hoạt (`trigger`) cực kỳ thông mi
 `[Tông giọng hào hứng, chuyển bài]`
 
 "**Nói tóm lại:** 
-* `AGENTS.md` đóng vai trò là **Bản Hiến Pháp Chung** (luôn chạy ngầm, quy định văn phong và ranh giới an toàn cho toàn dự án).
-* Còn thư mục `rules/*.md` đóng vai trò là **Các Bộ Luật Chuyên Ngành** (chỉ kích hoạt thông minh theo loại file hoặc ngữ cảnh công việc).
+* `AGENTS.md` (với cơ chế **always_on**) đóng vai trò là **Bản Hiến Pháp Chung** — luôn chạy ngầm, giữ vững văn phong và ranh giới an toàn cho toàn bộ dự án.
+* Còn thư mục `rules/*.md` (với các trigger thông minh như **glob**) đóng vai trò là **Các Bộ Luật Chuyên Ngành** — chỉ kích hoạt đúng lúc, đúng loại file, giúp AI vừa chính xác tuyệt đối vừa tối ưu bộ nhớ.
 
 **Và ngay bây giờ, để thấy rõ sự phối hợp kỳ diệu giữa AGENTS.md và rules/xx.md trên file dữ liệu thực tế,** mời bạn bấm sang **Bài 3.3** để cùng tôi thực hành trên tệp chi phí thô có sẵn trong bộ tài nguyên giáo trình!"

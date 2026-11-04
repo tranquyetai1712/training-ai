@@ -268,12 +268,27 @@
       margin-top: 4px;
     }
     .key-point-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
+      position: relative;
+      padding-left: 14px;
       font-size: 0.78rem;
       color: var(--text-muted);
       line-height: 1.45;
+    }
+    .key-point-item > span:first-child {
+      position: absolute;
+      left: 0;
+      top: 0;
+      line-height: inherit;
+    }
+    .key-point-item code,
+    .stat-desc code {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 4px;
+      padding: 1px 5px;
+      color: #38bdf8;
     }
 
     .code-box {
@@ -510,13 +525,16 @@ Lưu ý quan trọng: Dung lượng file súc tích dưới 24KB để tiết ki
     </div>
 
     <!-- SLIDE 2: AGENTS.MD & MODULAR RULES -->
-    <div class="slide-canvas" data-slide="2" data-notes="Bài 3.2: AGENTS.md & Modular Rules (.agents/rules/*.md): Hệ Thống Luật Dự Án.
-Tài liệu chính thức Google chia Rules thành 2 hình thức:
-1. AGENTS.md (Hiến Pháp Chung): Đặt ngay thư mục gốc, không dùng YAML frontmatter, luôn chạy always_on. Thiết lập 3 Mục Vàng: Tông giọng tiếng Việt, Chuẩn dữ liệu văn phòng, Ranh giới an toàn file.
-2. Modular Rules (.agents/rules/*.md): Tách nhỏ nội quy theo nghiệp vụ, bắt buộc có YAML frontmatter (trigger, globs, description).
-   - trigger: glob (kích hoạt theo đuôi file như *.txt, *.csv).
-   - trigger: model_decision (Progressive Disclosure - AI chỉ nạp khi việc yêu cầu, tiết kiệm token).
-Lưu ý Flat Scanning: File rule .md phải nằm trực tiếp trong .agents/rules/, không lồng thư mục con!">
+    <div class="slide-canvas" data-slide="2" data-notes="Bài 3.2: AGENTS.md & Modular Rules: Hệ Thống Luật Dự Án.
+Tài liệu chính thức Google Antigravity cung cấp 4 chế độ kích hoạt (trigger):
+1. always_on: Luôn nạp vào System Prompt mọi phiên làm việc (quy tắc cốt lõi sống còn).
+2. glob: Tự động kích hoạt khi đụng file khớp globs (VD: *.txt, *.csv).
+3. model_decision: Tiết lộ lũy tiến (Progressive Disclosure) - AI đọc description, chỉ nạp khi việc yêu cầu.
+4. manual: Thủ công hoàn toàn - chỉ nạp khi user gõ @tên-rule trong chat.
+Trọng tâm bài giảng:
+- Ví dụ always_on: AGENTS.md giữ văn phong tiếng Việt và ranh giới an toàn không xóa file gốc (luôn hiện diện 100%).
+- Ví dụ glob: File .agents/rules/*.md chứa YAML frontmatter globs: '*.txt, *.csv' tự nạp khi xử lý bảng kê chi phí; làm việc khác sẽ tự tắt để tiết kiệm token.
+Cảnh báo Flat Scanning: File rule .md phải nằm trực tiếp trong rules/ hoặc .agents/rules/, cấm lồng thư mục con!">
       <div class="slide-hud">
         <div class="hud-chip">TRỤ CỘT 01: <strong>HỆ THỐNG LUẬT DỰ ÁN</strong></div>
         <div class="hud-chip" style="color: #38bdf8; border-color: rgba(56,189,248,0.3);">STANDALONE & MODULAR</div>
@@ -524,51 +542,55 @@ Lưu ý Flat Scanning: File rule .md phải nằm trực tiếp trong .agents/ru
       <div class="anim-1">
         <span class="tag-hero" style="color: var(--accent-cyan);"><svg class="svg-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg> CHUẨN TÀI LIỆU GOOGLE ANTIGRAVITY</span>
         <h2 class="title-display">AGENTS.md & Modular Rules: <span>Hệ Thống Luật Dự Án</span></h2>
-        <p class="lead-desc">Phối hợp giữa Bản Hiến Pháp chung (AGENTS.md - always_on) và các bộ luật chuyên ngành (.agents/rules/*.md với YAML Frontmatter kích hoạt thông minh).</p>
+        <p class="lead-desc">Phối hợp giữa Bản Hiến Pháp chung (AGENTS.md - always_on) và các bộ luật chuyên ngành (.agents/rules/*.md với 4 chế độ Trigger kích hoạt thông minh).</p>
       </div>
       <div class="card-grid col-3 anim-2">
         <div class="stat-card" style="border-top: 3px solid var(--accent-indigo);">
-          <div class="stat-header"><span class="card-badge" style="background: rgba(99,102,241,0.18); color: #a5b4fc;">HIẾN PHÁP CHUNG</span></div>
-          <div class="stat-title">AGENTS.md (Always-On)</div>
+          <div class="stat-header"><span class="card-badge" style="background: rgba(99,102,241,0.18); color: #a5b4fc;">TRỌNG TÂM 1 · ALWAYS_ON</span></div>
+          <div class="stat-title">AGENTS.md & always_on</div>
           <div class="stat-desc">
             <ul class="key-points-list">
-              <li class="key-point-item"><span style="color: #818cf8;">•</span> Đặt tại thư mục gốc; không cần YAML frontmatter.</li>
-              <li class="key-point-item"><span style="color: #818cf8;">•</span> <strong>Mục 1:</strong> Tông giọng tiếng Việt chuẩn, xưng hô Tôi - Bạn.</li>
-              <li class="key-point-item"><span style="color: #818cf8;">•</span> <strong>Mục 2:</strong> An toàn dữ liệu, không sửa đè file gốc.</li>
+              <li class="key-point-item"><span style="color: #818cf8;">•</span> <strong>Ý nghĩa:</strong> Luôn nạp vào System Prompt ở MỌI phiên chat.</li>
+              <li class="key-point-item"><span style="color: #818cf8;">•</span> <strong>Ví dụ văn phong:</strong> 100% tiếng Việt chuẩn, xưng hô Tôi - Bạn.</li>
+              <li class="key-point-item"><span style="color: #818cf8;">•</span> <strong>Ví dụ an toàn:</strong> Tuyệt đối không xóa đè/xóa file dữ liệu gốc.</li>
+              <li class="key-point-item"><span style="color: #818cf8;">•</span> Áp dụng: File <code>AGENTS.md</code> gốc hoặc rule có <code>trigger: always_on</code>.</li>
             </ul>
           </div>
         </div>
         <div class="stat-card" style="border-top: 3px solid var(--accent-cyan);">
-          <div class="stat-header"><span class="card-badge" style="background: rgba(14,165,233,0.18); color: #7dd3fc;">LUẬT CHUYÊN NGÀNH</span></div>
-          <div class="stat-title">Modular Rules (.agents/rules/)</div>
+          <div class="stat-header"><span class="card-badge" style="background: rgba(14,165,233,0.18); color: #7dd3fc;">TRỌNG TÂM 2 · GLOB</span></div>
+          <div class="stat-title">Modular Rules & glob</div>
           <div class="stat-desc">
             <ul class="key-points-list">
-              <li class="key-point-item"><span style="color: #38bdf8;">•</span> Tách nhỏ theo nghiệp vụ (kế toán, công văn).</li>
-              <li class="key-point-item"><span style="color: #38bdf8;">•</span> <strong>Bắt buộc có YAML frontmatter:</strong>
-                <div class="code-box" style="font-size: 0.68rem; padding: 6px 8px; margin-top: 3px;">---
+              <li class="key-point-item"><span style="color: #38bdf8;">•</span> <strong>Ý nghĩa:</strong> Tự nạp khi thao tác đúng loại file chỉ định:
+                <div class="code-box" style="font-size: 0.65rem; padding: 5px 8px; margin-top: 3px;">---
 trigger: glob
 globs: "*.txt, *.csv"
 description: "Định dạng VNĐ & ngày tháng"
 ---</div>
               </li>
-              <li class="key-point-item"><span style="color: #38bdf8;">•</span> Kích hoạt thông minh khi đụng đúng loại file.</li>
+              <li class="key-point-item"><span style="color: #38bdf8;">•</span> <strong>Ví dụ:</strong> Đụng file <code>.txt</code> ➔ Ép chuẩn số tiền <code>VNĐ</code>. Soạn thảo email khác ➔ Tự tắt, tốn 0 token!</li>
             </ul>
           </div>
         </div>
         <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
-          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">CHUẨN GOOGLE</span></div>
-          <div class="stat-title">Flat Scanning & Limits</div>
+          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">4 CÔNG TẮC TRIGGER</span></div>
+          <div class="stat-title">Ý Nghĩa 4 Cơ Chế Kích Hoạt</div>
           <div class="stat-desc">
-            <ul class="key-points-list">
-              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Flat Scanning:</strong> File rule .md phải nằm ngay trong <code>.agents/rules/</code>, không lồng thư mục con.</li>
-              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Progressive Disclosure:</strong> Nạp luật theo nhu cầu, tiết kiệm bộ nhớ token tối đa.</li>
-              <li class="key-point-item"><span style="color: #4ade80;">•</span> <strong>Giới hạn:</strong> Dung lượng dưới 24KB per-file.</li>
-            </ul>
+            <div style="display: flex; flex-direction: column; gap: 5px; margin-top: 2px;">
+              <div style="font-size: 0.72rem; line-height: 1.35;"><code style="color: #818cf8; font-weight: 700;">always_on</code>: Luôn nạp mọi lúc (luật cốt lõi sống còn).</div>
+              <div style="font-size: 0.72rem; line-height: 1.35;"><code style="color: #38bdf8; font-weight: 700;">glob</code>: Tự nạp khi đụng đúng loại file (<code>*.txt, *.csv</code>).</div>
+              <div style="font-size: 0.72rem; line-height: 1.35;"><code style="color: #34d399; font-weight: 700;">model_decision</code>: Nạp lũy tiến theo mô tả ngữ cảnh.</div>
+              <div style="font-size: 0.72rem; line-height: 1.35;"><code style="color: #fbbf24; font-weight: 700;">manual</code>: Chỉ nạp khi user chủ động gõ <code>@tên-rule</code>.</div>
+            </div>
+            <div style="margin-top: 6px; padding-top: 6px; border-top: 1px dashed rgba(255,255,255,0.12); font-size: 0.72rem; color: #f87171; line-height: 1.35;">
+              ⚠️ <strong>Flat Scanning:</strong> Nằm phẳng trong <code>rules/</code>, cấm lồng thư mục con! Dung lượng &lt; 24KB.
+            </div>
           </div>
         </div>
       </div>
       <div class="footer-bar-summary anim-3">
-        <span>💡 <strong>Quy tắc phối hợp:</strong> <code>AGENTS.md</code> quản lý an toàn chung, còn <code>.agents/rules/*.md</code> chuyên biệt hóa từng loại nghiệp vụ!</span>
+        <span>💡 <strong>Quy tắc phối hợp:</strong> <code>always_on</code> (AGENTS.md) giữ an toàn & văn phong chung; <code>glob</code> chuyên môn hóa file; <code>model_decision</code> & <code>manual</code> tối ưu token!</span>
         <span style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 700;">PERSISTENT CONTEXT</span>
       </div>
     </div>
