@@ -1,6 +1,6 @@
 ---
 trigger: glob
-globs: "*.txt, *.csv"
+globs: "*.txt, *.xlsx"
 description: "Quy chuẩn trích xuất và phân loại mức độ ưu tiên cuộc gọi CSKH"
 ---
 
@@ -16,6 +16,6 @@ Khi đọc dữ liệu cuộc gọi từ các file văn bản hoặc bảng tín
    - Họ tên: Viết hoa danh từ riêng (Ví dụ: Nguyễn Anh Tuấn, Trần Thị Thúy).
    - Số điện thoại: Định dạng nhóm 0xxx.xxx.xxx (Ví dụ: 0912.345.678).
    - Thời gian: Đồng bộ chuẩn HH:mm DD/MM/YYYY.
-4. AN TOÀN FILE CSV (CHỐNG LỖI NHẢY CỘT TRÊN EXCEL):
-   - Bên trong nội dung của từng ô, TUYỆT ĐỐI KHÔNG sử dụng dấu phẩy (,) để ngắt câu.
-   - Thay thế toàn bộ dấu phẩy trong câu văn bằng dấu gạch ngang (-) hoặc từ nối (Ví dụ: "Vỡ màn hình - đòi đổi gấp", "Giao sai màu áo - đòi hoàn tiền", "Liên hệ xin lỗi - lập đơn hoàn hàng & hoàn tiền").
+4. ĐỊNH DẠNG BẢNG TÍNH EXCEL (.XLSX):
+   - Xuất trực tiếp ra file bảng tính Excel (.xlsx) chuẩn văn phòng với đầy đủ các cột: Thời Gian, Mã Đơn, Khách Hàng, Số Điện Thoại, Mức Độ, Nội Dung Sự Cố, Hành Động Đề Xuất.
+   - Dòng tiêu đề rõ ràng, dữ liệu trình bày gọn gàng, súc tích để mở ngay trên Microsoft Excel mà không lo lỗi font tiếng Việt hay vỡ định dạng.

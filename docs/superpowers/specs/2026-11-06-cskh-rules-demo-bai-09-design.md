@@ -40,14 +40,14 @@ Dữ liệu thô thực tế không qua format:
 Bạn là Trợ lý AI Phân tích & Điều phối CSKH. Khi làm việc trong thư mục này:
 
 1. TÔNG GIỌNG: Luôn xưng hô "Tôi - Bạn", giao tiếp lịch sự bằng 100% tiếng Việt, khách quan, đi thẳng vào hành động xử lý.
-2. AN TOÀN DỮ LIỆU: Tuyệt đối không xóa hoặc ghi đè lên file thô gốc (ghi_chu_cuoc_goi_tho.txt). Luôn xuất báo cáo phân loại ra file mới mang tên: bao_cao_xu_ly_khieu_nai.csv.
+2. AN TOÀN DỮ LIỆU: Tuyệt đối không xóa hoặc ghi đè lên file thô gốc (ghi_chu_cuoc_goi_tho.txt). Luôn xuất báo cáo phân loại ra file mới mang tên: bao_cao_xu_ly_khieu_nai.xlsx.
 ```
 
 #### File 3: `.agents/rules/phan_loai_khieu_nai.md` (Luật chuyên ngành - trigger glob)
 ```markdown
 ---
 trigger: glob
-globs: "*.txt, *.csv"
+globs: "*.txt, *.xlsx"
 description: "Quy chuẩn trích xuất và phân loại mức độ ưu tiên cuộc gọi CSKH"
 ---
 
@@ -65,7 +65,7 @@ Khi đọc dữ liệu cuộc gọi từ các file văn bản hoặc bảng tín
    - Thời gian: Đồng bộ chuẩn HH:mm DD/MM/YYYY.
 ```
 
-#### File 4: Kết quả mẫu sẵn: `bao_cao_xu_ly_khieu_nai.csv`
+#### File 4: Kết quả mẫu sẵn: `bao_cao_xu_ly_khieu_nai.xlsx`
 Được tạo sẵn trong thư mục để học viên có thể đối chiếu ngay sau khi thực hành:
 ```markdown
 # BÁO CÁO PHÂN LOẠI VÀ ĐIỀU PHỐI KHIẾU NẠI KHÁCH HÀNG
@@ -86,8 +86,8 @@ Khi đọc dữ liệu cuộc gọi từ các file văn bản hoặc bảng tín
   - Header Chip: `WORKSPACE: DEMO/XU-LY-KHIEU-NAI-CSKH`
   - Tiêu đề: `Thực Hành: Phối Hợp AGENTS.md & .agents/rules/ Xử Lý Nhật Ký Khiếu Nại`
   - Cột 1 (Cấu trúc cài đặt):
-    - Khối `AGENTS.md`: Không sửa đè `ghi_chu_cuoc_goi_tho.txt`, xuất file mới `bao_cao_xu_ly_khieu_nai.csv`.
-    - Khối `.agents/rules/phan_loai_khieu_nai.md`: trigger `glob: "*.txt, *.csv"`, mã đơn `ORD-XXXX`, phân loại `HỎA TỐC / KHẨN CẤP / TIÊU CHUẨN`.
+    - Khối `AGENTS.md`: Không sửa đè `ghi_chu_cuoc_goi_tho.txt`, xuất file mới `bao_cao_xu_ly_khieu_nai.xlsx`.
+    - Khối `.agents/rules/phan_loai_khieu_nai.md`: trigger `glob: "*.txt, *.xlsx"`, mã đơn `ORD-XXXX`, phân loại `HỎA TỐC / KHẨN CẤP / TIÊU CHUẨN`.
   - Cột 2 (Kết quả trên file):
     - Câu lệnh 1 dòng: *"Hãy xử lý file ghi_chu_cuoc_goi_tho.txt giúp tôi."*
     - File thô input vs File markdown phân cấp output.
@@ -115,7 +115,7 @@ Khi đọc dữ liệu cuộc gọi từ các file văn bản hoặc bảng tín
 
 ## 3. Tiêu chí Kiểm Thử Thành Công (Verification Checklist)
 
-- [ ] Folder `slides/Demo/xu-ly-khieu-nai-cskh/` được tạo đầy đủ với 4 file (`ghi_chu_cuoc_goi_tho.txt`, `AGENTS.md`, `.agents/rules/phan_loai_khieu_nai.md`, `bao_cao_xu_ly_khieu_nai.csv`).
+- [ ] Folder `slides/Demo/xu-ly-khieu-nai-cskh/` được tạo đầy đủ với các file (`ghi_chu_cuoc_goi_tho.txt`, `AGENTS.md`, `.agents/rules/phan_loai_khieu_nai.md`, `bao_cao_xu_ly_khieu_nai.xlsx`).
 - [ ] Thư mục cũ `slides/Demo/chi-phi-cong-tac-tho/` được dọn dẹp hoặc giữ lại an toàn không ảnh hưởng.
 - [ ] Slide 3 trong `slides/phan_03_tru_cot_rules.html` hiển thị đúng nội dung CSKH, script hoạt động trơn tru, không lỗi HTML syntax.
 - [ ] Lời thoại Bài 9 khớp từng giây với Slide 3 và cấu trúc folder mới.

@@ -599,9 +599,9 @@ description: "Định dạng VNĐ & ngày tháng"
     <div class="slide-canvas" data-slide="3" data-notes="Bài 3.3: Thực hành phối hợp AGENTS.md và rules/xx.md trong workspace độc lập Demo/xu-ly-khieu-nai-cskh/:
 Tách riêng từng bài demo vào thư mục con để không bao giờ bị conflict quy tắc!
 1. Cấu trúc chuẩn Google: Demo/xu-ly-khieu-nai-cskh/ chứa sẵn file thô ghi_chu_cuoc_goi_tho.txt, AGENTS.md và .agents/rules/phan_loai_khieu_nai.md.
-2. Tầng 1: AGENTS.md giữ an toàn dữ liệu (không sửa đè file thô gốc, luôn xuất file CSV mới bao_cao_xu_ly_khieu_nai.csv mở trực tiếp bằng Excel).
-3. Tầng 2: .agents/rules/phan_loai_khieu_nai.md quy định mã đơn ORD-XXXX, phân loại HỎA TỐC/KHẨN CẤP, và quy tắc vàng: CẤM dùng dấu phẩy trong câu văn ô tính để chống triệt để lỗi nhảy cột trên Excel.
-4. Kiểm chứng 1 chạm: Ra lệnh 'Hãy xử lý file ghi_chu_cuoc_goi_tho.txt giúp tôi' ➔ AI tự khớp trigger: glob, xuất bảng CSV mở ngay bằng Excel và bảo toàn nguyên vẹn file thô!
+2. Tầng 1: AGENTS.md giữ an toàn dữ liệu (không sửa đè file thô gốc, luôn xuất file Excel mới bao_cao_xu_ly_khieu_nai.xlsx mở trực tiếp bằng Excel).
+3. Tầng 2: .agents/rules/phan_loai_khieu_nai.md quy định mã đơn ORD-XXXX, phân loại HỎA TỐC/KHẨN CẤP, và quy chuẩn xuất bảng tính Excel (.xlsx) chuẩn văn phòng.
+4. Kiểm chứng 1 chạm: Ra lệnh 'Hãy xử lý file ghi_chu_cuoc_goi_tho.txt giúp tôi' ➔ AI tự khớp trigger: glob, xuất bảng Excel (.xlsx) mở ngay trên máy và bảo toàn nguyên vẹn file thô!
 5. Điểm chạm kiến trúc: Gõ 1 dòng lệnh (Mục Tiêu) + AGENTS.md (Bối Cảnh & Giới Hạn) + Rules (Tiêu Chuẩn) = Tự động hóa trọn vẹn Công thức 4 bước vàng ở Bài 2.2 mà không cần gõ prompt dài!">
       <div class="slide-hud">
         <div class="hud-chip">TRỤ CỘT 01: <strong>THỰC HÀNH AGENTS.MD & .AGENTS/RULES/</strong></div>
@@ -617,30 +617,30 @@ Tách riêng từng bài demo vào thư mục con để không bao giờ bị co
           <div class="stat-header"><span class="card-badge" style="background: rgba(99,102,241,0.18); color: #c7d2fe;">WORKSPACE: xu-ly-khieu-nai-cskh/</span></div>
           <div class="stat-title">AGENTS.md + .agents/rules/phan_loai_khieu_nai.md</div>
           <div class="code-box" style="font-size: 0.7rem; margin-bottom: 6px;"># 1. AGENTS.md (Hiến Pháp Chung):
-- AN TOÀN: Không sửa đè file gốc (ghi_chu_cuoc_goi_tho.txt), luôn xuất ra: bao_cao_xu_ly_khieu_nai.csv</div>
+- AN TOÀN: Không sửa đè file gốc (ghi_chu_cuoc_goi_tho.txt), luôn xuất ra: bao_cao_xu_ly_khieu_nai.xlsx</div>
           <div class="code-box" style="font-size: 0.7rem; color: #38bdf8;"># 2. .agents/rules/phan_loai_khieu_nai.md:
 ---
 trigger: glob
-globs: "*.txt, *.csv"
+globs: "*.txt, *.xlsx"
 description: "Phân loại mức độ ưu tiên cuộc gọi CSKH"
 ---
 1. MÃ ĐƠN: Chuẩn ORD-XXXX (VD: ord9821 ➔ ORD-9821).
 2. PHÂN LOẠI: [HỎA TỐC], [KHẨN CẤP], [TIÊU CHUẨN].
 3. ĐỊNH DẠNG: Tên viết hoa, SĐT 0xxx.xxx.xxx, Ngày HH:mm DD/MM/YYYY.
-4. AN TOÀN CSV: Cấm dùng dấu phẩy (,) trong ô, thay bằng gạch ngang (-) để chống lỗi nhảy cột trên Excel!</div>
+4. ĐỊNH DẠNG EXCEL: Xuất file .xlsx chuẩn văn phòng, đủ cột tiêu đề, mở xem trực tiếp trên Excel không lo lỗi font!</div>
         </div>
         <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
           <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">KẾT QUẢ THỰC TẾ TRÊN FILE</span></div>
-          <div class="stat-title">Từ Ghi Chú Thô ➔ File CSV Mở Bằng Excel</div>
+          <div class="stat-title">Từ Ghi Chú Thô ➔ File Excel (.xlsx) Mở Bằng Excel</div>
           <div class="stat-desc">
             Ra lệnh 1 dòng: <em>"Hãy xử lý file ghi_chu_cuoc_goi_tho.txt giúp tôi."</em>
             <div class="code-box" style="color: #94a3b8; font-size: 0.7rem; margin-top: 4px;">📂 File thô có sẵn: ghi_chu_cuoc_goi_tho.txt
 1. khach hang nguyen anh tuan goi phan nan don ord9821 bi vo man hinh...
 2. tran thi thuy hoi don ord 9822 chua thay giao, chi hoi tham...</div>
-            <div class="code-box" style="color: #4ade80; font-size: 0.7rem; margin-top: 4px;">📊 File CSV mới sinh (Mở ngay trên Excel): bao_cao_xu_ly_khieu_nai.csv
-Thời Gian,Mã Đơn,Khách Hàng,Mức Độ,Hành Động
-09:00 24/10/2026,ORD-9821,Nguyễn Anh Tuấn,[HỎA TỐC],Đổi máy mới trong 2h
-14:30 25/10/2026,ORD-9822,Trần Thị Thúy,[TIÊU CHUẨN],Tra cứu vận đơn
+            <div class="code-box" style="color: #4ade80; font-size: 0.7rem; margin-top: 4px;">📊 File Excel mới sinh (.xlsx): bao_cao_xu_ly_khieu_nai.xlsx
+Thời Gian | Mã Đơn | Khách Hàng | Mức Độ | Hành Động Đề Xuất
+09:00 24/10/2026 | ORD-9821 | Nguyễn Anh Tuấn | [HỎA TỐC] | Đổi máy mới trong 2h
+14:30 25/10/2026 | ORD-9822 | Trần Thị Thúy | [TIÊU CHUẨN] | Tra cứu vận đơn
 ➔ AI tự kích hoạt rule theo đuôi .txt & bảo toàn 100% file gốc!</div>
           </div>
         </div>

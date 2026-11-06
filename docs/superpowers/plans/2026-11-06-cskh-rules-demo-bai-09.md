@@ -33,7 +33,7 @@
 - Create: `slides/Demo/xu-ly-khieu-nai-cskh/ghi_chu_cuoc_goi_tho.txt`
 - Create: `slides/Demo/xu-ly-khieu-nai-cskh/AGENTS.md`
 - Create: `slides/Demo/xu-ly-khieu-nai-cskh/.agents/rules/phan_loai_khieu_nai.md`
-- Create: `slides/Demo/xu-ly-khieu-nai-cskh/bao_cao_xu_ly_khieu_nai.csv`
+- Create: `slides/Demo/xu-ly-khieu-nai-cskh/bao_cao_xu_ly_khieu_nai.xlsx`
 - Delete: `slides/Demo/chi-phi-cong-tac-tho/`
 
 **Interfaces:**
@@ -53,14 +53,14 @@
   Bạn là Trợ lý AI Phân tích & Điều phối CSKH. Khi làm việc trong thư mục này:
 
   1. TÔNG GIỌNG: Luôn xưng hô "Tôi - Bạn", giao tiếp lịch sự bằng 100% tiếng Việt, khách quan, đi thẳng vào hành động xử lý.
-  2. AN TOÀN DỮ LIỆU: Tuyệt đối không xóa hoặc ghi đè lên file thô gốc (ghi_chu_cuoc_goi_tho.txt). Luôn xuất báo cáo phân loại ra file mới mang tên: bao_cao_xu_ly_khieu_nai.csv.
+  2. AN TOÀN DỮ LIỆU: Tuyệt đối không xóa hoặc ghi đè lên file thô gốc (ghi_chu_cuoc_goi_tho.txt). Luôn xuất báo cáo phân loại ra file mới mang tên: bao_cao_xu_ly_khieu_nai.xlsx.
   ```
 
 - [x] **Step 3: Tạo Luật Chuyên Ngành `.agents/rules/phan_loai_khieu_nai.md`**
   ```markdown
   ---
   trigger: glob
-  globs: "*.txt, *.csv"
+  globs: "*.txt, *.xlsx"
   description: "Quy chuẩn trích xuất và phân loại mức độ ưu tiên cuộc gọi CSKH"
   ---
 
@@ -78,7 +78,7 @@
      - Thời gian: Đồng bộ chuẩn HH:mm DD/MM/YYYY.
   ```
 
-- [x] **Step 4: Tạo File Kết Quả Mẫu Sẵn `bao_cao_xu_ly_khieu_nai.csv`**
+- [x] **Step 4: Tạo File Kết Quả Mẫu Sẵn `bao_cao_xu_ly_khieu_nai.xlsx`**
   ```markdown
   # BÁO CÁO PHÂN LOẠI VÀ ĐIỀU PHỐI KHIẾU NẠI KHÁCH HÀNG
   *Ngày trích xuất tự động: 26/10/2026*

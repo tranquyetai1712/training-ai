@@ -55,14 +55,14 @@ Bây giờ bạn nhìn vào cấu trúc bên trong của `xu-ly-khieu-nai-cskh/`
    Tên viết thường không dấu, mã đơn viết lung tung (`ord9821`, `ord 9822`, `ord-9823`), ngày tháng lẫn lộn kiểu Mỹ và ISO.
 
 2. **Bản Hiến pháp dự án (`AGENTS.md` đặt tại thư mục gốc):**  
-   Quy định ranh giới an toàn tối cao: *'Không sửa đè lên file thô gốc ghi_chu_cuoc_goi_tho.txt, luôn xuất kết quả phân loại ra file mới mang tên: bao_cao_xu_ly_khieu_nai.csv.'*
+   Quy định ranh giới an toàn tối cao: *'Không sửa đè lên file thô gốc ghi_chu_cuoc_goi_tho.txt, luôn xuất kết quả phân loại ra file mới mang tên: bao_cao_xu_ly_khieu_nai.xlsx.'*
 
 3. **Luật chuyên ngành (`.agents/rules/phan_loai_khieu_nai.md`):**  
    Nằm trong thư mục chuẩn `.agents/rules/` với khối khai báo YAML chuẩn Google:
    ```yaml
    ---
    trigger: glob
-   globs: "*.txt, *.csv"
+   globs: "*.txt, *.xlsx"
    description: "Quy chuẩn trích xuất và phân loại mức độ ưu tiên cuộc gọi CSKH"
    ---
    ```
@@ -70,7 +70,7 @@ Bây giờ bạn nhìn vào cấu trúc bên trong của `xu-ly-khieu-nai-cskh/`
    * Mã đơn hàng bắt buộc viết hoa dạng `ORD-XXXX`.
    * Tự động gắn nhãn mức độ: **[HỎA TỐC]** khi vỡ hỏng hàng; **[KHẨN CẤP]** khi giao sai mẫu đòi hoàn tiền; và **[TIÊU CHUẨN]** khi khách chỉ hỏi tiến độ.
    * Chuẩn hóa họ tên viết hoa, số điện thoại `0xxx.xxx.xxx`, và thời gian chuẩn `HH:mm DD/MM/YYYY`.
-   * **Và đặc biệt nhất là điều luật thứ 4 — Bí quyết an toàn khi xuất file CSV:** Tuyệt đối không dùng dấu phẩy (`,`) bên trong câu văn của các ô tính, thay toàn bộ bằng dấu gạch ngang (`-`). Nhờ quy định này, khi bạn nhấp đúp mở file trên Excel, bảng tính sẽ luôn thẳng hàng ngay lối 100%, không bao giờ bị lỗi nhảy cột tai hại!"
+   * **Và đặc biệt nhất là điều luật thứ 4 — Xuất trực tiếp bảng tính Excel (`.xlsx`) chuẩn văn phòng:** Xuất file bảng tính Excel `.xlsx` với đầy đủ các cột rõ ràng, dòng tiêu đề nổi bật, mở trực tiếp bằng Microsoft Excel làm việc ngay mà không lo lỗi font tiếng Việt hay vỡ định dạng như các tệp văn bản thông thường!"
 
 ---
 
@@ -100,7 +100,7 @@ Bây giờ bạn nhìn vào cấu trúc bên trong của `xu-ly-khieu-nai-cskh/`
 `[Chỉ chuột vào màn hình Antigravity đang chạy]`  
 **Bạn nhìn xem! Đây chính là phép màu của Trụ Cột Rules:**
 * AI nhận diện bạn đang xử lý file có đuôi `.txt` ➔ Cơ chế `trigger: glob` lập tức kích hoạt file `.agents/rules/phan_loai_khieu_nai.md`!
-* Đồng thời, AI đọc `AGENTS.md` và hiểu rằng không được sửa vào file gốc, nên ngay lập tức một file bảng tính mới tinh mang tên `bao_cao_xu_ly_khieu_nai.csv` được sinh ra ngay trong thư mục — sẵn sàng để bạn nhấp đúp chuột mở thẳng lên bằng Microsoft Excel:
+* Đồng thời, AI đọc `AGENTS.md` và hiểu rằng không được sửa vào file gốc, nên ngay lập tức một file bảng tính Excel mới tinh mang tên `bao_cao_xu_ly_khieu_nai.xlsx` được sinh ra ngay trong thư mục — sẵn sàng để bạn nhấp đúp chuột mở thẳng lên bằng Microsoft Excel:
   * Toàn bộ mã đơn đã đồng nhất chuẩn: **ORD-9821**, **ORD-9822**, **ORD-9823**!
   * Tự động phân cấp chuẩn xác: Đơn vỡ màn hình được gắn nhãn **[HỎA TỐC]**, đơn sai áo gắn nhãn **[KHẨN CẤP]**, đơn hỏi tiến độ gắn nhãn **[TIÊU CHUẨN]**!
   * Kèm theo cột **Hành động đề xuất** cụ thể để nhân viên xử lý ngay mà không phải suy nghĩ!
@@ -118,7 +118,7 @@ Hãy nhớ lại **Bài 2.2**, chúng ta đã học **Công thức 4 bước và
 **Thế nhưng ngày hôm nay, bạn hãy nhìn lại câu lệnh của chúng ta:**
 * Bạn chỉ cần gõ đúng 1 dòng: *'Hãy xử lý file `ghi_chu_cuoc_goi_tho.txt` giúp tôi'* ➔ Đây chính là **Mục Tiêu**!
 * Còn **Bối Cảnh** (tổng đài CSKH, 100% tiếng Việt lịch sự) và **Giới Hạn** (tuyệt đối không sửa đè file gốc) ➔ Đã được `AGENTS.md` âm thầm bảo vệ!
-* Và **Tiêu Chuẩn** (mã đơn ORD-XXXX, phân cấp ưu tiên, cấm dùng dấu phẩy trong ô để bảo vệ file Excel) ➔ Đã được file Rules chuyên ngành tự động bơm vào đầu não AI!
+* Và **Tiêu Chuẩn** (mã đơn ORD-XXXX, phân cấp ưu tiên, xuất định dạng bảng tính Excel .xlsx chuẩn chỉnh) ➔ Đã được file Rules chuyên ngành tự động bơm vào đầu não AI!
 
 **Nói cách khác:** Trụ Cột Rules chính là cỗ máy tự động hóa hoàn toàn Công thức 4 bước vàng — giúp bạn chỉ cần ra lệnh 1 chạm mà AI vẫn làm đúng ý 100%!
 
