@@ -10,7 +10,7 @@
 
 ## 🎬 1. CHUẨN BỊ TRƯỚC KHI QUAY
 * **Cửa sổ trình chiếu:** Mở slide `slides/phan_03_tru_cot_rules.html` (Slide 2: AGENTS.md & GEMINI.md: Bản Hiến Pháp Dự Án).
-* **Ứng dụng thực tế:** Mở ứng dụng Antigravity Desktop trong một thư mục dự án mẫu chứa sẵn tệp `AGENTS.md`.
+* **Ứng dụng thực tế:** Mở ứng dụng Antigravity Desktop trong thư mục dự án mẫu `slides/Demo/chi-phi-cong-tac-tho/` chứa sẵn tệp `AGENTS.md` và `.agents/rules/dinh_dang_tien_te_ngay_thang.md`.
 * **Tông giọng:** Chuyên nghiệp, tự tin, mạch lạc, toát lên phong thái của một người quản lý phân định rõ ràng các quy tắc vận hành.
 
 ---
@@ -121,4 +121,4 @@ Theo tài liệu chính thức của Google Antigravity, hệ thống cung cấp
 * `AGENTS.md` (với cơ chế **always_on**) đóng vai trò là **Bản Hiến Pháp Chung** — luôn chạy ngầm, giữ vững văn phong và ranh giới an toàn cho toàn bộ dự án.
 * Còn thư mục `rules/*.md` (với các trigger thông minh như **glob**) đóng vai trò là **Các Bộ Luật Chuyên Ngành** — chỉ kích hoạt đúng lúc, đúng loại file, giúp AI vừa chính xác tuyệt đối vừa tối ưu bộ nhớ.
 
-**Và ngay bây giờ, để thấy rõ sự phối hợp kỳ diệu giữa AGENTS.md và rules/xx.md trên file dữ liệu thực tế,** mời bạn bấm sang **Bài 3.3** để cùng tôi thực hành trên tệp chi phí thô có sẵn trong bộ tài nguyên giáo trình!"
+**Và ngay bây giờ, để thấy rõ sự phối hợp kỳ diệu giữa AGENTS.md và rules/xx.md trên file dữ liệu thực tế,** mời bạn bấm sang **Bài 3.3** để cùng tôi thực hành chuẩn hóa tệp nhật ký cuộc gọi khiếu nại CSKH có sẵn trong bộ tài nguyên giáo trình!"

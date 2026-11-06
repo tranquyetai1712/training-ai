@@ -90,15 +90,15 @@
   * `[02:40 - 03:25]` MỤC VÀNG 3: RANH GIỚI AN TOÀN DỮ LIỆU (KHÔNG TỰ XÓA FILE GỐC, XUẤT PREVIEW)
   * `[03:25 - 04:30]` BÍ QUYẾT TỪ GOOGLE: TÁCH LUẬT CHUYÊN NGÀNH VỚI THƯ MỤC RULES/*.MD & YAML FRONTMATTER
   * `[04:30 - 05:00]` TỔNG KẾT & CẦU NỐI SANG THỰC HÀNH BÀI 3.3
-- **Lời kết / Câu nối:** *"Mời bạn bấm sang **Bài 3.3** để cùng tôi thực hành trên tệp chi phí thô có sẵn trong bộ tài nguyên giáo trình!"*
+- **Lời kết / Câu nối:** *"Mời bạn bấm sang **Bài 3.3** để cùng tôi thực hành chuẩn hóa tệp nhật ký cuộc gọi khiếu nại CSKH có sẵn trong bộ tài nguyên giáo trình!"*
 
 ### bai_09_p03_thuc_hanh_cai_dat_rules_van_phong.md
-- **Tên bài:** Bài 3.3: Thực hành: Phối hợp AGENTS.md và rules/xx.md chuẩn hóa bảng kê chi phí từ file thô
+- **Tên bài:** Bài 3.3: Thực hành: Phối hợp AGENTS.md và rules/xx.md chuẩn hóa nhật ký cuộc gọi CSKH từ file thô
 - **Khối/Phần:** Kho Vũ Khí 7 Trụ Cột Cho Dân Văn Phòng | Trụ Cột 1 — Rules: Huấn Luyện AI Tuân Thủ Quy Chuẩn Văn Phòng
 - **Thời lượng:** 04:30 (Chuẩn Udemy Micro-Learning • Hands-on Walkthrough) | **Slide ref:** `phan_03_tru_cot_rules.html` (Slide 3)
 - **Các mốc thời gian:**
   * `[00:00 - 00:35]` MỤC TIÊU THỰC HÀNH: PHỐI HỢP AGENTS.MD VÀ RULES/XX.MD TRÊN TỆP DỮ LIỆU THỰC TẾ
-  * `[00:35 - 01:50]` KHÁM PHÁ WORKSPACE MẪU CHI-PHI-CONG-TAC-THO & CẤU TRÚC CHUẨN GOOGLE
+  * `[00:35 - 01:50]` KHÁM PHÁ WORKSPACE MẪU XU-LY-KHIEU-NAI-CSKH & CẤU TRÚC CHUẨN GOOGLE
   * `[01:50 - 02:40]` CẢNH BÁO QUÉT PHẲNG (FLAT SCANNING) CHUẨN GOOGLE
   * `[02:40 - 03:50]` KIỂM CHỨNG THỰC TẾ: RA LỆNH 1 DÒNG ➔ AI TỰ KÍCH HOẠT RULE & XUẤT FILE MỚI CHUẨN ĐÉT
   * `[03:50 - 04:30]` TỔNG KẾT PHẦN 3 VÀ CẦU NỐI TIẾN VÀO PHẦN 4: TRỤ CỘT 2 — SKILLS
