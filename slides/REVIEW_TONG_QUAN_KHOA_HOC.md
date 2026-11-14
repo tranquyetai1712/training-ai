@@ -178,19 +178,19 @@
   * `[00:00 - 00:40]` NỖI KHỔ CỦA CON AI "BỊ NHỐT TRONG PHÒNG KÍN"
   * `[00:40 - 01:50]` ẨN DỤ ĐẮT GIÁ: CỔNG CẮM USB-C VẠN NĂNG CHO BỘ NÃO AI
   * `[01:50 - 02:50]` TỆP CẤU HÌNH MCP_CONFIG.JSON: KẾT NỐI KHÔNG CẦN BIẾT CODE
-  * `[02:50 - 03:30]` TỔNG KẾT VÀ CẦU NỐI SANG THỰC HÀNH BÀI 7.2 (GMAIL MCP)
+  * `[02:50 - 03:30]` TỔNG KẾT VÀ CẦU NỐI SANG THỰC HÀNH BÀI 7.2 (TRELLO MCP)
 - **Lời kết / Câu nối:** *"Mời bạn cùng bấm sang Bài 7.2 ngay bây giờ!"*
 
-### bai_16_p07_thuc_hanh_ket_noi_thu_muc_ho_so_mcp.md
-- **Tên bài:** Bài 7.2: Thực hành: Kết nối cổng Gmail MCP — Biến AI thành thư ký tự động quét & tóm tắt email công việc quan trọng
+### bai_17_p07_thuc_hanh_ket_noi_thu_muc_ho_so_mcp.md
+- **Tên bài:** Bài 7.2: Thực hành: Kết nối cổng Trello MCP — Dựng bảng, thêm sửa, sắp xếp công việc từ con số 0 chỉ bằng câu lệnh
 - **Khối/Phần:** Kho Vũ Khí 7 Trụ Cột Cho Dân Văn Phòng | Trụ Cột 5 — MCP: Cổng Kết Nối Đưa Dữ Liệu Công Việc Thực Tế Vào AI
-- **Thời lượng:** 04:30 | **Slide ref:** `phan_07_tru_cot_mcp.html` (Slide 2)
+- **Thời lượng:** 05:30 | **Slide ref:** `phan_07_tru_cot_mcp.html` (Slide 2)
 - **Các mốc thời gian:**
-  * `[00:00 - 00:45]` NỖI ÁM ẢNH HỘP THƯ GMAIL QUÁ TẢI MỖI SÁNG
-  * `[00:45 - 01:50]` KHÁM PHÁ CỔNG GMAIL MCP TRONG MCP_CONFIG.JSON
-  * `[01:50 - 03:45]` THAO TÁC THỰC CHIẾN: AI TỰ ĐỘNG QUÉT & LẬP BẢNG TÓM TẮT EMAIL
-  * `[03:45 - 04:30]` TỔNG KẾT BÀI & CẦU NỐI SANG PHẦN 8 (PLUGINS & SIDECARS)
-- **Lời kết / Câu nối:** *"Hẹn gặp lại các bạn ở Bài 8.1 ngay sau đây!"..."*
+  * `[00:00 - 00:50]` TÀI KHOẢN TRELLO TRỐNG TRƠN & LÝ DO CHỌN TRELLO MCP
+  * `[00:50 - 01:45]` KHÁM PHÁ CỔNG TRELLO MCP TRONG MCP_CONFIG.JSON
+  * `[01:45 - 04:45]` THỰC CHIẾN 6 NHỊP LIÊN HOÀN: TỪ CON SỐ 0 ĐẾN BẢNG VIỆC HOÀN CHỈNH
+  * `[04:45 - 05:30]` TỔNG KẾT BÀI & CẦU NỐI SANG PHẦN 8 (PLUGINS & SIDECARS)
+- **Lời kết / Câu nối:** *"Hẹn gặp lại bạn ở Bài 8.1 ngay sau đây!"*
 
 ### bai_17_p08_plugins_vali_nghe_dong_goi_all_in_one.md
 - **Tên bài:** Bài 8.1: Plugins: Đóng gói toàn bộ Rules, Skills thành 1 bộ cài duy nhất qua plugin.json

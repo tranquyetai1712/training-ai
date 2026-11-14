@@ -30,7 +30,7 @@
 | **6.1** | Hooks là gì? Trạm kiểm soát an toàn | [`phan_06_tru_cot_hooks.html`](phan_06_tru_cot_hooks.html) | **Slide 1:** Trụ Cột 4 — Hooks: Vòng Kim Cô Giám Sát AI |
 | **6.2** | Thực hành: Chốt chặn PreToolUse chống xóa | [`phan_06_tru_cot_hooks.html`](phan_06_tru_cot_hooks.html) | **Slide 2:** Thực Hành: Cài Đặt Hook Chặn Xóa Dữ Liệu |
 | **7.1** | MCP là gì? Mở rộng giác quan kết nối | [`phan_07_tru_cot_mcp.html`](phan_07_tru_cot_mcp.html) | **Slide 1:** Trụ Cột 5 — MCP: Cổng Kết Nối Vạn Năng |
-| **7.2** | Thực hành: Kết nối cổng Gmail MCP quét & tóm tắt email | [`phan_07_tru_cot_mcp.html`](phan_07_tru_cot_mcp.html) | **Slide 2:** Thực Hành: Kết Nối Cổng Gmail MCP |
+| **7.2** | Thực hành: Kết nối Trello MCP — Dựng bảng, thêm sửa & sắp xếp từ con số 0 | [`phan_07_tru_cot_mcp.html`](phan_07_tru_cot_mcp.html) | **Slide 2:** Thực Hành: Điều Phối Trello Từ Con Số 0 |
 | **8.1** | Plugins: Chiếc vali đồ nghề all-in-one | [`phan_08_tru_cot_plugins_sidecars.html`](phan_08_tru_cot_plugins_sidecars.html) | **Slide 1:** Trụ Cột 6 — Plugins: Chiếc Vali Vũ Khí Số |
 | **8.2** | Thực hành Plugin: `q-file-organizer` | [`phan_08_tru_cot_plugins_sidecars.html`](phan_08_tru_cot_plugins_sidecars.html) | **Slide 2:** Thực Hành: Plugin `q-file-organizer` |
 | **8.3** | Sidecars: Trợ lý tàng hình chạy ngầm 24/7 | [`phan_08_tru_cot_plugins_sidecars.html`](phan_08_tru_cot_plugins_sidecars.html) | **Slide 3:** Trụ Cột 7 — Sidecars & Bản Đồ 7 Trụ Cột |

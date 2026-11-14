@@ -67,11 +67,11 @@ Khi Antigravity khởi động, nó tự động nhận diện chiếc cổng c�
 
 ---
 
-### [02:50 - 03:30] TỔNG KẾT VÀ CẦU NỐI SANG THỰC HÀNH BÀI 7.2 (GMAIL MCP)
+### [02:50 - 03:30] TỔNG KẾT VÀ CẦU NỐI SANG THỰC HÀNH BÀI 7.2 (TRELLO MCP)
 `[Chỉ dòng Footer Bar trên Slide 1: Quy tắc vàng Universal Protocol]`
 
 "**Tóm lại,** nếu Rules là nội quy, Skills là tay nghề, Hooks là vòng bảo vệ, thì MCP chính là **đôi mắt và đôi bàn tay** đưa AI vươn ra thế giới ứng dụng thực tế bên ngoài!
 
-**Và để kiểm chứng sự tiện lợi ngoạn mục này,** ngay ở bài học tiếp theo — **Bài 7.2**, chúng ta sẽ cùng nhau thực hành cắm trực tiếp **Cổng Gmail MCP**: Bạn chỉ cần gõ đúng một câu lệnh tự nhiên, và cùng xem trợ lý AI tự động lướt hòm thư Gmail của bạn, lọc ra những email khẩn cấp chứa báo giá, hợp đồng và tóm tắt thành bảng báo cáo sạch bóng ra sao nhé!
+**Và để kiểm chứng sự tiện lợi ngoạn mục này,** ngay ở bài học tiếp theo — **Bài 7.2**, chúng ta sẽ cùng nhau thực hành cắm trực tiếp **Cổng Trello MCP** (vì với Gmail thì Antigravity đã tích hợp sẵn Plugin hỗ trợ rồi): Bắt đầu từ một tài khoản Trello hoàn toàn trống trơn chưa có bảng hay thẻ nào, bạn chỉ cần ngồi ngay tại Antigravity ra lệnh bằng tiếng Việt để tạo bảng mới, thêm hàng loạt thẻ việc, chỉnh sửa hạn chót và sắp xếp chuyển cột mà không cần đụng tay vào giao diện Trello!
 
 Mời bạn cùng bấm sang Bài 7.2 ngay bây giờ!"
