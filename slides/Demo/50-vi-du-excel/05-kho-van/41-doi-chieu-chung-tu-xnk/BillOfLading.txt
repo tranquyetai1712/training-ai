@@ -1,0 +1,8 @@
+OCEAN BILL OF LADING (DRAFT)
+B/L No: ONEYHAN268899
+Shipper: VIETNAM TEXTILE APPAREL CORP
+Consignee: PACIFIC TRADING LLC, CALIFORNIA, USA
+Port of Loading: HAIPHONG, VIETNAM | Port of Discharge: LOS ANGELES, USA
+Description of Goods: 100 CARTONS OF MEN KNITTED POLO SHIRTS
+Gross Weight: 1,450.00 KGS  <-- Lệch 50kg so với Packing List (1400 KGS)!
+Measurement: 24.50 CBM

@@ -1,0 +1,9 @@
+BIÊN BẢN HỌP GIAO BAN DỰ ÁN TRIỂN KHAI PHẦN MỀM ERP
+Thời gian: 09:00 - 11:30 ngày 10/11/2026
+Chủ trì: Anh Hoàng Nam (Giám đốc Dự án) | Thư ký: Thùy Trang
+
+CÁC KẾT LUẬN & PHÂN CÔNG CÔNG VIỆC:
+1. Anh Tuấn (Phòng Kỹ thuật): Hoàn thiện việc kết nối API cổng thanh toán VNPay và kiểm thử bảo mật. Deadline: 18/11/2026. Mức độ ưu tiên: High (Rất khẩn cấp).
+2. Chị Lan (Phòng Kế toán): Chuẩn hóa danh mục tài khoản theo Thông tư 200 và chốt số dư đầu kỳ để import vào hệ thống mới. Deadline: 22/11/2026. Mức độ ưu tiên: High.
+3. Anh Minh (Phòng Kho vận): Hoàn thành kiểm kê kho thực tế tại kho Hà Nội và bàn giao số liệu cho đội dự án. Deadline: 25/11/2026. Mức độ ưu tiên: Medium.
+4. Chị Hà (Phòng Nhân sự): Lập danh sách phân quyền tài khoản cho 50 nhân viên tham gia đợt đào tạo nội bộ. Deadline: 15/11/2026. Mức độ ưu tiên: Medium.

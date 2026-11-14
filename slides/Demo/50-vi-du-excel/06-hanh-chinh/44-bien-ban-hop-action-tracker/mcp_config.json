@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "google_workspace": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@google-workspace/mcp-server"
+      ],
+      "env": {
+        "WORKSPACE_AUTH_TYPE": "oauth2",
+        "SCOPES": "https://www.googleapis.com/auth/drive,https://www.googleapis.com/auth/spreadsheets,https://www.googleapis.com/auth/calendar"
+      }
+    }
+  }
+}
