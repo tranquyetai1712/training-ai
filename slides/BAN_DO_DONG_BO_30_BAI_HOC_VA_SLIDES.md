@@ -31,9 +31,9 @@
 | **6.2** | Thực hành: Chốt chặn PreToolUse chống xóa | [`phan_06_tru_cot_hooks.html`](phan_06_tru_cot_hooks.html) | **Slide 2:** Thực Hành: Cài Đặt Hook Chặn Xóa Dữ Liệu |
 | **7.1** | MCP là gì? Mở rộng giác quan kết nối | [`phan_07_tru_cot_mcp.html`](phan_07_tru_cot_mcp.html) | **Slide 1:** Trụ Cột 5 — MCP: Cổng Kết Nối Vạn Năng |
 | **7.2** | Thực hành: Kết nối Trello MCP — Dựng bảng, thêm sửa & sắp xếp từ con số 0 | [`phan_07_tru_cot_mcp.html`](phan_07_tru_cot_mcp.html) | **Slide 2:** Thực Hành: Điều Phối Trello Từ Con Số 0 |
-| **8.1** | Plugins: Chiếc vali đồ nghề all-in-one | [`phan_08_tru_cot_plugins_sidecars.html`](phan_08_tru_cot_plugins_sidecars.html) | **Slide 1:** Trụ Cột 6 — Plugins: Chiếc Vali Vũ Khí Số |
-| **8.2** | Thực hành Plugin: `q-file-organizer` | [`phan_08_tru_cot_plugins_sidecars.html`](phan_08_tru_cot_plugins_sidecars.html) | **Slide 2:** Thực Hành: Plugin `q-file-organizer` |
-| **8.3** | Sidecars: Trợ lý tàng hình chạy ngầm 24/7 | [`phan_08_tru_cot_plugins_sidecars.html`](phan_08_tru_cot_plugins_sidecars.html) | **Slide 3:** Trụ Cột 7 — Sidecars & Bản Đồ 7 Trụ Cột |
+| **8.1** | Plugins: Chiếc vali đồ nghề all-in-one | [`phan_08_tru_cot_plugins_automations.html`](phan_08_tru_cot_plugins_automations.html) | **Slide 1:** Trụ Cột 6 — Plugins: Chiếc Vali Vũ Khí Số |
+| **8.2** | Thực hành Plugin: `q-file-organizer` | [`phan_08_tru_cot_plugins_automations.html`](phan_08_tru_cot_plugins_automations.html) | **Slide 2:** Thực Hành: Plugin `q-file-organizer` |
+| **8.3** | Automations: Hẹn giờ chạy ngầm bằng giao diện trực quan | [`phan_08_tru_cot_plugins_automations.html`](phan_08_tru_cot_plugins_automations.html) | **Slide 3:** Automations: Hẹn Giờ Chạy Ngầm Bằng Giao Diện |
 
 ---
 
@@ -41,9 +41,8 @@
 
 | Bài | Tên Bài Học | File Slide Tương Ứng | Slide Số & Tiêu Đề Trên Màn Hình |
 | :---: | :--- | :--- | :--- |
-| **9.1** | Nỗi sợ hộp thư ngập rác & Gmail MCP | [`phan_09_thuc_chien_email.html`](phan_09_thuc_chien_email.html) | **Slide 1:** Thực Chiến 1 — Email: Chấm Dứt Nỗi Sợ Hộp Thư Rác |
-| **9.2** | Thực hành: Phân loại gắn 4 nhãn màu | [`phan_09_thuc_chien_email.html`](phan_09_thuc_chien_email.html) | **Slide 2:** Thực Hành: Hệ Thống 4 Nhãn Màu Tự Động |
-| **9.3** | Lên lịch hẹn giờ 8h sáng `/schedule` | [`phan_09_thuc_chien_email.html`](phan_09_thuc_chien_email.html) | **Slide 3:** Lên Lịch Hẹn Giờ: Cứ 8h00 Sáng AI Tự Điểm Tin |
+| **9.1** | Thực hành: Gắn 8 nhãn Gmail & báo kênh Slack từ 10 email mẫu (`q-email`) | [`phan_09_thuc_chien_email.html`](phan_09_thuc_chien_email.html) | **Slide 1:** Thực Chiến 1 — Gắn Nhãn Gmail & Báo Kênh Slack |
+| **9.2** | Lên lịch hẹn giờ 8h sáng bằng Automations | [`phan_09_thuc_chien_email.html`](phan_09_thuc_chien_email.html) | **Slide 2:** Lên Lịch Trên Automations: Cứ 8h00 Sáng AI Tự Điểm Tin |
 | **10.1** | Bài toán rà soát hóa đơn chi phí công tác | [`phan_10_thuc_chien_hoa_don_excel.html`](phan_10_thuc_chien_hoa_don_excel.html) | **Slide 1:** Thực Chiến 2 — Kế Toán: Quét Hóa Đơn Tự Đổ Vào Excel |
 | **10.2** | Thực hành: Khai thác Vision OCR bóc tách | [`phan_10_thuc_chien_hoa_don_excel.html`](phan_10_thuc_chien_hoa_don_excel.html) | **Slide 2:** Thực Hành: Trích Xuất Đa Định Dạng Hóa Đơn |
 | **10.3** | Nghiệm thu: Xuất bảng tính Excel `=SUM()` | [`phan_10_thuc_chien_hoa_don_excel.html`](phan_10_thuc_chien_hoa_don_excel.html) | **Slide 3:** Nghiệm Thu: File Excel Chuẩn Công Thức `=SUM()` |

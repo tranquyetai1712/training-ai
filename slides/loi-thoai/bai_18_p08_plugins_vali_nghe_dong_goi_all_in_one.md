@@ -1,15 +1,15 @@
 # KỊCH BẢN LỜI THOẠI BÀI HỌC 8.1
 **Khóa học:** Làm Chủ Google Antigravity Cho Người Không Chuyên  
 **Khối 2:** Kho Vũ Khí 7 Trụ Cột Cho Dân Văn Phòng  
-**Phần 8:** Trụ Cột 6 & 7 — Plugins & Sidecars: Vali Nghề & Trợ Lý Tàng Hình  
+**Phần 8:** Trụ Cột 6 & 7 — Plugins & Automations: Vali Nghề & Trợ Lý Hẹn Giờ  
 **Tên bài:** Bài 8.1: Plugins: Đóng gói toàn bộ Rules, Skills thành 1 bộ cài duy nhất qua plugin.json  
 **Thời lượng dự kiến:** 08:00  
-**Slide tương ứng:** `phan_08_tru_cot_plugins_sidecars.html` (Slide 1)
+**Slide tương ứng:** `phan_08_tru_cot_plugins_automations.html` (Slide 1)
 
 ---
 
 ## 🎬 1. CHUẨN BỊ TRƯỚC KHI QUAY
-* **Cửa sổ trình chiếu:** Mở tệp slide `slides/phan_08_tru_cot_plugins_sidecars.html` (Slide 17 và Slide 18).
+* **Cửa sổ trình chiếu:** Mở tệp slide `slides/phan_08_tru_cot_plugins_automations.html` (Slide 17 và Slide 18).
 * **Minh họa thư mục:** Mở thư mục Plugin `D:\Project\workflow\plugins\q-file-organizer` để chỉ rõ cấu trúc tệp tin thực tế.
 * **Tông giọng:** Hào hứng, chuyên nghiệp, khơi gợi tư duy đóng gói sản phẩm và chia sẻ tài sản công nghệ trong đội ngũ.
 

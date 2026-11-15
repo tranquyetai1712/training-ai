@@ -385,15 +385,14 @@
   * **Slide 1:** Notes: *"Trụ cột 5 - MCP (Model Context Protocol): Cổng kết nối vạn năng. Trước đây, muốn AI đọc dữ liệu từ G..."*
   * **Slide 2:** Notes: *"Thực hành MCP: Kết nối thư mục Hợp đồng nội bộ qua Filesystem MCP. Kịch bản kiểm tra hợp đồng: 1. Cấ..."*
 
-### `phan_08_tru_cot_plugins_sidecars.html` (3 slides)
+### `phan_08_tru_cot_plugins_automations.html` (3 slides)
   * **Slide 1:** Notes: *"Trụ cột 6 - Plugins: Chiếc vali đóng gói giải pháp toàn diện. Nếu Rules là sổ tay, Skills là bí kíp,..."*
   * **Slide 2:** Notes: *"Thực hành Plugin thực tế: q-file-organizer cứu rỗi thư mục Downloads lộn xộn. Plugin q-file-organize..."*
-  * **Slide 3:** Notes: *"Trụ cột 7 - Sidecars & Bản đồ 1 trang kết nối 7 Trụ Cột Vũ Khí. Sidecars là gì? Đó là những tiến trì..."*
+  * **Slide 3:** Notes: *"Automations — Trợ lý hẹn giờ chạy ngầm trực quan, không cần biết code. 1. Bấm vào mục Automations..."*
 
-### `phan_09_thuc_chien_email.html` (3 slides)
-  * **Slide 1:** Notes: *"Thực chiến 01 - Trợ lý Hộp thư tự động: Bài toán và Kết nối Gmail MCP. Nỗi đau thực tế: Hộp thư công..."*
-  * **Slide 2:** Notes: *"Thực hành: Phân loại thông minh 4 nhãn màu chuẩn công sở. Hệ thống nhãn màu tối ưu: 1. ĐỎ - 01_KHAN_..."*
-  * **Slide 3:** Notes: *"Tự động hóa với lệnh /schedule: Hẹn giờ 8h00 sáng mỗi ngày. Tính năng đỉnh cao: Bạn không cần phải m..."*
+### `phan_09_thuc_chien_email.html` (2 slides)
+  * **Slide 1:** Notes: *"Thực hành: Phân loại Gmail theo 8 nhãn phòng ban & báo cáo tự động sang Slack bằng gói tiện ích q-email..."*
+  * **Slide 2:** Notes: *"Tự động hóa bằng Automations UI: Hẹn giờ 8h00 sáng mỗi ngày không cần code. Tính năng đỉnh cao:..."*
 
 ### `phan_10_thuc_chien_hoa_don_excel.html` (3 slides)
   * **Slide 1:** Notes: *"Thực chiến 02 - Kế toán số: Quét ảnh hóa đơn đổ dữ liệu vào Excel. Nỗi khổ của phòng Kế toán và Hành..."*

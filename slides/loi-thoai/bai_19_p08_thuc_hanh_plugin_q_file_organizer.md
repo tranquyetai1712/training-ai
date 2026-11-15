@@ -1,15 +1,15 @@
 # KỊCH BẢN LỜI THOẠI BÀI HỌC 8.2
 **Khóa học:** Làm Chủ Google Antigravity Cho Người Không Chuyên  
 **Khối 2:** Kho Vũ Khí 7 Trụ Cột Cho Dân Văn Phòng  
-**Phần 8:** Trụ Cột 6 & 7 — Plugins & Sidecars: Vali Nghề & Trợ Lý Tàng Hình  
+**Phần 8:** Trụ Cột 6 & 7 — Plugins & Automations: Vali Nghề & Trợ Lý Hẹn Giờ  
 **Tên bài:** Bài 8.2: Thực hành Plugin thực tế: Trải nghiệm Plugin 'q-file-organizer' kết hợp 'phan-loai-file-tu-dong' dọn dẹp thư mục Downloads  
 **Thời lượng dự kiến:** 10:00  
-**Slide tương ứng:** `phan_08_tru_cot_plugins_sidecars.html` (Slide 2)
+**Slide tương ứng:** `phan_08_tru_cot_plugins_automations.html` (Slide 2)
 
 ---
 
 ## 🎬 1. CHUẨN BỊ TRƯỚC KHI QUAY
-* **Cửa sổ trình chiếu:** Mở tệp slide `slides/phan_08_tru_cot_plugins_sidecars.html` (Slide 19).
+* **Cửa sổ trình chiếu:** Mở tệp slide `slides/phan_08_tru_cot_plugins_automations.html` (Slide 19).
 * **Thư mục thực hành:** Chuẩn bị sẵn một thư mục `Downloads_Mau` chứa 10 tệp tin hỗn độn: 3 file ảnh chụp, 2 file Word báo cáo, 2 file Excel dự toán, 2 file PDF và 1 file nén `.zip`.
 * **Plugin sẵn sàng:** Plugin `q-file-organizer` từ `D:\Project\workflow\plugins\q-file-organizer` đã được bật.
 * **Tông giọng:** Phấn chấn, thực tế, chứng minh sự tiện lợi tột bậc của một bộ Plugin tự động hóa đời thực.
@@ -74,12 +74,12 @@ Sau đó, nếu bạn muốn, bạn có thể gọi tiếp kỹ năng thứ 2 tr
 
 ---
 
-### [07:30 - 10:00] TỔNG KẾT BÀI & CÂU DẪN SANG BÀI 8.3: SIDECARS
+### [07:30 - 10:00] TỔNG KẾT BÀI & CÂU DẪN SANG BÀI 8.3: AUTOMATIONS
 `[Quay lại màn hình camera, nụ cười sảng khoái]`
 
 "Các bạn thấy việc sở hữu một bộ Plugin hoàn chỉnh tuyệt vời như thế nào chưa? Nó biến những việc tốn hàng giờ dọn dẹp máy tính thành một trò chơi nhàn hạ chỉ tốn vài cú click chuột.
 
-Và bây giờ, chúng ta sẽ bước sang mảnh ghép cuối cùng của Kho Vũ Khí: **Trụ Cột 7 — Sidecars: Trợ Lý Tàng Hình Chạy Ngầm 24/7**!  
-Nơi bạn sẽ khám phá cách để AI tự thức dậy lúc nửa đêm hoặc chạy ngầm nhắc việc mà bạn không cần phải mở khung chat lên gõ lệnh.
+Và bây giờ, chúng ta sẽ bước sang mảnh ghép cuối cùng của Khối 2: **Automations — Trợ Lý Hẹn Giờ Chạy Ngầm Bằng Giao Diện Trực Quan**!  
+Nơi bạn sẽ khám phá cách dùng bảng điều khiển **Automations** để AI tự thức dậy đúng giờ hẹn làm việc mà bạn không cần phải biết code hay mở khung chat lên gõ lệnh mỗi ngày.
 
 Mời các bạn cùng bấm sang Bài 8.3 ngay bây giờ!"
