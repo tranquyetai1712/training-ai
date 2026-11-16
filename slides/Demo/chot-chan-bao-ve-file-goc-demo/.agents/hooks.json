@@ -1,0 +1,17 @@
+{
+  "protect-original-files": {
+    "enabled": true,
+    "PreToolUse": [
+      {
+        "matcher": "run_command|write_file|edit_file|write_to_file|replace_file_content|multi_replace_file_content|delete_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python scripts/protect_original_files.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Global Pre-push hook managed by Antigravity plugin quyetchasqui
+
+SCRIPT_PATH="/home/tranquyet/.gemini/config/plugins/quyetchasqui/hooks/check-pr-quality-gate.sh"
+
+if [ -f "$SCRIPT_PATH" ]; then
+  bash "$SCRIPT_PATH"
+else
+  exit 0
+fi

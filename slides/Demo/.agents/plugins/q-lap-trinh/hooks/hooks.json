@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "run_command",
+        "command_pattern": "git push",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /home/tranquyet/.gemini/config/plugins/quyetchasqui/hooks/check-pr-quality-gate.sh",
+            "async": false
+          }
+        ]
+      }
+    ]
+  }
+}

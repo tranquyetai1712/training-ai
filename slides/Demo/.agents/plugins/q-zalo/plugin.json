@@ -1,0 +1,9 @@
+{
+  "name": "q-zalo",
+  "version": "1.0.0",
+  "description": "Plugin tự động trích xuất, giải mã và tìm kiếm lịch sử tin nhắn từ Zalo PC cho Antigravity AI",
+  "author": "Antigravity Pair Programmer",
+  "skills": [
+    "trich-xuat-tin-nhan-zalo"
+  ]
+}

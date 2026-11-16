@@ -1,0 +1,17 @@
+{
+  "protectedFiles": [
+    "du_lieu_goc_khach_hang.xlsx"
+  ],
+  "protectedPatterns": [
+    "du_lieu_goc_*",
+    "*_goc.*",
+    "*_goc_*",
+    "goc_*",
+    "*_tho.*",
+    "*_tho_*",
+    "*_raw.*",
+    "raw_*",
+    "*_original.*",
+    "original_*"
+  ]
+}
