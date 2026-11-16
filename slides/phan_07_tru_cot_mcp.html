@@ -571,15 +571,19 @@ MCP giải quyết điều này bằng 1 giao thức chuẩn duy nhất (giống
       </div>
     </div>
 
-    <div class="slide-canvas" data-slide="2" data-notes="Thực hành MCP thực tế: Kết nối cổng Trello MCP từ tài khoản Trello hoàn toàn mới tinh (trống trơn 0 bảng, 0 thẻ).
-Lý do chọn Trello MCP: Gmail đã có sẵn Plugin tích hợp mặc định trong Antigravity, nên bài này thực hành cấu hình cổng Trello MCP tùy chỉnh qua mcp_config.json.
-Chuỗi 6 thao tác chỉ ra lệnh tại Antigravity (không cần bấm tay trên web Trello):
-1. Tạo mới từ con số 0: Dựng bảng 'Vận Hành Văn Phòng Q4' và 3 cột Kanban (create_board, add_list_to_board).
-2. Thêm hàng loạt: Tạo 5 thẻ việc mẫu kèm mô tả vào cột Cần Làm (add_card_to_list).
-3. Chỉnh sửa chi tiết: Đổi tên [KHẨN], sửa mô tả và gắn deadline cho thẻ (update_card_details).
-4. Sắp xếp & Di chuyển: Đưa thẻ khẩn lên đầu cột và chuyển thẻ sang Đang Thực Hiện / Hoàn Thành (move_card).
-5. Cập nhật tiến độ: Thêm bình luận và checklist công việc ngay trong thẻ.
-6. Quét & Báo cáo: Tổng hợp toàn bộ bảng vừa dựng thành bảng Markdown gọn gàng!">
+    <div class="slide-canvas" data-slide="2" data-notes="Thực hành MCP thực tế: Kết nối cổng Trello MCP 1-Click trên giao diện Customization từ tài khoản mới tinh (0 bảng, 0 thẻ).
+Lợi thế vượt trội: Không cần biết lập trình, không cần lấy API Key hay Token, kết nối trực quan chỉ bằng 1 cú click chuột.
+Chuỗi 8 nhịp thực chiến từ con số 0 đến hệ thống quản lý công việc chuẩn mực:
+- 5 Thao tác nền tảng:
+  1. Khởi tạo bảng & 3 cột Kanban (create_board, add_list_to_board).
+  2. Thêm nhanh 3 thẻ việc văn phòng (add_card_to_list).
+  3. Chỉnh sửa chi tiết: Đổi tên [KHẨN], sửa mô tả & gắn deadline (update_card_details).
+  4. Sắp xếp & Chuyển cột: Đưa việc khẩn lên đầu, chuyển sang Đang Làm / Hoàn Thành (move_card).
+  5. Cập nhật tiến độ: Thêm bình luận pháp chế và checklist kiểm tra.
+- 3 Kịch bản AI đột phá (Thao tác tay chào thua):
+  6. Sức mạnh Skill: Nhập text thô -> Skill trello-task-standardizer tự format thẻ chuẩn Agile/DoD/Checklist.
+  7. Cầu nối đa nguồn: Đọc file ghi_chu_cuoc_hop_tho.txt trên máy -> Tự bóc tách và nạp 3 thẻ theo phòng ban lên Trello.
+  8. Kiểm toán thông minh: Quét thẻ [KHẨN]/quá hạn gắn nhãn đỏ và lập báo cáo tiến độ Markdown tự động!">
       <div class="slide-hud">
         <div class="hud-chip">WORKSPACE: <strong>DEMO/KET-NOI-MCP-TRELLO</strong></div>
         <div class="hud-chip">TRỤ CỘT 05: <strong>TRELLO TỪ CON SỐ 0</strong></div>
@@ -587,47 +591,55 @@ Chuỗi 6 thao tác chỉ ra lệnh tại Antigravity (không cần bấm tay tr
       <div class="anim-1">
         <span class="tag-hero" style="color: var(--accent-emerald);"><svg class="svg-icon" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg> CHỈ RA LỆNH TẠI ANTIGRAVITY</span>
         <h2 class="title-display">Thực Hành: <span>Điều Phối Trello Từ Con Số 0</span></h2>
-        <p class="lead-desc">Bắt đầu từ tài khoản Trello trống trơn — Chỉ cần ngồi ở Antigravity ra lệnh để thêm mới, chỉnh sửa và sắp xếp trọn bộ công việc.</p>
+        <p class="lead-desc">Kết nối 1-click trực quan qua Customization — Kết hợp Skill & MCP để biến ghi chú thô thành bảng việc chuẩn chỉ.</p>
       </div>
       <div class="card-grid col-2 anim-2">
         <div class="stat-card" style="border-top: 3px solid var(--accent-cyan);">
-          <div class="stat-header"><span class="card-badge" style="background: rgba(14,165,233,0.18); color: #7dd3fc;">CẤU HÌNH MCP</span></div>
-          <div class="stat-title">mcp_config.json (Cắm Là Chạy)</div>
-          <div class="code-box" style="color: #7dd3fc;">{
-  "mcpServers": {
-    "trello": {
-      "command": "npx",
-      "args": ["-y", "@delorenj/mcp-server-trello"],
-      "env": {
-        "TRELLO_API_KEY": "&lt;API_KEY&gt;",
-        "TRELLO_TOKEN": "&lt;TOKEN&gt;"
-      }
-    }
-  }
-}</div>
-          <div class="stat-desc" style="margin-top: 10px;">
-            <ul class="key-points-list">
-              <li class="key-point-item"><span style="color: #38bdf8;">•</span> <strong>Vì sao chọn Trello?</strong> Gmail đã có sẵn Plugin mặc định trong Antigravity; Trello minh họa sức mạnh tự cắm phần mềm ngoài.</li>
+          <div class="stat-header"><span class="card-badge" style="background: rgba(14,165,233,0.18); color: #7dd3fc;">KẾT NỐI 1-CHẠM TRỰC QUAN</span></div>
+          <div class="stat-title">Giao Diện Customization (Không Cần Code)</div>
+          <div class="stat-desc">
+            <p style="margin-bottom: 8px; color: var(--text-main);">Loại bỏ 100% rào cản kỹ thuật — Không cần lấy API Key, Token hay sửa file JSON:</p>
+            <div style="background: #080d1a; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 12px 14px; margin: 8px 0;">
+              <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.82rem;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="background: rgba(56,189,248,0.2); color: #38bdf8; font-family: var(--font-mono); font-weight: 700; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem;">1</span>
+                  <span>Mở Antigravity &gt; <strong>Customization</strong> (Plugins / MCP)</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="background: rgba(56,189,248,0.2); color: #38bdf8; font-family: var(--font-mono); font-weight: 700; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem;">2</span>
+                  <span>Tìm cổng <strong>Trello</strong> &gt; Bấm <strong>Connect (Sign In)</strong></span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <span style="background: rgba(52,211,153,0.2); color: #34d399; font-family: var(--font-mono); font-weight: 700; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.72rem;">3</span>
+                  <span>Xác thực 1-chạm trên trình duyệt &gt; Báo xanh <strong>Connected</strong></span>
+                </div>
+              </div>
+            </div>
+            <ul class="key-points-list" style="margin-top: 8px; gap: 6px;">
+              <li class="key-point-item"><span style="color: #38bdf8;">•</span> <strong>Chuẩn OAuth hiện đại:</strong> Bảo mật an toàn, cấp quyền tức thì.</li>
+              <li class="key-point-item"><span style="color: #38bdf8;">•</span> <strong>Cắm là chạy:</strong> AI lập tức sở hữu trọn bộ công cụ điều phối Trello.</li>
             </ul>
           </div>
         </div>
         <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
-          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">6 NHỊP TỪ TRANG GIẤY TRẮNG</span></div>
-          <div class="stat-title">Không Cần Mở Web Trello Bấm Tay</div>
+          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">8 NHỊP THỰC CHIẾN ĐỈNH CAO</span></div>
+          <div class="stat-title">5 Nền Tảng + 3 Kịch Bản AI Vượt Trội</div>
           <div class="stat-desc">
-            <ul class="key-points-list" style="gap: 6px;">
-              <li class="key-point-item" style="padding-left: 20px;"><span style="color: #4ade80;">1.</span> <strong>Tạo bảng &amp; cột mới:</strong> Dựng bảng Q4 và 3 cột Kanban (<code>create_board</code>, <code>add_list_to_board</code>).</li>
-              <li class="key-point-item" style="padding-left: 20px;"><span style="color: #4ade80;">2.</span> <strong>Thêm 5 thẻ việc:</strong> Đổ hàng loạt task kèm mô tả vào cột <code>To Do</code> (<code>add_card_to_list</code>).</li>
-              <li class="key-point-item" style="padding-left: 20px;"><span style="color: #4ade80;">3.</span> <strong>Chỉnh sửa chi tiết:</strong> Đổi tên <code>[KHẨN]</code>, sửa mô tả &amp; deadline (<code>update_card_details</code>).</li>
-              <li class="key-point-item" style="padding-left: 20px;"><span style="color: #4ade80;">4.</span> <strong>Sắp xếp &amp; Chuyển cột:</strong> Đẩy thẻ khẩn lên đầu, chuyển sang Đang Làm / Hoàn Thành (<code>move_card</code>).</li>
-              <li class="key-point-item" style="padding-left: 20px;"><span style="color: #4ade80;">5.</span> <strong>Gắn ghi chú &amp; Checklist:</strong> Thêm bình luận tiến độ và mục kiểm tra vào thẻ.</li>
-              <li class="key-point-item" style="padding-left: 20px;"><span style="color: #4ade80;">6.</span> <strong>Quét &amp; Báo cáo:</strong> Xuất bảng Markdown tổng hợp trạng thái toàn bảng ngay tức thì.</li>
+            <ul class="key-points-list" style="gap: 5px; font-size: 0.82rem;">
+              <li class="key-point-item" style="padding-left: 20px;"><span style="color: #4ade80;">1.</span> <strong>Tạo bảng &amp; cột:</strong> Dựng bảng Q4 và 3 cột Kanban từ số 0.</li>
+              <li class="key-point-item" style="padding-left: 20px;"><span style="color: #4ade80;">2.</span> <strong>Thêm nhanh task:</strong> Nạp 3 thẻ việc cơ bản kèm mô tả vào <code>To Do</code>.</li>
+              <li class="key-point-item" style="padding-left: 20px;"><span style="color: #4ade80;">3.</span> <strong>Chỉnh sửa chi tiết:</strong> Đổi tên <code>[KHẨN]</code>, cập nhật mô tả &amp; deadline.</li>
+              <li class="key-point-item" style="padding-left: 20px;"><span style="color: #4ade80;">4.</span> <strong>Sắp xếp &amp; Dời cột:</strong> Đẩy việc khẩn lên đầu, chuyển trạng thái cột.</li>
+              <li class="key-point-item" style="padding-left: 20px;"><span style="color: #4ade80;">5.</span> <strong>Bình luận &amp; Checklist:</strong> Thêm ghi chú tiến độ và checklist việc.</li>
+              <li class="key-point-item" style="padding-left: 20px; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 4px;"><span style="color: #38bdf8;">6.</span> <strong>Sức mạnh Skill:</strong> Gõ text thô &rarr; Sinh thẻ chuẩn Agile/DoD/Checklist.</li>
+              <li class="key-point-item" style="padding-left: 20px;"><span style="color: #38bdf8;">7.</span> <strong>Cầu nối đa nguồn:</strong> Đọc file ghi chú họp &rarr; Tự bóc tách nạp lên Trello.</li>
+              <li class="key-point-item" style="padding-left: 20px;"><span style="color: #38bdf8;">8.</span> <strong>Kiểm toán &amp; Báo cáo:</strong> Lọc task khẩn gắn nhãn đỏ &amp; lập báo cáo Markdown.</li>
             </ul>
           </div>
         </div>
       </div>
       <div class="footer-bar-summary anim-3">
-        <span>📋 <strong>Sức mạnh thực thụ:</strong> Từ Trello trống trơn đến bảng việc hoàn chỉnh — Mọi thao tác thêm, sửa, sắp xếp đều làm gọn ngay trong khung chat Antigravity!</span>
+        <span>📋 <strong>Sức mạnh thực thụ:</strong> Kết nối 1-click trực quan + Cộng hưởng Skill &amp; MCP — Từ ghi chú thô đến hệ thống quản lý công việc chuẩn mực ngay trong Antigravity!</span>
         <span style="font-family: var(--font-mono); color: var(--accent-emerald); font-weight: 700;">SAFE &amp; POWERFUL</span>
       </div>
     </div>

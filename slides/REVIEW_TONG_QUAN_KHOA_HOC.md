@@ -182,14 +182,15 @@
 - **Lời kết / Câu nối:** *"Mời bạn cùng bấm sang Bài 7.2 ngay bây giờ!"*
 
 ### bai_17_p07_thuc_hanh_ket_noi_thu_muc_ho_so_mcp.md
-- **Tên bài:** Bài 7.2: Thực hành: Kết nối cổng Trello MCP — Dựng bảng, thêm sửa, sắp xếp công việc từ con số 0 chỉ bằng câu lệnh
+- **Tên bài:** Bài 7.2: Thực hành: Kết nối cổng Trello MCP — Dựng bảng, chuẩn hóa thẻ việc, bóc tách dữ liệu và điều phối tự động từ con số 0
 - **Khối/Phần:** Kho Vũ Khí 7 Trụ Cột Cho Dân Văn Phòng | Trụ Cột 5 — MCP: Cổng Kết Nối Đưa Dữ Liệu Công Việc Thực Tế Vào AI
-- **Thời lượng:** 05:30 | **Slide ref:** `phan_07_tru_cot_mcp.html` (Slide 2)
+- **Thời lượng:** 06:00 | **Slide ref:** `phan_07_tru_cot_mcp.html` (Slide 2)
 - **Các mốc thời gian:**
-  * `[00:00 - 00:50]` TÀI KHOẢN TRELLO TRỐNG TRƠN & LÝ DO CHỌN TRELLO MCP
-  * `[00:50 - 01:45]` KHÁM PHÁ CỔNG TRELLO MCP TRONG MCP_CONFIG.JSON
-  * `[01:45 - 04:45]` THỰC CHIẾN 6 NHỊP LIÊN HOÀN: TỪ CON SỐ 0 ĐẾN BẢNG VIỆC HOÀN CHỈNH
-  * `[04:45 - 05:30]` TỔNG KẾT BÀI & CẦU NỐI SANG PHẦN 8 (PLUGINS & SIDECARS)
+  * `[00:00 - 00:45]` TÀI KHOẢN TRELLO TRỐNG TRƠN & LỢI THẾ CỔNG MCP
+  * `[00:45 - 01:25]` KÍCH HOẠT CỔNG TRELLO 1-CLICK TRÊN GIAO DIỆN CUSTOMIZATION
+  * `[01:25 - 03:15]` 5 THAO TÁC NỀN TẢNG: LÀM CHỦ TRELLO KHÔNG CẦN CHẠM CHUỘT
+  * `[03:15 - 05:15]` 3 KỊCH BẢN ĐỘT PHÁ: THAO TÁC TAY "CHÀO THUA" SỨC MẠNH AI (SKILL CHUẨN HÓA + BÓC TÁCH FILE HỌP + KIỂM TOÁN TIẾN ĐỘ)
+  * `[05:15 - 06:00]` TỔNG KẾT BÀI & CẦU NỐI SANG PHẦN 8 (PLUGINS & AUTOMATIONS)
 - **Lời kết / Câu nối:** *"Hẹn gặp lại bạn ở Bài 8.1 ngay sau đây!"*
 
 ### bai_17_p08_plugins_vali_nghe_dong_goi_all_in_one.md
