@@ -7,7 +7,7 @@ Validates:
 3. Security Hooks (.agents/hooks.json, .agents/scripts/protect_raw_data.py)
 4. Corporate Styling Rule (.agents/rules/chuan_muc_excel_van_phong.md)
 5. Standard Reference Output (_ket_qua_mau_chuan.xlsx)
-6. MCP configuration in integration exercises (gmail / google_workspace)
+6. No leftover mcp_config.json files (MCP Gmail / Google Workspace are built into Antigravity)
 7. Valid YAML frontmatter in rules and skills
 8. Validity of all generated .xlsx files (readable via openpyxl without corruption)
 """
@@ -212,11 +212,10 @@ def run_verification(target_dept=None):
         elif not verify_excel(ref_excel):
             errors.append(f"Corrupt or unreadable reference Excel: {ref_excel}")
 
-        # 8. Check MCP Configuration for Integration Exercises
-        if slug in EXPECTED_MCP_EXERCISES:
-            mcp_file = ws_dir / "mcp_config.json"
-            if not mcp_file.exists():
-                errors.append(f"Missing mcp_config.json for integration exercise: {ws_dir.name}")
+        # 8. Ensure no leftover mcp_config.json exists (built-in MCP in Antigravity)
+        mcp_file = ws_dir / "mcp_config.json"
+        if mcp_file.exists():
+            errors.append(f"Unexpected leftover mcp_config.json in {ws_dir.name}")
 
         # 9. Check mock data
         for df in data_files:

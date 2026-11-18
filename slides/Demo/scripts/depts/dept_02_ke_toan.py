@@ -208,7 +208,6 @@ Tổng cộng thanh toán: 6.696.000 VNĐ
     )
     b12.write_corporate_styling_rule()
     b12.write_security_hooks(["cong_no_phai_thu.xlsx"])
-    b12.write_mcp_config("gmail")
     b12.write_skill(
         skill_name="phan-loai-tuoi-no",
         description="Use this skill to calculate accounts receivable aging buckets and prepare debt reminder emails.",
@@ -349,7 +348,6 @@ Tổng cộng thanh toán: 6.696.000 VNĐ
     )
     b14.write_corporate_styling_rule()
     b14.write_security_hooks(["Chi_Nhanh/pl_hanoi.xlsx", "Chi_Nhanh/pl_danang.xlsx", "Chi_Nhanh/pl_hcm.xlsx"])
-    b14.write_mcp_config("google_workspace")
     b14.write_skill(
         skill_name="hop-nhat-bao-cao-pl",
         description="Use this skill to consolidate individual branch P&L income statements into a unified corporate report.",

@@ -5,7 +5,6 @@ Handles consistent generation of:
 - .agents/rules/*.md (Level 2 business constraints + Corporate Excel Styling)
 - .agents/skills/*/SKILL.md (Level 3 procedural workflow)
 - .agents/hooks.json + .agents/scripts/protect_raw_data.py (Level 4 Hard Security Guard)
-- mcp_config.json (Model Context Protocol configs for cross-app exercises)
 - PROMPT_DEMO.md (6-part Instructor guide & interactive lecture script)
 - _ket_qua_mau_chuan.xlsx (Reference expected output workbook)
 """
@@ -172,41 +171,6 @@ if __name__ == "__main__":
     main()
 """
         (self.scripts_dir / "protect_raw_data.py").write_text(hook_script.strip() + "\n", encoding="utf-8")
-
-    def write_mcp_config(self, mcp_type: str = "gmail"):
-        """Generates ready-to-use mcp_config.json for cross-app integration."""
-        if mcp_type == "gmail":
-            cfg = {
-                "mcpServers": {
-                    "gmail": {
-                        "command": "npx",
-                        "args": ["-y", "@gongrzhe/server-gmail-autoauth-mcp"],
-                        "env": {
-                            "GOOGLE_CLIENT_ID": "YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com",
-                            "GOOGLE_CLIENT_SECRET": "YOUR_GOOGLE_CLIENT_SECRET",
-                            "CREDENTIALS_PATH": "~/.gemini/config/mcp/google-oauth-credentials.json",
-                            "GMAIL_TOKEN_PATH": "~/.gemini/config/mcp/gmail-token.json"
-                        }
-                    }
-                }
-            }
-        elif mcp_type == "google_workspace":
-            cfg = {
-                "mcpServers": {
-                    "google_workspace": {
-                        "command": "npx",
-                        "args": ["-y", "@google-workspace/mcp-server"],
-                        "env": {
-                            "WORKSPACE_AUTH_TYPE": "oauth2",
-                            "SCOPES": "https://www.googleapis.com/auth/drive,https://www.googleapis.com/auth/spreadsheets,https://www.googleapis.com/auth/calendar"
-                        }
-                    }
-                }
-            }
-        else:
-            cfg = {"mcpServers": {}}
-
-        (self.ws_dir / "mcp_config.json").write_text(json.dumps(cfg, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
     def write_prompt_demo(self, problem_pain: str, interactive_hook: str, prompt_cmd: str, prompt_pitfalls: str, expected_output: str, wow_moment: str):
         content = f"""# CẨM NANG HƯỚNG DẪN DEMO: {self.exercise_slug.upper()}

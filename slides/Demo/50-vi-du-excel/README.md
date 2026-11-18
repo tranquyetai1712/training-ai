@@ -22,8 +22,8 @@ Mỗi thư mục bài tập trong bộ 50 không gian thực hành này là mộ
 3. **Tệp Kết quả Mẫu Đối chiếu Chuẩn (`_ket_qua_mau_chuan.xlsx`):**
    - Sinh sẵn trong từng thư mục bài tập để học viên và giảng viên có thể mở ra so sánh đối chiếu ngay sau khi AI hoàn thành nhiệm vụ.
 
-4. **Cấu hình Liên thông MCP (`mcp_config.json`):**
-   - Tích hợp cấu hình mẫu cho các bài toán liên thông thực tế (Gmail MCP cho bài 4, 6, 12, 27; Google Workspace MCP cho bài 14, 24, 35, 44, 47).
+4. **Liên thông MCP Tích hợp sẵn (Gmail & Google Workspace):**
+   - Antigravity đã tích hợp sẵn MCP Gmail và Google Workspace nên các bài tập liên thông (bài 4, 6, 12, 14, 24, 27, 35, 44, 47) sử dụng trực tiếp không cần cấu hình file `mcp_config.json` rời.
 
 ---
 
@@ -55,9 +55,9 @@ Khi mở đầu buổi học hoặc quay video ngắn (TikTok/Reels), hãy chọ
 - [Bài 01: Chuẩn hóa chấm công từ máy vân tay / FaceID](01-nhan-su/01-chuan-hoa-cham-cong/PROMPT_DEMO.md)
 - [Bài 02: Gộp 12 bảng đánh giá KPI tháng đa phòng ban](01-nhan-su/02-gop-danh-gia-kpi/PROMPT_DEMO.md)
 - [Bài 03: Tính lương Gross - Net, BHXH và Thuế TNCN lũy tiến](01-nhan-su/03-tinh-luong-gross-net-thue/PROMPT_DEMO.md)
-- [Bài 04: Tách phiếu lương cá nhân và tạo bản nháp Gmail (Có MCP Gmail)](01-nhan-su/04-tach-phieu-luong-gui-email/PROMPT_DEMO.md)
+- [Bài 04: Tách phiếu lương cá nhân và tạo bản nháp Gmail (Tích hợp Gmail)](01-nhan-su/04-tach-phieu-luong-gui-email/PROMPT_DEMO.md)
 - [Bài 05: Trích xuất hàng loạt CV ứng viên vào bảng theo dõi](01-nhan-su/05-trich-xuat-cv-ung-vien/PROMPT_DEMO.md)
-- [Bài 06: Cảnh báo hợp đồng lao động sắp hết hạn (Có MCP Gmail)](01-nhan-su/06-canh-bao-het-han-hop-dong/PROMPT_DEMO.md)
+- [Bài 06: Cảnh báo hợp đồng lao động sắp hết hạn (Tích hợp Gmail)](01-nhan-su/06-canh-bao-het-han-hop-dong/PROMPT_DEMO.md)
 - [Bài 07: Làm sạch dữ liệu đăng ký khám sức khỏe / bảo hiểm](01-nhan-su/07-lam-sach-du-lieu-kham-suc-khoe/PROMPT_DEMO.md)
 - [Bài 08: Phân tích biến động nhân sự (Turnover Dashboard)](01-nhan-su/08-phan-tich-turnover-dashboard/PROMPT_DEMO.md)
 - [Bài 09: Xếp lịch trực ca tự động theo ràng buộc nghỉ phép](01-nhan-su/09-xep-lich-truc-ca-tu-dong/PROMPT_DEMO.md)
@@ -65,9 +65,9 @@ Khi mở đầu buổi học hoặc quay video ngắn (TikTok/Reels), hãy chọ
 ### 2. KẾ TOÁN - TÀI CHÍNH (`02-ke-toan/` - 9 Bài)
 - [Bài 10: Đối soát sao kê ngân hàng với sổ quỹ nội bộ](02-ke-toan/10-doi-soat-sao-ke-so-quy/PROMPT_DEMO.md)
 - [Bài 11: Trích xuất hàng loạt hóa đơn điện tử vào bảng kê](02-ke-toan/11-trich-xuat-hoa-don-dien-tu/PROMPT_DEMO.md)
-- [Bài 12: Phân loại tuổi nợ (AR Aging) và soạn email nhắc nợ (Có MCP Gmail)](02-ke-toan/12-phan-loai-tuoi-no-nhac-no/PROMPT_DEMO.md)
+- [Bài 12: Phân loại tuổi nợ (AR Aging) và soạn email nhắc nợ (Tích hợp Gmail)](02-ke-toan/12-phan-loai-tuoi-no-nhac-no/PROMPT_DEMO.md)
 - [Bài 13: Phân bổ chi phí trả trước (242) và khấu hao TSCĐ](02-ke-toan/13-phan-bo-chi-phi-khau-hao/PROMPT_DEMO.md)
-- [Bài 14: Hợp nhất báo cáo kết quả kinh doanh (P&L) đa chi nhánh (Có MCP Google Workspace)](02-ke-toan/14-hop-nhat-bao-cao-kinh-doanh/PROMPT_DEMO.md)
+- [Bài 14: Hợp nhất báo cáo kết quả kinh doanh (P&L) đa chi nhánh (Tích hợp Google Workspace)](02-ke-toan/14-hop-nhat-bao-cao-kinh-doanh/PROMPT_DEMO.md)
 - [Bài 15: Phát hiện giao dịch bất thường và gian lận chi phí](02-ke-toan/15-phat-hien-gian-lan-chi-phi/PROMPT_DEMO.md)
 - [Bài 16: Chuyển đổi số tiền bằng số sang chữ song ngữ Anh - Việt](02-ke-toan/16-chuyen-so-thanh-chu/PROMPT_DEMO.md)
 - [Bài 17: Dự báo dòng tiền 12 tuần tới (Cashflow Forecast)](02-ke-toan/17-du-bao-dong-tien-12-tuan/PROMPT_DEMO.md)
@@ -79,10 +79,10 @@ Khi mở đầu buổi học hoặc quay video ngắn (TikTok/Reels), hãy chọ
 - [Bài 21: Phân nhóm khách hàng VIP / Ngủ đông theo mô hình RFM](03-kinh-doanh/21-phan-nhom-khach-hang-rfm/PROMPT_DEMO.md)
 - [Bài 22: Tự động tạo hàng loạt báo giá từ bảng yêu cầu](03-kinh-doanh/22-tao-hang-loat-bao-gia/PROMPT_DEMO.md)
 - [Bài 23: Phân tích lý do mất khách (Lost Deals) từ text ghi chú](03-kinh-doanh/23-phan-tich-ly-do-mat-khach/PROMPT_DEMO.md)
-- [Bài 24: Chia giỏ data khách hàng (Lead Routing) tự động (Có MCP Google Workspace)](03-kinh-doanh/24-chia-gio-lead-routing/PROMPT_DEMO.md)
+- [Bài 24: Chia giỏ data khách hàng (Lead Routing) tự động (Tích hợp Google Workspace)](03-kinh-doanh/24-chia-gio-lead-routing/PROMPT_DEMO.md)
 - [Bài 25: Theo dõi tiến độ mục tiêu doanh số (Pacing & Run-rate)](03-kinh-doanh/25-theo-doi-pacing-runrate-sales/PROMPT_DEMO.md)
 - [Bài 26: Tổng hợp khảo sát mức độ hài lòng khách hàng (NPS / CSAT)](03-kinh-doanh/26-tong-hop-khao-sat-nps-csat/PROMPT_DEMO.md)
-- [Bài 27: Bóc tách danh thiếp (Namecard) và soạn thư kết nối (Có MCP Gmail)](03-kinh-doanh/27-quet-namecard-soan-mail/PROMPT_DEMO.md)
+- [Bài 27: Bóc tách danh thiếp (Namecard) và soạn thư kết nối (Tích hợp Gmail)](03-kinh-doanh/27-quet-namecard-soan-mail/PROMPT_DEMO.md)
 
 ### 4. MARKETING - E-COMMERCE (`04-marketing/` - 8 Bài)
 - [Bài 28: Gộp và chuẩn hóa báo cáo quảng cáo Facebook, Google, TikTok](04-marketing/28-gop-bao-cao-ads-da-kenh/PROMPT_DEMO.md)
@@ -92,7 +92,7 @@ Khi mở đầu buổi học hoặc quay video ngắn (TikTok/Reels), hãy chọ
 - [Bài 32: Lập kế hoạch phân bổ ngân sách Media Plan tối ưu](04-marketing/32-phan-bo-ngan-sach-media-plan/PROMPT_DEMO.md)
 - [Bài 33: Gom cụm từ khóa SEO (Topic Cluster) và Search Intent](04-marketing/33-gom-cum-tu-khoa-seo/PROMPT_DEMO.md)
 - [Bài 34: Kiểm tra tồn kho POSM và chia hàng làm tròn theo thùng](04-marketing/34-chia-qua-tang-posm-dai-ly/PROMPT_DEMO.md)
-- [Bài 35: Tạo lịch Content Calendar và cấu trúc thư mục Google Drive (Có MCP Google Workspace)](04-marketing/35-tao-lich-content-folder-drive/PROMPT_DEMO.md)
+- [Bài 35: Tạo lịch Content Calendar và cấu trúc thư mục Google Drive (Tích hợp Google Workspace)](04-marketing/35-tao-lich-content-folder-drive/PROMPT_DEMO.md)
 
 ### 5. KHO VẬN - CHUỖI CUNG ỨNG (`05-kho-van/` - 8 Bài)
 - [Bài 36: So sánh báo giá từ nhiều nhà cung cấp (Bid Comparison)](05-kho-van/36-so-sanh-bao-gia-ncc/PROMPT_DEMO.md)
@@ -105,10 +105,10 @@ Khi mở đầu buổi học hoặc quay video ngắn (TikTok/Reels), hãy chọ
 - [Bài 43: Tối ưu tải trọng xe tải và container theo khối/cân nặng](05-kho-van/43-chia-tai-trong-xe-container/PROMPT_DEMO.md)
 
 ### 6. HÀNH CHÍNH - DỰ ÁN (`06-hanh-chinh/` - 7 Bài)
-- [Bài 44: Chuyển biên bản họp thành bảng Action Items (Có MCP Google Workspace)](06-hanh-chinh/44-bien-ban-hop-action-tracker/PROMPT_DEMO.md)
+- [Bài 44: Chuyển biên bản họp thành bảng Action Items (Tích hợp Google Workspace)](06-hanh-chinh/44-bien-ban-hop-action-tracker/PROMPT_DEMO.md)
 - [Bài 45: Xây dựng biểu đồ tiến độ dự án Gantt Chart trên Excel](06-hanh-chinh/45-ve-gantt-chart-excel/PROMPT_DEMO.md)
 - [Bài 46: Quản lý và phân bổ chi phí taxi Grab, văn phòng phẩm](06-hanh-chinh/46-phan-bo-chi-phi-taxi-vpp/PROMPT_DEMO.md)
-- [Bài 47: Tạo thư mục và phân quyền Google Drive hàng loạt (Có MCP Google Workspace)](06-hanh-chinh/47-tao-folder-phan-quyen-drive/PROMPT_DEMO.md)
+- [Bài 47: Tạo thư mục và phân quyền Google Drive hàng loạt (Tích hợp Google Workspace)](06-hanh-chinh/47-tao-folder-phan-quyen-drive/PROMPT_DEMO.md)
 - [Bài 48: Chuyển bảng biểu scan sang Excel và kiểm tra số học](06-hanh-chinh/48-ocr-bang-bieu-anh-pdf/PROMPT_DEMO.md)
 - [Bài 49: Xếp sơ đồ bàn tiệc sự kiện và tạo mã check-in duy nhất](06-hanh-chinh/49-xep-so-do-ban-tiec-checkin/PROMPT_DEMO.md)
 - [Bài 50: Tự động tóm tắt Executive Summary Dashboard 1 trang](06-hanh-chinh/50-executive-summary-one-page/PROMPT_DEMO.md)

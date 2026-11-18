@@ -395,7 +395,6 @@ def generate():
     )
     b24.write_corporate_styling_rule()
     b24.write_security_hooks(["lead_moi_tuan_45.xlsx"])
-    b24.write_mcp_config("google_workspace")
     b24.write_skill(
         skill_name="chia-gio-lead-routing",
         description="Use this skill to distribute inbound sales leads across team members by region and deal size.",
@@ -602,7 +601,6 @@ def generate():
     )
     b27.write_corporate_styling_rule()
     b27.write_security_hooks(["Namecards/namecard_01.txt", "Namecards/namecard_02.txt"])
-    b27.write_mcp_config("gmail")
     b27.write_skill(
         skill_name="quet-namecard-soan-mail",
         description="Use this skill to extract contact info from business cards into an Excel directory and draft outreach emails.",

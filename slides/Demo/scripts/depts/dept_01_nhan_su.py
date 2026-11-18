@@ -5,11 +5,214 @@ Updated with Security Hooks, Corporate Styling Rules, Reference Output, and 6-pa
 
 from pathlib import Path
 import sys
+import openpyxl
+from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from generator_core import WorkspaceBuilder
 
 DEPT = "01-nhan-su"
+
+
+def _write_payroll_master_excel(ws_dir: Path) -> None:
+    """Create 15-column master payroll workbook with live Excel formulas."""
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "LuongChot"
+
+    headers = [
+        "Mã NV", "Họ và Tên", "Email", "Phòng Ban", "Giờ Công",
+        "Lương Cơ Bản", "TC Ăn Trưa", "TC Điện Thoại & Đi Lại", "TC Thuê Nhà",
+        "Lương Làm Thêm (OT)", "Tổng Thu Nhập (Gross)", "Trừ BHXH (10.5%)",
+        "Giảm Trừ Gia Cảnh", "Thuế TNCN", "Thực Lĩnh",
+    ]
+    raw_rows = [
+        ["019CQ", "Trần Văn Quyết", "quyet.tran@vnext.vn", "Kỹ thuật", 176, 20000000, 3000000, 8000000, 12000000, 7100000, 11000000, 6000000],
+        ["020CQ", "Nguyễn Văn An", "an.nguyen@vnext.vn", "Kỹ thuật", 176, 15000000, 3000000, 6000000, 7500000, 2500000, 15400000, 1353750],
+        ["021CQ", "Trần Thị Mai", "mai.tran@vnext.vn", "Kinh doanh", 176, 12000000, 2500000, 5000000, 4500000, 1200000, 11000000, 784000],
+        ["022CQ", "Lê Văn Đức", "duc.le@vnext.vn", "Marketing", 168, 10000000, 2200000, 4000000, 3800000, 0, 19800000, 0],
+    ]
+
+    header_font = Font(name="Arial", size=11, bold=True, color="FFFFFF")
+    header_fill = PatternFill(start_color="1F497D", end_color="1F497D", fill_type="solid")
+    thin = Side(style="thin", color="D9D9D9")
+    border = Border(left=thin, right=thin, top=thin, bottom=thin)
+
+    ws.append(headers)
+    for col_idx in range(1, len(headers) + 1):
+        cell = ws.cell(row=1, column=col_idx)
+        cell.font = header_font
+        cell.fill = header_fill
+        cell.alignment = Alignment(horizontal="center", vertical="center")
+        cell.border = border
+
+    for idx, r in enumerate(raw_rows, start=2):
+        # Insert live formulas for Gross (K), BHXH 10.5% (L), and Net Pay (O)
+        row_values = [
+            r[0], r[1], r[2], r[3], r[4],
+            r[5], r[6], r[7], r[8], r[9],
+            f"=SUM(F{idx}:J{idx})",
+            f"=ROUND(F{idx}*0.105,0)",
+            r[10],
+            r[11],
+            f"=K{idx}-L{idx}-N{idx}",
+        ]
+        ws.append(row_values)
+        for col_idx in range(1, len(row_values) + 1):
+            cell = ws.cell(row=idx, column=col_idx)
+            cell.border = border
+            cell.font = Font(name="Arial", size=10)
+            if col_idx == 1:
+                cell.alignment = Alignment(horizontal="center", vertical="center")
+            elif col_idx == 5:
+                cell.alignment = Alignment(horizontal="right", vertical="center")
+                cell.number_format = "#,##0"
+            elif col_idx >= 6:
+                cell.alignment = Alignment(horizontal="right", vertical="center")
+                cell.number_format = '#,##0;(#,##0);"-"'
+                if col_idx in (11, 15):
+                    cell.font = Font(name="Arial", size=10, bold=True)
+            else:
+                cell.alignment = Alignment(horizontal="left", vertical="center")
+
+    for col in ws.columns:
+        max_len = max(len(str(cell.value or "")) for cell in col)
+        col_letter = openpyxl.utils.get_column_letter(col[0].column)
+        ws.column_dimensions[col_letter].width = max(max_len + 5, 14)
+
+    wb.save(ws_dir / "bang_luong_chot.xlsx")
+    wb.close()
+
+
+def _write_payroll_slip_reference_excel(ws_dir: Path) -> None:
+    """Create PAYROLL SLIP reference workbook matching the Chasqui PDF layout and colors."""
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "PhieuLuong_019CQ"
+
+    thin = Side(style="thin", color="000000")
+    border = Border(left=thin, right=thin, top=thin, bottom=thin)
+
+    fill_orange = PatternFill(start_color="FFC000", end_color="FFC000", fill_type="solid")
+    fill_green = PatternFill(start_color="92D050", end_color="92D050", fill_type="solid")
+    fill_blue = PatternFill(start_color="0070C0", end_color="0070C0", fill_type="solid")
+    fill_white = PatternFill(start_color="FFFFFF", end_color="FFFFFF", fill_type="solid")
+
+    font_title = Font(name="Arial", size=14, bold=True)
+    font_company = Font(name="Arial", size=12, bold=True)
+    font_bold = Font(name="Arial", size=10, bold=True)
+    font_regular = Font(name="Arial", size=10)
+    font_group = Font(name="Arial", size=9, bold=True, color="FFFFFF")
+
+    # Header section
+    ws["A1"] = "CÔNG TY CỔ PHẦN VNEXT SOFTWARE"
+    ws["A1"].font = font_company
+    ws.merge_cells("A2:D2")
+    ws["A2"] = "PAYROLL SLIP"
+    ws["A2"].font = font_title
+    ws["A2"].alignment = Alignment(horizontal="center", vertical="center")
+
+    ws.merge_cells("A3:D3")
+    ws["A3"] = "01/10/2026 - 31/10/2026"
+    ws["A3"].font = font_bold
+    ws["A3"].alignment = Alignment(horizontal="center", vertical="center")
+
+    meta_rows = [
+        (4, "Họ và tên", ": Trần Văn Quyết"),
+        (5, "Mã nhân viên", ": 019CQ"),
+        (6, "Phòng ban", ": Kỹ thuật"),
+    ]
+    for r_idx, label, val in meta_rows:
+        ws.cell(row=r_idx, column=2, value=label).font = font_bold
+        ws.merge_cells(start_row=r_idx, start_column=3, end_row=r_idx, end_column=4)
+        cell_val = ws.cell(row=r_idx, column=3, value=val)
+        cell_val.font = font_bold if r_idx in (4, 5) else font_regular
+
+    # Table header (Row 8)
+    headers = ["", "Diễn giải", "Công thức tính", "Số tiền"]
+    for c_idx, h_text in enumerate(headers, start=1):
+        cell = ws.cell(row=8, column=c_idx, value=h_text)
+        cell.fill = fill_orange
+        cell.font = font_bold
+        cell.alignment = Alignment(horizontal="center", vertical="center")
+        cell.border = border
+
+    # Table body rows (Row 9 to 23)
+    # (label, formula_desc, value_or_formula, is_green, num_format)
+    body_rows = [
+        ("Số giờ làm việc thực tế", "Time = A - B + Sum(F) - K", 176.0, True, "0.0"),
+        ("Lương cơ bản", "A1", 20000000, True, '#,##0;(#,##0);"-"'),
+        ("Tổng trợ cấp", "LTC = C1+D4 + C4+D5 + D3", "=SUM(D12:D14)", True, '#,##0;(#,##0);"-"'),
+        ("  Trợ cấp ăn trưa", "C1 + D4", 3000000, False, '#,##0;(#,##0);"-"'),
+        ("  Trợ cấp điện thoại & đi lại", "C4 + D5", 8000000, False, '#,##0;(#,##0);"-"'),
+        ("  Trợ cấp thuê nhà", "D3", 12000000, False, '#,##0;(#,##0);"-"'),
+        ("Lương làm thêm giờ (OT)", "LTCb", 7100000, False, '#,##0;(#,##0);"-"'),
+        ("Tổng lương gộp (Gross)", "Gross = A1 + LTC + LTCb", "=D10+D11+D15", True, '#,##0;(#,##0);"-"'),
+        ("Bảo hiểm khấu trừ lương nhân viên", "Total BH = BHXH + BHYT + BHTN", "=SUM(D18:D20)", True, '#,##0;(#,##0);"-"'),
+        ("  Bảo hiểm xã hội (8%)", "BHXH = A1 * 8%", "=ROUND(D10*0.08,0)", False, '#,##0;(#,##0);"-"'),
+        ("  Bảo hiểm y tế (1.5%)", "BHYT = A1 * 1.5%", "=ROUND(D10*0.015,0)", False, '#,##0;(#,##0);"-"'),
+        ("  Bảo hiểm thất nghiệp (1%)", "BHTN = A1 * 1%", "=ROUND(D10*0.01,0)", False, '#,##0;(#,##0);"-"'),
+        ("Tổng giảm trừ gia cảnh", "GT = GT1 + GT2", 11000000, True, '#,##0;(#,##0);"-"'),
+        ("Thuế thu nhập cá nhân", "Thuế = TNTT * 25% - 3,250,000", 6000000, True, '#,##0;(#,##0);"-"'),
+        ("Tổng lương thuần được nhận", "Thực nhận = Gross - Total BH - Thuế", "=D16-D17-D22", True, '#,##0;(#,##0);"-"'),
+    ]
+
+    for offset, (desc, formula_desc, val, is_green, num_fmt) in enumerate(body_rows):
+        r_idx = 9 + offset
+        row_fill = fill_green if is_green else fill_white
+        row_font = font_bold if is_green else font_regular
+
+        c_b = ws.cell(row=r_idx, column=2, value=desc)
+        c_c = ws.cell(row=r_idx, column=3, value=formula_desc)
+        c_d = ws.cell(row=r_idx, column=4, value=val)
+
+        for c in (c_b, c_c):
+            c.fill = row_fill
+            c.font = row_font
+            c.alignment = Alignment(horizontal="left", vertical="center")
+            c.border = border
+
+        c_d.fill = row_fill
+        c_d.font = row_font
+        c_d.alignment = Alignment(horizontal="right", vertical="center")
+        c_d.number_format = num_fmt
+        c_d.border = border
+
+    # Left vertical group column (Column A)
+    c_grp1 = ws.cell(row=9, column=1, value="GIỜ")
+    c_grp1.fill = fill_blue
+    c_grp1.font = font_group
+    c_grp1.alignment = Alignment(horizontal="center", vertical="center", text_rotation=90)
+    c_grp1.border = border
+
+    ws.merge_cells("A10:A23")
+    c_grp2 = ws.cell(row=10, column=1, value="LƯƠNG & KHẤU TRỪ")
+    c_grp2.fill = fill_blue
+    c_grp2.font = font_group
+    c_grp2.alignment = Alignment(horizontal="center", vertical="center", text_rotation=90)
+    for r_idx in range(10, 24):
+        ws.cell(row=r_idx, column=1).border = border
+        ws.cell(row=r_idx, column=1).fill = fill_blue
+
+    # Signature footer
+    ws.cell(row=25, column=2, value="Received by").font = font_bold
+    ws.cell(row=25, column=2).alignment = Alignment(horizontal="center")
+    ws.cell(row=25, column=3, value="Approved by").font = font_bold
+    ws.cell(row=25, column=3).alignment = Alignment(horizontal="center")
+
+    ws.cell(row=29, column=2, value="Trần Văn Quyết").font = font_bold
+    ws.cell(row=29, column=2).alignment = Alignment(horizontal="center")
+    ws.cell(row=29, column=3, value="Fujioka Jun").font = font_bold
+    ws.cell(row=29, column=3).alignment = Alignment(horizontal="center")
+
+    # Column widths
+    ws.column_dimensions["A"].width = 6
+    ws.column_dimensions["B"].width = 38
+    ws.column_dimensions["C"].width = 36
+    ws.column_dimensions["D"].width = 18
+
+    wb.save(ws_dir / "_ket_qua_mau_chuan.xlsx")
+    wb.close()
 
 def generate():
     print(f"--> Generating {DEPT} with enhanced controls...")
@@ -267,7 +470,7 @@ def generate():
     })
 
     # =========================================================================
-    # EXERCISE 04: Tach phieu luong va tao ban nhap Gmail (Cross-app MCP)
+    # EXERCISE 04: Tach phieu luong va tao ban nhap Gmail (Built-in Gmail MCP)
     # =========================================================================
     b4 = WorkspaceBuilder(DEPT, "04-tach-phieu-luong-gui-email")
     b4.write_agents_md(
@@ -275,62 +478,42 @@ def generate():
         department_name="Phòng Nhân sự",
         constitution_items=[
             "Tuyệt đối bảo mật: Phiếu lương của nhân viên nào chỉ gửi đến đúng email của nhân viên đó.",
-            "Tạo bản nháp an toàn: Chỉ tạo thư nháp (Draft) trên Gmail, không tự ý bấm gửi trực tiếp để C&B duyệt lại lần cuối."
+            "Tạo bản nháp an toàn: Chỉ tạo thư nháp (Draft) trên Gmail tích hợp sẵn, không tự ý bấm gửi trực tiếp để C&B duyệt lại lần cuối."
         ]
     )
     b4.write_rule(
         rule_file_name="quy_chuan_phieu_luong.md",
-        description="Quy chuẩn tách phiếu lương cá nhân và định dạng email HTML",
+        description="Quy chuẩn tách phiếu lương cá nhân chuẩn Chasqui và định dạng email HTML",
         globs="*.xlsx",
         rule_title="Quy Chuẩn Định Dạng Phiếu Lương & Tiêu Đề Email",
         guidelines=[
             "Tiêu đề email theo cú pháp: [Phiếu Lương Tháng 10/2026] - [Họ và Tên] - [Mã NV].",
-            "Nội dung email là bảng HTML gọn gàng, liệt kê rõ: Lương cơ bản, Thưởng, Khấu trừ BHXH/Thuế, và Thực lĩnh.",
-            "Lưu danh sách phiếu lương đã tách ra thư mục `Phieu_Luong_Ca_Nhan/`."
+            "Khi tách file Excel cá nhân vào thư mục `Phieu_Luong_Ca_Nhan/`, BẮT BUỘC tái tạo đúng layout, bảng màu (Header cam #FFC000, tổng xanh lá #92D050, cột nhóm xanh dương #0070C0) và công thức sống giống hệt file `_ket_qua_mau_chuan.xlsx`.",
+            "Nội dung email Gmail Draft trình bày bằng bảng HTML gọn gàng, liệt kê đầy đủ: Giờ công, Lương cơ bản, Các khoản trợ cấp (Ăn trưa, Điện thoại & Đi lại, Thuê nhà), Lương OT, Tổng Gross, Khấu trừ BHXH (10.5%), Giảm trừ gia cảnh, Thuế TNCN và Thực lĩnh."
         ]
     )
     b4.write_corporate_styling_rule()
     b4.write_security_hooks(["bang_luong_chot.xlsx"])
-    b4.write_mcp_config("gmail")
     b4.write_skill(
         skill_name="tach-phieu-luong-email",
-        description="Use this skill to split a master payroll spreadsheet into individual payslips and prepare personalized Gmail drafts.",
+        description="Use this skill to split a master payroll spreadsheet into individual payslips matching the Chasqui template and prepare personalized Gmail drafts.",
         skill_title="Quy trình tách phiếu lương và tạo email nháp",
         steps=[
-            {"name": "Đọc bảng lương tổng", "desc": "Nạp file `bang_luong_chot.xlsx` chứa danh sách nhân viên và địa chỉ email."},
-            {"name": "Trích xuất từng cá nhân", "desc": "Lặp qua từng dòng, tạo file Excel hoặc bảng biểu chi tiết cho từng nhân viên."},
-            {"name": "Tạo bản nháp Gmail", "desc": "Sử dụng công cụ Gmail tạo các bản nháp email chứa bảng lương HTML cá nhân hóa."}
+            {"name": "Đọc bảng lương tổng", "desc": "Nạp file `bang_luong_chot.xlsx` gồm 15 cột dữ liệu nhân viên, lương cơ bản, trợ cấp, OT, bảo hiểm, giảm trừ, thuế và thực lĩnh."},
+            {"name": "Tách phiếu lương Excel chuẩn mẫu", "desc": "Lặp qua từng nhân viên, tạo file `.xlsx` riêng trong `Phieu_Luong_Ca_Nhan/` theo đúng format PAYROLL SLIP của `_ket_qua_mau_chuan.xlsx` với công thức sống."},
+            {"name": "Tạo bản nháp Gmail", "desc": "Sử dụng trực tiếp công cụ Gmail tích hợp sẵn trong Antigravity để tạo các bản nháp email chứa bảng lương HTML cá nhân hóa."}
         ]
     )
     b4.write_prompt_demo(
-        problem_pain="Sau khi chốt bảng lương tổng, C&B phải tách dòng của từng người để gửi email cá nhân. Làm tay mất 2-3 tiếng và cực kỳ nguy hiểm nếu gửi nhầm.",
-        interactive_hook="Nếu gửi nhầm phiếu lương của người có thu nhập 50 triệu cho một bạn nhân viên mới vào lương 8 triệu thì hậu quả nhân sự sẽ thế nào?",
-        prompt_cmd="Đọc file bang_luong_chot.xlsx. Với mỗi nhân viên, hãy tạo một bảng chi tiết phiếu lương đẹp mắt và tạo bản nháp (Draft) trên Gmail gửi tới địa chỉ email của nhân viên đó với tiêu đề '[Phiếu lương Tháng 10] - [Họ tên]'. Tuyệt đối chỉ gửi thông tin của đúng cá nhân đó.",
+        problem_pain="Sau khi chốt bảng lương tổng nhiều cột phụ cấp và khấu trừ, C&B phải tách phiếu lương chuẩn format công ty cho từng người để gửi email cá nhân. Làm tay mất 2-3 tiếng và cực kỳ nguy hiểm nếu gửi nhầm.",
+        interactive_hook="Nếu gửi nhầm phiếu lương của người có thu nhập 34 triệu cho một bạn nhân viên khác thì hậu quả nhân sự sẽ thế nào?",
+        prompt_cmd="Đọc file bang_luong_chot.xlsx. Với mỗi nhân viên, hãy tách ra một file Excel phiếu lương cá nhân trong thư mục Phieu_Luong_Ca_Nhan/ theo đúng cấu trúc, màu sắc và công thức sống của file mẫu _ket_qua_mau_chuan.xlsx; đồng thời tạo bản nháp (Draft) trên Gmail gửi tới đúng email của nhân viên đó với tiêu đề '[Phiếu Lương Tháng 10/2026] - [Họ và Tên] - [Mã NV]' kèm bảng HTML chi tiết đầy đủ các khoản thu nhập và khấu trừ.",
         prompt_pitfalls="Quên ghi rõ 'Chỉ tạo bản nháp Draft' có thể khiến AI gửi thư đi ngay lập tức khi chưa qua bước kiểm duyệt của HR.",
-        expected_output="Hàng loạt bản nháp Gmail được tạo tự động với nội dung bảng HTML phiếu lương chỉn chu, đúng người đúng địa chỉ email.",
-        wow_moment="Kết hợp Antigravity với Gmail tạo xong hàng chục bản nháp email cá nhân hóa trong 1 phút, an toàn 100% vì vẫn cho người dùng duyệt lại."
+        expected_output="Thư mục Phieu_Luong_Ca_Nhan/ chứa 4 file Excel phiếu lương chuẩn format PAYROLL SLIP, cùng 4 bản nháp Gmail được tạo tự động đúng người, đúng email.",
+        wow_moment="Kết hợp Antigravity với Gmail tích hợp sẵn: tách xong phiếu lương chuẩn thiết kế công ty và tạo hàng loạt bản nháp email cá nhân hóa trong 1 phút, an toàn 100% vì vẫn cho HR duyệt lại."
     )
-    b4.create_excel("bang_luong_chot.xlsx", {
-        "LuongChot": {
-            "headers": ["Mã NV", "Họ và Tên", "Email", "Phòng Ban", "Lương Thỏa Thuận", "Trừ BHXH", "Thuế TNCN", "Thực Lĩnh"],
-            "rows": [
-                ["NV01", "Nguyễn Văn An", "an.nguyen@company.com", "Kỹ thuật", 25000000, 2625000, 1150000, 21225000],
-                ["NV02", "Trần Thị Mai", "mai.tran@company.com", "Kinh doanh", 18000000, 1890000, 520000, 15590000],
-                ["NV03", "Lê Văn Đức", "duc.le@company.com", "Marketing", 16000000, 1680000, 310000, 14010000]
-            ]
-        }
-    })
-    b4.create_excel("_ket_qua_mau_chuan.xlsx", {
-        "PhieuLuong_Mau_NV01": {
-            "headers": ["Khoản Mục", "Số Tiền (VNĐ)", "Ghi Chú"],
-            "rows": [
-                ["Lương thỏa thuận", 25000000, "Theo hợp đồng lao động"],
-                ["Trừ BHXH/BHYT/BHTN (10.5%)", -2625000, "Trừ theo quy định pháp luật"],
-                ["Thuế thu nhập cá nhân tạm khấu trừ", -1150000, "Biểu thuế 7 bậc lũy tiến"],
-                ["LƯƠNG THỰC LĨNH CHUYỂN KHOẢN", 21225000, "Đã chuyển vào STK ngân hàng"]
-            ]
-        }
-    })
+    _write_payroll_master_excel(b4.ws_dir)
+    _write_payroll_slip_reference_excel(b4.ws_dir)
 
     # =========================================================================
     # EXERCISE 05: Trich xuat hang loat CV ung vien vao Excel
@@ -438,7 +621,6 @@ Học vấn: Thạc sĩ QTKD - Đại học Ngoại Thương.
     )
     b6.write_corporate_styling_rule()
     b6.write_security_hooks(["danh_sach_nhan_su.xlsx"])
-    b6.write_mcp_config("google_workspace")
     b6.write_skill(
         skill_name="canh-bao-hop-dong",
         description="Use this skill to scan employee contracts and flag records expiring within 30 days.",

@@ -38,7 +38,6 @@ def generate():
     )
     b44.write_corporate_styling_rule()
     b44.write_security_hooks(["bien_ban_hop.txt", "action_tracker.xlsx"])
-    b44.write_mcp_config("google_workspace")
     b44.write_skill(
         skill_name="trich-xuat-action-items",
         description="Use this skill to parse meeting minutes and unstructured notes into structured action item trackers.",
@@ -258,7 +257,6 @@ CÁC KẾT LUẬN & PHÂN CÔNG CÔNG VIỆC:
     )
     b47.write_corporate_styling_rule()
     b47.write_security_hooks(["danh_sach_du_an_share.xlsx"])
-    b47.write_mcp_config("google_workspace")
     b47.write_skill(
         skill_name="tao-folder-phan-quyen",
         description="Use this skill to batch create multi-tier Google Drive folder hierarchies and configure role-based permissions.",

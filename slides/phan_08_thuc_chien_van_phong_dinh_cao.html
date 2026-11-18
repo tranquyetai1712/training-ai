@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khối 3: Phòng Thí Nghiệm Thực Chiến Đỉnh Cao • GOOGLE ANTIGRAVITY MASTERCLASS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-void: #0a0e17;
+      --bg-surface: #111827;
+      --bg-surface-elevated: #1e293b;
+      --border-subtle: rgba(255, 255, 255, 0.1);
+      --border-focus: rgba(99, 102, 241, 0.5);
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+      --text-dim: #94a3b8;
+      
+      --accent-indigo: #6366f1;
+      --accent-cyan: #0ea5e9;
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --accent-purple: #a855f7;
+      
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-void);
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 90% 90%, rgba(16, 185, 129, 0.1) 0%, transparent 45%);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #progress-bar-container {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+    #progress-bar {
+      height: 100%;
+      width: 25%;
+      background: linear-gradient(90deg, var(--accent-indigo), var(--accent-emerald));
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    header {
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(7, 9, 14, 0.85);
+      backdrop-filter: blur(16px);
+      z-index: 50;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+    .brand a {
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .brand a:hover { color: var(--accent-cyan); }
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #6ee7b7;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-nav {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      height: 32px;
+      padding: 0 12px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-nav:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-main);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .btn-nav.active {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: var(--accent-emerald);
+      color: #6ee7b7;
+    }
+
+    .slide-counter {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      padding: 0 10px;
+    }
+    .slide-counter strong { color: var(--accent-emerald); font-weight: 700; }
+
+    main {
+      flex: 1;
+      position: relative;
+      display: flex;
+      overflow: hidden;
+    }
+
+    .slide-canvas {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 32px 56px 28px 56px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px) scale(0.995);
+      transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s;
+      pointer-events: none;
+    }
+
+    .slide-canvas.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .slide-hud {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .hud-chip {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .hud-chip strong { color: var(--accent-emerald); }
+
+    .tag-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .title-display {
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+    .title-display span {
+      background: linear-gradient(135deg, #f8fafc 30%, #34d399 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .lead-desc {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      max-width: 900px;
+    }
+
+    .card-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 14px;
+      margin-bottom: 14px;
+    }
+    .card-grid.col-3 { grid-template-columns: repeat(3, 1fr); }
+    .card-grid.col-2 { grid-template-columns: repeat(2, 1fr); }
+
+    .stat-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: var(--border-subtle);
+    }
+    .stat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .card-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .stat-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .stat-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .code-box {
+      background: #07090e;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      line-height: 1.4;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+
+    .key-points-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 2px;
+    }
+    .key-point-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.8rem;
+      line-height: 1.4;
+      color: var(--text-muted);
+    }
+
+    .footer-bar-summary {
+      background: rgba(17, 24, 39, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    #notes-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 60;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s;
+    }
+    #notes-backdrop.open { opacity: 1; visibility: visible; }
+
+    #notes-drawer {
+      position: fixed;
+      top: 0;
+      right: -480px;
+      bottom: 0;
+      width: 480px;
+      background: var(--bg-surface-elevated);
+      border-left: 1px solid var(--border-subtle);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+      z-index: 70;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 24px;
+    }
+    #notes-drawer.open { right: 0; }
+
+    .notes-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .notes-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent-emerald);
+    }
+    .notes-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+    .notes-content {
+      font-size: 0.86rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+      white-space: pre-wrap;
+      overflow-y: auto;
+      flex: 1;
+      padding-right: 8px;
+    }
+
+    footer {
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      border-top: 1px solid var(--border-subtle);
+      background: rgba(7, 9, 14, 0.95);
+      font-size: 0.74rem;
+      color: var(--text-dim);
+    }
+    .kbd {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 3px;
+      padding: 1px 5px;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+    .svg-icon {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .watermark-ai-code {
+      height: 16px;
+      margin-left: 8px;
+      vertical-align: middle;
+      opacity: 0.85;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="progress-bar-container"><div id="progress-bar"></div></div>
+
+  <header>
+    <div class="brand">
+      <a href="index.html">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        MỤC LỤC
+      </a>
+      <span style="color: var(--text-dim);">/</span>
+      <span class="brand-badge">KHỐI 3: THỰC CHIẾN ĐỈNH CAO</span>
+    </div>
+
+    <div class="header-controls">
+      <button class="btn-nav" id="btn-prev">◀ Trước</button>
+      <div class="slide-counter">DỰ ÁN <strong id="slide-num">1 / 4</strong></div>
+      <button class="btn-nav" id="btn-next">Tiếp ▶</button>
+      <button class="btn-nav" id="btn-notes">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+        Kịch Bản (S)
+      </button>
+      <button class="btn-nav" id="btn-fullscreen">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+        F11
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- SLIDE 1: THỰC CHIẾN 01 - TRELLO & SLACK -->
+    <div class="slide-canvas active" data-slide="1" data-notes="Bài 8.1: Thực Chiến 01 — Điều Phối Đa Kênh Tự Tạo Thẻ Trello & Bắn Thông Báo Slack.
+Nỗi đau: Sáng thứ Hai họp xong, mở Trello gõ từng thẻ, mở Slack gõ thông báo mất 20-30 phút, dễ nhầm ngày tháng.
+Tư duy đẳng cấp: Ra lệnh cho AI tạo Skill 'dieu-phoi-trello-slack' dùng vĩnh cửu.
+Bóc tách 4 bước vàng:
+1. Goal: Tạo skill đọc file kế hoạch, gọi Trello MCP tạo thẻ, gọi Slack MCP bắn tin.
+2. Context: Bảng Trello 'Chiến Dịch Q4', cột 'To Do', kênh Slack #thong-bao-chung.
+3. Standard: Thẻ Trello đủ Deadline, mô tả; Slack có icon, tag tên, link bảng.
+4. Boundary: Cấm xóa thẻ cũ, thiếu dữ liệu phải hỏi lại người dùng.
+Kết quả: 1 lệnh duy nhất giải quyết trọn vẹn trong 35 giây!">
+      <div class="slide-hud">
+        <div class="hud-chip">BÀI 8.1 • THỰC CHIẾN 01: <strong>ĐIỀU PHỐI ĐA KÊNH TRELLO & SLACK</strong></div>
+      </div>
+      <div>
+        <span class="tag-hero" style="color: var(--accent-emerald);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+          DỰ ÁN TỰ ĐỘNG HÓA GIAO BAN ĐẦU TUẦN
+        </span>
+        <h2 class="title-display">Điều Phối Đa Kênh: <span>Trello Cards &amp; Thông Báo Slack</span></h2>
+        <p class="lead-desc">Ra lệnh cho AI tự đóng gói Skill chuyên dụng: Đọc file kế hoạch tuần, tự động tạo thẻ việc phân công trên Trello và bắn thông báo tức thì lên kênh Slack công ty.</p>
+      </div>
+
+      <div class="card-grid col-3">
+        <div class="stat-card" style="border-top: 3px solid var(--accent-rose);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(244,63,94,0.18); color: #fda4af;">NỖI ĐAU THỰC TẾ</span></div>
+          <div class="stat-title">Thao Tác Thủ Công</div>
+          <div class="stat-desc">
+            <ul class="key-points-list">
+              <li class="key-point-item"><span style="color: #f43f5e;">•</span> Mở file kế hoạch, gõ tay từng thẻ Trello (tiêu đề, hạn chót, gán người).</li>
+              <li class="key-point-item"><span style="color: #f43f5e;">•</span> Mở Slack gõ tin nhắn thông báo cho toàn phòng ban.</li>
+              <li class="key-point-item"><span style="color: #f43f5e;">•</span> Tốn 20-30 phút mỗi sáng thứ Hai, rất dễ gõ nhầm deadline hoặc sót việc!</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="stat-card" style="border-top: 3px solid var(--accent-amber);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(245,158,11,0.18); color: #fde68a;">PROMPT VÀNG 4 BƯỚC</span></div>
+          <div class="stat-title">Ra Lệnh Tạo Skill</div>
+          <div class="code-box" style="color: #fef08a;">[Goal] Tạo skill `dieu-phoi-trello-slack`
+[Context] Board: "Chiến Dịch Q4", List: "To Do", Slack: #thong-bao-chung
+[Standard] Thẻ Trello đủ Deadline, Assignee; Slack format đẹp có tag tên
+[Boundary] Cấm xóa thẻ cũ, thiếu dữ liệu phải hỏi lại người dùng!</div>
+        </div>
+
+        <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">KẾT QUẢ ĐỘT PHÁ</span></div>
+          <div class="stat-title">35 Giây Tự Động 100%</div>
+          <div class="stat-desc">
+            <ul class="key-points-list">
+              <li class="key-point-item"><span style="color: #10b981;">✔</span> Tự động tạo 3 thẻ việc chuẩn hạn chót trên Trello.</li>
+              <li class="key-point-item"><span style="color: #10b981;">✔</span> Bắn tin nhắn tóm tắt chuyên nghiệp vào kênh Slack.</li>
+              <li class="key-point-item"><span style="color: #10b981;">✔</span> Kỹ năng lưu vĩnh viễn trên máy — thứ Hai nào cũng dùng lại được ngay!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bar-summary">
+        <span>⚡ <strong>Tư duy cốt lõi:</strong> Đừng chỉ giải quyết công việc 1 lần — Hãy biến quy trình lặp lại thành Kỹ Năng (Skill) tự hành!</span>
+        <span style="font-family: var(--font-mono); color: var(--accent-emerald); font-weight: 700;">PROJECT 01 • DONE</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: THỰC CHIẾN 02 - HỘP THƯ GMAIL -->
+    <div class="slide-canvas" data-slide="2" data-notes="Bài 8.2: Thực Chiến 02 — Trợ Lý Hộp Thư: Đọc Hiểu, Phân Loại Email & Gán Nhãn Tự Động.
+Nỗi đau: Hàng sáng nhận 50-100 emails lẫn lộn giữa khiếu nại khách hàng, báo giá, thông báo nội bộ và quảng cáo rác. Mất 1-2 tiếng lọc tay hoặc bỏ sót thư khẩn cấp.
+Tư duy đẳng cấp: Ra lệnh tạo skill 'tro-ly-hop-thu-thong-minh' kết nối Gmail MCP.
+Bóc tách 4 bước vàng:
+1. Goal: Quét 10 thư chưa đọc, phân tích ngữ nghĩa AI, tự tạo & gán nhãn Gmail.
+2. Context: Phân 4 nhóm nhãn: Đỏ (Khẩn cấp), Vàng (Báo giá), Xanh (Nội bộ), Trắng (Tin tức).
+3. Standard: Xuất bảng tóm tắt 4 cột trên chat kiểm tra kết quả.
+4. Boundary: TUYỆT ĐỐI CẤM xóa email, CẤM tự ý gửi mail khi chưa duyệt!
+Kết quả: 30 giây phân loại xong toàn bộ hòm thư, nhãn màu rực rỡ trực tiếp trên web Gmail!">
+      <div class="slide-hud">
+        <div class="hud-chip">BÀI 8.2 • THỰC CHIẾN 02: <strong>TRỢ LÝ HỘP THƯ GMAIL THÔNG MINH</strong></div>
+      </div>
+      <div>
+        <span class="tag-hero" style="color: var(--accent-cyan);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          DỰ ÁN XỬ LÝ HỘP THƯ DOANH NGHIỆP
+        </span>
+        <h2 class="title-display">Trợ Lý Hộp Thư: <span>Đọc Hiểu, Phân Loại &amp; Gán Nhãn Gmail</span></h2>
+        <p class="lead-desc">Ra lệnh cho AI tạo Skill quét hộp thư chưa đọc, hiểu sâu ngữ nghĩa tiếng Việt, tự động tạo và gắn nhãn màu phân loại theo mức độ khẩn cấp ngay trên giao diện Gmail.</p>
+      </div>
+
+      <div class="card-grid col-3">
+        <div class="stat-card" style="border-top: 3px solid var(--accent-rose);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(244,63,94,0.18); color: #fda4af;">NỖI ĐAU THỰC TẾ</span></div>
+          <div class="stat-title">Khủng Hoảng Hộp Thư</div>
+          <div class="stat-desc">
+            <ul class="key-points-list">
+              <li class="key-point-item"><span style="color: #f43f5e;">•</span> 50-100 emails tràn ngập mỗi sáng: Thư khẩn cấp lẫn lộn với thư rác.</li>
+              <li class="key-point-item"><span style="color: #f43f5e;">•</span> Mất 1-2 tiếng đọc lướt, kéo thả thủ công.</li>
+              <li class="key-point-item"><span style="color: #f43f5e;">•</span> Nguy cơ bỏ sót thư khiếu nại của đối tác gây thiệt hại tài chính!</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="stat-card" style="border-top: 3px solid var(--accent-amber);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(245,158,11,0.18); color: #fde68a;">PROMPT VÀNG 4 BƯỚC</span></div>
+          <div class="stat-title">Tạo Skill Hộp Thư</div>
+          <div class="code-box" style="color: #fef08a;">[Goal] Tạo skill `tro-ly-hop-thu-thong-minh`
+[Context] 4 nhãn: 🔴 Khẩn Cấp, 🟡 Báo Giá, 🟢 Nội Bộ, ⚪ Tin Tức
+[Standard] Cú pháp YAML chuẩn; in bảng tóm tắt 4 cột trên chat
+[Boundary] Chỉ đọc & gán nhãn — TUYỆT ĐỐI CẤM XÓA & CẤM GỬI THƯ!</div>
+        </div>
+
+        <div class="stat-card" style="border-top: 3px solid var(--accent-cyan);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(14,165,233,0.18); color: #7dd3fc;">KẾT QUẢ ĐỘT PHÁ</span></div>
+          <div class="stat-title">Giải Phóng 1 Giờ/Ngày</div>
+          <div class="stat-desc">
+            <ul class="key-points-list">
+              <li class="key-point-item"><span style="color: #0ea5e9;">✔</span> Quét & phân tích nội dung tiếng Việt 10 email trong 30 giây.</li>
+              <li class="key-point-item"><span style="color: #0ea5e9;">✔</span> Tự động gắn nhãn màu rực rỡ ngay trên hòm thư Gmail thật.</li>
+              <li class="key-point-item"><span style="color: #0ea5e9;">✔</span> An toàn dữ liệu tuyệt đối nhờ chốt chặn bảo vệ không cho phép xóa thư.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bar-summary">
+        <span>🛡️ <strong>Chốt chặn an toàn:</strong> Giao tiếp với dữ liệu nhạy cảm luôn phải có Giới hạn (Boundary) khóa chặt quyền xóa!</span>
+        <span style="font-family: var(--font-mono); color: var(--accent-cyan); font-weight: 700;">PROJECT 02 • DONE</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: THỰC CHIẾN 03 - PHÙ THỦY EXCEL -->
+    <div class="slide-canvas" data-slide="3" data-notes="Bài 8.3: Thực Chiến 03 — Phù Thủy Bảng Tính: Xử Lý Siêu Tốc Các Công Thức Excel Phức Tạp (VLOOKUP, INDEX/MATCH, SUMIFS, IF).
+Nỗi đau: Bảng tính nhiều Sheet, ghép nối dữ liệu thủ công hay quên bấm F4 báo #N/A, INDEX/MATCH lồng nhau nhức óc cả buổi chiều.
+Tư duy đẳng cấp: Ra lệnh tạo skill 'phu-thuy-excel' đa năng nhận mọi file và mọi hàm theo yêu cầu.
+Bóc tách 4 bước vàng:
+1. Goal: Tự động quét cấu trúc file, chèn công thức sống theo bài toán nghiệp vụ.
+2. Context: File bất kỳ do người dùng truyền vào (demo: bao_cao_doanh_thu_thang_10.xlsx gồm 3 Sheet).
+3. Standard: BẮT BUỘC chèn CÔNG THỨC SỐNG (VLOOKUP / INDEX-MATCH / SUMIFS), bọc bẫy lỗi IFERROR, tương thích 100% mọi phiên bản Office.
+4. Boundary: Tuyệt đối KHÔNG ghi đè file gốc, xuất ra file _Hoan_Thanh.xlsx.
+Kết quả: 12 giây hoàn tất 100 dòng, mở Excel ra công thức sống nhảy số tức thì khi đổi dữ liệu!">
+      <div class="slide-hud">
+        <div class="hud-chip">BÀI 8.3 • THỰC CHIẾN 03: <strong>PHÙ THỦY BẢNG TÍNH EXCEL</strong></div>
+      </div>
+      <div>
+        <span class="tag-hero" style="color: var(--accent-emerald);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="3" y1="15" x2="21" y2="15"></line><line x1="9" y1="3" x2="9" y2="21"></line><line x1="15" y1="3" x2="15" y2="21"></line></svg>
+          DỰ ÁN XỬ LÝ DỮ LIỆU & CÔNG THỨC KHÓ
+        </span>
+        <h2 class="title-display">Phù Thủy Bảng Tính: <span>Làm Chủ Công Thức Excel Khó</span></h2>
+        <p class="lead-desc">Ra lệnh cho AI tạo Skill đa năng tự động phân tích cấu trúc mọi file Excel, chèn công thức sống tối ưu (VLOOKUP, INDEX/MATCH, SUMIFS, IF...) tương thích 100% trên mọi máy tính.</p>
+      </div>
+
+      <div class="card-grid col-3">
+        <div class="stat-card" style="border-top: 3px solid var(--accent-rose);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(244,63,94,0.18); color: #fda4af;">NỖI ĐAU THỰC TẾ</span></div>
+          <div class="stat-title">Cơn Ác Mộng Bảng Tính</div>
+          <div class="stat-desc">
+            <ul class="key-points-list">
+              <li class="key-point-item"><span style="color: #f43f5e;">•</span> Ghép nối nhiều Sheet: Quên bấm F4 khóa vùng là VLOOKUP báo <code>#N/A</code>.</li>
+              <li class="key-point-item"><span style="color: #f43f5e;">•</span> Cột nằm bên trái phải lồng ghép <code>INDEX & MATCH</code> nhức óc.</li>
+              <li class="key-point-item"><span style="color: #f43f5e;">•</span> Mất cả buổi chiều chỉ để sửa dấu phẩy và kiểm tra lỗi sai số!</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="stat-card" style="border-top: 3px solid var(--accent-amber);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(245,158,11,0.18); color: #fde68a;">PROMPT VÀNG 4 BƯỚC</span></div>
+          <div class="stat-title">Tạo Skill Excel</div>
+          <div class="code-box" style="color: #fef08a;">[Goal] Tạo skill `phu-thuy-excel` đa năng xử lý mọi file & công thức khó
+[Context] File bất kỳ truyền vào prompt (demo: 3 Sheet DonHang, DanhMuc, KhachHang)
+[Standard] Tự dò cấu trúc, chèn CÔNG THỨC SỐNG (VLOOKUP/INDEX-MATCH/SUMIFS), bọc IFERROR
+[Boundary] Cấm ghi đè file gốc, xuất file `_Hoan_Thanh.xlsx` kèm giải thích!</div>
+        </div>
+
+        <div class="stat-card" style="border-top: 3px solid var(--accent-emerald);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(16,185,129,0.18); color: #a7f3d0;">KẾT QUẢ ĐỘT PHÁ</span></div>
+          <div class="stat-title">12 Giây Cho 100 Dòng</div>
+          <div class="stat-desc">
+            <ul class="key-points-list">
+              <li class="key-point-item"><span style="color: #10b981;">✔</span> Tự động điền Tên SP, Đơn giá, Tên KH và tính Thành tiền có chiết khấu.</li>
+              <li class="key-point-item"><span style="color: #10b981;">✔</span> Sếp bấm vào từng ô vẫn thấy công thức Excel sống nhảy số linh hoạt.</li>
+              <li class="key-point-item"><span style="color: #10b981;">✔</span> Bảo toàn dữ liệu gốc 100%, không lo mất mát tài liệu tài chính.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bar-summary">
+        <span>📊 <strong>Chuẩn mực công sở:</strong> Luôn xuất công thức sống và bẫy lỗi IFERROR thay vì dán giá trị số chết!</span>
+        <span style="font-family: var(--font-mono); color: var(--accent-emerald); font-weight: 700;">PROJECT 03 • DONE</span>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: THỰC CHIẾN 04 - CHUYÊN GIA SLIDE HTML -->
+    <div class="slide-canvas" data-slide="4" data-notes="Bài 8.4: Thực Chiến 04 — Chuyên Gia Trình Chiếu: Tạo Skill Sinh Slide Thuyết Trình HTML Động Đẳng Cấp.
+Nỗi đau: Làm PowerPoint kéo thả hàng giờ, đổi máy tính bị lỗi font/vỡ hình. Dùng AI làm slide thì generic, chữ như trang sách.
+Tư duy đẳng cấp: Kết hợp sức mạnh lập trình web hiện đại tạo slide Single-file HTML 0-dependency.
+Bóc tách 4 bước vàng:
+1. Goal: Tạo skill 'chuyen-gia-slide-html' biến dàn ý thành slide trình chiếu HTML động.
+2. Context: Báo cáo chiến lược doanh nghiệp, tông màu Dark-tech sang trọng (đen than, xanh ngọc, tím).
+3. Standard: Single-file 100% (CSS/JS inline, mở offline), phím tắt Space/Arrow chuyển trang, phím N mở ngăn kéo Speaker Notes.
+4. Boundary: Không dùng framework nặng nề (React/Vue), chạy mượt trên mọi trình duyệt Chrome/Safari.
+Kết quả: 20 giây sinh bài thuyết trình điện ảnh, hiệu ứng chuyển trang mượt 100fps, tự tin thuyết trình với ngăn phao kịch bản bí mật!">
+      <div class="slide-hud">
+        <div class="hud-chip">BÀI 8.4 • THỰC CHIẾN 04: <strong>CHUYÊN GIA TRÌNH CHIẾU SLIDE HTML</strong></div>
+      </div>
+      <div>
+        <span class="tag-hero" style="color: var(--accent-purple);">
+          <svg class="svg-icon" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+          DỰ ÁN SÁNG TẠO TRÌNH DIỄN ĐẲNG CẤP
+        </span>
+        <h2 class="title-display">Chuyên Gia Trình Chiếu: <span>Slide HTML Động 0-Dependency</span></h2>
+        <p class="lead-desc">Ra lệnh cho AI tạo Skill chuyển đổi mọi dàn ý bài giảng/báo cáo thành bài thuyết trình web tương tác đỉnh cao: Thiết kế Dark-tech sang trọng, chuyển trang mượt mà và tích hợp ngăn kéo kịch bản người nói bí mật.</p>
+      </div>
+
+      <div class="card-grid col-3">
+        <div class="stat-card" style="border-top: 3px solid var(--accent-rose);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(244,63,94,0.18); color: #fda4af;">NỖI ĐAU THỰC TẾ</span></div>
+          <div class="stat-title">Lối Mòn PowerPoint</div>
+          <div class="stat-desc">
+            <ul class="key-points-list">
+              <li class="key-point-item"><span style="color: #f43f5e;">•</span> Mất hàng tiếng căn lề từng khối hộp, đổi máy tính bị lỗi font/vỡ hình.</li>
+              <li class="key-point-item"><span style="color: #f43f5e;">•</span> Slide AI thông thường: Nhiều chữ như trang sách hoặc ảnh generic nhàm chán.</li>
+              <li class="key-point-item"><span style="color: #f43f5e;">•</span> Không có công cụ hỗ trợ phao kịch bản người nói tinh tế!</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="stat-card" style="border-top: 3px solid var(--accent-amber);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(245,158,11,0.18); color: #fde68a;">PROMPT VÀNG 4 BƯỚC</span></div>
+          <div class="stat-title">Tạo Skill Slide Web</div>
+          <div class="code-box" style="color: #fef08a;">[Goal] Tạo skill `chuyen-gia-slide-html` sinh file `.html`
+[Context] Phong cách Dark-tech (#0B0F19, ngọc lục bảo #10B981)
+[Standard] Single-file 0-dependency, phím mũi tên chuyển trang, phím N mở Notes Drawer
+[Boundary] Không framework nặng, chạy offline 100% trên Chrome/Safari!</div>
+        </div>
+
+        <div class="stat-card" style="border-top: 3px solid var(--accent-purple);">
+          <div class="stat-header"><span class="card-badge" style="background: rgba(168,85,247,0.18); color: #e9d5ff;">KẾT QUẢ ĐỘT PHÁ</span></div>
+          <div class="stat-title">Trình Diễn Điện Ảnh</div>
+          <div class="stat-desc">
+            <ul class="key-points-list">
+              <li class="key-point-item"><span style="color: #c084fc;">✔</span> Xuất file slide `.html` trong 20 giây — mở ngay bằng trình duyệt không cần mạng.</li>
+              <li class="key-point-item"><span style="color: #c084fc;">✔</span> Hiệu ứng chuyển động mượt 100fps, thanh tiến trình hiển thị phần trăm trực quan.</li>
+              <li class="key-point-item"><span style="color: #c084fc;">✔</span> Bấm phím <code>N</code> mở ngăn kịch bản người nói tự tin thuyết trình trước đám đông!</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bar-summary">
+        <span>🎬 <strong>Tác phẩm nghệ thuật số:</strong> Kết hợp tư duy thẩm mỹ và công nghệ web biến bạn thành Chuyên gia Trình chiếu đẳng cấp!</span>
+        <span style="font-family: var(--font-mono); color: var(--accent-purple); font-weight: 700;">PROJECT 04 • DONE</span>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="notes-backdrop"></div>
+  <aside id="notes-drawer">
+    <div class="notes-header">
+      <div class="notes-title">
+        <svg class="svg-icon" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+        <span>KỊCH BẢN GIẢNG VIÊN</span>
+      </div>
+      <button class="btn-nav" id="btn-close-notes">✕</button>
+    </div>
+    <span class="notes-tag" id="notes-slide-tag">DỰ ÁN 01 / 4</span>
+    <div class="notes-content" id="notes-body"></div>
+  </aside>
+
+  <footer>
+    <div>
+      <span>Điều khiển:</span>
+      <span style="margin-left: 8px;"><span class="kbd">◀</span> <span class="kbd">▶</span> hoặc <span class="kbd">Space</span> chuyển slide</span>
+      <span style="margin-left: 8px;"><span class="kbd">S</span> Kịch bản</span>
+      <span style="margin-left: 8px;"><span class="kbd">F</span> Toàn màn hình</span>
+    </div>
+    <div class="footer-watermark-brand" style="font-family: var(--font-mono); color: var(--accent-emerald); font-weight: 700;">
+      <span>GOOGLE ANTIGRAVITY MASTERCLASS • 2026</span>
+      <img src="ai-code-watermark.png" alt="AI CODE" class="watermark-ai-code">
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      const slides = document.querySelectorAll('.slide-canvas');
+      const progressBar = document.getElementById('progress-bar');
+      const slideNumDisplay = document.getElementById('slide-num');
+      const btnPrev = document.getElementById('btn-prev');
+      const btnNext = document.getElementById('btn-next');
+      const btnNotes = document.getElementById('btn-notes');
+      const btnCloseNotes = document.getElementById('btn-close-notes');
+      const btnFullscreen = document.getElementById('btn-fullscreen');
+      const notesDrawer = document.getElementById('notes-drawer');
+      const notesBody = document.getElementById('notes-body');
+      const notesSlideTag = document.getElementById('notes-slide-tag');
+      const notesBackdrop = document.getElementById('notes-backdrop');
+
+      let currentSlide = 0;
+      const totalSlides = slides.length;
+
+      function updateSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= totalSlides) index = totalSlides - 1;
+        currentSlide = index;
+
+        slides.forEach((s, idx) => {
+          if (idx === currentSlide) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+
+        const pct = ((currentSlide + 1) / totalSlides) * 100;
+        if (progressBar) progressBar.style.width = pct + '%';
+        if (slideNumDisplay) slideNumDisplay.textContent = (currentSlide + 1) + ' / ' + totalSlides;
+
+        const activeSlide = slides[currentSlide];
+        if (activeSlide && notesBody) {
+          notesBody.textContent = activeSlide.getAttribute('data-notes') || 'Chưa có ghi chú cho slide này.';
+        }
+        if (notesSlideTag) {
+          notesSlideTag.textContent = 'DỰ ÁN ' + (currentSlide + 1) + ' / ' + totalSlides;
+        }
+      }
+
+      function toggleNotes() {
+        const isOpen = notesDrawer.classList.contains('open');
+        if (isOpen) {
+          notesDrawer.classList.remove('open');
+          notesBackdrop.classList.remove('open');
+        } else {
+          notesDrawer.classList.add('open');
+          notesBackdrop.classList.add('open');
+        }
+      }
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => {});
+        } else {
+          if (document.exitFullscreen) document.exitFullscreen();
+        }
+      }
+
+      if (btnPrev) btnPrev.addEventListener('click', () => updateSlide(currentSlide - 1));
+      if (btnNext) btnNext.addEventListener('click', () => updateSlide(currentSlide + 1));
+      if (btnNotes) btnNotes.addEventListener('click', toggleNotes);
+      if (btnCloseNotes) btnCloseNotes.addEventListener('click', toggleNotes);
+      if (notesBackdrop) notesBackdrop.addEventListener('click', toggleNotes);
+      if (btnFullscreen) btnFullscreen.addEventListener('click', toggleFullscreen);
+
+      window.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.key === 'ArrowRight' || e.key === 'Space') {
+          e.preventDefault();
+          updateSlide(currentSlide + 1);
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          updateSlide(currentSlide - 1);
+        } else if (e.key === 's' || e.key === 'S') {
+          toggleNotes();
+        } else if (e.key === 'f' || e.key === 'F') {
+          toggleFullscreen();
+        }
+      });
+
+      updateSlide(0);
+    })();
+  </script>
+</body>
+</html>

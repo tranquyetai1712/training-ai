@@ -546,7 +546,6 @@ def generate():
     )
     b35.write_corporate_styling_rule()
     b35.write_security_hooks(["content_calendar.xlsx"])
-    b35.write_mcp_config("google_workspace")
     b35.write_skill(
         skill_name="tao-lich-content-folder",
         description="Use this skill to map out content calendars and structure corresponding Google Drive asset folder trees.",

@@ -66,6 +66,6 @@ Nếu bạn chỉ gõ một câu cụt lủn như: *'Tổng hợp doanh thu thá
 
 "**Nói tóm lại,** chỉ cần ghi nhớ câu thần chú: **Mục Tiêu ➔ Bối Cảnh ➔ Tiêu Chuẩn ➔ Giới Hạn**, bạn đã nắm trọn nghệ thuật ra lệnh của một nhà quản lý tài ba.
 
-**Thế nhưng trong thực tế,** khi bạn gặp một bài toán lớn gồm nhiều công đoạn phức tạp, làm thế nào để buộc AI phải lên kế hoạch tác chiến chi tiết trước khi hành động, và phản biện bóc trần mọi rủi ro tiềm ẩn?
+**Thế nhưng trong thực tế,** trước khi bước vào các bài thực hành lớn với nhiều tệp quy định và báo cáo Markdown, làm thế nào để bạn có thể mở xem toàn bộ cây thư mục dự án, tạo mới và chỉnh sửa các file văn bản trên máy tính một cách nhanh chóng, trực quan nhất?
 
-**Câu trả lời nằm ở Bài 2.3:** Nơi chúng ta sẽ khám phá bộ đôi lệnh quyền lực nhất trong Antigravity: lệnh `/plan` và lệnh `/grill-me`. Mời bạn bấm sang **Bài 2.3** ngay bây giờ!"
+**Câu trả lời nằm ở Bài 2.3:** Nơi tôi sẽ hướng dẫn bạn cài đặt và sử dụng phần mềm trợ thủ **Sublime Text** chỉ trong chưa đầy 3 phút. Mời bạn bấm sang **Bài 2.3** ngay bây giờ!"
